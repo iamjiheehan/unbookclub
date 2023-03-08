@@ -17,20 +17,16 @@ function Header() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#link">JOIN A BOOK CLUB</Nav.Link>
-                        <NavDropdown title="FIND A BOOK" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">SEARCH BOOKS</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">TOP BOOKS</NavDropdown.Item>
+                        <Nav.Link href="#link">감상평 쓰러가기</Nav.Link>
+                        <NavDropdown title="도서 검색하기" id="basic-nav-dropdown">
+                            <NavDropdown.Item href="#action/3.1">검색어로 찾기</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.2">베스트셀러 보기</NavDropdown.Item>
                         </NavDropdown>
-                        <NavDropdown title="COMMUNITY" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">BLOG</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">ARTICLES</NavDropdown.Item>
-                        </NavDropdown>
-                        <Nav.Link href="#link">DISCUSSION GUIDES</Nav.Link>
+                        <Nav.Link href="#link">토론 가이드</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
-                <Button variant="link" id = "signIn-btn">SIGN IN</Button>
-                <Button variant="secondary" id= 'signUp-btn'>SIGN UP</Button>
+                <Button variant="link" id = "signIn-btn">로그인</Button>
+                <Button variant="secondary" id= 'signUp-btn'>회원가입</Button>
             </Container>
         </Navbar>
     );
