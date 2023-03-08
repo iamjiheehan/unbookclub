@@ -1,7 +1,6 @@
 import React from 'react'
 import '../styles/Footer.css';
 import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Navbar';
 import logo from '../static/images/logo.webp';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';

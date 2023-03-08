@@ -10,7 +10,7 @@ import icon05 from '../static/images/main-icon-05.webp';
 import icon06 from '../static/images/main-icon-06.webp';
 import Button from 'react-bootstrap/Button';
 import testimonial from '../static/images/main-testimonial.webp';
-
+import MainBestSellers from '../components/MainBestSellers'
 
 function Main() {
     return (
@@ -62,7 +62,6 @@ function Main() {
                     <Button variant="secondary" size="lg" active>
                         CREATE YOUR CLUB
                     </Button>{' '}
-                    
                     <Container>
                         <div className="main__testimonials">
                             <h1>Testimonials</h1>
@@ -107,8 +106,11 @@ function Main() {
                     </div>
                     <div className="main__trend">
                         <Container>
-                            <h1>Trending now...</h1>
-                            <p>Hundreds of thousands of readers can’t be wrong. Check out the most popular books that book clubs across the world are reading this week.</p>
+                            <div className="main__trend-container">
+                                <h1>Trending now...</h1>
+                                <p>Hundreds of thousands of readers can not be wrong. Check out the most popular books that book clubs across the world are reading this week.</p>
+                                <MainBestSellers/>
+                            </div>
                         </Container>
                     </div>
             </div>

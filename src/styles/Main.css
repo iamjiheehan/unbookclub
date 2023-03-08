@@ -61,3 +61,31 @@
     height: 100%;
     width: 100%;
 }
+
+.main__trend-container {
+    overflow: hidden;
+}
+
+/* BestSellers.js */
+
+.bestSeller__flexbox-wrapper{
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    animation: marquee 45s linear infinite;
+}
+
+.bestSeller__img {
+    width: 250px;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* BestSellers.js */
