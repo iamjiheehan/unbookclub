@@ -1,14 +1,8 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 
-function SignInButton() {
-  const history = useHistory();
-
-  const handleClick = () => {
-    history.push('/signin');
-  };
+export default function SignIn() {
 
   return (
-    <button onClick={handleClick}>Sign In</button>
-  );
+    <h2>이곳은 로그인 페이지 입니다.</h2>
+    );
 }

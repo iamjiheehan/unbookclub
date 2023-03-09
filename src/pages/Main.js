@@ -1,6 +1,8 @@
 import React from 'react';
 import '../styles/Main.css';
+
 import Container from 'react-bootstrap/Container';
+
 import main from '../static/images/main-01.webp';
 import icon01 from '../static/images/main-icon-01.webp';
 import icon02 from '../static/images/main-icon-02.webp';
@@ -8,24 +10,23 @@ import icon03 from '../static/images/main-icon-03.webp';
 import icon04 from '../static/images/main-icon-04.webp';
 import icon05 from '../static/images/main-icon-05.webp';
 import icon06 from '../static/images/main-icon-06.webp';
-import Button from 'react-bootstrap/Button';
 import testimonial from '../static/images/main-testimonial.webp';
-import MainBestSellers from '../components/MainBestSellers'
+
+import MainBestSellers from '../components/MainBestSellers';
+
+import LinkButton from '../styled-components/LinkBtnStyled'; 
+import ImgStyled from '../styled-components/ImgStyled';
 
 function Main() {
     return (
         <>
             <Container>
                 <div className="main__top">
-                    <div className="main__top-img">
-                        <img src={main} alt="mainImage" />
-                    </div>
+                        <ImgStyled src={main} alt="mainImage" height="500px" />
                     <div className="main__top-text">
                         <h2 className="main__title"> Your Book club, made simple.</h2>
                         <p className="main__content"> Organize your club, start a new one,<br/> and find your book people. For free.</p>
-                        <Button variant="secondary" size="lg" active>
-                            글 쓰러가기
-                        </Button>{' '}
+                        <LinkButton to="/board">글 쓰러가기</LinkButton>
                     </div>
                 </div>
             </Container>
@@ -34,34 +35,32 @@ function Main() {
                     <Container>
                         <div className="icon-flexbox">
                             <div className="icon-item">
-                                <img src={icon01} alt="icon-book" />
+                                <ImgStyled src={icon01} alt="icon-book" maxWidth="300px"/>
                                 <p>View all the books your club has read in one place</p>
                             </div>
                             <div className="icon-item">
-                                <img src={icon02} alt="icon-boy" />
+                                <ImgStyled src={icon02} alt="icon-boy" maxWidth="300px"/>
                                 <p>Manage your club membership online — no more email chains!</p>
                             </div>
                             <div className="icon-item">
-                                <img src={icon03} alt="icon-glasses" />
+                                <ImgStyled src={icon03} alt="icon-glasses" maxWidth="300px"/>
                                 <p>Get inspired — see what other book clubs are reading</p>
                             </div>
                             <div className="icon-item">
-                                <img src={icon04} alt="icon-file" />
+                                <ImgStyled src={icon04} alt="icon-file" maxWidth="300px"/>
                                 <p>Poll your members to select books and meeting dates</p>
                             </div>
                             <div className="icon-item">
-                                <img src={icon05} alt="icon-star" />
+                                <ImgStyled src={icon05} alt="icon-star" maxWidth="300px"/>
                                 <p>Rate each book you read and save ratings</p>
                             </div>
                             <div className="icon-item">
-                                <img src={icon06} alt="icon-people" />
+                                <ImgStyled src={icon06} alt="icon-people" maxWidth="300px"/>
                                 <p>Connect with others in the Bookclubs community</p>
                             </div>
                         </div>
                     </Container>
-                    <Button variant="secondary" size="lg" active>
-                        글 쓰러가기
-                    </Button>{' '}
+                    <LinkButton to="/board">글 쓰러가기</LinkButton>
                     <Container>
                         <div className="main__testimonials">
                             <h1>이용 후기</h1>
@@ -102,7 +101,7 @@ function Main() {
                         </div>
                     </Container>
                     <div className='main__testimonials-img'>
-                        <img src={testimonial} alt="testimonial-image" />
+                        <ImgStyled src={testimonial} alt="testimonial-image" height= "400px"/>
                     </div>
                     <div className="main__trend">
                         <Container>
@@ -111,9 +110,7 @@ function Main() {
                                 <p>Hundreds of thousands of readers can not be wrong. Check out the most popular books that book clubs across the world are reading this week.</p>
                                 <MainBestSellers/>
                             </div>
-                            <Button variant="secondary" size="lg" active>
-                                도서 검색하러 가기
-                            </Button>{' '}
+                            <LinkButton to="/search">도서 검색하러 가기</LinkButton>
                         </Container>
                     </div>
             </div>

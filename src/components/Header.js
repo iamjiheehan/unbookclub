@@ -18,9 +18,9 @@ function Header() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href="#link">감상평 쓰러가기</Nav.Link>
-                        <NavDropdown title="도서 검색하기" id="basic-nav-dropdown">
+                        <NavDropdown title="감상평 검색하기" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">검색어로 찾기</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">베스트셀러 보기</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.2">도서로 찾기</NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link href="#link">토론 가이드</Nav.Link>
                     </Nav>

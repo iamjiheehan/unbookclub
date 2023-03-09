@@ -1,26 +1,12 @@
 import React, { useState, useEffect} from 'react';
-import api from '../api/BestSellers'
+import bestSeller from '../data/bestSeller.json'
+import ImgStyled from '../styled-components/ImgStyled';
 
 export default function MainBestSellers() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        const fetchPosts = async () => {
-            try {
-                const response = await api.get('/posts');
-                setPosts(response.data);
-            } catch (err) {
-                if (err.response) {
-                //Not in the 200 response range
-                    console.log(err.response.data);
-                    console.log(err.response.status);
-                    console.log(err.response.headers);
-                } else {
-                    console.log(`Error: ${err.message}`);
-                }
-            }
-        }
-        fetchPosts();
+        setPosts(bestSeller);
     }, []);
     
     return (
@@ -28,7 +14,7 @@ export default function MainBestSellers() {
             <div className='bestSeller__flexbox-wrapper'>
                 {posts.map(post => (
                     <div key={post.itemId} className='bestSeller__items'>
-                        <img src={post.coverLargeUrl} alt={post.title} className="bestSeller__img"/>
+                        <ImgStyled src={post.coverLargeUrl} alt={post.title} className="bestSeller__img" width= "250px"/>
                         <p className='bestSeller__author'>{post.author}</p>
                         <p className='bestSeller__title'>{post.title}</p>
                     </div>
