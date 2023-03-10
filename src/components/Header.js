@@ -1,18 +1,19 @@
 import React from 'react';
-import '../styles/Header.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import Button from 'react-bootstrap/Button';
 import logo from '../static/images/logo.webp';
+
+import ImgStyled from '../styled-components/ImgStyled';
+import Button from '../styled-components/ButtonStyled';
 
 function Header() {
     return (
         <Navbar bg="light" expand="lg" className='header'>
             <Container>
                 <Navbar.Brand href="#home" className='header-logo'>
-                    <img src={logo} alt="Logo" />
+                    <ImgStyled width = "150px" src={logo} alt="Logo" />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -25,7 +26,7 @@ function Header() {
                         <Nav.Link href="#link">토론 가이드</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
-                <Button variant="link" id = "signIn-btn">로그인</Button>
+                <Button bgColor='transparent' fontColor='#e67e22' variant="link" id = "signIn-btn">로그인</Button>
                 <Button variant="secondary" id= 'signUp-btn'>회원가입</Button>
             </Container>
         </Navbar>
