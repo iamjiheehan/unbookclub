@@ -28,39 +28,39 @@ function Main() {
                 <div>
                     <ImgStyled src={main} alt="mainImage" height="500px" />
                     <div>
-                        <h2> Your Book club, made simple.</h2>
-                        <p> Organize your club, start a new one,<br/> and find your book people. For free.</p>
+                        <h2>THE UNBOOK CLUB</h2>
+                        <p> 책을 함께 읽고 생각을 나누는 공간<br/></p>
                         <Button to="/board">글 쓰러가기</Button>
                     </div>
                 </div>
             </Container>
                 <div>
-                <TextH1 bgColor='#61777F' padding='1.5rem' color='white' lineHeight='100%'>Organize your book club...and your bookshelves. All for free.</TextH1>
+                <TextH1 bgColor='#61777F' padding='1.5rem' color='white' lineHeight='100%'>심플한 온라인 북클럽, THE UNBOOK CLUB</TextH1>
                     <Container>
                         <FlexRow margin = '2rem auto'>
                             <FlexRow flexBasis='33.3%' alignItems='flex-end'>
                                 <ImgStyled src={icon01} alt="icon-book" maxWidth="300px"/>
-                                <p>View all the books your club has read in one place</p>
+                                <p>지금까지 읽은 책 목록을 쉽게 확인해보세요<div className=""></div></p>
                             </FlexRow>
                             <FlexRow flexBasis='33.3%' alignItems='flex-end'>
                                 <ImgStyled src={icon02} alt="icon-boy" maxWidth="300px"/>
-                                <p>Manage your club membership online — no more email chains!</p>
+                                <p>불필요한 과정은 모두 생략했답니다. 확인해보세요.</p>
                             </FlexRow>
                             <FlexRow flexBasis='33.3%' alignItems='flex-end'>
                                 <ImgStyled src={icon03} alt="icon-glasses" maxWidth="300px"/>
-                                <p>Get inspired — see what other book clubs are reading</p>
+                                <p>다른사람들과 생각을 공유하고 토론해보세요.</p>
                             </FlexRow>
                             <FlexRow flexBasis='33.3%' alignItems='flex-end'>
                                 <ImgStyled src={icon04} alt="icon-file" maxWidth="300px"/>
-                                <p>Poll your members to select books and meeting dates</p>
+                                <p>읽은 책에 대해 평점을 매겨 추후 참고할 수 있도록 기록해보세요.</p>
                             </FlexRow>
                             <FlexRow flexBasis='33.3%' alignItems='flex-end'>
                                 <ImgStyled src={icon05} alt="icon-star" maxWidth="300px"/>
-                                <p>Rate each book you read and save ratings</p>
+                                <p>유저들이 추천하는 책들을 확인하고 함께 읽어보세요.</p>
                             </FlexRow>
                             <FlexRow flexBasis='33.3%' alignItems='flex-end'>
                                 <ImgStyled src={icon06} alt="icon-people" maxWidth="300px"/>
-                                <p>Connect with others in the Bookclubs community</p>
+                                <p>생각을 넓히는 공간입니다. 부담없이 즐겨보세요.</p>
                             </FlexRow>
                         </FlexRow>
                     </Container>
@@ -73,7 +73,7 @@ function Main() {
                                     <BackStyled position = 'relative' height='100%' padding='30px 30px 40px'>
                                         <div>
                                             <p><strong>다양한 사람들</strong></p>
-                                            <p>“Our club started off as an experiment for me to bring together all the incredible women in my life together under a common interest (books), but it's turned into much more than that! Now after two years, we've come together as one group of friends and confidants who support, share, and challenge each other on everything from literature to love & loss to life in general.”</p>
+                                            <p>“공통의 관심사인 책으로 함께 시도해보는 실험으로 시작되었지만, 이젠 그 이상의 가치를 가지게 되었어요! 우리는 서로를 지지하며 나누고, 문학에서부터 사랑과 이별, 삶의 모든 것에 대해 도전하고 함께 성장하는 자신감 있는 사람들로 성장했어요."</p>
                                         </div>
                                     </BackStyled>
                                 </div>
@@ -81,15 +81,15 @@ function Main() {
                                     <div>
                                         <div>
                                             <p><strong>시간 절약</strong></p>
-                                            <p>“What has made it easier for our book club with your platform? Almost everything. From being able to add books with a visual aspect, which has helped cut down on the number of times members can’t find the right book, to being able to have members put books on shelves that they would like our group to read, to being able to have all our information in one easy resource. Thank you.”</p>
+                                            <p>“시각적인 측면을 고려해 책을 추가할 수 있어서 원하는 책을 찾지 못하는 횟수가 줄어들었어요! 읽고 싶은 책을 책장에 추가할 수 있게 되어 독서 목록을 더욱 다양하게 구성할 수 있어요.”</p>
                                         </div>
                                     </div>
                                 </BackStyled>
                                 <BackStyled position = 'relative' height='100%' padding='30px 30px 40px'>
                                     <div className="testimotial-box">
                                         <div className="testimotial-text">
-                                            <p><strong>편리함 최고</strong></p>
-                                            <p>“My first book club meeting went well and was ah-mazing. Thanks so much for following up. Bookclubs was great in facilitating the meeting set up with the reminders and the attendees loved it as much as I did. Thanks again for everything.”</p>
+                                            <p><strong>자유로운 소통</strong></p>
+                                            <p>“개인정보를 최소화 한 채로 글을 남기는 덕분에, 다른 사람들에게 저의 의견을 남기는 것이 두렵지 않아요. 예전에는 비판하는 반응이 두려워서 글을 남기기 많이 망설여졌지만, 현재는 꽤나 편하게 저의 생각을 나눌 수 있어요.”</p>
                                         </div>
                                     </div>
                                 </BackStyled>
@@ -97,7 +97,7 @@ function Main() {
                                     <div>
                                         <div>
                                             <p><strong>심플한 이용방법</strong></p>
-                                            <p>“So many emails before Bookclubs! Now I can easily manage three book clubs, not just one, and it’s so fun and simple. Best service ever.”</p>
+                                            <p>“불필요한 과정들이나 절차 없이 책을 읽으면 바로 적을 수 있어서, 저의 생각을 더욱 생생하게 기록할 수 있어요. 정말 편리해요. 저희 어머니도 함께 이용하실 수 있을 정도로 직관적인 메뉴들이 마음에 들어요.”</p>
                                         </div>
                                     </div>
                                 </BackStyled>
@@ -111,7 +111,7 @@ function Main() {
                         <Container>
                             <div style={{overflow:'hidden'}}>
                                 <h1>베스트셀러</h1>
-                                <p>Hundreds of thousands of readers can not be wrong. Check out the most popular books that book clubs across the world are reading this week.</p>
+                                <p>수십만 명의 독자들이 선택한 책들을 만나보세요!</p>
                                 <MainBestSellers/>
                             </div>
                             <Button to="/search">도서 검색하러 가기</Button>
