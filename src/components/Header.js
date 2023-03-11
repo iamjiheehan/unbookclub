@@ -7,27 +7,29 @@ import logo from '../static/images/logo.webp';
 
 import ImgStyled from '../styled-components/ImgStyled';
 import Button from '../styled-components/ButtonStyled';
+import {TextH1,TextH2,TextP} from '../styled-components/TextStyled';
+
 
 function Header() {
     return (
-        <Navbar bg="light" expand="lg" className='header'>
+        <Navbar bg="light" expand="lg">
             <Container>
-                <Navbar.Brand href="#home" className='header-logo'>
+                <Navbar.Brand href="#home">
                     <ImgStyled width = "150px" src={logo} alt="Logo" />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#link">감상평 쓰러가기</Nav.Link>
-                        <NavDropdown title="감상평 검색하기" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">검색어로 찾기</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">도서로 찾기</NavDropdown.Item>
+                        <Nav.Link href="#link"><TextP>감상평 쓰러가기</TextP></Nav.Link>
+                        <NavDropdown title={<TextP>감상평 검색하기</TextP>} id="basic-nav-dropdown">
+                            <NavDropdown.Item href="#action/3.1"><TextP>검색어로 찾기</TextP></NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.2"><TextP>도서로 찾기</TextP></NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link href="#link">토론 가이드</Nav.Link>
+                        <Nav.Link href="#link"><TextP>토론 가이드</TextP></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
-                <Button bgColor='transparent' fontColor='#e67e22' variant="link" id = "signIn-btn">로그인</Button>
-                <Button variant="secondary" id= 'signUp-btn'>회원가입</Button>
+                <Button bgColor='transparent' fontColor='#e67e22' fontWeight='900' variant="link" to='/signIn'>로그인</Button>
+                <Button variant="secondary" to='/signUp'>회원가입</Button>
             </Container>
         </Navbar>
     );

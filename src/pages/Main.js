@@ -28,76 +28,72 @@ function Main() {
                 <div>
                     <ImgStyled src={main} alt="mainImage" height="500px" />
                     <div>
-                        <h2>THE UNBOOK CLUB</h2>
-                        <p> 책을 함께 읽고 생각을 나누는 공간<br/></p>
+                        <TextH1 padding='0 0 0.5rem 0'>THE UNBOOK CLUB</TextH1>
+                        <TextP> 책을 함께 읽고 다양한 생각을 나누는 공간<br/></TextP>
                         <Button to="/board">글 쓰러가기</Button>
                     </div>
                 </div>
             </Container>
-                <div>
+            <div>
                 <TextH1 bgColor='#61777F' padding='1.5rem' color='white' lineHeight='100%'>심플한 온라인 북클럽, THE UNBOOK CLUB</TextH1>
-                    <Container>
-                        <FlexRow margin = '2rem auto'>
-                            <FlexRow flexBasis='33.3%' alignItems='flex-end'>
+                    <Container style={{marginTop: '3rem'}}>
+                        <FlexRow>
+                            <FlexCol flexBasis='33.3%' alignItems='flex-end'>
                                 <ImgStyled src={icon01} alt="icon-book" maxWidth="300px"/>
-                                <p>지금까지 읽은 책 목록을 쉽게 확인해보세요<div className=""></div></p>
-                            </FlexRow>
-                            <FlexRow flexBasis='33.3%' alignItems='flex-end'>
+                                <TextH2 padding='0 1rem'>지금까지 읽은 책 목록을 기록 할 수 있어요.</TextH2>
+                            </FlexCol>
+                            <FlexCol flexBasis='33.3%' alignItems='flex-end'>
                                 <ImgStyled src={icon02} alt="icon-boy" maxWidth="300px"/>
-                                <p>불필요한 과정은 모두 생략했답니다. 확인해보세요.</p>
-                            </FlexRow>
-                            <FlexRow flexBasis='33.3%' alignItems='flex-end'>
+                                <TextH2 padding='0 1rem'>불필요한 과정은 모두 생략했답니다.</TextH2>
+                            </FlexCol>
+                            <FlexCol flexBasis='33.3%' alignItems='flex-end'>
                                 <ImgStyled src={icon03} alt="icon-glasses" maxWidth="300px"/>
-                                <p>다른사람들과 생각을 공유하고 토론해보세요.</p>
-                            </FlexRow>
-                            <FlexRow flexBasis='33.3%' alignItems='flex-end'>
+                                <TextH2 padding='0 1rem'>다른사람들과 생각을 공유하고 토론해보세요. </TextH2>
+                            </FlexCol>
+                            <FlexCol flexBasis='33.3%' alignItems='flex-end'>
                                 <ImgStyled src={icon04} alt="icon-file" maxWidth="300px"/>
-                                <p>읽은 책에 대해 평점을 매겨 추후 참고할 수 있도록 기록해보세요.</p>
-                            </FlexRow>
-                            <FlexRow flexBasis='33.3%' alignItems='flex-end'>
+                                <TextH2 padding='0 1rem'>읽은 책에 대해 평점을 매겨 추후 참고할 수 있어요.</TextH2>
+                            </FlexCol>
+                            <FlexCol flexBasis='33.3%' alignItems='flex-end'>
                                 <ImgStyled src={icon05} alt="icon-star" maxWidth="300px"/>
-                                <p>유저들이 추천하는 책들을 확인하고 함께 읽어보세요.</p>
-                            </FlexRow>
-                            <FlexRow flexBasis='33.3%' alignItems='flex-end'>
-                                <ImgStyled src={icon06} alt="icon-people" maxWidth="300px"/>
-                                <p>생각을 넓히는 공간입니다. 부담없이 즐겨보세요.</p>
-                            </FlexRow>
+                                <TextH2 padding='0 1rem'>유저들이 추천하는 책들을 확인해보세요.</TextH2>
+                            </FlexCol>
                         </FlexRow>
                     </Container>
                     <Button to="/board">글 쓰러가기</Button>
                     <Container>
                         <div>
-                            <h1>이용 후기</h1>
+                            <TextH1 padding='0 0 2rem 0'>이용 후기</TextH1>
                             <GridStyled>
                                 <div>
                                     <BackStyled position = 'relative' height='100%' padding='30px 30px 40px'>
                                         <div>
-                                            <p><strong>다양한 사람들</strong></p>
-                                            <p>“공통의 관심사인 책으로 함께 시도해보는 실험으로 시작되었지만, 이젠 그 이상의 가치를 가지게 되었어요! 우리는 서로를 지지하며 나누고, 문학에서부터 사랑과 이별, 삶의 모든 것에 대해 도전하고 함께 성장하는 자신감 있는 사람들로 성장했어요."</p>
+                                            <TextH2 padding='0 0 1.5rem 0'>다양한 사람들</TextH2>
+                                            <TextP>“공통의 관심사인 책으로 함께 시도해보는 실험으로 시작되었지만, 이젠 그 이상의 가치를 가지게 되었어요! 우리는 서로를 지지하며 나누고, 문학에서부터 사랑과 이별, 삶의 모든 것에 대해 도전하고 함께 성장하는 자신감 있는 사람들로 성장했어요."</TextP>
                                         </div>
                                     </BackStyled>
                                 </div>
                                 <BackStyled position = 'relative' height='100%' padding='30px 30px 40px'>
                                     <div>
                                         <div>
-                                            <p><strong>시간 절약</strong></p>
-                                            <p>“시각적인 측면을 고려해 책을 추가할 수 있어서 원하는 책을 찾지 못하는 횟수가 줄어들었어요! 읽고 싶은 책을 책장에 추가할 수 있게 되어 독서 목록을 더욱 다양하게 구성할 수 있어요.”</p>
-                                        </div>
-                                    </div>
-                                </BackStyled>
-                                <BackStyled position = 'relative' height='100%' padding='30px 30px 40px'>
-                                    <div className="testimotial-box">
-                                        <div className="testimotial-text">
-                                            <p><strong>자유로운 소통</strong></p>
-                                            <p>“개인정보를 최소화 한 채로 글을 남기는 덕분에, 다른 사람들에게 저의 의견을 남기는 것이 두렵지 않아요. 예전에는 비판하는 반응이 두려워서 글을 남기기 많이 망설여졌지만, 현재는 꽤나 편하게 저의 생각을 나눌 수 있어요.”</p>
+                                            <TextH2 padding='0 0 1.5rem 0'>시간 절약</TextH2>
+                                            <TextP>“시각적인 측면을 고려해 책을 추가할 수 있어서 원하는 책을 찾지 못하는 횟수가 줄어들었어요! 읽고 싶은 책을 책장에 추가할 수 있게 되어 독서 목록을 더욱 다양하게 구성할 수 있어요.”</TextP>
                                         </div>
                                     </div>
                                 </BackStyled>
                                 <BackStyled position = 'relative' height='100%' padding='30px 30px 40px'>
                                     <div>
                                         <div>
-                                            <p><strong>심플한 이용방법</strong></p>
-                                            <p>“불필요한 과정들이나 절차 없이 책을 읽으면 바로 적을 수 있어서, 저의 생각을 더욱 생생하게 기록할 수 있어요. 정말 편리해요. 저희 어머니도 함께 이용하실 수 있을 정도로 직관적인 메뉴들이 마음에 들어요.”</p>
+                                            <TextH2 padding='0 0 1.5rem 0'>자유로운 소통</TextH2>
+                                            <TextP>“개인정보를 최소화 한 채로 글을 남기는 덕분에, 다른 사람들에게 저의 의견을 남기는 것이 두렵지 않아요. 예전에는 비판하는 반응이 두려워서 글을 남기기 많이 망설여졌지만, 현재는 꽤나 편하게 저의 생각을 나눌 수 있어요.”</TextP>
+                                        </div>
+                                    </div>
+                                </BackStyled>
+                                <BackStyled position = 'relative' height='100%' padding='30px 30px 40px'>
+                                    <div>
+                                        <div>
+                                            <TextH2 padding='0 0 1.5rem 0'>심플한 이용방법</TextH2>
+                                            <TextP>“불필요한 과정들이나 절차 없이 책을 읽으면 바로 적을 수 있어서, 저의 생각을 더욱 생생하게 기록할 수 있어요. 정말 편리해요. 저희 어머니도 함께 이용하실 수 있을 정도로 직관적인 메뉴들이 마음에 들어요.”</TextP>
                                         </div>
                                     </div>
                                 </BackStyled>
@@ -110,8 +106,8 @@ function Main() {
                     <div>
                         <Container>
                             <div style={{overflow:'hidden'}}>
-                                <h1>베스트셀러</h1>
-                                <p>수십만 명의 독자들이 선택한 책들을 만나보세요!</p>
+                                <TextH1 padding= '0 0 1rem 0'>베스트셀러</TextH1>
+                                <TextH2 padding='0 0 2rem 0'>수십만 명의 독자들이 선택한 책들을 만나보세요!</TextH2>
                                 <MainBestSellers/>
                             </div>
                             <Button to="/search">도서 검색하러 가기</Button>

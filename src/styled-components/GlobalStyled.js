@@ -25,7 +25,6 @@ const GlobalStyle = createGlobalStyle`
     p {
         font-size: 24px;
         margin: 0;
-
     }
 
     input {

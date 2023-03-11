@@ -10,6 +10,8 @@ const ButtonStyled = styled.button`
     color: ${(props) => props.fontColor || 'white'};
     background-color: ${(props) => props.bgColor || '#61777F'};
     font-size: 24px;
+    margin: 2rem auto;
+    font-weight: ${(props) => props.fontWeight || '400'};
 
     &:hover {
         transform: scale(1.1);

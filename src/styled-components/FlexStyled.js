@@ -6,6 +6,7 @@ const commonStyles = `
     flex-wrap: wrap;
     align-content: stretch;
     justify-content: center;
+    margin: ${(props) => props.margin || '0'};
 `;
 
 const FlexRowStyled = styled.div`
@@ -16,7 +17,7 @@ const FlexRowStyled = styled.div`
 
 const FlexColStyled = styled.div`
     ${commonStyles}
-    flex-direction: column;
+    flex-direction: ${(props) => props.direction || 'column'};
     align-items: ${(props) => props.alignItems || 'stretch'};
 `;
 

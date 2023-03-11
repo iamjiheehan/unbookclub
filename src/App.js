@@ -4,6 +4,7 @@ import Board from './pages/Board';
 import Search from './pages/Search';
 import Footer from './components/Footer';
 import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 import { Routes, Route, Link } from 'react-router-dom'
 
 
@@ -14,7 +15,8 @@ function App() {
         <nav>
           <ul>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/signin">Sign In</Link></li>
+            <li><Link to="/signIn">Sign In</Link></li>
+            <li><Link to="/signUp">Sign Up</Link></li>
             <li><Link to="/board">Board</Link></li>
             <li><Link to="/search">Search</Link></li>
           </ul>
@@ -22,7 +24,8 @@ function App() {
       </Header>
       <Routes>
           <Route path="/" element={ <Main /> } />
-          <Route path="/signin" component={SignIn} />
+          <Route path="/signIn" element={ <SignIn /> } />
+          <Route path="/signUp" element={ <SignUp /> } />
           <Route path="/board" element={ <Board /> } />
           <Route path="/search" element={ <Search /> } />
       </Routes>
