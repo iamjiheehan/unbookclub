@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import bestSeller from '../data/bestSeller.json'
 import ImgStyled from '../styled-components/ImgStyled';
 import FlowAni from '../styled-components/AniStyled';
-import {TextH1,TextH2,TextP} from '../styled-components/TextStyled';
+import {TextH2,TextP} from '../styled-components/TextStyled';
 
 
 export default function MainBestSellers() {

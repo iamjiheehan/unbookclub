@@ -5,6 +5,8 @@ import GlobalStyle from './styled-components/GlobalStyled';
 import App from './App.js';
 import reportWebVitals from './reportWebVitals.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import firebase from './firebase'
+
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -12,6 +14,7 @@ createRoot(document.getElementById('root')).render(
       <React.Fragment>
         <GlobalStyle />
         <App />
+        console.log(firebase);
       </React.Fragment>
     </BrowserRouter>
   </React.StrictMode>

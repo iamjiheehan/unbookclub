@@ -16,7 +16,7 @@ const ButtonStyled = styled.button`
     &:hover {
         transform: scale(1.1);
         transform-origin: center;
-        color: #f1c40f;
+        color: #2c3e50;
     }
 `
 

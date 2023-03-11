@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import Pretendard from '../static/fonts/PretendardVariable.woff2';
+import Montserrat from '../static/fonts/Montserrat.ttf';
 
 const commonStyles = css`
     margin: 0;
@@ -7,13 +8,21 @@ const commonStyles = css`
     line-height: ${(props) => props.lineHeight || '1.5'};
     padding: ${(props) => props.padding || '0'};
     background-color: ${(props) => props.bgColor || 'none'};
-    font-family: Pretendard, sans-serif, Arial;
+    font-family: ${(props) => props.font || 'Pretendard, sans-serif, Arial'};
+    
 
     @font-face {
         font-family: 'Pretendard';
         font-style: normal;
         font-weight: 400;
         src: url(${Pretendard}) format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        src: url(${Montserrat}) format('truetype');
     }
 `;
 

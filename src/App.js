@@ -5,6 +5,7 @@ import Search from './pages/Search';
 import Footer from './components/Footer';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+
 import { Routes, Route, Link } from 'react-router-dom'
 
 

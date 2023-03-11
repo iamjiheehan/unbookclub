@@ -8,7 +8,6 @@ import icon02 from '../static/images/main-icon-02.webp';
 import icon03 from '../static/images/main-icon-03.webp';
 import icon04 from '../static/images/main-icon-04.webp';
 import icon05 from '../static/images/main-icon-05.webp';
-import icon06 from '../static/images/main-icon-06.webp';
 import testimonial from '../static/images/main-testimonial.webp';
 
 import MainBestSellers from '../components/MainBestSellers';
@@ -66,14 +65,14 @@ function Main() {
                             <TextH1 padding='0 0 2rem 0'>이용 후기</TextH1>
                             <GridStyled>
                                 <div>
-                                    <BackStyled position = 'relative' height='100%' padding='30px 30px 40px'>
+                                    <BackStyled position = 'relative' height='100%' padding='30px 30px 40px' bgRadius='30px' bgShadow='0 4px 4px rgb(0 0 0 / 25%)'>
                                         <div>
                                             <TextH2 padding='0 0 1.5rem 0'>다양한 사람들</TextH2>
                                             <TextP>“공통의 관심사인 책으로 함께 시도해보는 실험으로 시작되었지만, 이젠 그 이상의 가치를 가지게 되었어요! 우리는 서로를 지지하며 나누고, 문학에서부터 사랑과 이별, 삶의 모든 것에 대해 도전하고 함께 성장하는 자신감 있는 사람들로 성장했어요."</TextP>
                                         </div>
                                     </BackStyled>
                                 </div>
-                                <BackStyled position = 'relative' height='100%' padding='30px 30px 40px'>
+                                <BackStyled position = 'relative' height='100%' padding='30px 30px 40px' bgRadius='30px' bgShadow='0 4px 4px rgb(0 0 0 / 25%)'>
                                     <div>
                                         <div>
                                             <TextH2 padding='0 0 1.5rem 0'>시간 절약</TextH2>
@@ -81,7 +80,7 @@ function Main() {
                                         </div>
                                     </div>
                                 </BackStyled>
-                                <BackStyled position = 'relative' height='100%' padding='30px 30px 40px'>
+                                <BackStyled position = 'relative' height='100%' padding='30px 30px 40px' bgRadius='30px' bgShadow='0 4px 4px rgb(0 0 0 / 25%)'> 
                                     <div>
                                         <div>
                                             <TextH2 padding='0 0 1.5rem 0'>자유로운 소통</TextH2>
@@ -89,7 +88,7 @@ function Main() {
                                         </div>
                                     </div>
                                 </BackStyled>
-                                <BackStyled position = 'relative' height='100%' padding='30px 30px 40px'>
+                                <BackStyled position = 'relative' height='100%' padding='30px 30px 40px' bgRadius='30px' bgShadow='0 4px 4px rgb(0 0 0 / 25%)'>
                                     <div>
                                         <div>
                                             <TextH2 padding='0 0 1.5rem 0'>심플한 이용방법</TextH2>

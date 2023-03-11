@@ -1,11 +1,9 @@
-import React from 'react'
 import styled from 'styled-components';
 
 const commonStyles = `
     display: flex;
     flex-wrap: wrap;
     align-content: stretch;
-    justify-content: center;
     margin: ${(props) => props.margin || '0'};
 `;
 
@@ -13,6 +11,7 @@ const FlexRowStyled = styled.div`
     ${commonStyles}
     align-items: ${(props) => props.alignItems || 'flex-end'};
     flex-basis: ${(props) => props.flexBasis || 'auto'};
+    justify-content: ${(props) => props.justify || 'center'};
 `;
 
 const FlexColStyled = styled.div`
@@ -21,12 +20,4 @@ const FlexColStyled = styled.div`
     align-items: ${(props) => props.alignItems || 'stretch'};
 `;
 
-function FlexRow({ children, ...rest }) {
-    return <FlexRowStyled {...rest}>{children}</FlexRowStyled>;
-}
-
-function FlexCol({ children, ...rest }) {
-    return <FlexColStyled {...rest}>{children}</FlexColStyled>;
-}
-
-export { FlexRow, FlexCol };
+export { FlexRowStyled as FlexRow, FlexColStyled as FlexCol };
