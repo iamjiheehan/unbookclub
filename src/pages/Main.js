@@ -19,7 +19,6 @@ import BackStyled from '../styled-components/BackStyled';
 import {TextH1,TextH2,TextP} from '../styled-components/TextStyled';
 import GridStyled from '../styled-components/GridStyled';
 
-
 function Main() {
     return (
         <>

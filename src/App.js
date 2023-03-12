@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Header from './components/Header';
 import Main from './pages/Main';
 import Board from './pages/Board';
@@ -6,10 +7,17 @@ import Footer from './components/Footer';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 
-import { Routes, Route, Link } from 'react-router-dom'
+import { authService } from "./fBase";
 
+import { Route, Routes, Link } from "react-router-dom";
+
+console.log(authService);
 
 function App() {
+
+  console.log(authService.currentUser);
+  const [isLoggedIn, setIsLogged] = useState(authService.currentUser);
+
   return (
     <div className="App">
       <Header>
@@ -28,6 +36,7 @@ function App() {
           <Route path="/signIn" element={ <SignIn /> } />
           <Route path="/signUp" element={ <SignUp /> } />
           <Route path="/board" element={ <Board /> } />
+          <Route exact path="/create" element={isLoggedIn ? <create /> : <SignIn />} />
           <Route path="/search" element={ <Search /> } />
       </Routes>
       <Footer/>
