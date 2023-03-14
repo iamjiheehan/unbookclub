@@ -6,7 +6,7 @@ import Create from './pages/Create';
 import Search from './pages/Search';
 import Footer from './components/Footer';
 import SignIn from './components/SignIn';
-import SignUp from './components/SignUp';
+import UserInfo from './components/UserInfo';
 
 import { authService } from "./fBase";
 
@@ -34,7 +34,7 @@ function App() {
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/signIn">Sign In</Link></li>
-            <li><Link to="/signUp">Sign Up</Link></li>
+            <li><Link to="/userInfo">User Info</Link></li>
             <li><Link to="/board">Board</Link></li>
             <li><Link to="/create">Create</Link></li>
             <li><Link to="/search">Search</Link></li>
@@ -44,9 +44,9 @@ function App() {
       <Routes>
           <Route path="/" element={ <Main /> } />
           <Route path="/signIn" element={ <SignIn /> } />
-          <Route path="/signUp" element={ <SignUp /> } />
           <Route path="/board" element={ <Board /> } />
           <Route path="/create" element={isLoggedIn ? <Create /> : <Navigate to="/signIn" />} />
+          <Route path="/signIn" element={isLoggedIn ? <UserInfo /> : <Navigate to="/signIn" />} />
           <Route path="/search" element={ <Search /> } />
       </Routes>
       <Footer/>
