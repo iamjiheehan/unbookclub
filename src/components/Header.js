@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -9,8 +9,12 @@ import ImgStyled from '../styled-components/ImgStyled';
 import Button from '../styled-components/ButtonStyled';
 import {TextP} from '../styled-components/TextStyled';
 
+import AuthContext from "hooks/AuthContext";
+
 
 function Header() {
+    const { displayName } = useContext(AuthContext);
+
     return (
         <Navbar bg="light" expand="lg">
             <Container>
@@ -28,8 +32,14 @@ function Header() {
                         <Nav.Link href="#link"><TextP>토론 가이드</TextP></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
-                <Button bgColor='transparent' fontColor='#e67e22' fontWeight='900' variant="link" to='/signIn'>로그인</Button>
-                <Button variant="secondary" to='/signUp'>회원가입</Button>
+                {displayName ? (
+                    <Button bgColor='transparent' fontColor='#e67e22' fontWeight='900' variant="link" to='/userInfo'>Hello {displayName} 🔽</Button>
+                    ) : (
+                    <>
+                        <Button bgColor='transparent' fontColor='#e67e22' fontWeight='900' variant="link" to='/signIn'>로그인</Button>
+                        <Button variant="secondary" to='/signIn'>회원가입</Button>
+                    </>
+                )}
             </Container>
         </Navbar>
     );

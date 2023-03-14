@@ -1,30 +1,28 @@
-import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
+import React, { useContext } from "react";
 import { FlexRow } from "../styled-components/FlexStyled";
 import { TextH1, TextP } from "../styled-components/TextStyled";
 import Button from "../styled-components/ButtonStyled";
 import BackStyled from "../styled-components/BackStyled";
-import HR from "../styled-components/LineStyled";
-import { authService, firebaseInstance } from "fBase";
 
-export default function UserInfo() {
+import AuthContext from "../hooks/AuthContext";
+import { authService } from "fBase";
+import { useNavigate } from "react-router-dom"
+
+export default function UserInfo({ userObj, setUserObj }) {
+  const navigate = useNavigate();
+  const onSignOutClick = async () => {
+    await authService.signOut();
+    setUserObj(null);
+    navigate("/");
+  };
+  const { displayName } = useContext(AuthContext);
   return (
     <FlexRow alignItems="flex-start" justify="space-evenly">
       <BackStyled bgColor="white" padding="3rem" style={{ width: "33.3%" }}>
-        <TextP>님 안녕하세요</TextP>
+        <TextP>{displayName}님 안녕하세요</TextP>
           <FlexRow alignItems='center'>
-
+          <Button onClick={onSignOutClick}>Log Out</Button>
           </FlexRow>
-      </BackStyled>
-      <HR isVertical height="500px" />
-      <BackStyled padding="3rem" bgColor="white" style={{ width: "33.3%" }}>
-        <TextH1>북마크해 둔 도서 목록</TextH1>
-        <TextH1>글 쓴 목록</TextH1>
-        <TextP>
-          함께하는 독서,
-          <br /> THE UNBOOK CLUB에서 시작하세요.
-        </TextP>
-        
       </BackStyled>
     </FlexRow>
   );

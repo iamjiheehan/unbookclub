@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Form from "react-bootstrap/Form";
 import { FlexRow } from "../styled-components/FlexStyled";
 import { TextH1, TextP } from "../styled-components/TextStyled";
@@ -15,11 +15,15 @@ export default function SignIn() {
   const [loginPassword, setLoginPassword] = useState("");
   const [createEmail, setCreateEmail] = useState("");
   const [createPassword, setCreatePassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [showAlert, setShowAlert] = useState(false);
 
 
   const onSocialClick = async (event) => {
+    if (event) {
+      event.preventDefault();
+    }
     const {
       target: { name },
     } = event;
@@ -32,7 +36,7 @@ export default function SignIn() {
     }
     try {
       const data = await authService.signInWithPopup(provider);
-      onLoginSubmit(data);
+      onLoginSubmit(null,data);
     } catch (error) {
       setErrorMessage("Failed to log in with social media account.");
     }
@@ -40,6 +44,9 @@ export default function SignIn() {
 
 
   const onChange = (event) => {
+    if (event) {
+      event.preventDefault();
+    }
     console.log(event.target.name);
     const {
       target: { name, value },
@@ -52,13 +59,12 @@ export default function SignIn() {
       setCreateEmail(value);
     } else if (name === "createPassword") {
       setCreatePassword(value);
+    } else if (name === "confirmPassword") {
+      setConfirmPassword(value);
     }
   };
 
   const onLoginSubmit = async (event) => {
-    if (event) {
-      event.preventDefault();
-    }
     try {
       if (loginEmail && loginPassword) {
         const data = await authService.signInWithEmailAndPassword(
@@ -82,27 +88,32 @@ export default function SignIn() {
     }
     try {
       let data;
-      if (createEmail && createPassword) {
-        data = await authService.createUserWithEmailAndPassword(
-          createEmail,
-          createPassword
-        );
-        console.log(data);
-      } else {
-        data = await authService.signInWithEmailAndPassword(
-          createEmail,
-          createPassword
-        );
-        setErrorMessage("Your account is already in use.");
-        setShowAlert(true);
+      if (createPassword === confirmPassword) {
+        if (createEmail && createPassword) {
+          data = await authService.createUserWithEmailAndPassword(
+            createEmail,
+            createPassword
+          );
+          console.log(data);
+        } else if (createPassword !== confirmPassword) {
+          setErrorMessage(" password is not matched");
+          setShowAlert(true);
+        }
       }
       console.log(data);
     } catch (error) {
       console.log(error);
+      if (error.code === "auth/invalid-email") {
+        setErrorMessage("올바른 이메일 형식이 아닙니다.");
+      } else if (error.code === "auth/email-already-in-use") {
+        setErrorMessage("이미 가입된 이메일입니다.");
+      } else {
+        setErrorMessage("비밀번호는 8글자 이상을 입력해주세요.");
+      }
       setShowAlert(true);
     }
   };
-
+  
   return (
     <FlexRow alignItems="flex-start" justify="space-evenly">
       <BackStyled bgColor="white" padding="3rem" style={{ width: "33.3%" }}>
@@ -184,6 +195,16 @@ export default function SignIn() {
               name="createPassword"
               type="password"
               placeholder="비밀번호를 입력해주세요"
+              style={{ textAlign: "left" }}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPassword-confirm">
+            <Form.Control
+              onChange={onChange}
+              value={confirmPassword}
+              name="confirmPassword"
+              type="password"
+              placeholder="비밀번호를 한 번 더 입력해주세요"
               style={{ textAlign: "left" }}
             />
             {errorMessage}
