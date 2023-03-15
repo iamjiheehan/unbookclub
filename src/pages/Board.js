@@ -10,7 +10,6 @@ export default function Board() {
     const [review, setReview] = useState("");
     const [reviews, setReviews] = useState([]);
 
-
     useEffect(() => {
         const unBookClub = dbService
             .collection("unBookClub")
@@ -57,7 +56,7 @@ export default function Board() {
             </form>
             <div>
                 {reviews.map((review)=>(
-                    <Reviews key={review.id} reviewObj={review} isOwner={review.creatorId === userObj.uid} />
+                    <Reviews key={review.id} reviewObj={review} isOwner={userObj && review.creatorId === userObj.uid} />
                 ))}
             </div>
         </>
