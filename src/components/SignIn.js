@@ -49,6 +49,7 @@ export default function SignIn() {
               onChange={onChange}
               required
               value={loginPassword}
+              autoComplete="current-password"
               name="loginPassword"
               type="password"
               placeholder="비밀번호를 입력해주세요"

@@ -9,7 +9,7 @@ import SignIn from "./components/SignIn";
 import UserInfo from "./components/UserInfo";
 
 import AuthContext from "hooks/AuthContext";
-import useAuth from "hooks/useAuth"; // Import the useAuth hook
+import useAuth from "hooks/useAuth"; 
 import { LoadingProvider, Loading } from "hooks/useLoading";
 
 import { Route, Routes, Link, Navigate } from "react-router-dom";

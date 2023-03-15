@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import AuthContext from "./AuthContext";
 
-const useUpdateProfile = (userObj, refreshUser) => {
+const useUpdateProfile = () => {
+    const { userObj, refreshUser } = useContext(AuthContext); 
     const [newDisplayName, setNewDisplayName] = useState(userObj?.displayName);
 
     const onChange = (event) => {
@@ -13,10 +15,10 @@ const useUpdateProfile = (userObj, refreshUser) => {
     const onSubmit = async (event) => {
         event.preventDefault();
         if (userObj.displayName !== newDisplayName) {
-        await userObj.updateProfile({
-            displayName: newDisplayName,
-        });
-        refreshUser();
+            await userObj.updateProfile({
+                displayName: newDisplayName,
+            });
+            refreshUser();
         }
     };
 

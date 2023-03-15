@@ -10,9 +10,9 @@ import useUpdateProfile from "../hooks/useUpdateProfile";
 import useSignOut from "../hooks/useSignOut";
 
 export default function UserInfo() {
-  const { userObj, refreshUser } = useContext(AuthContext);
+  const { userObj, setUserObj } = useContext(AuthContext);
   const { reviews, loading } = useFetchReviews(userObj);
-  const { newDisplayName, onChange, onSubmit } = useUpdateProfile(userObj, refreshUser);
+  const { newDisplayName, onChange, onSubmit } = useUpdateProfile();
   const onSignOutClick = useSignOut();
 
 

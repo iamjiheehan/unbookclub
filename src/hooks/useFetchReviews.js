@@ -22,14 +22,14 @@ useEffect(() => {
     }));
     setReviews(mappedReviews);
     stopLoading();
-    console.log("Fetched Reviews:", mappedReviews);
+    // console.log("Fetched Reviews:", mappedReviews);
     };
     if (userObj) {
     getMyReviews();
     }
 }, [userObj]);
 
-console.log("Reviews State:", reviews);
+// console.log("Reviews State:", reviews);
 return { reviews, loading };
 };
 
