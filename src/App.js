@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "./components/Header";
 import Main from "./pages/Main";
 import Board from "./pages/Board";
@@ -9,45 +9,19 @@ import SignIn from "./components/SignIn";
 import UserInfo from "./components/UserInfo";
 
 import AuthContext from "hooks/AuthContext";
-
-import { authService } from "./fBase";
+import useAuth from "hooks/useAuth"; // Import the useAuth hook
 
 import { Route, Routes, Link, Navigate } from "react-router-dom";
 
-console.log(authService);
-
 function App() {
-  const [init, setInit] = useState(false);
-  const [isSignedIn, setIsSignedIn] = useState(authService.currentUser);
-  const [isSignedUp, setIsSignedUp] = useState(false);
-  const [userObj, setUserObj] = useState(null);
-
-  useEffect(() => {
-    authService.onAuthStateChanged((user) => {
-      if (user) {
-        setIsSignedIn(user);
-        setUserObj({
-          displayName : user.displayName,
-          uid: user.uid,
-          updateProfile: (args) => user.updateProfile(args),
-        });
-      } else {
-        setIsSignedIn(false);
-        setUserObj(null);
-      }
-      setInit(true);
-    });
-  }, []);
-
-
-  const refreshUser = () => {
-    const user = authService.currentUser;
-    setUserObj({
-      displayName : user.displayName,
-      uid: user.uid,
-      updateProfile: (args) => user.updateProfile(args),});
-  };
-
+  const {
+    init,
+    isSignedIn,
+    isSignedUp,
+    userObj,
+    setIsSignedUp,
+    refreshUser,
+  } = useAuth();
 
   return (
     <AuthContext.Provider value={{ isSignedIn, userObj, refreshUser }}>
