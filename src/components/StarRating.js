@@ -15,11 +15,11 @@ const StarRating = ({ totalStars = 5, onRatingSelected = () => {} }) => {
         onRatingSelected(index + 1);
     };
     return (
-        <div>
+        <StarStyled>
         {Array.from({ length: totalStars }, (v, i) => (
             <Star key={i} selected={i < rating} onClick={() => handleClick(i)} />
         ))}
-        </div>
+        </StarStyled>
     );
 };
 
