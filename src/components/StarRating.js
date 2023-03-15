@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { StarStyled } from '../styled-components/StarStyled';
 
 const Star = ({ selected = false, onClick = () => {} }) => (
-    <StarStyled onClick={onClick} selected={selected}>
+    <span onClick={onClick} style={{ cursor: 'pointer' }}>
         {selected ? '★' : '☆'}
-    </StarStyled>
+    </span>
 );
 
 const StarRating = ({ totalStars = 5, onRatingSelected = () => {} }) => {
