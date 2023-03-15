@@ -26,7 +26,11 @@ function App() {
     authService.onAuthStateChanged((user) => {
       if (user) {
         setIsSignedIn(user);
-        setUserObj(user);
+        setUserObj({
+          displayName : user.displayName,
+          uid: user.uid,
+          updateProfile: (args) => user.updateProfile(args),
+        });
       } else {
         setIsSignedIn(false);
         setUserObj(null);
@@ -36,8 +40,17 @@ function App() {
   }, []);
 
 
+  const refreshUser = () => {
+    const user = authService.currentUser;
+    setUserObj({
+      displayName : user.displayName,
+      uid: user.uid,
+      updateProfile: (args) => user.updateProfile(args),});
+  };
+
+
   return (
-    <AuthContext.Provider value={{ isSignedIn, userObj }}>
+    <AuthContext.Provider value={{ isSignedIn, userObj, refreshUser }}>
       <div className="App">
         <Header>
           <nav>
@@ -69,7 +82,7 @@ function App() {
             path="/signIn"
             element={
               isSignedIn || isSignedUp ? (
-                <UserInfo />
+                <Navigate to="/userInfo" /> // Changed to Navigate to userInfo page
               ) : (
                 <SignIn setIsSignedUp={setIsSignedUp} />
               )
@@ -81,7 +94,8 @@ function App() {
             element={isSignedIn ? <Create /> : <Navigate to="/signIn" />}
           />
           <Route
-            path="/signIn"
+            userObj = {userObj}
+            // path="/signIn"
             element={isSignedIn ? <SignIn /> : <Navigate to="/userInfo" />}
           />
           <Route

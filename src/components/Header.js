@@ -8,13 +8,16 @@ import logo from '../static/images/logo.webp';
 import ImgStyled from '../styled-components/ImgStyled';
 import Button from '../styled-components/ButtonStyled';
 import {TextP} from '../styled-components/TextStyled';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+
 
 import AuthContext from "hooks/AuthContext";
 
 
-function Header() {
+function Header({reviewObj}) {
     const { displayName } = useContext(AuthContext);
-
+    
     return (
         <Navbar bg="light" expand="lg">
             <Container>
@@ -32,8 +35,12 @@ function Header() {
                         <Nav.Link href="#link"><TextP>토론 가이드</TextP></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
+                {reviewObj}
                 {displayName ? (
-                    <Button bgColor='transparent' fontColor='#e67e22' fontWeight='900' variant="link" to='/userInfo'>Hello {displayName} 🔽</Button>
+                    <>
+                        <Button bgColor='transparent' fontColor='#e67e22' fontWeight='900' variant="link" to='/userInfo'>Hello {displayName} 🔽</Button>
+                        <Button variant="secondary" to='/signIn' bgColor="transparent" fontColor="#e67e22"><FontAwesomeIcon icon={faUser} /></Button>
+                    </>
                     ) : (
                     <>
                         <Button bgColor='transparent' fontColor='#e67e22' fontWeight='900' variant="link" to='/signIn'>로그인</Button>
