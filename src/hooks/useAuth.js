@@ -1,5 +1,3 @@
-// hooks/useAuth.js
-
 import { useState, useEffect } from "react";
 import { authService } from "../fBase";
 
