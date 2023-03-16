@@ -7,7 +7,7 @@ import logo from '../static/images/logo.webp';
 
 import ImgStyled from '../styled-components/ImgStyled';
 import Button from '../styled-components/ButtonStyled';
-import {TextP} from '../styled-components/TextStyled';
+import {TextH2, TextP} from '../styled-components/TextStyled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
@@ -16,7 +16,8 @@ import AuthContext from "hooks/AuthContext";
 
 
 function Header({reviewObj}) {
-    const { displayName } = useContext(AuthContext);
+    const { userObj } = useContext(AuthContext);
+    const displayName = userObj?.displayName;
     
     return (
         <Navbar bg="light" expand="lg">
@@ -38,7 +39,7 @@ function Header({reviewObj}) {
                 {reviewObj}
                 {displayName ? (
                     <>
-                        <Button bgColor='transparent' fontColor='#e67e22' fontWeight='900' variant="link" to='/userInfo'>Hello {displayName} 🔽</Button>
+                        <TextP><strong>{displayName}</strong> 님 반가워요!</TextP>
                         <Button variant="secondary" to='/signIn' bgColor="transparent" fontColor="#e67e22"><FontAwesomeIcon icon={faUser} /></Button>
                     </>
                     ) : (
