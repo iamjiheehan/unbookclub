@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { dbService } from "fBase";
 
+
 export const useReviewForm = (userObj) => {
     const [inputReview, setInputReview] = useState("");
     const [reviewList, setReviewList] = useState([]);
-
+    
     useEffect(() => {
         const unBookClub = dbService
         .collection("unBookClub")
@@ -26,6 +27,7 @@ export const useReviewForm = (userObj) => {
             review: inputReview,
             createdAt: Date.now(),
             creatorId: userObj.uid,
+            creatorNickname : userObj.displayName,
         });
         setInputReview("");
     };
@@ -36,6 +38,7 @@ export const useReviewForm = (userObj) => {
         } = event;
         setInputReview(value);
     };
+        console.log(userObj);
 
     return {
         inputReview,
