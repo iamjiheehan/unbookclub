@@ -17,4 +17,8 @@ export const StarStyled = styled.span`
     color: #f1c40f; // Change the hover color as needed
     transition: color 0.3s ease;
     }
+
+    & > svg {
+    margin: 0 0.2rem;
+    }
 `;

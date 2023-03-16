@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import Button from "../styled-components/ButtonStyled";
 import BackStyled from "../styled-components/BackStyled"
 import { TextP,TextH2 } from "../styled-components/TextStyled";
+import ReactStars from 'react-rating-stars-component';
+
 
 const formatDate = (timestamp) => {
     const date = new Date(timestamp);
@@ -66,7 +68,8 @@ const Reviews = ({ reviewObj, isOwner }) => {
                         <TextH2> {reviewObj.review} </TextH2>
                         <TextP>닉네임 : {reviewObj.creatorNickname}</TextP>
                         <TextP>작성일시 : {formatDate(reviewObj.createdAt)}</TextP>
-                        <TextP>평점 : {reviewObj.selectedRating}</TextP>
+                        <TextP>평점 : </TextP>
+                        <ReactStars count={5} size={24} edit={false} value={reviewObj.selectedRating} />
                         {isOwner && (
                         <>
                             <Button onClick={toggleEiditing} margin="0 0.5rem" radius="none" fontColor="#61777F" bgColor="transparent" border="0.3rem solid"><TextP>수정</TextP></Button>
