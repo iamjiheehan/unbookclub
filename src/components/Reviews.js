@@ -19,6 +19,9 @@ const Reviews = ({ reviewObj, isOwner }) => {
     const [editing, setEditing] = useState(false);
     const [newReview, setNewReview] = useState(reviewObj.review);
     const [newNickname, setNewNickname] = useState(reviewObj.creatorNickname);
+    const [newRating, setNewRating] = useState(0);
+    
+    
     const onDeleteClick = async () => {
         const ok = window.confirm("Are you sure you want to delete this review?");
         if (ok) {
@@ -34,7 +37,8 @@ const Reviews = ({ reviewObj, isOwner }) => {
         await dbService.doc(`unBookClub/${reviewObj.id}`).update({
             review: newReview,
             createdAt: Date.now(),
-            creatorNickname: newNickname
+            creatorNickname: newNickname,
+            selectedRating: newRating
         });
         setEditing(false);
     }
@@ -61,7 +65,8 @@ const Reviews = ({ reviewObj, isOwner }) => {
                     <BackStyled padding="1rem" margin="1rem" bgRadius='30px' bgShadow='0 4px 4px rgb(0 0 0 / 25%)'> 
                         <TextH2> {reviewObj.review} </TextH2>
                         <TextP>닉네임 : {reviewObj.creatorNickname}</TextP>
-                        <TextP>작성일시 : {formatDate(reviewObj.createdAt)}</TextP> {/* Use formatDate function here */}
+                        <TextP>작성일시 : {formatDate(reviewObj.createdAt)}</TextP>
+                        <TextP>평점 : {reviewObj.selectedRating}</TextP>
                         {isOwner && (
                         <>
                             <Button onClick={toggleEiditing} margin="0 0.5rem" radius="none" fontColor="#61777F" bgColor="transparent" border="0.3rem solid"><TextP>수정</TextP></Button>

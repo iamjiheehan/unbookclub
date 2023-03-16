@@ -11,21 +11,17 @@ import { useReviewForm } from "../hooks/useReviewForm"
 
 export default function Board() {
     const { userObj } = useContext(AuthContext);
-    const { inputReview, reviewList, onSubmit, onChange } = useReviewForm(userObj);
-    const [selectedRating, setSelectedRating] = useState(0);
+    const { inputReview, reviewList, onSubmit, onChange, selectedRating, setSelectedRating,onRatingSelected  } = useReviewForm(userObj);
     const [bookTitle, setBookTitle] = useState("");
     const [bookAuthor, setBookAuthor] = useState("");
-    
-    const handleRatingSelected = (rating) => {
-        setSelectedRating(rating);
-    };
+
     return (
         <>
         <TextH1>감상평 게시판</TextH1>
         <form onSubmit={onSubmit}>
             <FlexCol>
                 <FlexRow alignItems="baseline">
-                    <StarRating totalStars={5} onRatingSelected={handleRatingSelected} />
+                    <StarRating totalStars={5} onRatingSelected={onRatingSelected} />
                 </FlexRow>
                 <BoardInput
                     value={bookTitle}
@@ -62,6 +58,7 @@ export default function Board() {
                 key={review.id}
                 reviewObj={review}
                 isOwner={userObj && review.creatorId === userObj.uid}
+                rating={review.selectedRating}
             />
             ))}
         </GridStyled>

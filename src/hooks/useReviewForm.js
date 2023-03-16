@@ -5,7 +5,9 @@ import { dbService } from "fBase";
 export const useReviewForm = (userObj) => {
     const [inputReview, setInputReview] = useState("");
     const [reviewList, setReviewList] = useState([]);
-    
+    const [selectedRating, setSelectedRating] = useState(0);
+    console.log(selectedRating);
+
     useEffect(() => {
         const unBookClub = dbService
         .collection("unBookClub")
@@ -28,8 +30,10 @@ export const useReviewForm = (userObj) => {
             createdAt: Date.now(),
             creatorId: userObj.uid,
             creatorNickname : userObj.displayName,
+            selectedRating: selectedRating
         });
         setInputReview("");
+        setSelectedRating(0);
     };
 
     const onChange = (event) => {
@@ -40,11 +44,18 @@ export const useReviewForm = (userObj) => {
     };
         console.log(userObj);
 
+    const onRatingSelected = (rating) => {
+        setSelectedRating(rating);
+    };
+
     return {
         inputReview,
         reviewList,
         onSubmit,
         onChange,
+        selectedRating,
+        setSelectedRating,
+        onRatingSelected,
     };
 };
 // 리뷰 작성 및 전체 리뷰 목록을 가져오는 기능을 제공
