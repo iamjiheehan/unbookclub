@@ -1,7 +1,8 @@
 import { dbService } from "fBase";
 import React, { useState } from "react";
 import Button from "../styled-components/ButtonStyled";
-
+import BackStyled from "../styled-components/BackStyled"
+import { TextP,TextH2 } from "../styled-components/TextStyled";
 
 const formatDate = (timestamp) => {
     const date = new Date(timestamp);
@@ -18,7 +19,6 @@ const Reviews = ({ reviewObj, isOwner }) => {
     const [editing, setEditing] = useState(false);
     const [newReview, setNewReview] = useState(reviewObj.review);
     const [newNickname, setNewNickname] = useState(reviewObj.creatorNickname);
-    const [date, setDate] = useState(reviewObj.date)
     const onDeleteClick = async () => {
         const ok = window.confirm("Are you sure you want to delete this review?");
         if (ok) {
@@ -48,31 +48,28 @@ const Reviews = ({ reviewObj, isOwner }) => {
 
     return (
         <>
-        <div>
             {editing ? (
-            <>
-                <form onSubmit = {onSubmit}>
-                    <input type = "text" placeholder="Edit your review" value={newReview} required onChange={onChange} />
-                    <input type="text" placeholder="Edit your nickname" value={newNickname} required onChange={(event) => setNewNickname(event.target.value)} />
-                    <input type="submit" value="Update Review" />
-                </form>
-                <Button>Cancel</Button>
-            </>
-            ) : (
-            <>
-                <h3> {reviewObj.review} </h3>
-                {/* <h3>글쓴이 : {reviewObj.creatorId}</h3> */}
-                <h3>닉네임 : {reviewObj.creatorNickname}</h3>
-                <h3>작성일시 : {formatDate(reviewObj.createdAt)}</h3> {/* Use formatDate function here */}
-                {isOwner && (
                 <>
-                    <Button onClick={toggleEiditing}>수정</Button>
-                    <Button onClick={onDeleteClick}>삭제</Button>
+                    <form onSubmit = {onSubmit}>
+                        <input type = "text" placeholder="Edit your review" value={newReview} required onChange={onChange} />
+                        <input type="text" placeholder="Edit your nickname" value={newNickname} required onChange={(event) => setNewNickname(event.target.value)} />
+                        <input type="submit" value="Update Review" />
+                    </form>
+                    <Button>Cancel</Button>
                 </>
-                )}
-            </>
+                ) : (
+                    <BackStyled padding="1rem" margin="1rem" bgRadius='30px' bgShadow='0 4px 4px rgb(0 0 0 / 25%)'> 
+                        <TextH2> {reviewObj.review} </TextH2>
+                        <TextP>닉네임 : {reviewObj.creatorNickname}</TextP>
+                        <TextP>작성일시 : {formatDate(reviewObj.createdAt)}</TextP> {/* Use formatDate function here */}
+                        {isOwner && (
+                        <>
+                            <Button onClick={toggleEiditing} margin="0 0.5rem" radius="none" fontColor="#61777F" bgColor="transparent" border="0.3rem solid"><TextP>수정</TextP></Button>
+                            <Button onClick={onDeleteClick} margin="0 0.5rem" radius="none" fontColor="#61777F" bgColor="transparent" border="0.3rem solid"><TextP>삭제</TextP></Button>
+                        </>
+                        )}
+                    </BackStyled>
             )}
-        </div>
         </>
     );
 };

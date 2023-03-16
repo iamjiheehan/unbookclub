@@ -9,7 +9,7 @@ export const StarWrapper = styled.div`
 
 export const StarStyled = styled.span`
     cursor: pointer;
-    font-size: 3rem; // You can adjust the font size as needed
+    font-size: 2.5rem; // You can adjust the font size as needed
     color: #f1c40f; // Change the hover color as needed
 
     &:hover,

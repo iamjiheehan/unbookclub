@@ -3,7 +3,7 @@ import Pretendard from '../static/fonts/PretendardVariable.woff2';
 import Montserrat from '../static/fonts/Montserrat.ttf';
 
 const commonStyles = css`
-    margin: 0;
+    margin: ${(props) => props.margin || '0'};
     color: ${(props) => props.color || 'black'};
     line-height: ${(props) => props.lineHeight || '1.5'};
     padding: ${(props) => props.padding || '0'};

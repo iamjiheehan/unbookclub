@@ -1,19 +1,19 @@
 import React, { useContext } from "react";
 import { FlexRow } from "../styled-components/FlexStyled";
 import { TextH1, TextP } from "../styled-components/TextStyled";
-import Button from "../styled-components/ButtonStyled";
 import BackStyled from "../styled-components/BackStyled";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 import AuthContext from "../hooks/AuthContext";
 import useFetchReviews from "../hooks/useFetchReviews";
 import useUpdateProfile from "../hooks/useUpdateProfile";
-import useSignOut from "../hooks/useSignOut";
 
 export default function UserInfo() {
   const { userObj, setUserObj } = useContext(AuthContext);
   const { reviews, loading } = useFetchReviews(userObj);
   const { newDisplayName, onChange, onSubmit } = useUpdateProfile();
-  const onSignOutClick = useSignOut();
 
 
   if (!userObj) {
@@ -25,25 +25,25 @@ export default function UserInfo() {
   }
 
   return (
-    <FlexRow alignItems="flex-start" justify="space-evenly">
-      <BackStyled bgColor="white" padding="3rem" style={{ width: "33.3%" }}>
-        <TextP>{userObj.displayName}님 안녕하세요</TextP>
+    <Container alignItems="flex-start" justify="space-evenly">
+      <BackStyled bgColor="white" padding="3rem" >
+        <TextH1>{userObj.displayName}님 안녕하세요</TextH1>
         <form onSubmit={onSubmit}>
           <input onChange={onChange} type="update" placeholder="Update Nickname" value={newDisplayName} />
           <input type="submit" value="Update Profile" />
         </form>
-        <FlexRow alignItems="center">
-          <Button onClick={onSignOutClick}>Log Out</Button>
-        </FlexRow>
         <div>
-          <h3>Your Reviews:</h3>
-          {reviews && reviews.map((review) => (
-            <div key={review.id}>
-              <p>{review.review}</p>
-            </div>
-          ))}
+          <TextH1>작성한 리뷰 목록</TextH1>
+          <Row>
+            {reviews && reviews.map((review) => (
+              <Col key={review.id} md={4}>
+                <TextP>{review.review}</TextP>
+              </Col>
+            ))}
+          </Row>
+          
         </div>
       </BackStyled>
-    </FlexRow>
+    </Container>
   );
 }

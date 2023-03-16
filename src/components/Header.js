@@ -10,6 +10,7 @@ import Button from '../styled-components/ButtonStyled';
 import {TextH2, TextP} from '../styled-components/TextStyled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import useSignOut from "../hooks/useSignOut";
 
 
 import AuthContext from "hooks/AuthContext";
@@ -18,6 +19,7 @@ import AuthContext from "hooks/AuthContext";
 function Header({reviewObj}) {
     const { userObj } = useContext(AuthContext);
     const displayName = userObj?.displayName;
+    const onSignOutClick = useSignOut();
     
     return (
         <Navbar bg="light" expand="lg">
@@ -40,7 +42,8 @@ function Header({reviewObj}) {
                 {displayName ? (
                     <>
                         <TextP><strong>{displayName}</strong> 님 반가워요!</TextP>
-                        <Button variant="secondary" to='/signIn' bgColor="transparent" fontColor="#e67e22"><FontAwesomeIcon icon={faUser} /></Button>
+                        <Button variant="secondary" to='/signIn' bgColor="transparent" fontColor="#e67e22" fontSize="2rem"><FontAwesomeIcon icon={faUser} /></Button>
+                        <Button onClick={onSignOutClick}>로그아웃</Button>
                     </>
                     ) : (
                     <>
