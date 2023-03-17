@@ -23,8 +23,9 @@ const formatDate = (timestamp) => {
     const [newReview, setNewReview] = useState(reviewObj.review);
     const [newNickname, setNewNickname] = useState(reviewObj.creatorNickname);
     const [newTitle, setnewTitle] = useState(reviewObj.title);
-    const [newAuthor, setnewAuthor] = useState(reviewObj.Autor);
+    const [newAuthor, setnewAuthor] = useState(reviewObj.author);
     const [newRating, setNewRating] = useState(0);
+    const [errorMessage, setErrorMessage] = useState("");
 
     const onDeleteClick = async () => {
         const ok = window.confirm("Are you sure you want to delete this review?");
@@ -37,6 +38,17 @@ const formatDate = (timestamp) => {
 
     const onSubmit = async (event) => {
         event.preventDefault();
+        if (
+            newReview === reviewObj.review &&
+            newTitle === reviewObj.title &&
+            newAuthor === reviewObj.author &&
+            newNickname === reviewObj.creatorNickname &&
+            newRating === reviewObj.selectedRating
+        ) {
+            setErrorMessage("Nothing has changed, click the cancel button, please.");
+            return;
+        }
+        setErrorMessage("");
         await dbService.doc(`unBookClub/${reviewObj.id}`).update({
         review: newReview,
         title: newTitle,
@@ -103,7 +115,9 @@ const formatDate = (timestamp) => {
                 placeholder="작가 이름을 입력해주세요"
                 maxLength={200}
                 />
-
+                {errorMessage && (
+                    <TextP style={{ color: "red" }}>{errorMessage}</TextP>
+                )}
                 <Input type="submit" value="수정 완료" />
                 <Input type="button" value="취소" onClick={onCancel} />
             </form>
@@ -127,7 +141,6 @@ const formatDate = (timestamp) => {
             <TextP>작가: {bookAuthor}</TextP>
             <TextP>닉네임 : {reviewObj.creatorNickname}</TextP>
             <TextP>작성일시 : {formatDate(reviewObj.createdAt)}</TextP>
-
             <TextH2> {reviewObj.review} </TextH2>
             {isOwner && (
                 <>
