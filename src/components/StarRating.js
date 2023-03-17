@@ -8,7 +8,7 @@ const Star = ({ selected = false, onClick = () => {} }) => (
     );
 
     const StarRating = ({ totalStars = 5, onRatingSelected = () => {} }) => {
-    const [selectedRating, setSelectedRating] = useState(0);
+    const [selectedRating, setSelectedRating] = useState(3);
 
     const handleClick = (index) => {
         setSelectedRating(index + 1);

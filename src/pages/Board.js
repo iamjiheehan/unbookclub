@@ -52,7 +52,7 @@ export default function Board() {
                 <Input type="submit" value="게시하기" margin="1.5rem auto 0 auto"/>
             </FlexCol>
         </form>
-        <GridStyled rows="auto" columns="repeat(3,minmax(0,1fr))" margin="0 3rem 3rem 3rem">
+        <GridStyled rows="auto" columns="repeat(3,minmax(0,1fr))" margin="3rem">
             {reviewList.map((review) => (
             <Reviews
                 key={review.id}

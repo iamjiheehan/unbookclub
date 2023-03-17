@@ -67,12 +67,10 @@ function App() {
             />
             <Route path="/board" element={<Board />} />
             <Route
-              path="/create"
               element={isSignedIn ? <Create /> : <Navigate to="/signIn" />}
             />
             <Route
               userObj = {userObj}
-              // path="/signIn"
               element={isSignedIn ? <SignIn /> : <Navigate to="/userInfo" />}
             />
             <Route
