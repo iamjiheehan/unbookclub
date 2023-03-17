@@ -28,7 +28,7 @@ const formatDate = (timestamp) => {
     const [errorMessage, setErrorMessage] = useState("");
 
     const onDeleteClick = async () => {
-        const ok = window.confirm("Are you sure you want to delete this review?");
+        const ok = window.confirm("정말 삭제하실건가요?");
         if (ok) {
         await dbService.doc(`unBookClub/${reviewObj.id}`).delete();
         }
@@ -45,7 +45,7 @@ const formatDate = (timestamp) => {
             newNickname === reviewObj.creatorNickname &&
             newRating === reviewObj.selectedRating
         ) {
-            setErrorMessage("Nothing has changed, click the cancel button, please.");
+            setErrorMessage("수정 할 내용이 없다면 취소 버튼을 눌러주세요.");
             return;
         }
         setErrorMessage("");
