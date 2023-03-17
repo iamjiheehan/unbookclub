@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { FlexRow } from "../styled-components/FlexStyled";
 import { TextH1, TextP } from "../styled-components/TextStyled";
 import BackStyled from "../styled-components/BackStyled";
 import Container from 'react-bootstrap/Container';
@@ -9,6 +8,7 @@ import Col from 'react-bootstrap/Col';
 import AuthContext from "../hooks/AuthContext";
 import useFetchReviews from "../hooks/useFetchReviews";
 import useUpdateProfile from "../hooks/useUpdateProfile";
+
 
 export default function UserInfo() {
   const { userObj, setUserObj } = useContext(AuthContext);

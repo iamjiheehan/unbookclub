@@ -6,17 +6,7 @@ import { TextP, TextH2 } from "../styled-components/TextStyled";
 import ReactStars from "react-rating-stars-component";
 import { FlexRow } from "../styled-components/FlexStyled";
 import { Input, BoardInput } from "../styled-components/InputStyled";
-
-const formatDate = (timestamp) => {
-    const date = new Date(timestamp);
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-
-    return `${year}년 ${month}월 ${day}일 ${hours}시 ${minutes}분`;
-    };
+import useFormatDate from "../hooks/useFormatDate";
 
     const Reviews = ({ reviewObj, isOwner, bookTitle, bookAuthor }) => {
     const [editing, setEditing] = useState(false);
@@ -26,6 +16,7 @@ const formatDate = (timestamp) => {
     const [newAuthor, setnewAuthor] = useState(reviewObj.author);
     const [newRating, setNewRating] = useState(0);
     const [errorMessage, setErrorMessage] = useState("");
+    const formattedDate = useFormatDate(reviewObj.createdAt);
 
     const onDeleteClick = async () => {
         const ok = window.confirm("정말 삭제하실건가요?");
@@ -140,7 +131,7 @@ const formatDate = (timestamp) => {
             <TextP>책 제목: {bookTitle}</TextP>
             <TextP>작가: {bookAuthor}</TextP>
             <TextP>닉네임 : {reviewObj.creatorNickname}</TextP>
-            <TextP>작성일시 : {formatDate(reviewObj.createdAt)}</TextP>
+            <TextP>작성일시 : {formattedDate}</TextP>
             <TextH2> {reviewObj.review} </TextH2>
             {isOwner && (
                 <>
