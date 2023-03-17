@@ -35,7 +35,7 @@ function Header({reviewObj}) {
                             <NavDropdown.Item href="#action/3.1"><TextP>검색어로 찾기</TextP></NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2"><TextP>도서로 찾기</TextP></NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link href="#link"><TextP>토론 가이드</TextP></Nav.Link>
+                        <Nav.Link href="/guide"><TextP>토론 가이드</TextP></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 {reviewObj}

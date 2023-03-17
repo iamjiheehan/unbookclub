@@ -2,12 +2,11 @@ import React from "react";
 import Header from "./components/Header";
 import Main from "./pages/Main";
 import Board from "./pages/Board";
-import Create from "./pages/Create";
 import Search from "./pages/Search";
+import Guide from "./pages/Guide";
 import Footer from "./components/Footer";
 import SignIn from "./components/SignIn";
 import UserInfo from "./components/UserInfo";
-
 
 import AuthContext from "hooks/AuthContext";
 import useAuth from "hooks/useAuth"; 
@@ -45,10 +44,10 @@ function App() {
                   <Link to="/board">Board</Link>
                 </li>
                 <li>
-                  <Link to="/create">Create</Link>
+                  <Link to="/search">Search</Link>
                 </li>
                 <li>
-                  <Link to="/search">Search</Link>
+                  <Link to="/guide">Guide</Link>
                 </li>
               </ul>
             </nav>
@@ -66,9 +65,7 @@ function App() {
               }
             />
             <Route path="/board" element={<Board />} />
-            <Route
-              element={isSignedIn ? <Create /> : <Navigate to="/signIn" />}
-            />
+            <Route path="/guide" element={<Guide />} />
             <Route
               userObj = {userObj}
               element={isSignedIn ? <SignIn /> : <Navigate to="/userInfo" />}

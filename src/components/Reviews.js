@@ -21,6 +21,8 @@ const Reviews = ({ reviewObj, isOwner }) => {
     const [editing, setEditing] = useState(false);
     const [newReview, setNewReview] = useState(reviewObj.review);
     const [newNickname, setNewNickname] = useState(reviewObj.creatorNickname);
+    // const [newTitle, setnewTitle] = useState(reviewObj.creatorNickname);
+    // const [newAuthor, setnewAuthor] = useState(reviewObj.creatorNickname);
     const [newRating, setNewRating] = useState(0);
     
     
