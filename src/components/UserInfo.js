@@ -25,7 +25,7 @@ export default function UserInfo() {
   }
 
   return (
-    <Container alignItems="flex-start" justify="space-evenly">
+    <Container>
       <BackStyled bgColor="white" padding="3rem" >
         <TextH1>{userObj.displayName}님 안녕하세요</TextH1>
         <form onSubmit={onSubmit}>

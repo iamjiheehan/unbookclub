@@ -1,5 +1,4 @@
-import { dbService } from "fBase";
-import React, { useState } from "react";
+import React from "react";
 import Button from "../styled-components/ButtonStyled";
 import BackStyled from "../styled-components/BackStyled";
 import { TextP, TextH2 } from "../styled-components/TextStyled";
