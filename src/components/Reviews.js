@@ -7,69 +7,25 @@ import ReactStars from "react-rating-stars-component";
 import { FlexRow } from "../styled-components/FlexStyled";
 import { Input, BoardInput } from "../styled-components/InputStyled";
 import useFormatDate from "../hooks/useFormatDate";
+import useReviewEditor from "../hooks/useReviewEditor";
 
     const Reviews = ({ reviewObj, isOwner, bookTitle, bookAuthor }) => {
-    const [editing, setEditing] = useState(false);
-    const [newReview, setNewReview] = useState(reviewObj.review);
-    const [newNickname, setNewNickname] = useState(reviewObj.creatorNickname);
-    const [newTitle, setnewTitle] = useState(reviewObj.title);
-    const [newAuthor, setnewAuthor] = useState(reviewObj.author);
-    const [newRating, setNewRating] = useState(0);
-    const [errorMessage, setErrorMessage] = useState("");
     const formattedDate = useFormatDate(reviewObj.createdAt);
 
-    const onDeleteClick = async () => {
-        const ok = window.confirm("정말 삭제하실건가요?");
-        if (ok) {
-        await dbService.doc(`unBookClub/${reviewObj.id}`).delete();
-        }
-    };
-
-    const toggleEiditing = () => setEditing((prev) => !prev);
-
-    const onSubmit = async (event) => {
-        event.preventDefault();
-        if (
-            newReview === reviewObj.review &&
-            newTitle === reviewObj.title &&
-            newAuthor === reviewObj.author &&
-            newNickname === reviewObj.creatorNickname &&
-            newRating === reviewObj.selectedRating
-        ) {
-            setErrorMessage("수정 할 내용이 없다면 취소 버튼을 눌러주세요.");
-            return;
-        }
-        setErrorMessage("");
-        await dbService.doc(`unBookClub/${reviewObj.id}`).update({
-        review: newReview,
-        title: newTitle,
-        author: newAuthor,
-        // createdAt: Date.now(), 일시는 업데이트에서 제외
-        creatorNickname: newNickname,
-        selectedRating: newRating,
-        });
-        setEditing(false);
-    };
-    const onCancel = () => {
-        setEditing(false);
-    };
-    
-    const onChange = (event) => {
-        const { name, value } = event.target;
-        switch (name) {
-        case "bookTitle":
-            setnewTitle(value);
-            break;
-        case "bookAuthor":
-            setnewAuthor(value);
-            break;
-        case "inputReview":
-            setNewReview(value);
-            break;
-        default:
-            break;
-        }
-    };
+    const {
+        editing,
+        errorMessage,
+        newReview,
+        newNickname,
+        setNewNickname,
+        newTitle,
+        newAuthor,
+        onDeleteClick,
+        toggleEditing,
+        onSubmit,
+        onCancel,
+        onChange,
+    } = useReviewEditor(reviewObj); 
 
     return (
         <>
@@ -136,7 +92,7 @@ import useFormatDate from "../hooks/useFormatDate";
             {isOwner && (
                 <>
                 <Button
-                    onClick={toggleEiditing}
+                    onClick={toggleEditing}
                     margin="0 0.5rem"
                     radius="none"
                     fontColor="#61777F"
