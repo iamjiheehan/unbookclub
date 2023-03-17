@@ -12,7 +12,7 @@ import { Loading } from "../hooks/useLoading";
 
 export default function UserInfo() {
   const { userObj, setUserObj } = useContext(AuthContext);
-  const { reviews, Loading } = useFetchReviews(userObj);
+  const { reviews, loading } = useFetchReviews(userObj);
   const { newDisplayName, onChange, onSubmit } = useUpdateProfile();
 
   
@@ -31,7 +31,11 @@ export default function UserInfo() {
         </form>
         <div>
           <TextH1>작성한 리뷰 목록</TextH1>
-          <ReviewTable reviews={reviews} />
+          {loading ? (
+            <Loading />
+          ) : (
+            <ReviewTable reviews={reviews} />
+          )}
         </div>
       </BackStyled>
     </Container>
