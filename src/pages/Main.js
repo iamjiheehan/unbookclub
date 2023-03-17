@@ -28,7 +28,7 @@ function Main() {
                     <div>
                         <TextH1 padding='0 0 0.5rem 0'>THE UNBOOK CLUB</TextH1>
                         <TextP> 책을 함께 읽고 다양한 생각을 나누는 공간<br/></TextP>
-                        <Button to="/board">글 쓰러가기</Button>
+                        <Button to="/board">독후감 쓰러가기</Button>
                     </div>
                 </div>
             </Container>

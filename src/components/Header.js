@@ -30,12 +30,9 @@ function Header({reviewObj}) {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="/board"><TextP>감상평 쓰러가기</TextP></Nav.Link>
-                        <NavDropdown title={<TextP style={{ display: 'inline' }}>감상평 검색하기</TextP>} id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1"><TextP>검색어로 찾기</TextP></NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2"><TextP>도서로 찾기</TextP></NavDropdown.Item>
-                        </NavDropdown>
-                        <Nav.Link href="/guide"><TextP>토론 가이드</TextP></Nav.Link>
+                        <Nav.Link href="/board"><TextP>독후감 게시판</TextP></Nav.Link>
+                        <Nav.Link href="/search"><TextP>도서 검색</TextP></Nav.Link>
+                        <Nav.Link href="/guide"><TextP>독후감 가이드</TextP></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 {reviewObj}
