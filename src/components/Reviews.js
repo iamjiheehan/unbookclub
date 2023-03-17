@@ -4,7 +4,7 @@ import Button from "../styled-components/ButtonStyled";
 import BackStyled from "../styled-components/BackStyled"
 import { TextP,TextH2 } from "../styled-components/TextStyled";
 import ReactStars from 'react-rating-stars-component';
-
+import { FlexRow } from "../styled-components/FlexStyled";
 
 const formatDate = (timestamp) => {
     const date = new Date(timestamp);
@@ -69,7 +69,9 @@ const Reviews = ({ reviewObj, isOwner }) => {
                         <TextP>닉네임 : {reviewObj.creatorNickname}</TextP>
                         <TextP>작성일시 : {formatDate(reviewObj.createdAt)}</TextP>
                         <TextP>평점 : </TextP>
-                        <ReactStars count={5} size={24} edit={false} value={reviewObj.selectedRating} />
+                        <FlexRow>
+                            <ReactStars count={5} size={24} edit={false} value={reviewObj.selectedRating} />
+                        </FlexRow>
                         {isOwner && (
                         <>
                             <Button onClick={toggleEiditing} margin="0 0.5rem" radius="none" fontColor="#61777F" bgColor="transparent" border="0.3rem solid"><TextP>수정</TextP></Button>

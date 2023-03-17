@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StarStyled } from '../styled-components/StarStyled';
+import { StarStyled, StarWrapper } from '../styled-components/StarStyled';
 
 const Star = ({ selected = false, onClick = () => {} }) => (
     <span onClick={onClick} style={{ cursor: 'pointer' }}>
@@ -15,11 +15,13 @@ const Star = ({ selected = false, onClick = () => {} }) => (
         onRatingSelected(index + 1);
     };
     return (
+    <StarWrapper>
         <StarStyled>
         {Array.from({ length: totalStars }, (v, i) => (
             <Star key={i} selected={i < selectedRating} onClick={() => handleClick(i)} />
         ))}
         </StarStyled>
+    </StarWrapper>
     );
 };
 

@@ -7,11 +7,12 @@ export const StarWrapper = styled.div`
     align-items: center;
 `;
 
-export const StarStyled = styled.span`
+export const StarStyled = styled.p`
     cursor: pointer;
     font-size: 2.5rem; // You can adjust the font size as needed
     color: #f1c40f; // Change the hover color as needed
-
+    text-align: center;
+    
     &:hover,
     &:active {
     color: #f1c40f; // Change the hover color as needed

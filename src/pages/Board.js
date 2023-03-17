@@ -6,7 +6,7 @@ import { TextP, TextH1 } from "../styled-components/TextStyled";
 import { Input, BoardInput } from "../styled-components/InputStyled";
 import GridStyled from "../styled-components/GridStyled";
 import { FlexCol, FlexRow } from "../styled-components/FlexStyled";
-
+import { Container } from "react-bootstrap";
 import { useReviewForm } from "../hooks/useReviewForm"
 
 export default function Board() {
@@ -16,8 +16,8 @@ export default function Board() {
     const [bookAuthor, setBookAuthor] = useState("");
 
     return (
-        <>
-        <TextH1>감상평 게시판</TextH1>
+        <Container>
+        <TextH1 margin="2.5rem 0 auto auto">감상평 게시판</TextH1>
         <form onSubmit={onSubmit}>
             <FlexCol>
                 <FlexRow alignItems="baseline">
@@ -62,6 +62,6 @@ export default function Board() {
             />
             ))}
         </GridStyled>
-        </>
+        </Container>
     );
 }
