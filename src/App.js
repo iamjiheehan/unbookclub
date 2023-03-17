@@ -6,7 +6,7 @@ import Search from "./pages/Search";
 import Guide from "./pages/Guide";
 import Footer from "./components/Footer";
 import SignIn from "./components/SignIn";
-import UserInfo from "./components/UserInfo";
+import UserInfo from "./pages/UserInfo";
 
 import AuthContext from "hooks/AuthContext";
 import useAuth from "hooks/useAuth"; 
