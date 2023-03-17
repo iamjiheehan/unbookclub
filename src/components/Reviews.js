@@ -53,7 +53,7 @@ const formatDate = (timestamp) => {
         review: newReview,
         title: newTitle,
         author: newAuthor,
-        createdAt: Date.now(),
+        // createdAt: Date.now(), 일시는 업데이트에서 제외
         creatorNickname: newNickname,
         selectedRating: newRating,
         });

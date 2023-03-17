@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import AuthContext from "../hooks/AuthContext";
 import Reviews from "../components/Reviews";
 import StarRating from "../components/StarRating";
-import { TextP, TextH1 } from "../styled-components/TextStyled";
+import { TextH1 } from "../styled-components/TextStyled";
 import { Input, BoardInput } from "../styled-components/InputStyled";
 import GridStyled from "../styled-components/GridStyled";
 import { FlexCol, FlexRow } from "../styled-components/FlexStyled";
