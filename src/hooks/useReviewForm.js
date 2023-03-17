@@ -64,9 +64,7 @@ export const useReviewForm = (userObj) => {
     //     target: { value },
     //     } = event;
     //     setInputReview(value);
-
     
-
     const onRatingSelected = (rating) => {
         setSelectedRating(rating);
     };

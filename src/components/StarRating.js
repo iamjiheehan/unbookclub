@@ -1,27 +1,32 @@
-import React, { useState } from 'react';
-import { StarStyled, StarWrapper } from '../styled-components/StarStyled';
+import React, { useState, useEffect } from "react";
+import { StarStyled, StarWrapper } from "../styled-components/StarStyled";
 
 const Star = ({ selected = false, onClick = () => {} }) => (
-    <span onClick={onClick} style={{ cursor: 'pointer' }}>
-        {selected ? '★' : '☆'}
+    <span onClick={onClick} style={{ cursor: "pointer" }}>
+        {selected ? "★" : "☆"}
     </span>
     );
 
-    const StarRating = ({ totalStars = 5, onRatingSelected = () => {} }) => {
-    const [selectedRating, setSelectedRating] = useState(3);
+    const StarRating = ({ totalStars, initialRating, onRatingSelected, readOnly }) => {
+    const [rating, setRating] = useState(initialRating || 0);
 
-    const handleClick = (index) => {
-        setSelectedRating(index + 1);
-        onRatingSelected(index + 1);
-    };
+    useEffect(() => {
+        if (onRatingSelected) {
+        onRatingSelected(rating);
+        }
+    }, [rating, onRatingSelected]);
+
     return (
-    <StarWrapper>
-        <StarStyled>
-        {Array.from({ length: totalStars }, (v, i) => (
-            <Star key={i} selected={i < selectedRating} onClick={() => handleClick(i)} />
+        <StarWrapper>
+        {[...Array(totalStars)].map((_, i) => (
+            <StarStyled key={i}>
+            <Star
+                selected={i < rating}
+                onClick={readOnly ? null : () => setRating(i + 1)}
+            />
+            </StarStyled>
         ))}
-        </StarStyled>
-    </StarWrapper>
+        </StarWrapper>
     );
 };
 
