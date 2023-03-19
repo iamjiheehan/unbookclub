@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Container from 'react-bootstrap/Container';
 
 import main from '../static/images/main-01.webp';
