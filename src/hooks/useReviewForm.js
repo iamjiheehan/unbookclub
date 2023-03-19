@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { dbService } from "fBase";
+import { useNavigate } from "react-router-dom";
 
 
 export const useReviewForm = (userObj) => {
@@ -9,6 +10,8 @@ export const useReviewForm = (userObj) => {
     const [reviewList, setReviewList] = useState([]);
     const [selectedRating, setSelectedRating] = useState(0);
     
+    const navigate = useNavigate();
+
     useEffect(() => {
         const unBookClub = dbService
         .collection("unBookClub")
@@ -23,8 +26,10 @@ export const useReviewForm = (userObj) => {
         return () => unBookClub();
     }, []);
 
+
     const onSubmit = async (event) => {
         event.preventDefault();
+        navigate("/board");
         if (inputReview.trim() === "") return;
         await dbService.collection("unBookClub").add({
             review: inputReview,

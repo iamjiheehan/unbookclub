@@ -1,9 +1,13 @@
+// Writing page from Review board
 import React, { useContext } from "react";
 import AuthContext from "../hooks/AuthContext";
-import Reviews from "../components/Reviews";
+import StarRating from "../components/StarRating";
+import { TextH1 } from "../styled-components/TextStyled";
+import { Input, BoardInput } from "../styled-components/InputStyled";
 import GridStyled from "../styled-components/GridStyled";
+import { FlexCol, FlexRow } from "../styled-components/FlexStyled";
+import { Container } from "react-bootstrap";
 import { useReviewForm } from "../hooks/useReviewForm";
-import Button from "../styled-components/ButtonStyled";
 
 export default function Board() {
     const { userObj } = useContext(AuthContext);
@@ -17,9 +21,9 @@ export default function Board() {
     onRatingSelected,
     } = useReviewForm(userObj);
 
+
     return (
-        <>
-            {/* <Container>
+            <Container>
                 <TextH1 margin="2.5rem 0 auto auto">감상평 게시판</TextH1>
                 <form onSubmit={onSubmit}>
                     <FlexCol>
@@ -57,20 +61,8 @@ export default function Board() {
                     <Input type="submit" value="게시하기" margin="1.5rem auto 0 auto" />
                     </FlexCol>
                 </form>
-            </Container> */}
-            <Button to="/create">글 쓰러 가기</Button>
-            <GridStyled rows="auto" columns="repeat(3,minmax(0,1fr))" margin="3rem">
-                {reviewList.map((review) => (
-                <Reviews
-                    key={review.id}
-                    reviewObj={review}
-                    isOwner={userObj && review.creatorId === userObj.uid}
-                    rating={review.selectedRating}
-                    bookTitle={review.title}
-                    bookAuthor={review.author}
-                />
-                ))}
-            </GridStyled>
-        </>
-    );
+            </Container>
+    )
+
 }
+

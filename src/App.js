@@ -7,6 +7,7 @@ import Guide from "./pages/Guide";
 import Footer from "./components/Footer";
 import SignIn from "./components/SignIn";
 import UserInfo from "./pages/UserInfo";
+import Create from "./pages/Create"
 
 import AuthContext from "hooks/AuthContext";
 import useAuth from "hooks/useAuth"; 
@@ -44,6 +45,9 @@ function App() {
                   <Link to="/board">Board</Link>
                 </li>
                 <li>
+                  <Link to="/create">Create</Link>
+                </li>
+                <li>
                   <Link to="/search">Search</Link>
                 </li>
                 <li>
@@ -66,6 +70,12 @@ function App() {
             />
             <Route path="/board" element={<Board />} />
             <Route path="/guide" element={<Guide />} />
+            <Route
+              path="/create"
+              element={
+                isSignedIn || isSignedUp ? <Create /> : <Navigate to="/signIn" />
+              }
+            />
             <Route
               userObj = {userObj}
               element={isSignedIn ? <SignIn /> : <Navigate to="/userInfo" />}
