@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import AuthContext from "../hooks/AuthContext";
-import StarRating from "../components/StarRating";
+import StarRating from "./StarRating";
 import { TextH1 } from "../styled-components/TextStyled";
 import { Input, BoardInput } from "../styled-components/InputStyled";
 import { FlexCol, FlexRow } from "../styled-components/FlexStyled";

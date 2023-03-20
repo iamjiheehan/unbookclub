@@ -4,7 +4,7 @@ import Reviews from "../components/Reviews";
 import GridStyled from "../styled-components/GridStyled";
 import { useReviewForm } from "../hooks/useReviewForm";
 import { InputLink } from "../styled-components/InputStyled";
-import Search from "../pages/Search";
+import Search from "../components/Search";
 import ImgStyled from '../styled-components/ImgStyled';
 import { Button } from "react-bootstrap";
 import iconTop from '../static/images/menu-icon-01.webp';

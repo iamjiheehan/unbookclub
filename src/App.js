@@ -1,14 +1,17 @@
 import React from "react";
 import Header from "./components/Header";
+
+import Search from "./components/Search";
+import Footer from "./components/Footer";
+import Create from "./components/Create"
+import SignIn from "./components/SignIn";
+
 import Main from "./pages/Main";
 import Board from "./pages/Board";
-import Search from "./pages/Search";
-import Guide from "./pages/Guide";
-import Footer from "./components/Footer";
-import SignIn from "./components/SignIn";
 import UserInfo from "./pages/UserInfo";
-import Create from "./pages/Create"
 import Books from "./pages/Books"
+import Guide from "./pages/Guide";
+
 import AuthContext from "hooks/AuthContext";
 import useAuth from "hooks/useAuth"; 
 import { LoadingProvider, Loading } from "hooks/useLoading";
