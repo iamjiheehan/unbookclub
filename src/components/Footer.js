@@ -5,14 +5,15 @@ import ImgStyled from '../styled-components/ImgStyled';
 import {TextH2} from '../styled-components/TextStyled';
 import styled from 'styled-components';
 
-const styles = {
-    footer: {
-      position: 'absolute',
-      bottom: 0,
-      width: '100%',
-      backgroundColor: 'lightgray',
-    },
-  };
+const styles = styled.div`
+    bottom: 0;
+    width: 100%;
+    height: 3rem;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
 
 export default function Footer() {
     return (
