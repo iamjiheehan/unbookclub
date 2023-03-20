@@ -7,6 +7,7 @@ import icon02 from '../static/images/main-icon-02.webp';
 import icon03 from '../static/images/main-icon-03.webp';
 import icon04 from '../static/images/main-icon-04.webp';
 import icon05 from '../static/images/main-icon-05.webp';
+
 import testimonial from '../static/images/main-testimonial.webp';
 
 import MainBestSellers from '../components/MainBestSellers';
