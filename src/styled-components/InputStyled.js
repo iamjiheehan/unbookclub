@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
-import { TextP, TextH1 } from "../styled-components/TextStyled";
 
 const InputStyled = styled.input`
     border: 4px solid rgb(230, 126, 34);

@@ -4,7 +4,6 @@ import Reviews from "../components/Reviews";
 import GridStyled from "../styled-components/GridStyled";
 import { useReviewForm } from "../hooks/useReviewForm";
 import { InputLink } from "../styled-components/InputStyled";
-import { TextP, TextH1 } from "../styled-components/TextStyled";
 import Search from "../pages/Search";
 import ImgStyled from '../styled-components/ImgStyled';
 
