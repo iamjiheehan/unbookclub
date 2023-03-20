@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import SignIn from "./components/SignIn";
 import UserInfo from "./pages/UserInfo";
 import Create from "./pages/Create"
-
+import Books from "./pages/Books"
 import AuthContext from "hooks/AuthContext";
 import useAuth from "hooks/useAuth"; 
 import { LoadingProvider, Loading } from "hooks/useLoading";
@@ -51,6 +51,9 @@ function App() {
                   <Link to="/search">Search</Link>
                 </li>
                 <li>
+                  <Link to="/books">Books</Link>
+                </li>
+                <li>
                   <Link to="/guide">Guide</Link>
                 </li>
               </ul>
@@ -70,6 +73,7 @@ function App() {
             />
             <Route path="/board" element={<Board />} />
             <Route path="/guide" element={<Guide />} />
+            <Route path="/books" element={<Books />} />
             <Route
               path="/create"
               element={

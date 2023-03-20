@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
+import { TextP, TextH1 } from "../styled-components/TextStyled";
 
 const InputStyled = styled.input`
     border: 4px solid rgb(230, 126, 34);
@@ -10,7 +12,6 @@ const InputStyled = styled.input`
     font-size: ${(props) => props.fontSize || '1.5rem'};
     margin: ${(props) => props.margin || '2rem 0.5rem'};
     font-weight: ${(props) => props.fontWeight || '400'};
-
     &:hover {
         transform: scale(1.1);
         transform-origin: center;
@@ -27,7 +28,7 @@ const Input = ({ children, ...rest }) => {
 const BoardInputStyled = styled(InputStyled)`
     overflow: ${(props) => props.overflow || 'hidden'};
     color: black;
-    border-radius: 0 !important;
+    /* border-radius: 0 !important; */
     border-top: 2px solid transparent;
     border-left: 2px solid transparent;
     border-right: 2px solid transparent;
@@ -48,4 +49,29 @@ const BoardInput = ({ children, ...rest }) => {
 };
 
 
-export { Input, BoardInput };
+const InputLinkStyled = styled.input`
+    color: black;
+    text-decoration: none;
+    color: #d35400;
+    border: 4px solid rgb(230, 126, 34);
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    border-radius: 50px;
+    font-weight: 900;
+
+    &:hover {
+        transform: scale(1.5);
+        transform-origin: center;
+        background-color: rgb(230, 126, 34);
+        color: white;
+        
+    }
+`;
+
+const InputLink = ({ children, ...rest }) => { 
+    return (
+        <InputLinkStyled as={Link} {...rest}>{children}</InputLinkStyled>
+    );
+};
+
+export { Input, BoardInput, InputLink };

@@ -1,19 +1,19 @@
-// Writing page from Review board
 import React, { useContext } from "react";
 import AuthContext from "../hooks/AuthContext";
 import StarRating from "../components/StarRating";
 import { TextH1 } from "../styled-components/TextStyled";
 import { Input, BoardInput } from "../styled-components/InputStyled";
-import GridStyled from "../styled-components/GridStyled";
 import { FlexCol, FlexRow } from "../styled-components/FlexStyled";
 import { Container } from "react-bootstrap";
 import { useReviewForm } from "../hooks/useReviewForm";
+import image from '../static/images/book-report.webp';
+import ImgStyled from '../styled-components/ImgStyled';
+
 
 export default function Board() {
     const { userObj } = useContext(AuthContext);
     const {
     inputReview,
-    reviewList,
     onSubmit,
     onChange,
     bookTitle,
@@ -24,9 +24,10 @@ export default function Board() {
 
     return (
             <Container>
-                <TextH1 margin="2.5rem 0 auto auto">감상평 게시판</TextH1>
+                <ImgStyled src={image} alt="mainImage" height="500px" />
+                <TextH1 margin="2.5rem 0 auto auto">독후감 작성하기</TextH1>
                 <form onSubmit={onSubmit}>
-                    <FlexCol>
+                    <FlexCol margin="2rem">
                     <FlexRow alignItems="baseline">
                         <StarRating totalStars={5} onRatingSelected={onRatingSelected} />
                     </FlexRow>
@@ -58,7 +59,7 @@ export default function Board() {
                         height="25rem"
                         overflow="auto"
                     />
-                    <Input type="submit" value="게시하기" margin="1.5rem auto 0 auto" />
+                    <Input type="submit" value="게시하기" margin="1.5rem auto 5rem auto" />
                     </FlexCol>
                 </form>
             </Container>
