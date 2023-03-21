@@ -115,7 +115,7 @@ export default function Search() {
             </FlexRow>
             </div>
         </Form>
-        {searchError && <TextP className="error-message">{searchError}</TextP>}
+        {searchError && <TextP>{searchError}</TextP>}
         </Container>
     );
 }
