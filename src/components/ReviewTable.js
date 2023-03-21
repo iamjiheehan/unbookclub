@@ -1,14 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import Table from 'react-bootstrap/Table';
 import { TextP } from "../styled-components/TextStyled";
 import ReactStars from "react-rating-stars-component";
-import AuthContext from "../hooks/AuthContext";
-import useFetchReviews from "../hooks/useFetchReviews";
 import useFormatDate from "../hooks/useFormatDate";
 
 const ReviewTable = ({ reviews }) => {
     const formatDate = useFormatDate;
-    const { userObj } = useContext(AuthContext);
 
 
     return (

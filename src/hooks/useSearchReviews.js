@@ -1,10 +1,6 @@
-import { useContext, useState } from 'react';
-import { useReviewForm } from '../hooks/useReviewForm';
-import AuthContext from '../hooks/AuthContext';
+import { useState } from 'react';
 import { dbService } from 'fBase';
 export default function useSearchReviews() {
-    const { userObj } = useContext(AuthContext);
-    const { reviewList } = useReviewForm(userObj);
     const [searchTitle, setSearchTitle] = useState('');
     const [searchKeyword, setSearchKeyword] = useState('');
     const [searchResults, setSearchResults] = useState([]);
@@ -17,7 +13,6 @@ export default function useSearchReviews() {
         try {
             let query = dbService.collection('unBookClub');
             setSearchError("")
-        
             if (searchTitle) {
             query = query.where('title', '>=', searchTitle).where('title', '<=', searchTitle + "\uf8ff");
             }
@@ -25,7 +20,6 @@ export default function useSearchReviews() {
             if (searchKeyword) {
             query = query.where('review', '>=', searchKeyword).where('review', '<=', searchKeyword + "\uf8ff").orderBy('review');
             }
-        
             const querySnapshot = await query.orderBy('createdAt', 'desc').limit(10).get();
             console.log(`Found ${querySnapshot.docs.length} documents`);
             const results = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
@@ -36,7 +30,6 @@ export default function useSearchReviews() {
             setSearchResults([]);
             setSearchError('검색 중 오류가 발생했습니다.');
         }
-
         console.log("searchResults: ", searchResults);
         if (searchResults.length ===0 ) {
             setSearchError("검색 결과가 없습니다.")
