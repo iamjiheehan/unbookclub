@@ -10,6 +10,8 @@ import FormStyled from "styled-components/FormStyled";
 
 import useSearchReviews from "hooks/useSearchReviews";
 import { TextP } from "styled-components/TextStyled";
+import { useLoadingContext, LoadingProvider, Loading } from "hooks/useLoading";
+
 
 export default function Search() {
     
@@ -24,19 +26,19 @@ export default function Search() {
         searchResults,
         setSearchResults,
         handleSearch,
-        
     } = useSearchReviews();
     
     const [searchMode, setSearchMode] = React.useState("키워드로 검색");
+    const { startLoading, stopLoading } = useLoadingContext();
 
-
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         console.log("handleSubmit works");
         event.preventDefault();
-        handleSearch();
+        startLoading();
+        await handleSearch();
+        stopLoading();
         setHasSearched(true);
         console.log("searchKeyword: ", searchKeyword);
-
     };
 
     const handleModeChange = (mode) => {
@@ -115,6 +117,7 @@ export default function Search() {
             </FlexRow>
             </div>
         </Form>
+        <Loading />
         {searchError && <TextP>{searchError}</TextP>}
         </Container>
     );

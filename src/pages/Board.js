@@ -28,6 +28,9 @@ export default function Board() {
     const handleLoadMore = () => {
         setNumReviewsToShow(numReviewsToShow + 12);
     };
+    
+    console.log("searchResults: ", searchResults);
+
 
     return (
         <BoardWrapper>

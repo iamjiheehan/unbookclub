@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import { dbService } from 'fBase';
+
+
+
 export default function useSearchReviews() {
     const [searchTitle, setSearchTitle] = useState('');
     const [searchKeyword, setSearchKeyword] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [searchError, setSearchError] = useState('');
     const [hasSearched, setHasSearched] = useState(false);
+
 
     const handleSearch = async () => {
         setHasSearched(true);
@@ -25,16 +29,14 @@ export default function useSearchReviews() {
             const results = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
             setSearchResults(results);
             setSearchError('');
+            setSearchError(results.length === 0 ? "검색 결과가 없습니다." : "");
         } catch (error) {
             console.log(error);
             setSearchResults([]);
             setSearchError('검색 중 오류가 발생했습니다.');
         }
-        console.log("searchResults: ", searchResults);
-        if (searchResults.length ===0 ) {
-            setSearchError("검색 결과가 없습니다.")
-        }
     };
+    console.log("searchResults: ", searchResults);
 
     return {
         searchTitle,

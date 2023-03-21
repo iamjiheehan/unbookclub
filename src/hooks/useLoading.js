@@ -28,14 +28,20 @@ export const LoadingProvider = ({ children }) => {
 };
 
 export const Loading = () => {
-    const { loading } = useLoadingContext();
+    const context = useLoadingContext();
 
-    return (
+        if (!context) {
+        return null; // or render a default loading state
+        }
+
+        const { loading } = context;
+
+        return (
         loading && (
-        <LoadingBack>
+            <LoadingBack>
             <LoadingText>잠시만 기다려 주세요.</LoadingText>
             <img src={Cube} alt="로딩중" width="5%" />
-        </LoadingBack>
+            </LoadingBack>
         )
     );
 };
