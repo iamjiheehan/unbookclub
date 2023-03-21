@@ -1,15 +1,19 @@
 import React from "react";
+import ReactStars from "react-rating-stars-component";
+
 import Button from "../styled-components/ButtonStyled";
 import BackStyled from "../styled-components/BackStyled";
 import { TextP, TextH2 } from "../styled-components/TextStyled";
-import ReactStars from "react-rating-stars-component";
 import { FlexRow } from "../styled-components/FlexStyled";
 import { Input, BoardInput } from "../styled-components/InputStyled";
-import useFormatDate from "../hooks/useFormatDate";
-import useReviewEditor from "../hooks/useReviewEditor";
+
+import useFormatDate from "hooks/useFormatDate";
+import useReviewEditor from "hooks/useReviewEditor";
 
     const Reviews = ({ reviewObj, isOwner, bookTitle, bookAuthor }) => {
+
     const formattedDate = useFormatDate(reviewObj.createdAt);
+
 
     const {
         editing,

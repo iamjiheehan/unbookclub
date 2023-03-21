@@ -10,12 +10,25 @@ import FormStyled from 'styled-components/FormStyled';
 
 import useSearchReviews from 'hooks/useSearchReviews';
 
-export default function Search() {
-    const { searchTitle, setSearchTitle, searchKeyword, setSearchKeyword, handleSearch } = useSearchReviews();
+export default function Search({setHasSearched, searchResults, setSearchResults,handleSearch,}) {
+    const [searchTitle, setSearchTitle] = React.useState('');
+    const [searchKeyword, setSearchKeyword] = React.useState('');
+    const [searchMode, setSearchMode] = React.useState('키워드로 검색');
+    const [searchError, setSearchError] = React.useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
         handleSearch();
+        setHasSearched(true);
+    };
+
+    const handleModeChange = (mode) => {
+        setSearchMode(mode);
+        if (mode === '키워드로 검색') {
+            setSearchTitle('');
+        } else {
+            setSearchKeyword('');
+        }
     };
 
     return (
@@ -26,15 +39,15 @@ export default function Search() {
                 <div>
                 <Dropdown>
                     <Dropdown.Toggle as={DropdownBtn} variant='outline-secondary' id='dropdown-basic'>
-                    독후감 검색하기
+                        {searchMode}
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                    <Dropdown.Item href='#' onClick={() => setSearchKeyword('')}>
-                        키워드로 검색
-                    </Dropdown.Item>
-                    <Dropdown.Item href='#' onClick={() => setSearchTitle('')}>
-                        도서명으로 검색
-                    </Dropdown.Item>
+                        <Dropdown.Item href='#' onClick={() => handleModeChange('키워드로 검색')} >
+                            키워드로 검색
+                        </Dropdown.Item>
+                        <Dropdown.Item href='#' onClick={() => handleModeChange('도서명으로 검색')} >
+                            도서명으로 검색
+                        </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
                 </div>
@@ -47,9 +60,9 @@ export default function Search() {
                     onChange={(e) => {
                     if (searchTitle !== '') {
                         setSearchTitle(e.target.value);
-                    } else {
-                        setSearchKeyword(e.target.value);
-                    }
+                        } else {
+                            setSearchKeyword(e.target.value);
+                        }
                     }}
                 />
                 </div>
@@ -61,6 +74,7 @@ export default function Search() {
             </FlexRow>
             </div>
         </Form>
+        {searchError && <p className="error-message">{searchError}</p>}
         </Container>
     );
 }
