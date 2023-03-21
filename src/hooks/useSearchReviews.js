@@ -11,13 +11,12 @@ export default function useSearchReviews() {
     const [searchError, setSearchError] = useState('');
     const [hasSearched, setHasSearched] = useState(false);
 
-    console.log("searchKeyword: ", searchKeyword);
-
     const handleSearch = async () => {
         setHasSearched(true);
     
         try {
             let query = dbService.collection('unBookClub');
+            setSearchError("")
         
             if (searchTitle) {
             query = query.where('title', '>=', searchTitle).where('title', '<=', searchTitle + "\uf8ff");
@@ -39,6 +38,9 @@ export default function useSearchReviews() {
         }
 
         console.log("searchResults: ", searchResults);
+        if (searchResults.length ===0 ) {
+            setSearchError("검색 결과가 없습니다.")
+        }
     };
 
     return {
