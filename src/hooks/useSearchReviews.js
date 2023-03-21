@@ -11,19 +11,24 @@ export default function useSearchReviews() {
     const [searchError, setSearchError] = useState('');
     const [hasSearched, setHasSearched] = useState(false);
 
+    console.log("searchKeyword: ", searchKeyword);
+
     const handleSearch = async () => {
         setHasSearched(true);
+        console.log("handleSearch works@@@@@@@@@@@@@@@@@@@@@");
         try {
             const querySnapshot = await dbService
             .collection('unBookClub')
-            .where('title', '==', searchTitle)
-            .where('keywords', 'array-contains', searchKeyword)
-            .orderBy('createdAt', 'desc')
-            .limit(10)
+            .where('review', '>=', searchKeyword)
+            .where('review', '<=', searchKeyword + "\uf8ff")
+            // .where('title', '>=', searchTitle)
+            // .where('title', '<=', searchKeyword + "\uf8ff")
             .get();
+            console.log(`Found ${querySnapshot.docs.length} documents`);
             const results = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
             setSearchResults(results);
             setSearchError('');
+
         } catch (error) {
             console.log(error);
             setSearchResults([]);
@@ -40,5 +45,7 @@ export default function useSearchReviews() {
         handleSearch,
         searchError,
         setSearchResults,
+        hasSearched,
+        setHasSearched,
     };
 }

@@ -29,7 +29,6 @@ export default function Board() {
         setNumReviewsToShow(numReviewsToShow + 12);
     };
 
-    console.log(searchResults);
     return (
         <BoardWrapper>
             <ImgStyled src={iconTop} alt="Top Image" height="500px" />
