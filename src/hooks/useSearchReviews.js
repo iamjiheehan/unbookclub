@@ -15,25 +15,30 @@ export default function useSearchReviews() {
 
     const handleSearch = async () => {
         setHasSearched(true);
-        console.log("handleSearch works@@@@@@@@@@@@@@@@@@@@@");
+    
         try {
-            const querySnapshot = await dbService
-            .collection('unBookClub')
-            .where('review', '>=', searchKeyword)
-            .where('review', '<=', searchKeyword + "\uf8ff")
-            // .where('title', '>=', searchTitle)
-            // .where('title', '<=', searchKeyword + "\uf8ff")
-            .get();
+            let query = dbService.collection('unBookClub');
+        
+            if (searchTitle) {
+            query = query.where('title', '>=', searchTitle).where('title', '<=', searchTitle + "\uf8ff");
+            }
+            
+            if (searchKeyword) {
+            query = query.where('review', '>=', searchKeyword).where('review', '<=', searchKeyword + "\uf8ff").orderBy('review');
+            }
+        
+            const querySnapshot = await query.orderBy('createdAt', 'desc').limit(10).get();
             console.log(`Found ${querySnapshot.docs.length} documents`);
             const results = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
             setSearchResults(results);
             setSearchError('');
-
         } catch (error) {
             console.log(error);
             setSearchResults([]);
             setSearchError('검색 중 오류가 발생했습니다.');
         }
+
+        console.log("searchResults: ", searchResults);
     };
 
     return {
