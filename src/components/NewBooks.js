@@ -3,10 +3,18 @@ import newBooks from '../data/newBooks.json';
 import ImgStyled from '../styled-components/ImgStyled';
 import { FlowAniReverse } from '../styled-components/AniStyled';
 import {TextH2,TextP} from '../styled-components/TextStyled';
+import { BookInfo, BookItemContainer } from 'styled-components/BookStyled';
+import Button from 'styled-components/ButtonStyled';
+import { FaShoppingCart } from 'react-icons/fa';
 
 
 export default function NewBooks() {
     const [posts, setPosts] = useState([]);
+    const [isAdded, setIsAdded] = useState(false);
+
+    const handleAddToCart = () => {
+        setIsAdded(true);
+    };
 
     useEffect(() => {
         setPosts(newBooks);
@@ -16,11 +24,16 @@ export default function NewBooks() {
         <>
             <FlowAniReverse>
                 {posts.map(post => (
-                    <div key={post.itemId} >
-                        <ImgStyled src={post.coverLargeUrl} alt={post.title} width= "250px"/>
-                        <TextH2 padding = '1rem 0 0 0'>{post.author}</TextH2>
-                        <TextP>{post.title}</TextP>
-                    </div>
+                    <BookItemContainer key={post.itemId} >
+                        <ImgStyled src={post.coverLargeUrl} alt={post.title} width= "250px" />
+                        <BookInfo>
+                            <TextP>{post.title}</TextP>
+                            <TextH2 padding = '1rem 0 0 0'>{post.author}</TextH2>
+                            <Button onClick={handleAddToCart} disabled={isAdded}>
+                                {isAdded ? '추가된 도서' : <><FaShoppingCart /> 읽을 목록에 추가하기</>}
+                            </Button>
+                        </BookInfo>
+                    </BookItemContainer>
                 ))}
             </FlowAniReverse>
         </>

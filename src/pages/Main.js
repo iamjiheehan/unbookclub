@@ -18,6 +18,7 @@ import { FlexRow, FlexCol } from '../styled-components/FlexStyled'
 import BackStyled from '../styled-components/BackStyled';
 import {TextH1,TextH2,TextP} from '../styled-components/TextStyled';
 import GridStyled from '../styled-components/GridStyled';
+import NewBooks from 'components/NewBooks';
 
 function Main() {
     return (
@@ -107,6 +108,11 @@ function Main() {
                                 <TextH1 padding= '0 0 1rem 0'>베스트셀러</TextH1>
                                 <TextH2 padding='0 0 2rem 0'>수십만 명의 독자들이 선택한 책들을 만나보세요!</TextH2>
                                 <MainBestSellers/>
+                            </div>
+                            <div style={{overflow:'hidden',marginTop:"2rem"}} >
+                                <TextH1 padding= '0 0 1rem 0'>신간 도서</TextH1>
+                                <TextH2 padding='0 0 2rem 0'>새로운 도서들을 독자들과 함께 읽어보세요!</TextH2>
+                                <NewBooks />
                             </div>
                             <Button to="/books">도서 검색하러 가기</Button>
                         </Container>

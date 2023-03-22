@@ -19,8 +19,8 @@ const BookImage = styled(ImgStyled)`
 
 const BookInfo = styled.div`
     padding: 1rem;
-    height: 30%;
-    background-color: #fff;
+    height: 100%;
+    background-color: grey;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -30,6 +30,7 @@ const BookInfo = styled.div`
 
     ${BookItemContainer}:hover & {
         opacity: 1;
+        cursor: pointer;
     }
 `;
 

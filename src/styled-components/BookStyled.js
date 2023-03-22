@@ -3,9 +3,7 @@ import ImgStyled from '../styled-components/ImgStyled';
 
 const BookItemContainer = styled.div`
     position: relative;
-    width: 250px;
-    height: 400px;
-    overflow: hidden;
+    width: 100vw;
 `;
 
 const BookImage = styled(ImgStyled)`
@@ -14,9 +12,9 @@ const BookImage = styled(ImgStyled)`
 `;
 
 const BookInfo = styled.div`
-    padding: 1rem;
-    height: 30%;
-    background-color: #fff;
+    padding: 4rem 1rem;
+    height: 100%;
+    background-color: #95a5a6;
     position: absolute;
     bottom: 0;
     left: 0;
