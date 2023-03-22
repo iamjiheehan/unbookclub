@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import AuthContext from "../hooks/AuthContext";
 import Reviews from "../components/Reviews";
 import GridStyled from "../styled-components/GridStyled";

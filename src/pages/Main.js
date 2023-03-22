@@ -58,7 +58,7 @@ function Main() {
                             </FlexCol>
                         </FlexRow>
                     </Container>
-                    <Button to="/board">글 쓰러가기</Button>
+                    <Button to="/board">독후감 쓰러가기</Button>
                     <Container>
                         <div>
                             <TextH1 padding='0 0 2rem 0'>이용 후기</TextH1>
@@ -108,7 +108,7 @@ function Main() {
                                 <TextH2 padding='0 0 2rem 0'>수십만 명의 독자들이 선택한 책들을 만나보세요!</TextH2>
                                 <MainBestSellers/>
                             </div>
-                            <Button to="/search">도서 검색하러 가기</Button>
+                            <Button to="/books">도서 검색하러 가기</Button>
                         </Container>
                     </div>
             </div>

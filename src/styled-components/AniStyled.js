@@ -1,19 +1,35 @@
 import styled from "styled-components";
 
-const FlowAni = styled.div `
+const FlowAniForward = styled.div`
     display: flex;
     gap: 2rem;
     align-items: flex-start;
-    animation: marquee 45s linear infinite;
+    animation: marqueeForward 48s linear infinite;
 
-    @keyframes marquee {
+    @keyframes marqueeForward {
         0% {
-            transform: translateX(0%);
+        transform: translateX(-100%);
         }
         100% {
-            transform: translateX(-100%);
+        transform: translateX(0%);
         }
     }
 `;
 
-export default FlowAni;
+const FlowAniReverse = styled.div`
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    animation: marqueeReverse 48s linear infinite;
+
+    @keyframes marqueeReverse {
+        0% {
+        transform: translateX(0%);
+        }
+        100% {
+        transform: translateX(-100%);
+        }
+    }
+`;
+
+export { FlowAniForward, FlowAniReverse };
