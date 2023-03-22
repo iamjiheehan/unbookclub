@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "../hooks/AuthContext";
 import Reviews from "../components/Reviews";
 import GridStyled from "../styled-components/GridStyled";
@@ -11,7 +11,6 @@ import iconTop from '../static/images/menu-icon-01.webp';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import styled from "styled-components";
-import useSearchReviews from "../hooks/useSearchReviews";
 
 const BoardWrapper = styled.div`
     min-height: 100vh;
@@ -21,56 +20,46 @@ export default function Board() {
     const { userObj } = useContext(AuthContext);
     const { reviewList } = useReviewForm(userObj);
     const [numReviewsToShow, setNumReviewsToShow] = useState(12);
-    const [hasSearched, setHasSearched] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
-    const { handleSearch } = useSearchReviews();
+    const [hasSearched, setHasSearched] = useState(false);
 
     const handleLoadMore = () => {
         setNumReviewsToShow(numReviewsToShow + 12);
     };
     
-    console.log("searchResults: ", searchResults);
-
+    console.log(searchResults, "from Board.js");
 
     return (
         <BoardWrapper>
             <ImgStyled src={iconTop} alt="Top Image" height="500px" />
-            <InputLink to="/create">글 쓰러 가기 <FontAwesomeIcon icon={faPencilAlt} /></InputLink>
+            <InputLink to="/create">
+                글 쓰러 가기 <FontAwesomeIcon icon={faPencilAlt} />
+            </InputLink>
             <div style={{ height: "2rem" }}></div>
-            <Search
-                setHasSearched={setHasSearched}
-                searchResults={searchResults}
-                setSearchResults={setSearchResults}
-                handleSearch={handleSearch}
-                />
+            <Search setSearchResults={setSearchResults} setHasSearched={setHasSearched} />
             <GridStyled rows="auto" columns="repeat(3,minmax(0,1fr))" margin="3rem">
-                {hasSearched
-                    ? searchResults.map((review) => (
-                        <Reviews
-                            key={review.id}
-                            reviewObj={review}
-                            isOwner={userObj && review.creatorId === userObj.uid}
-                            rating={review.selectedRating}
-                            bookTitle={review.title}
-                            bookAuthor={review.author}
-                        />
-                    ))
-                    : reviewList.slice(0, numReviewsToShow).map((review) => (
-                        <Reviews
-                            key={review.id}
-                            reviewObj={review}
-                            isOwner={userObj && review.creatorId === userObj.uid}
-                            rating={review.selectedRating}
-                            bookTitle={review.title}
-                            bookAuthor={review.author}
-                        />
-                    ))}
+                {(hasSearched ? searchResults : reviewList)
+                .slice(0, numReviewsToShow)
+                .map((review) => (
+                    <Reviews
+                    key={review.id}
+                    reviewObj={review}
+                    isOwner={userObj && review.creatorId === userObj.uid}
+                    rating={review.selectedRating}
+                    bookTitle={review.title}
+                    bookAuthor={review.author}
+                    />
+                ))}
             </GridStyled>
-            {numReviewsToShow < reviewList.length && (
-                    <Button variant="dark" onClick={handleLoadMore} style={{marginBottom:"4rem"}}>
-                        더 보기
-                    </Button>
-                )}
-        </BoardWrapper>
+            {!hasSearched && numReviewsToShow < reviewList.length && (
+                <Button
+                variant="dark"
+                onClick={handleLoadMore}
+                style={{ marginBottom: "4rem" }}
+                >
+                더 보기
+                </Button>
+            )}
+            </BoardWrapper>
     );
 }
