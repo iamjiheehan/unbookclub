@@ -14,7 +14,7 @@ const BookImage = styled(ImgStyled)`
 const BookInfo = styled.div`
     padding: 4rem 1rem;
     height: 100%;
-    background-color: #95a5a6;
+    background-color: rgba(149, 165, 166, 0.9);
     position: absolute;
     bottom: 0;
     left: 0;

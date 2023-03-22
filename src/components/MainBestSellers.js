@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import bestSeller from '../data/bestSeller.json'
 import { FlowAniForward, FlowAniReverse } from '../styled-components/AniStyled';
-import BookItem from '../components/BookItem';
 import {TextH2,TextP} from '../styled-components/TextStyled';
 import ImgStyled from '../styled-components/ImgStyled';
 import { BookItemContainer, BookImage, BookInfo } from '../styled-components/BookStyled';
