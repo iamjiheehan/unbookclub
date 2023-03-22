@@ -9,16 +9,16 @@ import { FaShoppingCart } from 'react-icons/fa';
 
 export default function MainBestSellers() {
     const [posts, setPosts] = useState([]);
-    const [isAdded, setIsAdded] = useState(false);
+    const [addedBooks, setAddedBooks] = useState([]);
 
-    const handleAddToCart = () => {
-        setIsAdded(true);
+    const handleAddToCart = (bookId) => {
+        setAddedBooks([...addedBooks, bookId]);
     };
-    
+
     useEffect(() => {
         setPosts(bestSeller);
     }, []);
-    
+
     return (
         <>
             <FlowAniForward>
@@ -28,8 +28,8 @@ export default function MainBestSellers() {
                             <BookInfo>
                                 <TextP>{post.title}</TextP>
                                 <TextH2 padding = '1rem 0 0 0'>{post.author}</TextH2>
-                                <Button onClick={handleAddToCart} disabled={isAdded}>
-                                    {isAdded ? '추가된 도서' : <><FaShoppingCart /> 읽을 목록에 추가하기</>}
+                                <Button onClick={() => handleAddToCart(post.itemId)} disabled={addedBooks.includes(post.itemId)}>
+                                    {addedBooks.includes(post.itemId) ? '추가된 도서' : <><FaShoppingCart /> 읽을 목록에 추가하기</>}
                                 </Button>
                             </BookInfo>
                         </BookItemContainer>

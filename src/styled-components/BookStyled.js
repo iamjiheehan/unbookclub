@@ -6,6 +6,11 @@ const BookItemContainer = styled.div`
     width: 100vw;
 `;
 
+const BookSlideContainer = styled.div`
+    position: relative;
+    width: 100vw;
+`;
+
 const BookImage = styled(ImgStyled)`
     width: 100%;
     height: 70%;
@@ -27,4 +32,4 @@ const BookInfo = styled.div`
     }
 `;
 
-export { BookItemContainer, BookImage, BookInfo }
+export { BookItemContainer, BookImage, BookInfo, BookSlideContainer }

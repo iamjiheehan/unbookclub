@@ -10,6 +10,7 @@ import icon05 from '../static/images/main-icon-05.webp';
 
 import testimonial from '../static/images/main-testimonial.webp';
 
+import NewBooks from '../components/NewBooks';
 import MainBestSellers from '../components/MainBestSellers';
 
 import Button from '../styled-components/ButtonStyled'; 
@@ -18,9 +19,8 @@ import { FlexRow, FlexCol } from '../styled-components/FlexStyled'
 import BackStyled from '../styled-components/BackStyled';
 import {TextH1,TextH2,TextP} from '../styled-components/TextStyled';
 import GridStyled from '../styled-components/GridStyled';
-import NewBooks from 'components/NewBooks';
 
-function Main() {
+export default function Main() {
     return (
         <>
             <Container>
@@ -121,5 +121,3 @@ function Main() {
         </>
     );
 }
-
-export default Main;
