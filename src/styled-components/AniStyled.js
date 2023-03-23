@@ -14,6 +14,10 @@ const FlowAniForward = styled.div`
         transform: translateX(0%);
         }
     }
+
+    &:hover {
+        animation-play-state: paused;
+    }
 `;
 
 const FlowAniReverse = styled.div`
@@ -29,6 +33,11 @@ const FlowAniReverse = styled.div`
         100% {
         transform: translateX(-100%);
         }
+        
+    }
+
+    &:hover {
+        animation-play-state: paused;
     }
 `;
 
