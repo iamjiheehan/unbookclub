@@ -1,5 +1,5 @@
 import MainBestSellers from 'components/MainBestSellers';
-import NewBooks from 'components/NewBooks';
+import { NewBooks, NewBooksSlide } from 'components/NewBooks';
 import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import Button from 'styled-components/ButtonStyled';
@@ -16,6 +16,7 @@ export default function Books() {
                 <div style={{overflow:'hidden'}}>
                     <TextH1 padding= '0 0 1rem 0'>신간 도서</TextH1>
                     <NewBooks />
+                    <NewBooksSlide />
                 </div>
             </Container>
         </>

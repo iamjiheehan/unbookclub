@@ -3,20 +3,31 @@ import Draggable from 'react-draggable';
 import styled from 'styled-components';
 
 const CarouselContainer = styled.div`
-    display: flex;
-    gap: 2rem;
-    width: 1000px;
+    /* display: flex; */
+    overflow : hidden;
     overflow-x: scroll;
-
+    background-color: red;
     ::-webkit-scrollbar {
         display: none;
     }
-    `;
+`;
 
-    export default function DraggableCarousel({ children }) {
-        return (
-            <Draggable axis="x" bounds="parent">
-                <CarouselContainer>{children}</CarouselContainer>
-            </Draggable>
-    );
-}
+
+const SliderWrap = styled.div`
+    background-color: blue;
+    width: 250px;
+    display: flex;
+    align-items: flex-start;
+
+    gap: 2rem;
+    flex-wrap: nowrap;
+    transform: ${({ transX }) => `translate3d(${transX}px, 0, 0)`};
+    transition: ${({ transX }) => (transX === 0 ? 'none' : 'transform 0.3s ease-in-out')};
+`;
+
+const SliderItem = styled.div`
+    /* width: 250px; */
+`;
+
+
+export { CarouselContainer, SliderWrap, SliderItem };
