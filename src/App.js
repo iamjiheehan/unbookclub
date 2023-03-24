@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./components/Header";
 
-import Search from "./components/Search";
+import { SearchBoard, SearchBooks } from "./components/Search";
 import Footer from "./components/Footer";
 import Create from "./components/Create"
 import SignIn from "./components/SignIn";
@@ -51,7 +51,7 @@ function App() {
                   <Link to="/create">Create</Link>
                 </li>
                 <li>
-                  <Link to="/search">Search</Link>
+                  <Link to="/search">SearchBoard</Link>
                 </li>
                 <li>
                   <Link to="/books">Books</Link>
@@ -93,7 +93,7 @@ function App() {
                 isSignedIn || isSignedUp ? <UserInfo /> : <Navigate to="/signIn" />
               }
             />
-            <Route path="/search" element={<Search />} />
+            <Route path="/search" element={<SearchBoard />} />
           </Routes>
           <Footer />
         </div>

@@ -2,14 +2,15 @@ import styled from 'styled-components';
 
 const commonStyles = `
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: ${(props) => props.wrap || 'wrap'};
     align-content: stretch;
-    margin: ${(props) => props.margin || '0'};
+    gap: ${(props) => props.gap || '0'};
 `;
 
 const FlexRowStyled = styled.div`
     ${commonStyles}
     align-items: ${(props) => props.alignItems || 'flex-end'};
+    margin: ${(props) => props.margin || '0'}; 
     flex-basis: ${(props) => props.flexBasis || 'auto'};
     justify-content: ${(props) => props.justify || 'center'};
 `;
@@ -18,6 +19,7 @@ const FlexColStyled = styled.div`
     ${commonStyles}
     flex-direction: ${(props) => props.direction || 'column'};
     align-items: ${(props) => props.alignItems || 'stretch'};
+    margin: ${(props) => props.margin || '0'}; 
 `;
 
 export { FlexRowStyled as FlexRow, FlexColStyled as FlexCol };

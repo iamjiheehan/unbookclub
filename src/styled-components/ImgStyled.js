@@ -6,5 +6,6 @@ const ImgStyled = styled.img`
     max-width:${(props) => props.maxWidth || 'auto'};
     padding:${(props) => props.padding || 'auto'};
     margin:${(props) => props.margin || 'auto'};
+    box-shadow: ${(props) => props.bgShadow || '0'};
 `
 export default ImgStyled;

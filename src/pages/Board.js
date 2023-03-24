@@ -4,7 +4,7 @@ import Reviews from "../components/Reviews";
 import GridStyled from "../styled-components/GridStyled";
 import { useReviewForm } from "../hooks/useReviewForm";
 import { InputLink } from "../styled-components/InputStyled";
-import Search from "../components/Search";
+import { SearchBoard, SearchBooks } from "../components/Search";
 import ImgStyled from '../styled-components/ImgStyled';
 import { Button } from "react-bootstrap";
 import iconTop from '../static/images/menu-icon-01.webp';
@@ -36,7 +36,7 @@ export default function Board() {
                 글 쓰러 가기 <FontAwesomeIcon icon={faPencilAlt} />
             </InputLink>
             <div style={{ height: "2rem" }}></div>
-            <Search setSearchResults={setSearchResults} setHasSearched={setHasSearched} />
+            <SearchBoard setSearchResults={setSearchResults} setHasSearched={setHasSearched} />
             <GridStyled rows="auto" columns="repeat(3,minmax(0,1fr))" margin="3rem">
                 {(hasSearched ? searchResults : reviewList)
                 .slice(0, numReviewsToShow)

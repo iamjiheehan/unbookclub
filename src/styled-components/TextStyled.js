@@ -9,6 +9,7 @@ const commonStyles = css`
     padding: ${(props) => props.padding || '0'};
     background-color: ${(props) => props.bgColor || 'none'};
     font-family: ${(props) => props.font || 'Pretendard, sans-serif, Arial'};
+    text-align: ${(props) => props.textAlign || 'center'};
     
 
     @font-face {

@@ -4,6 +4,7 @@ import { dbService } from 'fBase';
 export default function useSearchReviews() {
     const [searchTitle, setSearchTitle] = useState('');
     const [searchKeyword, setSearchKeyword] = useState('');
+    const [searchAuthor, setSearchAuthor] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [searchError, setSearchError] = useState('');
     const [hasSearched, setHasSearched] = useState(false);
@@ -20,7 +21,10 @@ export default function useSearchReviews() {
             }
             
             if (searchKeyword) {
-            query = query.where('review', '>=', searchKeyword).where('review', '<=', searchKeyword + "\uf8ff").orderBy('review');
+            query = query.where('review', '>=', searchAuthor).where('review', '<=', searchAuthor + "\uf8ff").orderBy('review');
+            }
+            if (searchKeyword) {
+                query = query.where('review', '>=', searchKeyword).where('review', '<=', searchKeyword + "\uf8ff").orderBy('review');
             }
             const querySnapshot = await query.orderBy('createdAt', 'desc').limit(10).get();
             console.log(`Found ${querySnapshot.docs.length} documents`);
@@ -37,6 +41,8 @@ export default function useSearchReviews() {
     };
 
     return {
+        searchAuthor,
+        setSearchAuthor,
         searchTitle,
         setSearchTitle,
         searchKeyword,

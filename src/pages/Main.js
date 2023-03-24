@@ -10,8 +10,8 @@ import icon05 from '../static/images/main-icon-05.webp';
 
 import testimonial from '../static/images/main-testimonial.webp';
 
-import NewBooks from '../components/NewBooks';
-import MainBestSellers from '../components/MainBestSellers';
+import { NewBooks, NewBooksList } from '../components/NewBooks';
+import { BestSellers, BestSellersList } from '../components/BestSellers';
 
 import Button from '../styled-components/ButtonStyled'; 
 import ImgStyled from '../styled-components/ImgStyled';
@@ -107,7 +107,7 @@ export default function Main() {
                             <div style={{overflow:'hidden'}}>
                                 <TextH1 padding= '0 0 1rem 0'>베스트셀러</TextH1>
                                 <TextH2 padding='0 0 2rem 0'>수십만 명의 독자들이 선택한 책들을 만나보세요!</TextH2>
-                                <MainBestSellers/>
+                                <BestSellers/>
                             </div>
                             <div style={{overflow:'hidden',marginTop:"2rem"}} >
                                 <TextH1 padding= '0 0 1rem 0'>신간 도서</TextH1>
