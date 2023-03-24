@@ -10,7 +10,7 @@ import icon05 from '../static/images/main-icon-05.webp';
 
 import testimonial from '../static/images/main-testimonial.webp';
 
-import {NewBooks} from '../components/NewBooks';
+import NewBooks from '../components/NewBooks';
 import MainBestSellers from '../components/MainBestSellers';
 
 import Button from '../styled-components/ButtonStyled'; 
