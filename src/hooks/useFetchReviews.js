@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { dbService } from "fBase";
-import AuthContext from "../hooks/AuthContext";
+import AuthContext from "../contexts/AuthContext";
 import { useLoadingContext } from "../hooks/useLoading";
 
 const useFetchReviews = () => {

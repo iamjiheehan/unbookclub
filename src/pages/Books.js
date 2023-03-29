@@ -17,7 +17,6 @@ import { Form } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaArrowRight} from "react-icons/fa";
 
-
 export default function Books() {
     const [searchResults, setSearchResults] = useState([]);
     const [hasSearched, setHasSearched] = useState(false);

@@ -12,7 +12,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import useSignOut from "../hooks/useSignOut";
 
 
-import AuthContext from "hooks/AuthContext";
+import AuthContext from "contexts/AuthContext";
 
 
 function Header({reviewObj}) {

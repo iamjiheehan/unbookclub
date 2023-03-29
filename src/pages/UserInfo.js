@@ -4,7 +4,7 @@ import BackStyled from "../styled-components/BackStyled";
 import ReviewTable from "../components/ReviewTable";
 
 import Container from 'react-bootstrap/Container';
-import AuthContext from "../hooks/AuthContext";
+import AuthContext from "../contexts/AuthContext";
 import useFetchReviews from "../hooks/useFetchReviews";
 import useUpdateProfile from "../hooks/useUpdateProfile";
 import { Loading } from "../hooks/useLoading";
@@ -33,6 +33,7 @@ export default function UserInfo() {
           </FlexCol>
           
         </form>
+          <TextH1 padding="0 0 3rem 0">읽을 목록</TextH1>
           <TextH1 padding="0 0 3rem 0">작성한 리뷰 목록</TextH1>
           {loading ? (
             <Loading />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/Header";
 
 import { SearchBoard, SearchBooks } from "./components/Search";
@@ -12,7 +12,9 @@ import UserInfo from "./pages/UserInfo";
 import Books from "./pages/Books"
 import Guide from "./pages/Guide";
 
-import AuthContext from "hooks/AuthContext";
+import AuthContext from "contexts/AuthContext";
+import AddedBooksContext from "contexts/AddedBooksContext";
+
 import useAuth from "hooks/useAuth"; 
 import { LoadingProvider, Loading } from "hooks/useLoading";
 
@@ -27,6 +29,8 @@ function App() {
     setIsSignedUp,
     refreshUser,
   } = useAuth();
+
+  const [addedBooks, setAddedBooks] = useState([]);
 
   return (
     <AuthContext.Provider value={{ isSignedIn, userObj, refreshUser }}>

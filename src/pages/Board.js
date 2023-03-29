@@ -1,7 +1,7 @@
 // 독후감 게시판
 
 import React, { useContext, useState } from "react";
-import AuthContext from "../hooks/AuthContext";
+import AuthContext from "../contexts/AuthContext";
 import Reviews from "../components/Reviews";
 import GridStyled from "../styled-components/GridStyled";
 import { useReviewForm } from "../hooks/useReviewForm";
