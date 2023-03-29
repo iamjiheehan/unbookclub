@@ -11,6 +11,8 @@ import HR from "styled-components/LineStyled";
 import FormStyled from "styled-components/FormStyled";
 import DropdownBtn from "styled-components/DropDownBtnStyled";
 import { FlexRow } from "styled-components/FlexStyled";
+// 도서 검색 게시판
+
 import { Form } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaArrowRight} from "react-icons/fa";
@@ -28,32 +30,32 @@ export default function Books() {
     return (
         <>
         <ImgStyled src={bookImg} alt="Top Image" height="500px" />
-        <Container>
-            <Button onClick={() => handleModeChange("베스트셀러")}>
-                <TextP color="white">베스트셀러 <FaArrowRight /></TextP>
-            </Button>
-            <Button onClick={() => handleModeChange("신간도서")}>
-                <TextP color="white">신간도서 <FaArrowRight /></TextP>
-            </Button>
-            <div style={{ overflow: "hidden" }}>
-            <SearchBooks
-                setSearchResults={setSearchResults}
-                setHasSearched={setHasSearched}
-            />
-            <HR height="0" margin="4rem 0" />
-            {mode === "베스트셀러" ? (
-                <BestSellersList
-                    searchResults={searchResults}
-                    hasSearched={hasSearched}
+            <Container>
+                <Button onClick={() => handleModeChange("베스트셀러")}>
+                    <TextP color="white">베스트셀러 <FaArrowRight /></TextP>
+                </Button>
+                <Button onClick={() => handleModeChange("신간도서")}>
+                    <TextP color="white">신간도서 <FaArrowRight /></TextP>
+                </Button>
+                <div style={{ overflow: "hidden" }}>
+                <SearchBooks
+                    setSearchResults={setSearchResults}
+                    setHasSearched={setHasSearched}
                 />
-            ) : (
-                <NewBooksList
-                    searchResults={searchResults}
-                    hasSearched={hasSearched}
-                />
-            )}
-            </div>
-        </Container>
+                <HR height="0" margin="4rem 0" />
+                {mode === "베스트셀러" ? (
+                    <BestSellersList
+                        searchResults={searchResults}
+                        hasSearched={hasSearched}
+                    />
+                ) : (
+                    <NewBooksList
+                        searchResults={searchResults}
+                        hasSearched={hasSearched}
+                    />
+                )}
+                </div>
+            </Container>
         </>
     );
 }
