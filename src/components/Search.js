@@ -3,19 +3,24 @@
 import React, { useState ,useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import ButtonStyle from "styled-components/ButtonStyled";
 import { Container } from "react-bootstrap";
 import DropdownBtn from "styled-components/DropDownBtnStyled";
 import Dropdown from "react-bootstrap/Dropdown";
 import { FaSearch } from "react-icons/fa";
 
-import { FlexRow } from "styled-components/FlexStyled";
+import { FlexCol, FlexRow } from "styled-components/FlexStyled";
 import FormStyled from "styled-components/FormStyled";
-import { TextP } from "styled-components/TextStyled";
+import { TextH1, TextH2, TextP } from "styled-components/TextStyled";
 
 import { useLoadingContext, Loading } from "hooks/useLoading";
 import useSearchReviews from "hooks/useSearchReviews";
 
 import { kakaoSearch } from "api/searchApi";
+import ImgStyled from "styled-components/ImgStyled";
+
+import { FaShoppingCart } from "react-icons/fa";
+
 
 function SearchBoard({ setSearchResults, setHasSearched }) {
     
@@ -135,6 +140,13 @@ function SearchBooks() {
     const [searchMode, setSearchMode] = React.useState("도서명으로 검색");
     const { startLoading, stopLoading } = useLoadingContext();
     const [books, setBooks] = useState([]);
+
+    const [addedBooks, setAddedBooks] = useState([]);
+
+
+    const handleAddToCart = (bookId) => {
+    setAddedBooks([...addedBooks, bookId]);
+    };
 
 // Search.js
     useEffect(() => {
@@ -263,12 +275,32 @@ function SearchBooks() {
             </Form>
             <Loading />
             {searchError && <TextP margin="1rem">{searchError}</TextP>}
+            <TextH1 margin="3rem auto 0 auto">검색 결과</TextH1>
             {searchResults.map(result => (
-                <div key={result.isbn}>
-                    <h3>{result.title}</h3>
-                    <p>{result.authors}</p>
-                    <img src={result.thumbnail} alt={result.title} />
-                </div>
+                <FlexRow key={result.isbn} alignItems="center" justify="flex-start" margin="2rem">
+                    <div>
+                        <ImgStyled src={result.thumbnail} alt={result.title} width="250px" bgShadow="0 0 10px 0 rgba(0, 0, 0, 0.5)" />
+                    </div>   
+                    <div>
+                        <FlexCol alignItems="flex-start" margin="2rem" wrap="nowrap">
+                            <TextH2>{result.title}</TextH2>
+                            <TextP padding="1rem 0">{result.authors}</TextP>
+                            <TextP textAlign="left">{result.contents}</TextP>
+                            <ButtonStyle
+                                onClick={() => handleAddToCart(result.isbn)}
+                                disabled={addedBooks.includes(result.isbn)}
+                                >
+                                {addedBooks.includes(result.isbn) ? (
+                                "추가된 도서"
+                                ) : (
+                                <>
+                                    <FaShoppingCart /> 읽을 목록에 추가하기
+                                </>
+                                )}
+                            </ButtonStyle>
+                        </FlexCol>
+                    </div>
+                </FlexRow>
                 ))}
         </Container>
     );
