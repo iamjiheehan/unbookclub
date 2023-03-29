@@ -266,8 +266,7 @@ function SearchBooks() {
             {searchResults.map(result => (
                 <div key={result.isbn}>
                     <h3>{result.title}</h3>
-                    <p>저자: {result.authors}</p>
-                    <p>출판사: {result.publisher}</p>
+                    <p>{result.authors}</p>
                     <img src={result.thumbnail} alt={result.title} />
                 </div>
                 ))}
