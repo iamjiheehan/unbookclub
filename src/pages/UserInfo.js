@@ -4,17 +4,21 @@ import BackStyled from "../styled-components/BackStyled";
 import ReviewTable from "../components/ReviewTable";
 
 import Container from 'react-bootstrap/Container';
+
 import AuthContext from "../contexts/AuthContext";
+
 import useFetchReviews from "../hooks/useFetchReviews";
 import useUpdateProfile from "../hooks/useUpdateProfile";
 import { Loading } from "../hooks/useLoading";
-import { FlexRow, FlexCol } from "../styled-components/FlexStyled";
-import { Input, BoardInput } from "../styled-components/InputStyled";
+
+import { FlexRow, FlexCol } from "styled-components/FlexStyled";
+import { Input, BoardInput } from "styled-components/InputStyled";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "styled-components/ButtonStyled";
-import ImgStyled from "styled-components/ImgStyled";
-import { removeBook } from "store";
 import HR from "styled-components/LineStyled";
+import ImgStyled from "styled-components/ImgStyled";
+
+import { removeBook } from "store";
 
 export default function UserInfo() {
   const { userObj, setUserObj } = useContext(AuthContext);

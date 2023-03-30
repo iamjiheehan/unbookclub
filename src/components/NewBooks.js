@@ -18,13 +18,19 @@ import { FaShoppingCart } from "react-icons/fa";
 function NewBooks() {
   const posts = newBooks;
   let addedBooks = useSelector((state) => state.book);
-  const dispatch = useDispatch(); //store.js로 요청보내주는 함수
+  const dispatch = useDispatch();
 
-  const handleAddToCart = (itemId) => {
-    if (!addedBooks.includes(itemId)) {
-      dispatch(addBook(itemId));
+  const handleAddToCart = (itemId, title, author, coverLargeUrl) => {
+    console.log("Adding book to cart:", itemId, title, author, coverLargeUrl);
+    const bookToAdd = posts.find((book) => book.itemId === itemId);
+    if (addedBooks.find((book) => book.itemId === itemId)) {
+      console.log("Book already in cart:", itemId);
+      return;
     }
+    dispatch(addBook({ ...bookToAdd, title, author, coverLargeUrl }));
+    console.log("Book added to cart:", itemId);
   };
+  
 
   return (
     <>
@@ -40,17 +46,17 @@ function NewBooks() {
               <TextP>{post.title}</TextP>
               <TextH2 padding="1rem 0 0 0">{post.author}</TextH2>
               <Button
-                onClick={() => handleAddToCart(post.itemId)}
-                disabled={addedBooks.includes(post.itemId)}
-              >
-                {addedBooks.includes(post.itemId) ? (
-                  "추가된 도서"
-                ) : (
-                  <>
-                    <FaShoppingCart /> 읽을 목록에 추가하기
-                  </>
-                )}
-              </Button>
+                    onClick={() => handleAddToCart(post.itemId, post.title, post.author, post.coverLargeUrl)}
+                    disabled={addedBooks.some((book) => book.itemId === post.itemId)}
+                  >
+                  {addedBooks.some((book) => book.itemId === post.itemId) ? (
+                      "추가된 도서"
+                    ) : (
+                      <>
+                        <FaShoppingCart /> 읽을 목록에 추가하기
+                      </>
+                    )}
+                  </Button>
             </BookInfo>
           </BookItemContainer>
         ))}

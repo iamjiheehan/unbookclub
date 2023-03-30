@@ -1,4 +1,7 @@
 import React, { useState, useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addBook } from 'store';
+
 import bestSeller from '../data/bestSeller.json'
 import { FlowAniForward, FlowAniReverse } from '../styled-components/AniStyled';
 import {TextH1, TextH2,TextP} from '../styled-components/TextStyled';
@@ -9,17 +12,19 @@ import { FaShoppingCart } from 'react-icons/fa';
 import { FlexCol, FlexRow } from 'styled-components/FlexStyled';
 
 function BestSellers() {
-    const [posts, setPosts] = useState([]);
-    const [addedBooks, setAddedBooks] = useState([]);
-
-    const handleAddToCart = (bookId) => {
-        setAddedBooks([...addedBooks, bookId]);
+    const posts = bestSeller;
+    let addedBooks = useSelector((state) => state.book);
+    const dispatch = useDispatch();
+    const handleAddToCart = (itemId, title, author, coverLargeUrl) => {
+        console.log("Adding book to cart:", itemId, title, author, coverLargeUrl);
+        const bookToAdd = posts.find((book) => book.itemId === itemId);
+        if (addedBooks.find((book) => book.itemId === itemId)) {
+            console.log("Book already in cart:", itemId);
+            return;
+        }
+        dispatch(addBook({ ...bookToAdd, title, author, coverLargeUrl }));
+        console.log("Book added to cart:", itemId);
     };
-
-    useEffect(() => {
-        setPosts(bestSeller);
-    }, []);
-
     return (
         <>
             <FlowAniForward>
@@ -29,8 +34,17 @@ function BestSellers() {
                             <BookInfo>
                                 <TextP>{post.title}</TextP>
                                 <TextH2 padding = '1rem 0 0 0'>{post.author}</TextH2>
-                                <Button onClick={() => handleAddToCart(post.itemId)} disabled={addedBooks.includes(post.itemId)}>
-                                    {addedBooks.includes(post.itemId) ? '추가된 도서' : <><FaShoppingCart /> 읽을 목록에 추가하기</>}
+                                <Button
+                                    onClick={() => handleAddToCart(post.itemId, post.title, post.author, post.coverLargeUrl)}
+                                    disabled={addedBooks.some((book) => book.itemId === post.itemId)}
+                                >
+                                {addedBooks.some((book) => book.itemId === post.itemId) ? (
+                                    "추가된 도서"
+                                    ) : (
+                                    <>
+                                        <FaShoppingCart /> 읽을 목록에 추가하기
+                                    </>
+                                    )}
                                 </Button>
                             </BookInfo>
                         </BookItemContainer>
@@ -41,15 +55,18 @@ function BestSellers() {
 }
 
 function BestSellersList() {
-    const [posts, setPosts] = useState([]);
-    const [addedBooks, setAddedBooks] = useState([]);
-
-    useEffect(() => {
-        setPosts(bestSeller);
-    }, []);
-
-    const handleAddToCart = (bookId) => {
-        setAddedBooks([...addedBooks, bookId]);
+    const posts = bestSeller;
+    let addedBooks = useSelector((state) => state.book);
+    const dispatch = useDispatch();
+    const handleAddToCart = (itemId, title, author, coverLargeUrl) => {
+        console.log("Adding book to cart:", itemId, title, author, coverLargeUrl);
+        const bookToAdd = posts.find((book) => book.itemId === itemId);
+        if (addedBooks.find((book) => book.itemId === itemId)) {
+            console.log("Book already in cart:", itemId);
+            return;
+        }
+        dispatch(addBook({ ...bookToAdd, title, author, coverLargeUrl }));
+        console.log("Book added to cart:", itemId);
     };
     return (
         <>
@@ -71,16 +88,16 @@ function BestSellersList() {
                                 <TextP padding="1rem 0">{post.author}</TextP>
                                 <TextP textAlign="left">{post.description}</TextP>
                                 <Button
-                                    onClick={() => handleAddToCart(post.itemId)}
-                                    disabled={addedBooks.includes(post.itemId)}
+                                    onClick={() => handleAddToCart(post.itemId, post.title, post.author, post.coverLargeUrl)}
+                                    disabled={addedBooks.some((book) => book.itemId === post.itemId)}
                                 >
-                                {addedBooks.includes(post.itemId) ? (
+                                {addedBooks.some((book) => book.itemId === post.itemId) ? (
                                     "추가된 도서"
-                                ) : (
+                                    ) : (
                                     <>
-                                    <FaShoppingCart /> 읽을 목록에 추가하기
+                                        <FaShoppingCart /> 읽을 목록에 추가하기
                                     </>
-                                )}
+                                    )}
                                 </Button>
                             </FlexCol>
                         </div>
