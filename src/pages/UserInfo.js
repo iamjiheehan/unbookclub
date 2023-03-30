@@ -30,7 +30,7 @@ export default function UserInfo() {
   }
 
   const handleRemoveFromCart = (book) => {
-    dispatch(removeBook(book.itemId));
+    dispatch(removeBook(book));
     console.log("remove button works");
   };
 

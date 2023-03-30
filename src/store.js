@@ -1,20 +1,33 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 
+const BOOK_STORAGE_KEY = 'myApp.books';
+
 const addedBooks = createSlice({
     name: "book",
-    initialState: [],
+    initialState: getBooksFromStorage(),
     reducers: {
-    addBook(state, action) {
+        addBook(state, action) {
         state.push(action.payload);
-    },
-    removeBook(state, action) {
-        const index = state.find((book) => book.itemId === action.payload);
+        saveBooksToStorage(state);
+        },
+        removeBook(state, action) {
+        const index = state.findIndex((book) => book.itemId === action.payload);
         if (index !== -1) {
             state.splice(index, 1);
+            saveBooksToStorage(state);
         }
         },
     },
 });
+
+function getBooksFromStorage() {
+    const booksJSON = localStorage.getItem(BOOK_STORAGE_KEY);
+    return booksJSON ? JSON.parse(booksJSON) : [];
+}
+
+function saveBooksToStorage(books) {
+    localStorage.setItem(BOOK_STORAGE_KEY, JSON.stringify(books));
+}
 
 export const { addBook, removeBook } = addedBooks.actions;
 
