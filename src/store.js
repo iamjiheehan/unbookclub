@@ -1,19 +1,25 @@
-import { configureStore , createSlice} from '@reduxjs/toolkit'
+import { configureStore, createSlice } from '@reduxjs/toolkit';
 
-let addedBooks = createSlice({
-    name: 'book',
-    initialState: ["취업하자"],
+const addedBooks = createSlice({
+    name: "book",
+    initialState: [],
     reducers: {
-        addBook(state, action){
-            state.push(action.payload)
+    addBook(state, action) {
+        state.push(action.payload);
+    },
+    removeBook(state, action) {
+        const index = state.find((book) => book.itemId === action.payload);
+        if (index !== -1) {
+            state.splice(index, 1);
         }
-    }
-})
+        },
+    },
+});
 
-export let {addBook} = addedBooks.actions;
+export const { addBook, removeBook } = addedBooks.actions;
 
 export default configureStore({
-    reducer: { 
-        book: addedBooks.reducer
-    }
-}) 
+    reducer: {
+        book: addedBooks.reducer,
+    },
+});

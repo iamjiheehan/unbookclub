@@ -30,11 +30,11 @@ export default function Books() {
         <>
         <ImgStyled src={bookImg} alt="Top Image" height="500px" />
             <Container>
-                <Button onClick={() => handleModeChange("베스트셀러")}>
-                    <TextP color="white">베스트셀러 <FaArrowRight /></TextP>
-                </Button>
                 <Button onClick={() => handleModeChange("신간도서")}>
                     <TextP color="white">신간도서 <FaArrowRight /></TextP>
+                </Button>
+                <Button onClick={() => handleModeChange("베스트셀러")}>
+                    <TextP color="white">베스트셀러 <FaArrowRight /></TextP>
                 </Button>
                 <div style={{ overflow: "hidden" }}>
                 <SearchBooks

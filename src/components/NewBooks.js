@@ -65,12 +65,17 @@ function NewBooksList() {
   let addedBooks = useSelector((state) => state.book);
   const dispatch = useDispatch();
 
-  const handleAddToCart = (itemId) => {
-    if (!addedBooks.includes(itemId)) {
-      dispatch(addBook(itemId));
+  const handleAddToCart = (itemId, title, author, coverLargeUrl) => {
+    console.log("Adding book to cart:", itemId, title, author, coverLargeUrl);
+    const bookToAdd = posts.find((book) => book.itemId === itemId);
+    if (addedBooks.find((book) => book.itemId === itemId)) {
+      console.log("Book already in cart:", itemId);
+      return;
     }
+    dispatch(addBook({ ...bookToAdd, title, author, coverLargeUrl }));
+    console.log("Book added to cart:", itemId);
   };
-
+  
   return (
     <>
       <TextH1 padding="0 0 1rem 0">신간도서</TextH1>
@@ -90,16 +95,16 @@ function NewBooksList() {
                   <TextP padding="1rem 0">{post.author}</TextP>
                   <TextP textAlign="left">{post.description}</TextP>
                   <Button
-                      onClick={() => handleAddToCart(post.itemId)}
-                      disabled={addedBooks.includes(post.itemId)}
-                    >
-                    {addedBooks.includes(post.itemId) ? (
-                      "추가된 도서"
-                    ) : (
-                      <>
-                        <FaShoppingCart /> 읽을 목록에 추가하기
-                      </>
-                    )}
+                    onClick={() => handleAddToCart(post.itemId, post.title, post.author, post.coverLargeUrl)}
+                    disabled={addedBooks.some((book) => book.itemId === post.itemId)}
+                  >
+                  {addedBooks.includes(post.itemId) ? (
+                    "added"
+                  ) : (
+                    <>
+                      <FaShoppingCart /> 읽을 목록에 추가하기
+                    </>
+                  )}
                   </Button>
                 </FlexCol>
                 
