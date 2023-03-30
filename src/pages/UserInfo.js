@@ -46,7 +46,6 @@ export default function UserInfo() {
           
         </form>
           {addedBooks.length === 0 && <TextH1>읽을 목록에 추가된 책이 없습니다.</TextH1>}
-          {addedBooks.length !== 0 && <TextH1>읽을 목록에 추가된 책이 {addedBooks.length}권 있습니다.</TextH1>}
           {addedBooks.length !== 0 && (
             <>
               <TextH1>읽을 목록에 추가된 책이 {addedBooks.length}권 있습니다.</TextH1>

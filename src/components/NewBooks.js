@@ -98,13 +98,13 @@ function NewBooksList() {
                     onClick={() => handleAddToCart(post.itemId, post.title, post.author, post.coverLargeUrl)}
                     disabled={addedBooks.some((book) => book.itemId === post.itemId)}
                   >
-                  {addedBooks.includes(post.itemId) ? (
-                    "added"
-                  ) : (
-                    <>
-                      <FaShoppingCart /> 읽을 목록에 추가하기
-                    </>
-                  )}
+                  {addedBooks.some((book) => book.itemId === post.itemId) ? (
+                      "추가된 도서"
+                    ) : (
+                      <>
+                        <FaShoppingCart /> 읽을 목록에 추가하기
+                      </>
+                    )}
                   </Button>
                 </FlexCol>
                 
