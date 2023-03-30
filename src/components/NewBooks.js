@@ -1,7 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { addBook } from 'store';
+
 import newBooks from "data/newBooks.json";
 import { FlowAniForward, FlowAniReverse } from "styled-components/AniStyled";
-import { TextH1, TextH2, TextP } from "../styled-components/TextStyled";
+import { TextH1, TextH2, TextP } from "styled-components/TextStyled";
 import ImgStyled from "styled-components/ImgStyled";
 import { FlexCol, FlexRow } from "styled-components/FlexStyled";
 import {
@@ -12,18 +15,16 @@ import {
 import Button from "styled-components/ButtonStyled";
 import { FaShoppingCart } from "react-icons/fa";
 
-
 function NewBooks() {
-  const [posts, setPosts] = useState([]);
-  const [addedBooks, setAddedBooks] = useState([]);
+  const posts = newBooks;
+  let addedBooks = useSelector((state) => state.book);
+  const dispatch = useDispatch(); //store.js로 요청보내주는 함수
 
-  const handleAddToCart = (bookId) => {
-    setAddedBooks([...addedBooks, bookId]);
+  const handleAddToCart = (itemId) => {
+    if (!addedBooks.includes(itemId)) {
+      dispatch(addBook(itemId));
+    }
   };
-
-  useEffect(() => {
-    setPosts(newBooks);
-  }, []);
 
   return (
     <>
@@ -60,16 +61,15 @@ function NewBooks() {
 
 
 function NewBooksList() {
-  const [posts, setPosts] = useState([]);
-  const [addedBooks, setAddedBooks] = useState([]);
+  const posts = newBooks;
+  let addedBooks = useSelector((state) => state.book);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-      setPosts(newBooks);
-    }, []);
-
-    const handleAddToCart = (bookId) => {
-      setAddedBooks([...addedBooks, bookId]);
-    };
+  const handleAddToCart = (itemId) => {
+    if (!addedBooks.includes(itemId)) {
+      dispatch(addBook(itemId));
+    }
+  };
 
   return (
     <>

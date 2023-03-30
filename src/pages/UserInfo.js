@@ -10,13 +10,15 @@ import useUpdateProfile from "../hooks/useUpdateProfile";
 import { Loading } from "../hooks/useLoading";
 import { FlexRow, FlexCol } from "../styled-components/FlexStyled";
 import { Input, BoardInput } from "../styled-components/InputStyled";
+import { useSelector } from "react-redux";
 
 export default function UserInfo() {
   const { userObj, setUserObj } = useContext(AuthContext);
   const { reviews, loading } = useFetchReviews(userObj);
   const { newDisplayName, onChange, onSubmit } = useUpdateProfile();
-
   
+  let addedBooks = useSelector((state) => state.book);
+
 
   if (!userObj) {
     return null;
@@ -34,6 +36,16 @@ export default function UserInfo() {
           
         </form>
           <TextH1 padding="0 0 3rem 0">읽을 목록</TextH1>
+          {/* {addedBooks.length === 0 && <p>읽을 목록에 추가된 책이 없습니다.</p>}
+          {addedBooks.length !== 0 && <p>읽을 목록에 추가된 책이 {addedBooks.length}권 있습니다.</p>} */}
+          {addedBooks.length !== 0 && (
+            <>
+              <TextH1>읽을 목록에 추가된 책이 {addedBooks.length}권 있습니다.</TextH1>
+              {addedBooks.map((title) => (
+                <li>{title}</li>
+              ))}
+            </>
+          )}
           <TextH1 padding="0 0 3rem 0">작성한 리뷰 목록</TextH1>
           {loading ? (
             <Loading />
