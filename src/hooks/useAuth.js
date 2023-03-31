@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { authService } from "../fBase";
+import { authService, firebaseInstance } from "../fBase";
 
 function useAuth() {
     const [init, setInit] = useState(false);
@@ -21,6 +21,23 @@ function useAuth() {
             setUserObj(null);
         }
         setInit(true);
+        });
+    }, []);
+
+    useEffect(() => {
+        // Sign in the user anonymously
+        firebaseInstance.auth().signInAnonymously().then((userCredential) => {
+            const user = userCredential.user;
+            setIsSignedIn(true);
+            setUserObj({
+                displayName: "Anonymous",
+                uid: user.uid,
+                updateProfile: (args) => user.updateProfile(args),
+            });
+            setInit(true);
+        }).catch((error) => {
+            console.log("Error signing in anonymously:", error);
+            setInit(true);
         });
     }, []);
 
