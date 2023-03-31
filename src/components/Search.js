@@ -21,6 +21,9 @@ import ImgStyled from "styled-components/ImgStyled";
 
 import { FaShoppingCart } from "react-icons/fa";
 
+import { useSelector, useDispatch } from 'react-redux';
+import { addBook } from 'store';
+
 
 function SearchBoard({ setSearchResults, setHasSearched }) {
     
@@ -139,28 +142,35 @@ function SearchBooks() {
     const [query, setQuery] = useState('');
     const [searchMode, setSearchMode] = React.useState("도서명으로 검색");
     const { startLoading, stopLoading } = useLoadingContext();
-    const [books, setBooks] = useState([]);
 
-    const [addedBooks, setAddedBooks] = useState([]);
+    const addedBooks = useSelector((state) => state.book);
+    const dispatch = useDispatch();
 
 
-    const handleAddToCart = (bookId) => {
-    setAddedBooks([...addedBooks, bookId]);
+
+    const handleAddToCart = (itemId, title, author, coverLargeUrl) => {
+        console.log('Adding book to cart:', itemId, title, author, coverLargeUrl);
+        const bookToAdd = searchResults.find((book) => book.isbn === itemId);
+        if (addedBooks.find((book) => book.itemId === itemId)) {
+            console.log('Book already in cart:', itemId);
+            return;
+        }
+        dispatch(addBook({ ...bookToAdd, title, author, coverLargeUrl }));
+        console.log('Book added to cart:', itemId);
     };
 
-// Search.js
     useEffect(() => {
         const fetchBooks = async () => {
-        try {
-            const { data } = await kakaoSearch({ query: 'some_search_term' });
-            setBooks(data);
-            console.log("fetchBooks");
-        } catch (error) {
-            console.error('Error fetching books:', error);
-        }
+            try {
+                const { data } = await kakaoSearch({ query: 'some_search_term' });
+                setSearchResults(data.documents);
+                console.log('fetchBooks');
+                } catch (error) {
+                    console.error('Error fetching books:', error);
+            }
         };
         fetchBooks();
-    }, []); // Add an empty dependency array
+      }, []); // Add an empty dependency array
     
 
     const handleSearch = async (event) => {
@@ -207,6 +217,8 @@ function SearchBooks() {
         }
     };
     
+
+
     return (
         <Container>
             <Form style={{ display: "inline-block" }} onSubmit={handleSearch}>
@@ -287,17 +299,17 @@ function SearchBooks() {
                             <TextP padding="1rem 0">{result.authors}</TextP>
                             <TextP textAlign="left">{result.contents}</TextP>
                             <ButtonStyle
-                                onClick={() => handleAddToCart(result.isbn)}
-                                disabled={addedBooks.includes(result.isbn)}
+                                onClick={() => handleAddToCart(result.isbn, result.title, result.authors, result.thumbnail)}
+                                disabled={addedBooks.some((book) => book.itemId === result.isbn)}
                                 >
-                                {addedBooks.includes(result.isbn) ? (
+                                {addedBooks.some((book) => book.itemId === result.isbn) ? (
                                 "추가된 도서"
                                 ) : (
                                 <>
                                     <FaShoppingCart /> 읽을 목록에 추가하기
                                 </>
                                 )}
-                            </ButtonStyle>
+                                </ButtonStyle>
                         </FlexCol>
                     </div>
                 </FlexRow>
