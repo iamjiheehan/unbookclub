@@ -285,7 +285,9 @@ function SearchBooks() {
                 </div>
             </Form>
             <Loading />
-            {searchError && <TextP margin="1rem">{searchError}</TextP>}
+            {searchResults.length===0 && (
+                <TextP padding="3rem 0 0 0"> 이런, 안타깝게도 검색 결과가 없습니다. {searchError}</TextP>
+            )}
             {searchResults.map(result => (
                 <FlexRow key={result.isbn} alignItems="center" justify="flex-start" margin="2rem">
                     <div>
