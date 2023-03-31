@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { TextH1, TextP } from "../styled-components/TextStyled";
 import BackStyled from "../styled-components/BackStyled";
 import ReviewTable from "../components/ReviewTable";
@@ -26,12 +26,32 @@ export default function UserInfo() {
   const { reviews, loading } = useFetchReviews(userObj);
   const { newDisplayName, onChange, onSubmit } = useUpdateProfile();
   const dispatch = useDispatch();
+  const [filteredReviews, setFilteredReviews] = useState([]);
 
   let addedBooks = useSelector((state) => state.book);
-
+  
+  useEffect(() => {
+    setFilteredReviews(reviews);
+  }, [reviews]);
+  
   if (!userObj) {
     return null;
   }
+
+  const sortByDateDescending = () => {
+    const sortedReviews = [...filteredReviews].sort((a, b) => new Date(b.written_date) - new Date(a.written_date));
+    setFilteredReviews(sortedReviews);
+  };
+  
+  const sortByDateAscending = () => {
+    const sortedReviews = [...filteredReviews].sort((a, b) => new Date(a.written_date) - new Date(b.written_date));
+    setFilteredReviews(sortedReviews);
+  };
+  
+  const sortByRating = () => {
+    const sortedReviews = [...filteredReviews].sort((a, b) => b.rating - a.rating);
+    setFilteredReviews(sortedReviews);
+  };
 
   const handleRemoveFromCart = (book) => {
     dispatch(removeBook(book));
@@ -68,17 +88,18 @@ export default function UserInfo() {
           <TextH1 padding="0 0 3rem 0">작성한 리뷰 목록</TextH1>
           <Dropdown style={{textAlign:"right", marginBottom:"2rem"}}>
             <Dropdown.Toggle variant="secondary" id="dropdown-basic" style={{backgroundColor:"white", color:"black"}}>
-              최신 순
+              정렬 기준
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">오래된 순</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">별점 순</Dropdown.Item>
+              <Dropdown.Item onClick={sortByDateDescending} href="#/action-1">오래된 순</Dropdown.Item>
+              <Dropdown.Item onClick={sortByDateAscending} href="#/action-3">최신 순</Dropdown.Item>
+              <Dropdown.Item onClick={sortByRating} href="#/action-2">별점 순</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           {loading ? (
             <Loading />
           ) : (
-            <ReviewTable reviews={reviews} />
+            <ReviewTable reviews={filteredReviews} />
           )}
       </BackStyled>
     </Container>
