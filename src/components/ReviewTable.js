@@ -14,12 +14,12 @@ const ReviewTable = ({ reviews }) => {
         <Table striped bordered hover responsive>
             <thead>
                 <tr>
-                <th>순서</th>
-                <th>별점</th>
-                <th>책 제목</th>
-                <th>작가</th>
-                <th>리뷰 내용</th>
-                <th>작성일시</th>
+                    <th style={{width:"5rem"}}><TextP>순서</TextP></th>
+                    <th style={{width:"7.7rem"}}><TextP>별점</TextP></th>
+                    <th style={{width:"7.5rem"}}><TextP>책 제목</TextP></th>
+                    <th style={{width:"7rem"}}><TextP>작가</TextP></th>
+                    <th style={{width:"auto"}}><TextP>리뷰 내용</TextP></th>
+                    <th style={{width:"20rem"}}><TextP>작성일시</TextP></th>
                 </tr>
             </thead>
             <tbody>
@@ -34,9 +34,9 @@ const ReviewTable = ({ reviews }) => {
                             value={review.selectedRating}
                         />
                     </td>
-                    <td>{review.bookTitle}</td>
-                    <td>{review.bookAuthor}</td>
-                    <td>{review.review}</td>
+                    <td><TextP>{review.title}</TextP></td>
+                    <td><TextP>{review.author}</TextP></td>
+                    <td><TextP>{review.review}</TextP></td>
                     <td><TextP>{formatDate(review.createdAt)}</TextP></td>
                 </tr>
                 ))}
