@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -10,16 +10,33 @@ import { TextP } from '../styled-components/TextStyled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import useSignOut from "../hooks/useSignOut";
-
+import { LoadingBack, LoadingText } from '../styled-components/LoadingStyled';
+import Cube from "../static/images/cube.gif";
 
 import AuthContext from "contexts/AuthContext";
-
+import { firebaseInstance } from 'fBase';
 
 function Header({reviewObj}) {
     const { userObj } = useContext(AuthContext);
     const displayName = userObj?.displayName;
     const onSignOutClick = useSignOut();
-    
+
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // Check Firebase authentication status
+        firebaseInstance.auth().onAuthStateChanged((user) => {
+            setLoading(false);
+        });
+    }, []);
+
+    if (loading) {
+        return <LoadingBack>
+        <LoadingText>잠시만 기다려 주세요.</LoadingText>
+        <img src={Cube} alt="로딩중" width="5%" />
+    </LoadingBack>;
+    }
+
     return (
         <Navbar bg="light" expand="lg">
             <Container>

@@ -22,7 +22,7 @@ export const LoadingProvider = ({ children }) => {
 
     return (
         <LoadingContext.Provider value={{ loading, startLoading, stopLoading }}>
-        {children}
+            {children}
         </LoadingContext.Provider>
     );
 };
@@ -30,17 +30,17 @@ export const LoadingProvider = ({ children }) => {
 export const Loading = () => {
     const context = useLoadingContext();
 
-        if (!context) {
-        return null; // or render a default loading state
-        }
+    if (!context) {
+    return null; // or render a default loading state
+    }
 
-        const { loading } = context;
+    const { loading } = context;
 
-        return (
+    return (
         loading && (
             <LoadingBack>
-            <LoadingText>잠시만 기다려 주세요.</LoadingText>
-            <img src={Cube} alt="로딩중" width="5%" />
+                <LoadingText>잠시만 기다려 주세요.</LoadingText>
+                <img src={Cube} alt="로딩중" width="5%" />
             </LoadingBack>
         )
     );
