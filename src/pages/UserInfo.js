@@ -28,7 +28,6 @@ export default function UserInfo() {
 
   let addedBooks = useSelector((state) => state.book);
 
-
   if (!userObj) {
     return null;
   }
@@ -44,7 +43,7 @@ export default function UserInfo() {
         <TextH1><strong>{userObj.displayName}</strong> 님 안녕하세요</TextH1>
         <form onSubmit={onSubmit}>
           <FlexCol >
-            <BoardInput margin="2rem auto" width="60%" onChange={onChange} type="update" placeholder="변경된 닉네임은 기존 작성 게시글에도 적용됩니다." value={newDisplayName} />
+            <BoardInput margin="2rem auto" width="60%" onChange={onChange} type="update" placeholder="닉네임을 설정해주세요." value={newDisplayName} />
             <Input margin="2rem auto 3rem auto" type="submit" value="닉네임 변경하기" />
           </FlexCol>
         </form>

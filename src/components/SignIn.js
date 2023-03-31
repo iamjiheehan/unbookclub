@@ -23,6 +23,7 @@ export default function SignIn() {
     onSocialClick,
     onLoginSubmit,
     onCreateAccountSubmit,
+    handleAnonymousLogin,
   } = useSignInForm();
   
   return (
@@ -55,14 +56,25 @@ export default function SignIn() {
             {errorMessage}
           </Form.Group>
         </Form>
-        <Button
-          type="submit"
-          bgColor="#e67e22"
-          fontWeight="500"
-          onClick={onLoginSubmit}
-        >
-          로그인 하기
-        </Button>
+        <FlexRow> 
+          <Button
+            type="submit"
+            bgColor="#e67e22"
+            fontWeight="500"
+            onClick={onLoginSubmit}
+          >
+            로그인
+          </Button>
+          <Button
+            type="submit"
+            fontWeight="500"
+            onClick={handleAnonymousLogin}
+          >
+            익명으로 이용
+          </Button>
+
+        </FlexRow>
+          
         <TextP>소셜 계정으로 로그인 하기</TextP>
           <FlexRow alignItems='center'>
               <SocialBtn

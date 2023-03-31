@@ -10,6 +10,15 @@ function useSignInForm() {
     const [errorMessage, setErrorMessage] = useState("");
     const [showAlert, setShowAlert] = useState(false);
 
+
+const handleAnonymousLogin = () => {
+    firebaseInstance.auth().signInAnonymously()
+        .then(() => {
+        })
+        .catch((error) => {
+        });
+    };
+
 const onSocialClick = async (event) => {
     if (event) {
     event.preventDefault();
@@ -117,6 +126,7 @@ const onCreateAccountSubmit = async (event) => {
         onSocialClick,
         onLoginSubmit,
         onCreateAccountSubmit,
+        handleAnonymousLogin,
     };
 }
 
