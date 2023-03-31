@@ -140,24 +140,13 @@ function SearchBooks() {
     const [searchError, setSearchError] = useState(null);
     const [searchResults, setSearchResults] = useState([]);
     const [query, setQuery] = useState('');
+
     const [searchMode, setSearchMode] = React.useState("도서명으로 검색");
     const { startLoading, stopLoading } = useLoadingContext();
 
     const addedBooks = useSelector((state) => state.book);
     const dispatch = useDispatch();
 
-
-
-    const handleAddToCart = (itemId, title, author, coverLargeUrl) => {
-        console.log('Adding book to cart:', itemId, title, author, coverLargeUrl);
-        const bookToAdd = searchResults.find((book) => book.isbn === itemId);
-        if (addedBooks.find((book) => book.itemId === itemId)) {
-            console.log('Book already in cart:', itemId);
-            return;
-        }
-        dispatch(addBook({ ...bookToAdd, title, author, coverLargeUrl }));
-        console.log('Book added to cart:', itemId);
-    };
 
     useEffect(() => {
         const fetchBooks = async () => {
@@ -172,6 +161,18 @@ function SearchBooks() {
         fetchBooks();
       }, []); // Add an empty dependency array
     
+
+    const handleAddToCart = (itemId, title, author, coverLargeUrl, isbn) => {
+        console.log('Adding book to cart:', itemId, title, author, coverLargeUrl);
+        const bookToAdd = searchResults.find((book) => book.isbn === itemId);
+        if (addedBooks.some((book) => book.isbn === bookToAdd.isbn)) {
+            console.log('Book already in cart:', bookToAdd.isbn);
+            console.log("Now we have this", addedBooks);
+            return;
+        }
+        dispatch(addBook({ ...bookToAdd, title, author, coverLargeUrl, isbn: bookToAdd.isbn }));
+    };
+
 
     const handleSearch = async (event) => {
         event.preventDefault();
@@ -300,9 +301,9 @@ function SearchBooks() {
                             <TextP textAlign="left">{result.contents}</TextP>
                             <ButtonStyle
                                 onClick={() => handleAddToCart(result.isbn, result.title, result.authors, result.thumbnail)}
-                                disabled={addedBooks.some((book) => book.itemId === result.isbn)}
+                                disabled={addedBooks.some((book) => book.isbn === result.isbn)}
                                 >
-                                {addedBooks.some((book) => book.itemId === result.isbn) ? (
+                                {addedBooks.some((book) => book.isbn === result.isbn) ? (
                                 "추가된 도서"
                                 ) : (
                                 <>
