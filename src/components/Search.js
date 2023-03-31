@@ -295,7 +295,7 @@ function SearchBooks() {
                         <ImgStyled src={result.thumbnail} alt={result.title} width="250px" bgShadow="0 0 10px 0 rgba(0, 0, 0, 0.5)" />
                     </div>   
                     <div>
-                        <FlexCol alignItems="flex-start" margin="2rem" wrap="nowrap">
+                        <FlexCol key={result.isbn} alignItems="flex-start" margin="2rem" wrap="nowrap">
                             <TextH2>{result.title}</TextH2>
                             <TextP padding="1rem 0">{result.authors}</TextP>
                             <TextP textAlign="left">{result.contents}</TextP>
