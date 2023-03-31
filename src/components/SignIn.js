@@ -19,9 +19,6 @@ export default function SignIn() {
     createPassword,
     confirmPassword,
     errorMessage,
-    showAlert,
-    setErrorMessage,
-    setShowAlert,
     onChange,
     onSocialClick,
     onLoginSubmit,
@@ -31,7 +28,7 @@ export default function SignIn() {
   return (
     <FlexRow alignItems="flex-start" justify="space-evenly">
       <BackStyled bgColor="white" padding="3rem" style={{ width: "33.3%" }}>
-        <TextH1>로그인 페이지</TextH1>
+        <TextH1 margin="0 auto 2rem auto">로그인 페이지</TextH1>
         <Form onSubmit={onLoginSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail-login">
             <Form.Control
@@ -86,10 +83,12 @@ export default function SignIn() {
       </BackStyled>
       <HR isVertical height="500px" />
       <BackStyled padding="3rem" bgColor="white" style={{ width: "33.3%" }}>
-        <TextH1>처음 오셨나요?</TextH1>
-        <TextP>
+        <TextH1 margin="0 auto 2rem auto">처음 오셨나요?</TextH1>
+        <TextP margin="0 auto 1rem auto">
           함께하는 독서,
-          <br /> THE UNBOOK CLUB에서 시작하세요.
+        </TextP>
+        <TextP margin="0 auto 1rem auto">
+          THE UNBOOK CLUB에서 시작하세요.
         </TextP>
         <Form onSubmit={onCreateAccountSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail-create">

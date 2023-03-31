@@ -114,7 +114,7 @@ export default function Main() {
                                 <TextH2 padding='0 0 2rem 0'>새로운 도서들을 독자들과 함께 읽어보세요!</TextH2>
                                 <NewBooks />
                             </div>
-                            <Button to="/books">도서 검색하러 가기</Button>
+                            <Button to="/books" margin="0 0 3rem 0">도서 검색하러 가기</Button>
                         </Container>
                     </div>
             </div>

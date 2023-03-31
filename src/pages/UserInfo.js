@@ -47,7 +47,6 @@ export default function UserInfo() {
             <BoardInput margin="2rem auto" width="60%" onChange={onChange} type="update" placeholder="변경된 닉네임은 기존 작성 게시글에도 적용됩니다." value={newDisplayName} />
             <Input margin="2rem auto 3rem auto" type="submit" value="닉네임 변경하기" />
           </FlexCol>
-          
         </form>
           {addedBooks.length === 0 && <TextH1>읽을 목록에 추가된 책이 없습니다.</TextH1>}
           {addedBooks.length !== 0 && (

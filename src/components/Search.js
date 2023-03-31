@@ -33,7 +33,6 @@ function SearchBoard({ setSearchResults, setHasSearched }) {
         setSearchTitle,
         setSearchKeyword,
         searchError,
-        setSearchError,
         searchResults,
         handleSearch,
     } = useSearchReviews();
@@ -202,7 +201,6 @@ function SearchBooks() {
                 console.error(error);
             }
         } else {
-            // Add a condition to check if searchResults is not empty before setting it to an empty array
             if (searchResults.length > 0) {
                 setSearchResults([]);
             }
@@ -219,7 +217,6 @@ function SearchBooks() {
         }
     };
     
-
 
     return (
         <Container>
@@ -289,7 +286,6 @@ function SearchBooks() {
             </Form>
             <Loading />
             {searchError && <TextP margin="1rem">{searchError}</TextP>}
-            <TextH1 margin="3rem auto 0 auto">검색 결과</TextH1>
             {searchResults.map(result => (
                 <FlexRow key={result.isbn} alignItems="center" justify="flex-start" margin="2rem">
                     <div>
