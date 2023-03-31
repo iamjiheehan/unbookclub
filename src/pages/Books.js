@@ -1,20 +1,16 @@
+// 도서 검색 게시판
+
 import { BestSellers, BestSellersList } from "components/BestSellers";
 import { NewBooks, NewBooksList } from "components/NewBooks";
 import { SearchBoard, SearchBooks } from "components/Search";
-import React, { useState, useEffect } from "react";
-import { Container, Dropdown } from "react-bootstrap";
+import React, { useState} from "react";
+import { Container } from "react-bootstrap";
 import Button from "styled-components/ButtonStyled";
-import { TextH1, TextH2, TextP } from "styled-components/TextStyled";
+import { TextP } from "styled-components/TextStyled";
 import bookImg from "../static/images/menu-icon-03.webp";
 import ImgStyled from "../styled-components/ImgStyled";
 import HR from "styled-components/LineStyled";
-import FormStyled from "styled-components/FormStyled";
-import DropdownBtn from "styled-components/DropDownBtnStyled";
-import { FlexRow } from "styled-components/FlexStyled";
-// 도서 검색 게시판
 
-import { Form } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaArrowRight} from "react-icons/fa";
 
 export default function Books() {
