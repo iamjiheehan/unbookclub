@@ -27,6 +27,7 @@ export default function UserInfo() {
   const { newDisplayName, onChange, onSubmit } = useUpdateProfile();
   const dispatch = useDispatch();
   const [filteredReviews, setFilteredReviews] = useState([]);
+  const [sortingCriteria, setSortingCriteria] = useState("");
 
   let addedBooks = useSelector((state) => state.book);
   
@@ -39,24 +40,36 @@ export default function UserInfo() {
   }
 
   const sortByDateDescending = () => {
-    const sortedReviews = [...filteredReviews].sort((a, b) => new Date(b.written_date) - new Date(a.written_date));
+    const sortedReviews = [...filteredReviews].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     setFilteredReviews(sortedReviews);
+    setSortingCriteria("date_descending");
+    console.log("sort by date descending works");
   };
   
   const sortByDateAscending = () => {
-    const sortedReviews = [...filteredReviews].sort((a, b) => new Date(a.written_date) - new Date(b.written_date));
+    const sortedReviews = [...filteredReviews].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
     setFilteredReviews(sortedReviews);
+    setSortingCriteria("date_ascending");
+    console.log("sort by date ascending works");
   };
   
   const sortByRating = () => {
-    const sortedReviews = [...filteredReviews].sort((a, b) => b.rating - a.rating);
+    const sortedReviews = [...filteredReviews].sort((a, b) => b.selectedRating - a.selectedRating);
     setFilteredReviews(sortedReviews);
+    setSortingCriteria("rating");
+    console.log("sort by rating works");
   };
 
   const handleRemoveFromCart = (book) => {
     dispatch(removeBook(book));
     console.log("remove button works");
   };
+
+  const handleDeleteReview = (reviewId) => {
+    const newReviews = reviews.filter((review) => review.id !== reviewId);
+    setFilteredReviews(newReviews);
+  };
+
 
   return (
     <Container>
@@ -68,39 +81,42 @@ export default function UserInfo() {
             <Input margin="2rem auto 3rem auto" type="submit" value="닉네임 변경하기" />
           </FlexCol>
         </form>
-          {addedBooks.length === 0 && <TextH1>읽을 목록에 추가된 책이 없습니다.</TextH1>}
-          {addedBooks.length !== 0 && (
-            <>
-              <TextH1>읽을 목록에 추가된 책이 {addedBooks.length}권 있습니다.</TextH1>
-              {addedBooks.map((book) => (
-                <FlexRow key={book.isbn} alignItems="center">
-                  <ImgStyled src={book.coverLargeUrl} alt={book.title} width="100px" />
-                  <FlexCol>
-                    <TextP>{book.title}</TextP>
-                    <TextP>{book.author}</TextP>
-                    <Button onClick={() => handleRemoveFromCart(book.itemId)}>삭제하기</Button>
-                  </FlexCol>
-                </FlexRow>
-              ))}
-            </>
-          )}
-          <HR height="0" margin="4rem 0" />
-          <TextH1 padding="0 0 3rem 0">작성한 리뷰 목록</TextH1>
-          <Dropdown style={{textAlign:"right", marginBottom:"2rem"}}>
-            <Dropdown.Toggle variant="secondary" id="dropdown-basic" style={{backgroundColor:"white", color:"black"}}>
-              정렬 기준
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item onClick={sortByDateDescending} href="#/action-1">오래된 순</Dropdown.Item>
-              <Dropdown.Item onClick={sortByDateAscending} href="#/action-3">최신 순</Dropdown.Item>
-              <Dropdown.Item onClick={sortByRating} href="#/action-2">별점 순</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          {loading ? (
-            <Loading />
-          ) : (
-            <ReviewTable reviews={filteredReviews} />
-          )}
+        {addedBooks.length === 0 && <TextH1>읽을 목록에 추가된 책이 없습니다.</TextH1>}
+        {addedBooks.length !== 0 && (
+          <>
+            <TextH1>읽을 목록에 추가된 책이 {addedBooks.length}권 있습니다.</TextH1>
+            {addedBooks.map((book) => (
+              <FlexRow key={book.isbn} alignItems="center">
+                <ImgStyled src={book.coverLargeUrl} alt={book.title} width="100px" />
+                <FlexCol>
+                  <TextP>{book.title}</TextP>
+                  <TextP>{book.author}</TextP>
+                  <Button onClick={() => handleRemoveFromCart(book.itemId)}>삭제하기</Button>
+                </FlexCol>
+              </FlexRow>
+            ))}
+          </>
+        )}
+        <HR height="0" margin="4rem 0" />
+        <TextH1 padding="0 0 3rem 0">작성한 리뷰 목록</TextH1>
+        <Dropdown style={{textAlign:"right", marginBottom:"2rem"}}>
+          <Dropdown.Toggle variant="secondary" id="dropdown-basic" style={{backgroundColor:"white", color:"black"}}>
+            정렬 기준
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item onClick={sortByDateDescending} href="#/action-1">최신 순</Dropdown.Item>
+            <Dropdown.Item onClick={sortByDateAscending} href="#/action-3">오래된 순</Dropdown.Item>
+            <Dropdown.Item onClick={sortByRating} href="#/action-2">별점 순</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            {filteredReviews.length === 0 && <TextH1>작성한 리뷰가 없습니다.</TextH1>}
+            {filteredReviews.length !== 0 && <ReviewTable reviews={filteredReviews} onDeleteReview={handleDeleteReview} />}
+          </>
+        )}
       </BackStyled>
     </Container>
   );
