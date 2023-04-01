@@ -6,9 +6,10 @@ import Reviews from "../components/Reviews";
 import GridStyled from "../styled-components/GridStyled";
 import { useReviewForm } from "../hooks/useReviewForm";
 import { InputLink } from "../styled-components/InputStyled";
-import { SearchBoard, SearchBooks } from "../components/Search";
+import { SearchBoard } from "../components/Search";
 import ImgStyled from '../styled-components/ImgStyled';
 import { Button } from "react-bootstrap";
+import BtnStyled from '../styled-components/ButtonStyled';
 import iconTop from '../static/images/menu-icon-01.webp';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
@@ -32,10 +33,8 @@ export default function Board() {
     
     const handleShowUserReviewsOnly = () => {
         if (showUserReviewsOnly) {
-          // if already showing user reviews, show all reviews
             setHasSearched(false);
         } else {
-          // show only user reviews
             const filteredReviews = reviewList.filter((review) => review.creatorId === userObj.uid);
             setSearchResults(filteredReviews);
             setHasSearched(true);
@@ -52,9 +51,9 @@ export default function Board() {
                 글 쓰러 가기 <FontAwesomeIcon icon={faPencilAlt} />
             </InputLink>
             <div style={{ height: "2rem" }}></div>
-            <Button onClick={handleShowUserReviewsOnly} variant="dark" style={{ marginBottom: "1rem" }}>
+            <BtnStyled onClick={handleShowUserReviewsOnly} variant="dark">
                 {showUserReviewsOnly ? "모든 리뷰 보기" : "내 리뷰만 보기"}
-            </Button>
+            </BtnStyled>
             <SearchBoard setSearchResults={setSearchResults} setHasSearched={setHasSearched} />
             <GridStyled rows="auto" columns="repeat(3,minmax(0,1fr))" margin="3rem">
                 {(hasSearched ? searchResults : reviewList)
