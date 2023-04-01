@@ -24,11 +24,25 @@ export default function Board() {
     const [numReviewsToShow, setNumReviewsToShow] = useState(12);
     const [searchResults, setSearchResults] = useState([]);
     const [hasSearched, setHasSearched] = useState(false);
+    const [showUserReviewsOnly, setShowUserReviewsOnly] = useState(false);
 
     const handleLoadMore = () => {
         setNumReviewsToShow(numReviewsToShow + 12);
     };
     
+    const handleShowUserReviewsOnly = () => {
+        if (showUserReviewsOnly) {
+          // if already showing user reviews, show all reviews
+            setHasSearched(false);
+        } else {
+          // show only user reviews
+            const filteredReviews = reviewList.filter((review) => review.creatorId === userObj.uid);
+            setSearchResults(filteredReviews);
+            setHasSearched(true);
+        }
+        setShowUserReviewsOnly(!showUserReviewsOnly);
+    };
+
     console.log(searchResults, "from Board.js");
 
     return (
@@ -38,6 +52,9 @@ export default function Board() {
                 글 쓰러 가기 <FontAwesomeIcon icon={faPencilAlt} />
             </InputLink>
             <div style={{ height: "2rem" }}></div>
+            <Button onClick={handleShowUserReviewsOnly} variant="dark" style={{ marginBottom: "1rem" }}>
+                {showUserReviewsOnly ? "모든 리뷰 보기" : "내 리뷰만 보기"}
+            </Button>
             <SearchBoard setSearchResults={setSearchResults} setHasSearched={setHasSearched} />
             <GridStyled rows="auto" columns="repeat(3,minmax(0,1fr))" margin="3rem">
                 {(hasSearched ? searchResults : reviewList)
