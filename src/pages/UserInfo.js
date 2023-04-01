@@ -65,10 +65,7 @@ export default function UserInfo() {
     console.log("remove button works");
   };
 
-  const handleDeleteReview = (reviewId) => {
-    const newReviews = reviews.filter((review) => review.id !== reviewId);
-    setFilteredReviews(newReviews);
-  };
+
 
 
   return (
@@ -114,7 +111,7 @@ export default function UserInfo() {
         ) : (
           <>
             {filteredReviews.length === 0 && <TextH1>작성한 리뷰가 없습니다.</TextH1>}
-            {filteredReviews.length !== 0 && <ReviewTable reviews={filteredReviews} onDeleteReview={handleDeleteReview} />}
+            {filteredReviews.length !== 0 && <ReviewTable reviews={filteredReviews} setFilteredReviews={setFilteredReviews} />}
           </>
         )}
       </BackStyled>

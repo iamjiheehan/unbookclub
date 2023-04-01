@@ -5,11 +5,9 @@ import Table from 'react-bootstrap/Table';
 import { TextP } from "../styled-components/TextStyled";
 import ReactStars from "react-rating-stars-component";
 import useFormatDate from "../hooks/useFormatDate";
-import Button from "styled-components/ButtonStyled";
 
-const ReviewTable = ({ reviews, onDeleteReview }) => {
+const ReviewTable = ({ reviews }) => {
     const formatDate = useFormatDate;
-
     
     return (
         <Table striped bordered hover responsive>
@@ -21,7 +19,6 @@ const ReviewTable = ({ reviews, onDeleteReview }) => {
                     <th style={{width:"7rem"}}><TextP>작가</TextP></th>
                     <th style={{width:"auto"}}><TextP>리뷰 내용</TextP></th>
                     <th style={{width:"20rem"}}><TextP>작성일시</TextP></th>
-                    <th style={{width:"5rem"}}><TextP>삭제</TextP></th>
                 </tr>
             </thead>
             <tbody>
@@ -40,7 +37,6 @@ const ReviewTable = ({ reviews, onDeleteReview }) => {
                     <td><TextP>{review.author}</TextP></td>
                     <td><TextP>{review.review}</TextP></td>
                     <td><TextP>{formatDate(review.createdAt)}</TextP></td>
-                    <td><Button onClick={() => onDeleteReview(review.id)}>X</Button></td>
                 </tr>
                 ))}
             </tbody>
