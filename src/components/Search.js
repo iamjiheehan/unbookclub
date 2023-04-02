@@ -66,7 +66,7 @@ function SearchBoard({ setSearchResults, setHasSearched }) {
     
     return (
         <Container>
-            <Form style={{ display: "inline-block" }} onSubmit={handleSubmit}>
+            <Form style={{ display: "inline-block" , marginTop:"1.5rem"}} onSubmit={handleSubmit}>
                 <div
                 style={{
                     border: "1px solid #ccc",

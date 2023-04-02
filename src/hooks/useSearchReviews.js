@@ -9,7 +9,6 @@ export default function useSearchReviews() {
     const [searchError, setSearchError] = useState('');
     const [hasSearched, setHasSearched] = useState(false);
 
-
     const handleSearch = async (setSearchResults) => {
         setHasSearched(true);
     
@@ -17,14 +16,13 @@ export default function useSearchReviews() {
             let query = dbService.collection('unBookClub');
             setSearchError("")
             if (searchTitle) {
-            query = query.where('title', '>=', searchTitle).where('title', '<=', searchTitle + "\uf8ff");
+                query = query.where('title', '<=', searchTitle);
             }
-            
             if (searchAuthor) {
-            query = query.where('review', '>=', searchAuthor).where('review', '<=', searchAuthor + "\uf8ff").orderBy('review');
+                query = query.where('author', '>=', searchAuthor).where('author', '<=', searchAuthor + '\uf8ff');
             }
             if (searchKeyword) {
-                query = query.where('review', '>=', searchKeyword).where('review', '<=', searchKeyword + "\uf8ff").orderBy('review');
+                query = query.where('review', '>=', searchKeyword).where('review', '<=', searchKeyword + '\uf8ff');
             }
             const querySnapshot = await query.orderBy('createdAt', 'desc').limit(10).get();
             console.log(`Found ${querySnapshot.docs.length} documents`);

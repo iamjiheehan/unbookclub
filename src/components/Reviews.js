@@ -34,43 +34,43 @@ import useReviewEditor from "hooks/useReviewEditor";
         <>
         {editing ? (
             <>
-            <form onSubmit={onSubmit}>
-                <BoardInput
-                type="text"
-                placeholder="감상평을 입력해주세요"
-                value={newReview}
-                required
-                onChange={onChange}
-                />
-                <BoardInput
-                type="text"
-                placeholder="닉네임 변경이 가능합니다"
-                value={newNickname}
-                required
-                onChange={(event) => setNewNickname(event.target.value)}
-                />
-                <BoardInput
-                name="bookTitle"
-                value={newTitle}
-                onChange={onChange}
-                type="text"
-                placeholder="책 제목을 입력해주세요"
-                maxLength={200}
-                />
-                <BoardInput
-                name="bookAuthor"
-                value={newAuthor}
-                onChange={onChange}
-                type="text"
-                placeholder="작가 이름을 입력해주세요"
-                maxLength={200}
-                />
-                {errorMessage && (
-                    <TextP style={{ color: "red" }}>{errorMessage}</TextP>
-                )}
-                <Input type="submit" value="수정 완료" />
-                <Input type="button" value="취소" onClick={onCancel} />
-            </form>
+                <form onSubmit={onSubmit}>
+                    <BoardInput
+                    type="text"
+                    placeholder="감상평을 입력해주세요"
+                    value={newReview}
+                    required
+                    onChange={onChange}
+                    />
+                    <BoardInput
+                    type="text"
+                    placeholder="닉네임 변경이 가능합니다"
+                    value={newNickname}
+                    required
+                    onChange={(event) => setNewNickname(event.target.value)}
+                    />
+                    <BoardInput
+                    name="bookTitle"
+                    value={newTitle}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="책 제목을 입력해주세요"
+                    maxLength={200}
+                    />
+                    <BoardInput
+                    name="bookAuthor"
+                    value={newAuthor}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="작가 이름을 입력해주세요"
+                    maxLength={200}
+                    />
+                    {errorMessage && (
+                        <TextP style={{ color: "red" }}>{errorMessage}</TextP>
+                    )}
+                    <Input type="submit" value="수정 완료" />
+                    <Input type="button" value="취소" onClick={onCancel} />
+                </form>
             </>
         ) : (
             <BackStyled
