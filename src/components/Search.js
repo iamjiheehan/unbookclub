@@ -54,9 +54,9 @@ function SearchBoard({ setSearchResults, setHasSearched }) {
 
     const handleModeChange = (mode) => {
         setSearchMode(mode);
-        if (mode === "키워드로 검색") {
+        if (mode === "책제목으로 검색") {
         setSearchTitle("");
-        } else if( mode === "책제목으로 검색" ){
+        } else if( mode === "작가로 검색" ){
         setSearchAuthor("");
         } else {
         setSearchKeyword("");
