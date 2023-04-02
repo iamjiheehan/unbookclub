@@ -185,34 +185,33 @@ function SearchBooks() {
         };
         let queryParam = "";
         if (searchMode === "도서명으로 검색") {
-          queryParam = searchTitle;
+            queryParam = searchTitle;
         } else {
-          queryParam = searchAuthor;
+            queryParam = searchAuthor;
         }
         if (queryParam) {
-          params.query = queryParam;
-          setQuery(queryParam);
-          try {
-            const { data } = await kakaoSearch(params); // api 호출
-            console.log(data);
-            const searchResults = data.documents;
-            setSearchResults(searchResults);
-            if (searchResults.length === 0) {
-              setSearchError("검색 결과가 없습니다.");
+            params.query = queryParam;
+            setQuery(queryParam);
+            try {
+                const { data } = await kakaoSearch(params); // api 호출
+                console.log(data);
+                const searchResults = data.documents;
+                setSearchResults(searchResults);
+                if (searchResults.length === 0) {
+                setSearchError("검색 결과가 없습니다.");
+                }
+            } catch (error) {
+                console.error(error);
             }
-          } catch (error) {
-            console.error(error);
-          }
         } else {
-          if (searchResults.length > 0) {
-            setSearchResults([]);
-          } else if (searchResults.length === 0) {
-            setSearchError("검색어를 입력해주세요");
-          }
+            if (searchResults.length > 0) {
+                setSearchResults([]);
+            } else if (searchResults.length === 0) {
+                setSearchError("검색어를 입력해주세요");
+            }
         }
-        stopLoading();
-      };
-      
+    stopLoading();
+    };
     
     const handleModeChange = (mode) => {
         setSearchMode(mode);
@@ -234,6 +233,7 @@ function SearchBooks() {
                     display: "flex",
                     alignItems: "center",
                     padding: "0.5rem",
+                    margin: "1.5rem 0 0 0",
                 }}
                 >
                 <FlexRow alignItems="flex-start">
@@ -292,7 +292,7 @@ function SearchBooks() {
             </Form>
             <Loading />
             {searchResults.length===0 && (
-                <TextP padding="3rem 0 0 0"> {searchError} </TextP>
+                <TextP> {searchError} </TextP>
             )}
             {searchResults.map(result => (
                 <FlexRow key={result.isbn} alignItems="center" justify="flex-start" margin="2rem">
