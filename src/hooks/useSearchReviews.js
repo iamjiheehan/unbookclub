@@ -20,7 +20,7 @@ export default function useSearchReviews() {
             query = query.where('title', '>=', searchTitle).where('title', '<=', searchTitle + "\uf8ff");
             }
             
-            if (searchKeyword) {
+            if (searchAuthor) {
             query = query.where('review', '>=', searchAuthor).where('review', '<=', searchAuthor + "\uf8ff").orderBy('review');
             }
             if (searchKeyword) {
@@ -36,7 +36,7 @@ export default function useSearchReviews() {
         } catch (error) {
             console.log(error);
             setSearchResults([]);
-            setSearchError('검색 중 오류가 발생했습니다.');
+            setSearchError('검색 결과가 없습니다.');
         }
     };
 
