@@ -32,6 +32,7 @@ function SearchBoard({ setSearchResults, setHasSearched }) {
         searchKeyword,
         setSearchTitle,
         setSearchKeyword,
+        setSearchAuthor,
         searchError,
         searchResults,
         handleSearch,
@@ -55,6 +56,8 @@ function SearchBoard({ setSearchResults, setHasSearched }) {
         setSearchMode(mode);
         if (mode === "키워드로 검색") {
         setSearchTitle("");
+        } else if( mode === "책제목으로 검색" ){
+        setSearchAuthor("");
         } else {
         setSearchKeyword("");
         }
@@ -91,9 +94,15 @@ function SearchBoard({ setSearchResults, setHasSearched }) {
                         </Dropdown.Item>
                         <Dropdown.Item
                             href="#"
-                            onClick={() => handleModeChange("도서명으로 검색")}
+                            onClick={() => handleModeChange("책제목으로 검색")}
                         >
                             도서명으로 검색
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                            href="#"
+                            onClick={() => handleModeChange("작가로 검색")}
+                        >
+                            작가로 검색
                         </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
@@ -108,8 +117,10 @@ function SearchBoard({ setSearchResults, setHasSearched }) {
                             const { value } = e.target;
                             if (searchMode === "키워드로 검색") {
                                 setSearchKeyword(value);
-                            } else {
+                            } else if(searchMode === "책제목으로 검색"){
                                 setSearchTitle(value);
+                            } else {
+                                setSearchAuthor(value);
                             }
                         }}
                         />
@@ -154,7 +165,7 @@ function SearchBooks() {
                 setSearchResults(data.documents);
                 console.log('fetchBooks');
                 } catch (error) {
-                    console.error('Error fetching books:', error);
+                console.error('Error fetching books:', error);
             }
         };
         fetchBooks();
