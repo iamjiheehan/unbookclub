@@ -50,7 +50,7 @@ function SearchBoard() {
         console.log("handleSubmit works");
         event.preventDefault();
         startLoading();
-        await handleSearch(setSearchResults);
+        await handleSearch(setSearchResults, searchTitle, searchAuthor, searchKeyword);
         stopLoading();
         setHasSearched(true);
     };

@@ -57,7 +57,6 @@ export default function Board() {
             <BtnStyled onClick={handleShowUserReviewsOnly} variant="dark">
                 {showUserReviewsOnly ? "모든 리뷰 보기" : "내 리뷰만 보기"}
             </BtnStyled>
-            {searchResults}
             <SearchBoard setSearchResults={setSearchResults} setHasSearched={setHasSearched} />
             <GridStyled rows="auto" columns="repeat(3,minmax(0,1fr))" margin="3rem">
                 {(hasSearched ? searchResults : reviewList)
