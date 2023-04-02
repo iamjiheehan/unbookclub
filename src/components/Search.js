@@ -25,7 +25,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addBook } from 'store';
 
 
-function SearchBoard({ setSearchResults, setHasSearched }) {
+function SearchBoard() {
     
     const {
         searchTitle,
@@ -37,12 +37,14 @@ function SearchBoard({ setSearchResults, setHasSearched }) {
         searchError,
         searchResults,
         handleSearch,
+        setSearchResults,
+        setHasSearched,
     } = useSearchReviews();
     
     const [searchMode, setSearchMode] = React.useState("키워드로 검색");
     const { startLoading, stopLoading } = useLoadingContext();
     
-    console.log(searchResults);
+    console.log(searchResults, "searchResults");
 
     const handleSubmit = async (event) => {
         console.log("handleSubmit works");
@@ -97,7 +99,7 @@ function SearchBoard({ setSearchResults, setHasSearched }) {
                             href="#"
                             onClick={() => handleModeChange("책제목으로 검색")}
                         >
-                            도서명으로 검색
+                            책제목으로 검색
                         </Dropdown.Item>
                         <Dropdown.Item
                             href="#"

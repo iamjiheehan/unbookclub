@@ -9,20 +9,20 @@ export default function useSearchReviews() {
     const [searchError, setSearchError] = useState('');
     const [hasSearched, setHasSearched] = useState(false);
 
-    const handleSearch = async (setSearchResults) => {
+    const handleSearch = async (setSearchResults,searchTitle, searchAuthor, searchKeyword) => {
         setHasSearched(true);
     
         try {
             let query = dbService.collection('unBookClub');
             setSearchError("")
             if (searchTitle) {
-                query = query.where('title', '<=', searchTitle);
+                query = query.where('bookTitle', '>=', searchTitle).where('bookTitle', '<=', searchTitle + "\uf8ff");
             }
             if (searchAuthor) {
-                query = query.where('author', '>=', searchAuthor).where('author', '<=', searchAuthor + '\uf8ff');
+                query = query.where('author', '>=', searchAuthor).where('author', '<=', searchAuthor + "\uf8ff");
             }
             if (searchKeyword) {
-                query = query.where('review', '>=', searchKeyword).where('review', '<=', searchKeyword + '\uf8ff');
+                query = query.where('review', '>=', searchKeyword).where('review', '<=', searchKeyword + "\uf8ff").orderBy('review');
             }
             const querySnapshot = await query.orderBy('createdAt', 'desc').limit(10).get();
             console.log(`Found ${querySnapshot.docs.length} documents`);
@@ -30,7 +30,6 @@ export default function useSearchReviews() {
             setSearchResults(results);
             setSearchError('');
             setSearchError(results.length === 0 ? "검색 결과가 없습니다." : "");
-            
         } catch (error) {
             console.log(error);
             setSearchResults([]);

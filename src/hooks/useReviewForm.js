@@ -26,7 +26,6 @@ export const useReviewForm = (userObj) => {
         return () => unBookClub();
     }, []);
 
-
     const onSubmit = async (event) => {
         event.preventDefault();
         navigate("/board");
@@ -63,13 +62,6 @@ export const useReviewForm = (userObj) => {
         }
     console.log(userObj);
     };
-
-    // const onChange = (event) => {
-    //     const {
-    //     target: { value },
-    //     } = event;
-    //     setInputReview(value);
-    
     const onRatingSelected = (rating) => {
         setSelectedRating(rating);
     };
