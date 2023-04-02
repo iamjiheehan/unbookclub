@@ -1,6 +1,6 @@
 // 독후감 게시판
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../contexts/AuthContext";
 import Reviews from "../components/Reviews";
 import GridStyled from "../styled-components/GridStyled";
@@ -42,7 +42,10 @@ export default function Board() {
         setShowUserReviewsOnly(!showUserReviewsOnly);
     };
 
-    console.log(searchResults, "from Board.js");
+    useEffect(() => {
+        console.log('searchResults changed', searchResults);
+        console.log('hasSearched changed', hasSearched);
+    }, [searchResults, hasSearched]);
 
     return (
         <BoardWrapper>
@@ -54,6 +57,7 @@ export default function Board() {
             <BtnStyled onClick={handleShowUserReviewsOnly} variant="dark">
                 {showUserReviewsOnly ? "모든 리뷰 보기" : "내 리뷰만 보기"}
             </BtnStyled>
+            {searchResults}
             <SearchBoard setSearchResults={setSearchResults} setHasSearched={setHasSearched} />
             <GridStyled rows="auto" columns="repeat(3,minmax(0,1fr))" margin="3rem">
                 {(hasSearched ? searchResults : reviewList)
