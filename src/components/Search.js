@@ -30,6 +30,7 @@ function SearchBoard({ setSearchResults, setHasSearched }) {
     const {
         searchTitle,
         searchKeyword,
+        searchAuthor,
         setSearchTitle,
         setSearchKeyword,
         setSearchAuthor,
@@ -110,20 +111,22 @@ function SearchBoard({ setSearchResults, setHasSearched }) {
                     <div style={{ margin: "0 2rem" }}>
                     <FormStyled
                         type="text"
-                        placeholder="키워드 혹은 도서명을 입력해주세요"
+                        placeholder="이곳에 내용을 입력해주세요"
                         style={{ border: "none" }}
-                        value={searchMode === "키워드로 검색" ? searchKeyword : searchTitle}
+                        value={
+                            searchMode === "키워드로 검색"  ? searchKeyword : searchMode === "책제목으로 검색" ? searchTitle : searchAuthor 
+                        }
                         onChange={(e) => {
                             const { value } = e.target;
                             if (searchMode === "키워드로 검색") {
                                 setSearchKeyword(value);
-                            } else if(searchMode === "책제목으로 검색"){
+                            } else if (searchMode === "책제목으로 검색") {
                                 setSearchTitle(value);
                             } else {
                                 setSearchAuthor(value);
                             }
                         }}
-                        />
+                    />
                     </div>
                     <div>
                     <Button
