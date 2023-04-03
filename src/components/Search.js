@@ -1,6 +1,6 @@
 //검색 컴포넌트
 
-import React, { useState ,useEffect } from "react";
+import React, { useState ,useEffect, useContext } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import ButtonStyle from "styled-components/ButtonStyled";
@@ -23,6 +23,10 @@ import { FaShoppingCart } from "react-icons/fa";
 
 import { useSelector, useDispatch } from 'react-redux';
 import { addBook } from 'store';
+import GridStyled from "styled-components/GridStyled";
+import Reviews from "./Reviews";
+import { useReviewForm } from "hooks/useReviewForm";
+import AuthContext from "contexts/AuthContext";
 
 
 function SearchBoard() {
@@ -47,6 +51,9 @@ function SearchBoard() {
     
     console.log(searchResults, "searchResults");
 
+    const { userObj } = useContext(AuthContext);
+    const { reviewList } = useReviewForm(userObj);
+
     const handleSubmit = async (event) => {
         console.log("handleSubmit works");
         event.preventDefault();
@@ -56,7 +63,8 @@ function SearchBoard() {
         setHasSearched(true);
     };
     
-    console.log(hasSearched, "hasSearched from search.js");
+    console.log('searchResults changed from SearchBoard', searchResults);
+    console.log('hasSearched changed from SearchBoard', hasSearched);
 
     const handleModeChange = (mode) => {
         setSearchMode(mode);
@@ -69,6 +77,11 @@ function SearchBoard() {
         }
     };
     
+    useEffect(() => {
+        console.log('searchResults changed from board', searchResults);
+        console.log('hasSearched changed from board', hasSearched);
+    }, [searchResults, hasSearched]);
+
     return (
         <Container>
             <Form style={{ display: "inline-block" , marginTop:"1.5rem"}} onSubmit={handleSubmit}>
@@ -147,6 +160,20 @@ function SearchBoard() {
             </Form>
             <Loading />
             {searchError && <TextP>{searchError}</TextP>}
+            <GridStyled rows="auto" columns="repeat(3,minmax(0,1fr))" margin="3rem">
+                {searchResults
+                .slice(0, searchResults.length)
+                .map((review) => (
+                    <Reviews
+                    key={review.id}
+                    reviewObj={review}
+                    isOwner={userObj && review.creatorId === userObj.uid}
+                    rating={review.selectedRating}
+                    bookTitle={review.title}
+                    bookAuthor={review.author}
+                    />
+                ))}
+            </GridStyled>
         </Container>
     );
 }

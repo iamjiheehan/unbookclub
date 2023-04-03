@@ -30,10 +30,16 @@ export default function useSearchReviews() {
             setSearchResults(results);
             setSearchError('');
             setSearchError(results.length === 0 ? "검색 결과가 없습니다." : "");
+            setSearchTitle('');
+            setSearchAuthor('');
+            setSearchKeyword('');
         } catch (error) {
             console.log(error);
             setSearchResults([]);
             setSearchError('검색 결과가 없습니다.');
+            setSearchTitle('');
+            setSearchAuthor('');
+            setSearchKeyword('');
         }
     };
 

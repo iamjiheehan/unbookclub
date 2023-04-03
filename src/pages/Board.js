@@ -14,6 +14,7 @@ import iconTop from '../static/images/menu-icon-01.webp';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import styled from "styled-components";
+import HR from "styled-components/LineStyled";
 
 const BoardWrapper = styled.div`
     min-height: 100vh;
@@ -43,10 +44,7 @@ export default function Board() {
         setShowUserReviewsOnly(!showUserReviewsOnly);
     };
 
-    useEffect(() => {
-        console.log('searchResults changed', searchResults);
-        console.log('hasSearched changed from board', hasSearched);
-    }, [searchResults, hasSearched]);
+
 
     return (
         <BoardWrapper>
@@ -58,9 +56,10 @@ export default function Board() {
             <BtnStyled onClick={handleShowUserReviewsOnly} variant="dark">
                 {showUserReviewsOnly ? "모든 리뷰 보기" : "내 리뷰만 보기"}
             </BtnStyled>
-            <SearchBoard setSearchResults={setSearchResults} setHasSearched={setHasSearched} />
+            <SearchBoard />
+            <HR height="auto" />
             <GridStyled rows="auto" columns="repeat(3,minmax(0,1fr))" margin="3rem">
-                {(hasSearched ? searchResults : reviewList)
+                {reviewList
                 .slice(0, numReviewsToShow)
                 .map((review) => (
                     <Reviews
