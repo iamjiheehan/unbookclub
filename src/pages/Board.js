@@ -27,6 +27,7 @@ export default function Board() {
     const [hasSearched, setHasSearched] = useState(false);
     const [showUserReviewsOnly, setShowUserReviewsOnly] = useState(false);
 
+
     const handleLoadMore = () => {
         setNumReviewsToShow(numReviewsToShow + 12);
     };
@@ -44,7 +45,7 @@ export default function Board() {
 
     useEffect(() => {
         console.log('searchResults changed', searchResults);
-        console.log('hasSearched changed', hasSearched);
+        console.log('hasSearched changed from board', hasSearched);
     }, [searchResults, hasSearched]);
 
     return (
