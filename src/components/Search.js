@@ -34,6 +34,7 @@ function SearchBoard() {
         setSearchTitle,
         setSearchKeyword,
         setSearchAuthor,
+        hasSearched,
         searchError,
         searchResults,
         handleSearch,
@@ -50,10 +51,12 @@ function SearchBoard() {
         console.log("handleSubmit works");
         event.preventDefault();
         startLoading();
-        await handleSearch(setSearchResults, searchTitle, searchAuthor, searchKeyword);
+        await handleSearch(setSearchResults, searchTitle, searchAuthor, searchKeyword, setHasSearched);
         stopLoading();
         setHasSearched(true);
     };
+    
+    console.log(hasSearched, "hasSearched from search.js");
 
     const handleModeChange = (mode) => {
         setSearchMode(mode);
@@ -340,7 +343,8 @@ function SearchBooks() {
     );
 }
 
-const MemoizedSearchBooks = React.memo(SearchBooks);
-export { SearchBoard, MemoizedSearchBooks as SearchBooks };
+// const MemoizedSearchBooks = React.memo(SearchBooks);
+// export { SearchBoard, MemoizedSearchBooks as SearchBooks };
+export { SearchBooks, SearchBoard };
 
 
