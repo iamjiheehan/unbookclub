@@ -11,7 +11,7 @@ import useFormatDate from "hooks/useFormatDate";
 import useReviewEditor from "hooks/useReviewEditor";
 
 
-    const Reviews = ({ reviewObj, isOwner, bookTitle, bookAuthor }) => {
+    const Reviews = ({ reviewObj, onUpdateSuccess, isOwner, bookTitle, bookAuthor }) => {
 
     const formattedDate = useFormatDate(reviewObj.createdAt);
 
@@ -28,6 +28,8 @@ import useReviewEditor from "hooks/useReviewEditor";
         onSubmit,
         onCancel,
         onChange,
+        newRating, 
+        setNewRating,
     } = useReviewEditor(reviewObj); 
 
     return (
@@ -35,41 +37,60 @@ import useReviewEditor from "hooks/useReviewEditor";
             {editing ? (
                 <>
                     <form onSubmit={onSubmit}>
-                        <BoardInput
-                        type="text"
-                        placeholder="감상평을 입력해주세요"
-                        value={newReview}
-                        required
-                        onChange={onChange}
-                        />
-                        <BoardInput
-                        type="text"
-                        placeholder="닉네임 변경이 가능합니다"
-                        value={newNickname}
-                        required
-                        onChange={(event) => setNewNickname(event.target.value)}
-                        />
-                        <BoardInput
-                        name="bookTitle"
-                        value={newTitle}
-                        onChange={onChange}
-                        type="text"
-                        placeholder="책 제목을 입력해주세요"
-                        maxLength={200}
-                        />
-                        <BoardInput
-                        name="bookAuthor"
-                        value={newAuthor}
-                        onChange={onChange}
-                        type="text"
-                        placeholder="작가 이름을 입력해주세요"
-                        maxLength={200}
-                        />
-                        {errorMessage && (
-                            <TextP style={{ color: "red" }}>{errorMessage}</TextP>
-                        )}
-                        <Input type="submit" value="수정 완료" />
-                        <Input type="button" value="취소" onClick={onCancel} />
+                        <BackStyled
+                            padding="1rem"
+                            margin="1rem"
+                            bgRadius="30px"
+                            bgShadow="0 4px 4px rgb(0 0 0 / 25%)">
+                            <FlexRow>
+                                <ReactStars
+                                count={5}
+                                size={24}
+                                edit={true}
+                                value={reviewObj.selectedRating}
+                                onChange={(newRating) => setNewRating(newRating)}
+                                />
+                            </FlexRow>
+                            <BoardInput
+                                name="bookTitle"
+                                value={newTitle}
+                                onChange={onChange}
+                                type="text"
+                                placeholder="책 제목을 입력해주세요"
+                                maxLength={200}
+                                bgColor="transparent"
+                            />
+                            <BoardInput
+                                name="bookAuthor"
+                                value={newAuthor}
+                                onChange={onChange}
+                                type="text"
+                                placeholder="작가 이름을 입력해주세요"
+                                maxLength={200}
+                                bgColor="transparent"
+                            />
+                            <BoardInput
+                                type="text"
+                                placeholder="감상평을 입력해주세요"
+                                value={newReview}
+                                required
+                                onChange={onChange}
+                                bgColor="transparent"
+                            />
+                            <BoardInput
+                                type="text"
+                                placeholder="닉네임 변경이 가능합니다"
+                                value={newNickname}
+                                required
+                                onChange={(event) => setNewNickname(event.target.value)}
+                                bgColor="transparent"
+                            />
+                            {errorMessage && (
+                                <TextP style={{ color: "red" }}>{errorMessage}</TextP>
+                            )}
+                            <Input type="submit" value="수정 완료" bgColor="rgb(230, 126, 34)" style={{color:"white"}} onClick={onSubmit}/>
+                            <Input type="button" value="취소" onClick={onCancel} bgColor="rgb(230, 126, 34)" style={{color:"white"}}/>
+                        </BackStyled>
                     </form>
                 </>
             ) : (
@@ -94,26 +115,26 @@ import useReviewEditor from "hooks/useReviewEditor";
                 <TextH2> {reviewObj.review} </TextH2>
                 {isOwner && (
                     <>
-                    <Button
-                        onClick={toggleEditing}
-                        margin="0 0.5rem"
-                        radius="none"
-                        fontColor="#61777F"
-                        bgColor="transparent"
-                        border="0.3rem solid"
-                    >
-                        <TextP>수정</TextP>
-                    </Button>
-                    <Button
-                        onClick={onDeleteClick}
-                        margin="0 0.5rem"
-                        radius="none"
-                        fontColor="#61777F"
-                        bgColor="transparent"
-                        border="0.3rem solid"
-                    >
-                        <TextP>삭제</TextP>
-                    </Button>
+                        <Button
+                            onClick={toggleEditing}
+                            margin="0 0.5rem"
+                            radius="none"
+                            fontColor="#61777F"
+                            bgColor="transparent"
+                            border="0.3rem solid"
+                        >
+                            <TextP>수정</TextP>
+                        </Button>
+                        <Button
+                            onClick={onDeleteClick}
+                            margin="0 0.5rem"
+                            radius="none"
+                            fontColor="#61777F"
+                            bgColor="transparent"
+                            border="0.3rem solid"
+                        >
+                            <TextP>삭제</TextP>
+                        </Button>
                     </>
                 )}
                 </BackStyled>

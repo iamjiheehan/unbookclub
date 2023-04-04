@@ -7,7 +7,7 @@ const InputStyled = styled.input`
     padding: 0.5rem 1rem;
     text-decoration: none;
     color: rgb(230, 126, 34);
-    background-color: white;
+    background-color: ${(props) => props.bgColor || 'white'};
     font-size: ${(props) => props.fontSize || '1.5rem'};
     margin: ${(props) => props.margin || '2rem 0.5rem'};
     font-weight: ${(props) => props.fontWeight || '400'};
