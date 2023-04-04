@@ -10,7 +10,6 @@ const useReviewEditor = (reviewObj) => {
     const [newTitle, setnewTitle] = useState(reviewObj.title);
     const [newAuthor, setnewAuthor] = useState(reviewObj.author);
     const [newRating, setNewRating] = useState(0);
-
     const [errorMessage, setErrorMessage] = useState('');
 
     const onDeleteClick = async () => {
@@ -22,17 +21,19 @@ const useReviewEditor = (reviewObj) => {
 
     const toggleEditing = () => setEditing((prev) => !prev);
 
-    const onSubmit = async (newData) => {
-        if (Object.keys(newData).every((key) => newData[key] === reviewObj[key])) {
-            setErrorMessage('수정 할 내용이 없다면 취소 버튼을 눌러주세요.');
-            return;
-        }
-        setErrorMessage('');
-        await dbService.doc(`unBookClub/${reviewObj.id}`).update(newData).then(() => {
-            const updatedReviewObj = {...reviewObj, ...newData};
-            setNewReview(updatedReviewObj);
-        });
-        setEditing(false);
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        if (newReview === '') {
+            setErrorMessage('리뷰를 입력해주세요');
+        } else {
+            await dbService.doc(`unBookClub/${reviewObj.id}`).update({
+                review: newReview,
+                title: newTitle,
+                author: newAuthor,
+                selectedRating: newRating,
+            });
+            setEditing(false);
+        };
     };
     
     const onCancel = () => {
@@ -40,19 +41,15 @@ const useReviewEditor = (reviewObj) => {
     };
 
     const onChange = (event) => {
-        const { name, value } = event.target;
-        switch (name) {
-        case 'bookTitle':
-            setnewTitle(value);
-            break;
-        case 'bookAuthor':
-            setnewAuthor(value);
-            break;
-        case 'newReview':
+        const {
+            target : {value, name},
+        }= event;
+        if (name === 'newReview') {
             setNewReview(value);
-            break;
-        default:
-            break;
+        } else if (name === 'bookTitle') {
+            setnewTitle(value);
+        } else if (name === 'bookAuthor') {
+            setnewAuthor(value);
         }
     };
 
