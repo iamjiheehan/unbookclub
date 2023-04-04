@@ -24,14 +24,17 @@ const useReviewEditor = (reviewObj) => {
 
     const onSubmit = async (newData) => {
         if (Object.keys(newData).every((key) => newData[key] === reviewObj[key])) {
-        setErrorMessage('수정 할 내용이 없다면 취소 버튼을 눌러주세요.');
-        return;
+            setErrorMessage('수정 할 내용이 없다면 취소 버튼을 눌러주세요.');
+            return;
         }
         setErrorMessage('');
-        await dbService.doc(`unBookClub/${reviewObj.id}`).update(newData);
+        await dbService.doc(`unBookClub/${reviewObj.id}`).update(newData).then(() => {
+            const updatedReviewObj = {...reviewObj, ...newData};
+            setNewReview(updatedReviewObj);
+        });
         setEditing(false);
     };
-
+    
     const onCancel = () => {
         setEditing(false);
     };
@@ -45,13 +48,15 @@ const useReviewEditor = (reviewObj) => {
         case 'bookAuthor':
             setnewAuthor(value);
             break;
-        case 'inputReview':
+        case 'newReview':
             setNewReview(value);
             break;
         default:
             break;
         }
     };
+
+    console.log(newReview);
 
     return {
         editing,

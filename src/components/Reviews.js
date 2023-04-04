@@ -32,8 +32,8 @@ import useReviewEditor from "hooks/useReviewEditor";
         setNewRating,
     } = useReviewEditor(reviewObj); 
 
+    console.log(newReview);
 
-    
     return (
         <>
             {editing ? (
@@ -72,6 +72,7 @@ import useReviewEditor from "hooks/useReviewEditor";
                                 bgColor="transparent"
                             />
                             <BoardInput
+                                name="newReview"
                                 type="text"
                                 placeholder="감상평을 입력해주세요"
                                 value={newReview}
