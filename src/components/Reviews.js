@@ -11,7 +11,7 @@ import useFormatDate from "hooks/useFormatDate";
 import useReviewEditor from "hooks/useReviewEditor";
 
 
-    const Reviews = ({ reviewObj, onUpdateSuccess, isOwner, bookTitle, bookAuthor }) => {
+    const Reviews = ({ reviewObj, isOwner, bookTitle, bookAuthor }) => {
 
     const formattedDate = useFormatDate(reviewObj.createdAt);
 
@@ -32,6 +32,8 @@ import useReviewEditor from "hooks/useReviewEditor";
         setNewRating,
     } = useReviewEditor(reviewObj); 
 
+
+    
     return (
         <>
             {editing ? (

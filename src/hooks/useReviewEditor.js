@@ -10,8 +10,16 @@ const useReviewEditor = (reviewObj) => {
     const [newTitle, setnewTitle] = useState(reviewObj.title);
     const [newAuthor, setnewAuthor] = useState(reviewObj.author);
     const [newRating, setNewRating] = useState(0);
-    const [errorMessage, setErrorMessage] = useState('');
 
+    const [errorMessage, setErrorMessage] = useState('');
+    
+    const onUpdateSuccess = (updatedReview) => {
+        setNewReview((prevList) =>
+            prevList.map((review) =>
+                review.id === updatedReview.id ? updatedReview : review
+            )
+        );
+    };
     const onDeleteClick = async () => {
         const ok = window.confirm('정말 삭제하실건가요?');
         if (ok) {
