@@ -16,10 +16,10 @@ export default function useSearchReviews() {
             let query = dbService.collection('unBookClub');
             setSearchError("")
             if (searchTitle) {
-                query = query.where('bookTitle', '>=', searchTitle).where('bookTitle', '<=', searchTitle + "\uf8ff");
+                query = query.where('title', '>=', searchTitle).where('title', '<=', searchTitle + "\uf8ff").orderBy('title');
             }
             if (searchAuthor) {
-                query = query.where('author', '>=', searchAuthor).where('author', '<=', searchAuthor + "\uf8ff");
+                query = query.where('author', '>=', searchAuthor).where('author', '<=', searchAuthor + "\uf8ff").orderBy('author');
             }
             if (searchKeyword) {
                 query = query.where('review', '>=', searchKeyword).where('review', '<=', searchKeyword + "\uf8ff").orderBy('review');
@@ -30,9 +30,9 @@ export default function useSearchReviews() {
             setSearchResults(results);
             setSearchError('');
             setSearchError(results.length === 0 ? "검색 결과가 없습니다." : "");
-            setSearchTitle('');
-            setSearchAuthor('');
-            setSearchKeyword('');
+                setSearchTitle('');
+                setSearchAuthor('');
+                setSearchKeyword('');
         } catch (error) {
             console.log(error);
             setSearchResults([]);
