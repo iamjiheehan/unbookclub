@@ -90,7 +90,7 @@ export default function UserInfo() {
         <TextH1 padding="0 0 3rem 0">작성한 리뷰 목록</TextH1>
         <Dropdown style={{textAlign:"right", marginBottom:"2rem"}}>
           <Dropdown.Toggle variant="secondary" id="dropdown-basic" style={{backgroundColor:"white", color:"black"}}>
-            정렬 기준
+            {sortingCriteria === "" ? "정렬 기준" : sortingCriteria}
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item onClick={sortByDateDescending} href="#/action-1">최신 순</Dropdown.Item>
