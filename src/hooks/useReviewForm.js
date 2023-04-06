@@ -37,7 +37,7 @@ export const useReviewForm = (userObj) => {
             createdAt: Date.now(),
             creatorId: userObj.uid,
             creatorNickname : userObj.displayName,
-            selectedRating: selectedRating
+            selectedRating: selectedRating,
         });
         setInputReview("");
         setbookTitle("");

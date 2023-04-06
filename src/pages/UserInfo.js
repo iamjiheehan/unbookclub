@@ -42,21 +42,21 @@ export default function UserInfo() {
   const sortByDateDescending = () => {
     const sortedReviews = [...filteredReviews].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     setFilteredReviews(sortedReviews);
-    setSortingCriteria("date_descending");
+    setSortingCriteria("최신 순");
     console.log("sort by date descending works");
   };
   
   const sortByDateAscending = () => {
     const sortedReviews = [...filteredReviews].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
     setFilteredReviews(sortedReviews);
-    setSortingCriteria("date_ascending");
+    setSortingCriteria("오래된 순");
     console.log("sort by date ascending works");
   };
   
   const sortByRating = () => {
     const sortedReviews = [...filteredReviews].sort((a, b) => b.selectedRating - a.selectedRating);
     setFilteredReviews(sortedReviews);
-    setSortingCriteria("rating");
+    setSortingCriteria("별점 순");
     console.log("sort by rating works");
   };
 
