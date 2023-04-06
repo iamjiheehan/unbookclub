@@ -60,13 +60,6 @@ export default function UserInfo() {
     console.log("sort by rating works");
   };
 
-  const handleRemoveFromCart = (book) => {
-    dispatch(removeBook(book));
-    console.log("remove button works");
-  };
-
-
-
 
   return (
     <Container>
@@ -88,7 +81,6 @@ export default function UserInfo() {
                 <FlexCol>
                   <TextP>{book.title}</TextP>
                   <TextP>{book.author}</TextP>
-                  <Button onClick={() => handleRemoveFromCart(book.itemId)}>삭제하기</Button>
                 </FlexCol>
               </FlexRow>
             ))}
