@@ -24,7 +24,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "GENERATE_SOURCEMAP=false && react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build && npm run webp-converter",
     "eject": "react-scripts eject",
     "webp-converter": "npx imagemin public/images/**/*.{jpg,png} -o public/images --plugin=imagemin-webp"
