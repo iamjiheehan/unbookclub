@@ -10,8 +10,8 @@ import icon05 from '../static/images/main-icon-05.webp';
 
 import testimonial from '../static/images/main-testimonial.webp';
 
-import { NewBooks, NewBooksList } from '../components/NewBooks';
-import { BestSellers, BestSellersList } from '../components/BestSellers';
+import { NewBooks } from '../components/NewBooks';
+import { BestSellers } from '../components/BestSellers';
 
 import Button from '../styled-components/ButtonStyled'; 
 import ImgStyled from '../styled-components/ImgStyled';
@@ -35,8 +35,8 @@ export default function Main() {
             </Container>
             <div>
                 <TextH1 bgColor='#61777F' padding='1.5rem' color='white' lineHeight='100%'>심플한 온라인 북클럽, THE UNBOOK CLUB</TextH1>
-                    <Container style={{marginTop: '3rem'}}>
-                        <FlexRow>
+                    <Container>
+                        <FlexRow style={{flexWrap:"wrap"}}>
                             <FlexCol flexBasis='33.3%' alignItems='flex-end'>
                                 <ImgStyled src={icon01} alt="icon-book" maxWidth="300px"/>
                                 <TextH2 padding='0 1rem'>지금까지 읽은 책 목록을 기록 할 수 있어요.</TextH2>
