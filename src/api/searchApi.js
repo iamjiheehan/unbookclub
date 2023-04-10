@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-// const KAKAO_API_KEY = "6fe155fb9bfe366766c6d76594916d8c";
-const KAKAO_API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
+const KAKAO_API_KEY = process.env.REACT_APP_API_KEY;
 
 export const Kakao = axios.create({
     baseURL: "https://dapi.kakao.com",
