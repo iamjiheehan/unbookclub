@@ -36,14 +36,10 @@
 
 ![메인화면](https://user-images.githubusercontent.com/102779433/231512655-5d531fa7-e3bb-445a-800c-6e9a03cedcc3.gif)
 
-- ####  특이점2 : 이용약관, see more | read more | 더보기와 같은 태그들을 모두 활성화하여 페이지 이동 가능
 
-![독후감 게시판](https://user-images.githubusercontent.com/102779433/219938124-8fb4416c-7e94-4806-b1c9-42d2985e28f8.gif)
+![로그인](https://user-images.githubusercontent.com/102779433/231512888-525fc6ba-6261-4855-bd01-1c43920fdd9f.gif)
 
 
-- ####  특이점3 : iframe 태그를 이용한 구글지도 연동 
-
-![도서 검색](https://user-images.githubusercontent.com/102779433/219938128-e9c81522-6ac3-4beb-969f-86d3e3f56e3b.gif)
 
 ___
 
