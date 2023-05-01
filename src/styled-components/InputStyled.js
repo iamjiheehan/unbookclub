@@ -15,6 +15,8 @@ const InputStyled = styled.input`
         transform: scale(1.1);
         transform-origin: center;
     }
+
+
 `
 
 const Input = ({ children, ...rest }) => {
@@ -47,7 +49,6 @@ const BoardInput = ({ children, ...rest }) => {
     );
 };
 
-
 const InputLinkStyled = styled.input`
     color: black;
     text-decoration: none;
@@ -64,6 +65,10 @@ const InputLinkStyled = styled.input`
         background-color: rgb(230, 126, 34);
         color: white;
         
+    }
+
+    @media (max-width: 412px) {
+        font-size: 1rem;
     }
 `;
 
