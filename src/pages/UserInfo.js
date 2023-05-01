@@ -14,11 +14,9 @@ import { Loading } from "../hooks/useLoading";
 import { FlexRow, FlexCol } from "styled-components/FlexStyled";
 import { Input, BoardInput } from "styled-components/InputStyled";
 import { useSelector, useDispatch } from "react-redux";
-import Button from "styled-components/ButtonStyled";
 import HR from "styled-components/LineStyled";
-import ImgStyled from "styled-components/ImgStyled";
+import { ImgStyled } from "styled-components/ImgStyled";
 
-import { removeBook } from "store";
 import Dropdown from 'react-bootstrap/Dropdown';
 
 export default function UserInfo() {

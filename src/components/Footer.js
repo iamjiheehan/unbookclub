@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../static/images/logo.webp';
-import ImgStyled from '../styled-components/ImgStyled';
+import { ImgStyled } from '../styled-components/ImgStyled';
 import {TextH2} from '../styled-components/TextStyled';
 import styled from 'styled-components';
 

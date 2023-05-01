@@ -11,13 +11,13 @@ import { FaSearch } from "react-icons/fa";
 
 import { FlexCol, FlexRow } from "styled-components/FlexStyled";
 import FormStyled from "styled-components/FormStyled";
-import { TextH1, TextH2, TextP } from "styled-components/TextStyled";
+import { TextH2, TextP } from "styled-components/TextStyled";
 
 import { useLoadingContext, Loading } from "hooks/useLoading";
 import useSearchReviews from "hooks/useSearchReviews";
 
 import { kakaoSearch } from "api/searchApi";
-import ImgStyled from "styled-components/ImgStyled";
+import { ImgStyled } from "styled-components/ImgStyled";
 
 import { FaShoppingCart } from "react-icons/fa";
 

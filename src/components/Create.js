@@ -7,7 +7,7 @@ import { FlexCol, FlexRow } from "../styled-components/FlexStyled";
 import { Container } from "react-bootstrap";
 import { useReviewForm } from "../hooks/useReviewForm";
 import image from '../static/images/book-report.webp';
-import ImgStyled from '../styled-components/ImgStyled';
+import { ImgStyled } from '../styled-components/ImgStyled';
 
 
 export default function Board() {

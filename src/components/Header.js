@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../static/images/logo.webp';
 
-import ImgStyled from '../styled-components/ImgStyled';
+import { ImgStyled } from '../styled-components/ImgStyled';
 import Button from '../styled-components/ButtonStyled';
 import { TextP } from '../styled-components/TextStyled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

@@ -5,7 +5,7 @@ import { addBook } from 'store';
 import newBooks from "data/newBooks.json";
 import { FlowAniForward, FlowAniReverse } from "styled-components/AniStyled";
 import { TextH1, TextH2, TextP } from "styled-components/TextStyled";
-import ImgStyled from "styled-components/ImgStyled";
+import { ImgStyled } from "styled-components/ImgStyled";
 import { FlexCol, FlexRow } from "styled-components/FlexStyled";
 import {
     BookItemContainer,

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React  from "react";
 import Header from "./components/Header";
 
-import { SearchBoard, SearchBooks } from "./components/Search";
+import { SearchBoard } from "./components/Search";
 import Footer from "./components/Footer";
 import Create from "./components/Create"
 import SignIn from "./components/SignIn";

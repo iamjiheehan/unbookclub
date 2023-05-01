@@ -1,13 +1,13 @@
 // 독후감 게시판
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import AuthContext from "../contexts/AuthContext";
 import Reviews from "../components/Reviews";
 import GridStyled from "../styled-components/GridStyled";
 import { useReviewForm } from "../hooks/useReviewForm";
 import { InputLink } from "../styled-components/InputStyled";
 import { SearchBoard } from "../components/Search";
-import ImgStyled from '../styled-components/ImgStyled';
+import { ImgStyled } from '../styled-components/ImgStyled';
 import { Button } from "react-bootstrap";
 import BtnStyled from '../styled-components/ButtonStyled';
 import iconTop from '../static/images/menu-icon-01.webp';

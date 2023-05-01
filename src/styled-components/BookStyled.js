@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import ImgStyled from '../styled-components/ImgStyled';
+import { ImgStyled } from '../styled-components/ImgStyled';
 
 const BookItemContainer = styled.div`
     position: relative;

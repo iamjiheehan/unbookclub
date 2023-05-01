@@ -1,14 +1,14 @@
 // 도서 검색 게시판
 
-import { BestSellers, BestSellersList } from "components/BestSellers";
-import { NewBooks, NewBooksList } from "components/NewBooks";
-import { SearchBoard, SearchBooks } from "components/Search";
+import { BestSellersList } from "components/BestSellers";
+import { NewBooksList } from "components/NewBooks";
+import { SearchBooks } from "components/Search";
 import React, { useState} from "react";
 import { Container } from "react-bootstrap";
 import Button from "styled-components/ButtonStyled";
 import { TextH1, TextP } from "styled-components/TextStyled";
 import bookImg from "../static/images/menu-icon-03.webp";
-import ImgStyled from "../styled-components/ImgStyled";
+import { ImgStyled } from "../styled-components/ImgStyled";
 import HR from "styled-components/LineStyled";
 
 import { FaArrowRight} from "react-icons/fa";

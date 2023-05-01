@@ -1,12 +1,12 @@
-import React, { useState, useEffect} from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addBook } from 'store';
 
 import bestSeller from '../data/bestSeller.json'
-import { FlowAniForward, FlowAniReverse } from '../styled-components/AniStyled';
+import { FlowAniForward} from '../styled-components/AniStyled';
 import {TextH1, TextH2,TextP} from '../styled-components/TextStyled';
-import ImgStyled from '../styled-components/ImgStyled';
-import { BookItemContainer, BookImage, BookInfo } from '../styled-components/BookStyled';
+import { ImgStyled } from '../styled-components/ImgStyled';
+import { BookItemContainer, BookInfo } from '../styled-components/BookStyled';
 import Button from '../styled-components/ButtonStyled';
 import { FaShoppingCart } from 'react-icons/fa';
 import { FlexCol, FlexRow } from 'styled-components/FlexStyled';

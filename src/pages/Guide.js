@@ -1,9 +1,9 @@
 import React from 'react'
 import { Container } from 'react-bootstrap';
-import { FlexCol, FlexRow } from 'styled-components/FlexStyled';
-import ImgStyled from 'styled-components/ImgStyled';
+import { FlexCol } from 'styled-components/FlexStyled';
+import { ImgStyled } from 'styled-components/ImgStyled';
 import HR from 'styled-components/LineStyled';
-import { TextH1, TextH2, TextP } from 'styled-components/TextStyled';
+import { TextH1, TextH2 } from 'styled-components/TextStyled';
 import bookImg from "../static/images/menu-icon-02.webp";
 
 export default function Guide() {

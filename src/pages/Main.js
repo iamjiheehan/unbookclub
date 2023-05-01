@@ -14,7 +14,7 @@ import { NewBooks } from '../components/NewBooks';
 import { BestSellers } from '../components/BestSellers';
 
 import Button from '../styled-components/ButtonStyled'; 
-import ImgStyled from '../styled-components/ImgStyled';
+import { ImgStyled, LastImgStyled, FirstImgStyled } from '../styled-components/ImgStyled';
 import { FlexRow, FlexCol } from '../styled-components/FlexStyled'
 import BackStyled from '../styled-components/BackStyled';
 import {TextH1,TextH2,TextP} from '../styled-components/TextStyled';
@@ -25,7 +25,7 @@ export default function Main() {
         <>
             <Container>
                 <div>
-                    <ImgStyled src={main} alt="mainImage" height="500px" />
+                    <FirstImgStyled src={main} alt="mainImage" />
                     <div>
                         <TextH1 padding='0 0 0.5rem 0'>THE UNBOOK CLUB</TextH1>
                         <TextP> 책을 함께 읽고 다양한 생각을 나누는 공간<br/></TextP>
@@ -100,7 +100,7 @@ export default function Main() {
                         </div>
                     </Container>
                     <div>
-                        <ImgStyled src={testimonial} alt="testimonial-image" height= "400px"/>
+                        <LastImgStyled src={testimonial} alt="testimonial-image" />
                     </div>
                     <div>
                         <Container>
