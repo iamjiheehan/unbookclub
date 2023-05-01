@@ -4,7 +4,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../static/images/logo.webp';
 
-import { ImgStyled } from '../styled-components/ImgStyled';
+import LoginBtn from '../styled-components/LoginBtnStyled';
+import { ImgStyled, LogoImgStyled } from '../styled-components/ImgStyled';
 import Button from '../styled-components/ButtonStyled';
 import { TextP } from '../styled-components/TextStyled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -24,7 +25,6 @@ function Header({reviewObj}) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Check Firebase authentication status
         firebaseInstance.auth().onAuthStateChanged((user) => {
             setLoading(false);
         });
@@ -41,7 +41,7 @@ function Header({reviewObj}) {
         <Navbar bg="light" expand="lg">
             <Container>
                 <Navbar.Brand href="/">
-                    <ImgStyled width = "150px" src={logo} alt="Logo" />
+                    <LogoImgStyled src={logo} alt="Logo" />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -55,7 +55,7 @@ function Header({reviewObj}) {
                 {displayName ? (
                     <>
                         <TextP><strong>{displayName}</strong> 님 반가워요!</TextP>
-                        <Button variant="secondary" to='/signIn' bgColor="transparent" fontColor="#e67e22" fontSize="2rem"><FontAwesomeIcon icon={faUser} /></Button>
+                        <LoginBtn variant="secondary" to='/signIn' bgColor="transparent" fontColor="#e67e22" fontSize="2rem"><FontAwesomeIcon icon={faUser} /></LoginBtn>
                         <Button onClick={onSignOutClick}>로그아웃</Button>
                     </>
                     ) : (

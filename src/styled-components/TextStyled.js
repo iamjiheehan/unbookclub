@@ -31,18 +31,30 @@ const TextH1 = styled.h1`
     ${commonStyles}
     font-size: ${(props) => props.fontSize || '32px'};
     font-weight: ${(props) => props.fontWeight || '400'};
+
+    @media (max-width: 412px) {
+        font-size: 0.9em;
+    }
 `;
 
 const TextH2 = styled.h2`
     ${commonStyles}
     font-size: ${(props) => props.fontSize || '24px'};
     font-weight: ${(props) => props.fontWeight || '400'};
+
+    @media (max-width: 412px) {
+        font-size: 0.9em;
+    }
 `;
 
 const TextP = styled.p`
     ${commonStyles}
     font-size: ${(props) => props.fontSize || '22px'};
     font-weight: ${(props) => props.fontWeight || '400'};
+
+    @media (max-width: 412px) {
+        font-size: 0.9em;
+    }
 `;
 
 export {TextH1,TextH2,TextP};

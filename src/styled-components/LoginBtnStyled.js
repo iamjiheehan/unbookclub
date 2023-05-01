@@ -12,18 +12,13 @@ const ButtonStyled = styled.button`
     font-size: ${(props) => props.fontSize || '1.5rem'};
     margin: ${(props) => props.margin || '2rem 0.5rem'};
     font-weight: ${(props) => props.fontWeight || '400'};
-
     &:hover {
         transform: scale(1.1);
         transform-origin: center;
         color: #2c3e50;
     }
-
-    @media (max-width: 412px) {
-        font-size: 1rem;
-    }
 `
-const Button = ({ to, children, ...rest }) => {
+const LoginBtn = ({ to, children, ...rest }) => {
     return (
         <Link to={to}>
             <ButtonStyled {...rest}>{children}</ButtonStyled>
@@ -31,4 +26,4 @@ const Button = ({ to, children, ...rest }) => {
     );
 };
 
-export default Button;
+export default LoginBtn;

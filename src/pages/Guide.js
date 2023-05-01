@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from 'react-bootstrap';
 import { FlexCol } from 'styled-components/FlexStyled';
-import { ImgStyled } from 'styled-components/ImgStyled';
+import { FirstImgStyled, ImgStyled } from 'styled-components/ImgStyled';
 import HR from 'styled-components/LineStyled';
 import { TextH1, TextH2 } from 'styled-components/TextStyled';
 import bookImg from "../static/images/menu-icon-02.webp";
@@ -9,7 +9,7 @@ import bookImg from "../static/images/menu-icon-02.webp";
 export default function Guide() {
     return (
         <Container>
-            <ImgStyled src={bookImg} alt="Top Image" height="500px" />
+            <FirstImgStyled src={bookImg} alt="Top Image" />
             <FlexCol alignItems="center" margin="0 auto 2rem auto">
                 <TextH1 padding="0 0 2rem 0">어떻게 쓸 지 모르겠다면 아래의 질문에 대해 써보세요</TextH1>
                 <TextH2 padding="0 0 1rem 0">1. 이 책을 다른 사람들에게 추천하시겠어요?</TextH2>

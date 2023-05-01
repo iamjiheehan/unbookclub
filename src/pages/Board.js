@@ -7,7 +7,7 @@ import GridStyled from "../styled-components/GridStyled";
 import { useReviewForm } from "../hooks/useReviewForm";
 import { InputLink } from "../styled-components/InputStyled";
 import { SearchBoard } from "../components/Search";
-import { ImgStyled } from '../styled-components/ImgStyled';
+import { FirstImgStyled } from '../styled-components/ImgStyled';
 import { Button } from "react-bootstrap";
 import BtnStyled from '../styled-components/ButtonStyled';
 import iconTop from '../static/images/menu-icon-01.webp';
@@ -15,6 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import styled from "styled-components";
 import HR from "styled-components/LineStyled";
+import BlankStyled from "styled-components/BlankStyled";
 
 const BoardWrapper = styled.div`
     min-height: 100vh;
@@ -48,11 +49,11 @@ export default function Board() {
 
     return (
         <BoardWrapper>
-            <ImgStyled src={iconTop} alt="Top Image" height="500px" />
+            <FirstImgStyled src={iconTop} alt="Top Image" height="500px" />
             <InputLink to="/create">
                 글 쓰러 가기 <FontAwesomeIcon icon={faPencilAlt} />
             </InputLink>
-            <div style={{ height: "2rem" }}></div>
+            <BlankStyled></BlankStyled>
             <BtnStyled onClick={handleShowUserReviewsOnly} variant="dark">
                 {showUserReviewsOnly ? "모든 리뷰 보기" : "내 리뷰만 보기"}
             </BtnStyled>

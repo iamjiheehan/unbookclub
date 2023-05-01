@@ -11,6 +11,11 @@ const FormStyled = styled(Form.Control)`
     &:hover {
         border-color: #aaa;
     }
+
+    @media (max-width: 412px) {
+        padding: 0%;
+        width: 100%;
+    }
 `;
 
 export default FormStyled;

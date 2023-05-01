@@ -14,6 +14,20 @@ export const ImgStyled = styled.img`
     }
 `;
 
+export const LogoImgStyled = styled.img`
+    width: 150px;
+    height: ${(props) => props.height || 'auto'};
+    max-width: ${(props) => props.maxWidth || 'auto'};
+    padding: ${(props) => props.padding || 'auto'};
+    margin: ${(props) => props.margin || 'auto'};
+    box-shadow: ${(props) => props.bgShadow || '0'};
+
+    @media (max-width: 412px) {
+        width: 100px;
+
+    }
+`;
+
 export const FirstImgStyled = styled.img`
     width: ${(props) => props.width || 'auto'};
     height: 500px;
@@ -24,6 +38,8 @@ export const FirstImgStyled = styled.img`
 
     @media (max-width: 768px) {
         height: 250px;
+        display: block;
+        margin-bottom: 1rem;
     }
 `;
 
@@ -37,6 +53,5 @@ export const LastImgStyled = styled.img`
 
     @media (max-width: 768px) {
         height: 120px;
-
     }
 `;

@@ -9,7 +9,7 @@ import DropdownBtn from "styled-components/DropDownBtnStyled";
 import Dropdown from "react-bootstrap/Dropdown";
 import { FaSearch } from "react-icons/fa";
 
-import { FlexCol, FlexRow } from "styled-components/FlexStyled";
+import { FlexCol, FlexRow, FlexRowMQ } from "styled-components/FlexStyled";
 import FormStyled from "styled-components/FormStyled";
 import { TextH2, TextP } from "styled-components/TextStyled";
 
@@ -27,6 +27,7 @@ import GridStyled from "styled-components/GridStyled";
 import Reviews from "./Reviews";
 import { useReviewForm } from "hooks/useReviewForm";
 import AuthContext from "contexts/AuthContext";
+import BorderStyled from "styled-components/BorderSyled";
 
 
 function SearchBoard() {
@@ -85,16 +86,9 @@ function SearchBoard() {
     return (
         <Container>
             <Form style={{ display: "inline-block" , marginTop:"1.5rem"}} onSubmit={handleSubmit}>
-                <div
-                style={{
-                    border: "1px solid #ccc",
-                    borderRadius: "50px",
-                    display: "flex",
-                    alignItems: "center",
-                    padding: "0.5rem",
-                }}
+                <BorderStyled
                 >
-                <FlexRow alignItems="flex-start">
+                <FlexRowMQ alignItems="flex-start">
                     <div>
                     <Dropdown>
                         <Dropdown.Toggle
@@ -129,7 +123,7 @@ function SearchBoard() {
                     <div style={{ margin: "0 2rem" }}>
                     <FormStyled
                         type="text"
-                        placeholder="이곳에 내용을 입력해주세요"
+                        placeholder="내용을 입력해주세요"
                         style={{ border: "none" }}
                         value={
                             searchMode === "키워드로 검색"  ? searchKeyword : searchMode === "책제목으로 검색" ? searchTitle : searchAuthor 
@@ -155,8 +149,8 @@ function SearchBoard() {
                         <FaSearch /> 검색
                     </Button>
                     </div>
-                </FlexRow>
-                </div>
+                </FlexRowMQ>
+                </BorderStyled>
             </Form>
             <Loading />
             {searchError && <TextP>{searchError}</TextP>}
