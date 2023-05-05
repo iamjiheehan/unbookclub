@@ -50,7 +50,6 @@ __
 ![도서추가](https://user-images.githubusercontent.com/102779433/231513142-a2ec1c51-c89f-4673-af59-d0a4b1499cc3.gif)
 
 
-
 ___
 
 ### ✔The Unbookclub 프로젝트로 진행한 계기
@@ -63,13 +62,13 @@ ___
 
 ___
 
-### 🌞 성능최적화
--  #### 진행중
+### 구현 플랫폼
+-  #### Front-end 기술 및 라이브러리: HTML5, CSS3, JavaScript ES6, React
+-  #### Back-end 기술 및 라이브러리: Node.js, Firebase (Authentication, Firestore)
+-  #### 데이터베이스: Firebase Firestore
+-  #### 외부 API: KakaoAPI
+-  #### Code Editor : Visual Studio Code 1.78
 
-___
-### ❗ 아쉬운 점
-- #### 진행중
-    #### 진행중
 ___
 
 ### ✅ 오류 해결
