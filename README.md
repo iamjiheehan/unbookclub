@@ -63,9 +63,7 @@ ___
 
 ### 구현 플랫폼
 -  #### Front-end 기술 및 라이브러리: HTML5, CSS3, JavaScript ES6, React
--  #### Back-end 기술 및 라이브러리: Node.js, Firebase (Authentication, Firestore)
--  #### 데이터베이스: Firebase Firestore
--  #### 외부 API: KakaoAPI
+-  #### Back-end 라이브러리 및 API :  Firebase (Authentication, Firestore), KakaoAPI
 -  #### Code Editor : Visual Studio Code 1.78
 
 ___
