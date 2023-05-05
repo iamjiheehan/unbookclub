@@ -35,7 +35,7 @@
  ###  목적 : 리액트,API 호출을 활용한 프로젝트
  
 #### 메인화면
-![메인화면](https://user-images.githubusercontent.com/102779433/231512655-5d531fa7-e3bb-445a-800c-6e9a03cedcc3.gif)
+- ![메인화면](https://user-images.githubusercontent.com/102779433/231512655-5d531fa7-e3bb-445a-800c-6e9a03cedcc3.gif)
 __
 #### 로그인
 ![로그인](https://user-images.githubusercontent.com/102779433/231512888-525fc6ba-6261-4855-bd01-1c43920fdd9f.gif)
