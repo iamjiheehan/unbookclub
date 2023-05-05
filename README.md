@@ -71,5 +71,10 @@ ___
 
 ___
 
+- ####  특이점1 : firebase를 이용한 로그인 기능 구현 -> https://hans-j.tistory.com/197
+- #### 특이점2 : Redux toolkit으로 상태관리 -> https://hans-j.tistory.com/208
+
+___
+
 ### ✅ 오류 해결
 -  https://hans-j.tistory.com/204
