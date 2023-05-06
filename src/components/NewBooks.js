@@ -1,17 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { addBook } from 'store';
 
 import newBooks from "data/newBooks.json";
-import { FlowAniForward, FlowAniReverse } from "styled-components/AniStyled";
+import { FlowAniReverse } from "styled-components/AniStyled";
 import { TextH1, TextH2, TextP } from "styled-components/TextStyled";
 import { ImgStyled } from "styled-components/ImgStyled";
 import { FlexCol, FlexRow } from "styled-components/FlexStyled";
-import {
-    BookItemContainer,
-    BookImage,
-    BookInfo,
-} from "styled-components/BookStyled";
+import { BookItemContainer, BookInfo } from "styled-components/BookStyled";
 import Button from "styled-components/ButtonStyled";
 import { FaShoppingCart } from "react-icons/fa";
 
@@ -124,3 +120,20 @@ function NewBooksList() {
 
 
 export { NewBooks, NewBooksList }
+
+// NewBooks 컴포넌트:
+
+// newBooks 데이터를 가져와 posts에 할당합니다.
+// addedBooks를 Redux의 useSelector를 사용하여 가져옵니다.
+// dispatch를 Redux의 useDispatch를 사용하여 가져옵니다.
+// handleAddToCart 함수는 독서 목록에 도서를 추가하는 기능을 수행합니다.
+// Button 컴포넌트를 클릭하면 handleAddToCart 함수가 호출됩니다.
+// posts 배열을 순회하며 도서 정보를 렌더링합니다.
+// NewBooksList 컴포넌트:
+
+// newBooks 데이터를 가져와 posts에 할당합니다.
+// addedBooks를 Redux의 useSelector를 사용하여 가져옵니다.
+// dispatch를 Redux의 useDispatch를 사용하여 가져옵니다.
+// handleAddToCart 함수는 독서 목록에 도서를 추가하는 기능을 수행합니다.
+// FlexRow와 FlexCol 컴포넌트를 사용하여 도서 정보를 레이아웃합니다.
+// posts 배열을 순회하며 도서 정보를 렌더링합니다.
