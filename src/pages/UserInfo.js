@@ -75,8 +75,8 @@ export default function UserInfo() {
             <TextH1>읽을 목록에 추가된 책이 {addedBooks.length}권 있습니다.</TextH1>
             {addedBooks.map((book) => (
               <FlexRow key={book.isbn} alignItems="center">
-                <ImgStyled src={book.coverLargeUrl} alt={book.title} width="100px" />
-                <FlexCol>
+                <ImgStyled src={book.coverLargeUrl} alt={book.title} width="100px" margin="1rem"/>
+                <FlexCol width="40%">
                   <TextP>{book.title}</TextP>
                   <TextP>{book.author}</TextP>
                 </FlexCol>

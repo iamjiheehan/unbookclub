@@ -32,7 +32,8 @@ const FlexColStyled = styled.div`
     ${commonStyles}
     flex-direction: ${(props) => props.direction || 'column'};
     align-items: ${(props) => props.alignItems || 'stretch'};
-    margin: ${(props) => props.margin || '0'}; 
+    margin: ${(props) => props.margin || '0'};
+    width: ${(props) => props.width || 'auto'};
 `;
 
 export { FlexRowStyled as FlexRow, FlexColStyled as FlexCol, FlexRowMQStyled as FlexRowMQ };

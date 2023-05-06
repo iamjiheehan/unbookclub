@@ -8,7 +8,7 @@ import { Container } from "react-bootstrap";
 import Button from "styled-components/ButtonStyled";
 import { TextH1, TextP } from "styled-components/TextStyled";
 import bookImg from "../static/images/menu-icon-03.webp";
-import { ImgStyled } from "../styled-components/ImgStyled";
+import { FirstImgStyled, ImgStyled } from "../styled-components/ImgStyled";
 import HR from "styled-components/LineStyled";
 
 import { FaArrowRight} from "react-icons/fa";
@@ -27,7 +27,7 @@ export default function Books() {
 
     return (
         <>
-        <ImgStyled src={bookImg} alt="Top Image" height="500px" />
+        <FirstImgStyled src={bookImg} alt="Top Image" height="500px" />
             <Container>
                 <Button onClick={() => handleModeChange("신간도서")} >
                     <TextP color="white">신간도서 <FaArrowRight /></TextP>
