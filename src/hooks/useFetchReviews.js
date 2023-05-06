@@ -34,5 +34,4 @@ return { reviews, loading };
 };
 
 export default useFetchReviews;
-
 // 주어진 사용자(userObj)에 대한 리뷰만 가져오는 기능을 제공
