@@ -17,14 +17,11 @@ function NewBooks() {
   const dispatch = useDispatch();
 
   const handleAddToCart = (itemId, title, author, coverLargeUrl) => {
-    console.log("Adding book to cart:", itemId, title, author, coverLargeUrl);
     const bookToAdd = posts.find((book) => book.itemId === itemId);
     if (addedBooks.find((book) => book.itemId === itemId)) {
-      console.log("Book already in cart:", itemId);
       return;
     }
     dispatch(addBook({ ...bookToAdd, title, author, coverLargeUrl }));
-    console.log("Book added to cart:", itemId);
   };
   
 

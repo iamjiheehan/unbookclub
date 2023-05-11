@@ -1,7 +1,11 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { removeBook } from '../store';
+
 import { TextH1, TextP } from "../styled-components/TextStyled";
 import BackStyled from "../styled-components/BackStyled";
 import ReviewTable from "../components/ReviewTable";
+import Button from "../styled-components/ButtonStyled";
 
 import Container from 'react-bootstrap/Container';
 
@@ -13,7 +17,6 @@ import { Loading } from "../hooks/useLoading";
 
 import { FlexRow, FlexCol } from "styled-components/FlexStyled";
 import { Input, BoardInput } from "styled-components/InputStyled";
-import { useSelector, useDispatch } from "react-redux";
 import HR from "styled-components/LineStyled";
 import { ImgStyled } from "styled-components/ImgStyled";
 
@@ -23,10 +26,9 @@ export default function UserInfo() {
   const { userObj, setUserObj } = useContext(AuthContext);
   const { reviews, loading } = useFetchReviews(userObj);
   const { newDisplayName, onChange, onSubmit } = useUpdateProfile();
-  const dispatch = useDispatch();
   const [filteredReviews, setFilteredReviews] = useState([]);
   const [sortingCriteria, setSortingCriteria] = useState("");
-
+  const dispatch = useDispatch();
   let addedBooks = useSelector((state) => state.book);
   
   useEffect(() => {
@@ -58,6 +60,10 @@ export default function UserInfo() {
     console.log("sort by rating works");
   };
 
+  const deleteBook = (itemId) => {
+    dispatch(removeBook(itemId));
+};
+
 
   return (
     <Container>
@@ -80,6 +86,7 @@ export default function UserInfo() {
                   <TextP>{book.title}</TextP>
                   <TextP>{book.author}</TextP>
                 </FlexCol>
+                <Button onClick={() => deleteBook(book.itemId)}>삭제</Button>
               </FlexRow>
             ))}
           </>
