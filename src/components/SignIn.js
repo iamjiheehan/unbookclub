@@ -13,6 +13,7 @@ import useSignInForm from "../hooks/useSignInForm";
 export default function SignIn() {
 
   const {
+    onPasswordRecoverySubmit,
     loginEmail,
     loginPassword,
     createEmail,
@@ -57,6 +58,14 @@ export default function SignIn() {
           </Form.Group>
         </Form>
         <FlexRow> 
+        <Button
+            type="submit"
+            bgColor="#7f8c8d"
+            fontWeight="500"
+            onClick={onPasswordRecoverySubmit}
+          >
+            비밀번호 찾기
+          </Button>
           <Button
             type="submit"
             bgColor="#e67e22"
@@ -72,7 +81,6 @@ export default function SignIn() {
           >
             익명으로 이용
           </Button>
-
         </FlexRow>
           
         <TextP>소셜 계정으로 로그인 하기</TextP>

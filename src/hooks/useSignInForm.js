@@ -10,7 +10,7 @@ function useSignInForm() {
     const [errorMessage, setErrorMessage] = useState("");
     const [showAlert, setShowAlert] = useState(false);
 
-    
+
     const handleAnonymousLogin = () => {
         firebaseInstance.auth().signInAnonymously()
             .then(() => {
@@ -112,7 +112,28 @@ function useSignInForm() {
         setShowAlert(true);
         }
     };
+    const onPasswordRecoverySubmit = async (event) => {
+        if (event) {
+            event.preventDefault();
+        }
+        try {
+            if (loginEmail) {
+                await authService.sendPasswordResetEmail(loginEmail);
+                setErrorMessage("이메일을 확인하세요. 비밀번호 재설정 링크를 보냈습니다.");
+                setShowAlert(true);
+            } else {
+                setErrorMessage("이메일을 입력해주세요.");
+                setShowAlert(true);
+            }
+        } catch (error) {
+            console.log(error);
+            setErrorMessage("이메일 전송에 실패했습니다. 다시 시도해주세요.");
+            setShowAlert(true);
+        }
+    };
+
     return {
+        onPasswordRecoverySubmit,
         loginEmail,
         loginPassword,
         createEmail,
