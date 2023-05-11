@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { dbService } from 'fBase';
 
-import useUpdateProfile from "../hooks/useUpdateProfile";
-
 const useReviewEditor = (reviewObj) => {
     const [editing, setEditing] = useState(false);
     const [newReview, setNewReview] = useState(reviewObj.review);
