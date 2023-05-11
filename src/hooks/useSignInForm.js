@@ -7,8 +7,11 @@ function useSignInForm() {
     const [createEmail, setCreateEmail] = useState("");
     const [createPassword, setCreatePassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [errorMessage, setErrorMessage] = useState("");
-    const [showAlert, setShowAlert] = useState(false);
+    const [loginErrorMessage, setLoginErrorMessage] = useState("");
+    const [loginShowAlert, setLoginShowAlert] = useState(false);
+    const [createErrorMessage, setCreateErrorMessage] = useState("");
+    const [createShowAlert, setCreateShowAlert] = useState(false);
+    
 
 
     const handleAnonymousLogin = () => {
@@ -37,7 +40,7 @@ function useSignInForm() {
         const data = await authService.signInWithPopup(provider);
         onLoginSubmit(null,data);
         } catch (error) {
-        setErrorMessage("Failed to log in with social media account.");
+            setLoginErrorMessage("소셜계정으로 로그인하기에 실패하였습니다.");
         }
     };
 
@@ -72,12 +75,12 @@ function useSignInForm() {
             );
             console.log(data);
         } else {
-            setErrorMessage("Please check your email or password.");
-            setShowAlert(true);
+            loginErrorMessage("이메일 혹은 비밀번호를 다시 확인해주세요");
+            setLoginShowAlert(true);
         }
         } catch (error) {
         console.log(error);
-        setErrorMessage("Failed to log in. Please try again.");
+        setLoginErrorMessage("로그인에 실패하였습니다. 잠시후 다시 시도해주세요.");
         }
     };
 
@@ -95,21 +98,21 @@ function useSignInForm() {
             );
             console.log(data);
             } else if (createPassword !== confirmPassword) {
-            setErrorMessage(" password is not matched");
-            setShowAlert(true);
+                setCreateErrorMessage("비밀번호가 같지 않습니다.");
+                setCreateShowAlert(true);
             }
         }
         console.log(data);
         } catch (error) {
         console.log(error);
         if (error.code === "auth/invalid-email") {
-            setErrorMessage("올바른 이메일 형식이 아닙니다.");
+            setCreateErrorMessage("올바른 이메일 형식이 아닙니다.");
         } else if (error.code === "auth/email-already-in-use") {
-            setErrorMessage("이미 가입된 이메일입니다.");
+            setCreateErrorMessage("이미 가입된 이메일입니다.");
         } else {
-            setErrorMessage("비밀번호는 8글자 이상을 입력해주세요.");
+            setCreateErrorMessage("비밀번호는 8글자 이상을 입력해주세요.");
         }
-        setShowAlert(true);
+        setCreateShowAlert(true);
         }
     };
     const onPasswordRecoverySubmit = async (event) => {
@@ -119,16 +122,16 @@ function useSignInForm() {
         try {
             if (loginEmail) {
                 await authService.sendPasswordResetEmail(loginEmail);
-                setErrorMessage("이메일을 확인하세요. 비밀번호 재설정 링크를 보냈습니다.");
-                setShowAlert(true);
+                setCreateErrorMessage("이메일을 확인하세요. 비밀번호 재설정 링크를 보냈습니다.");
+                setLoginShowAlert(true);
             } else {
-                setErrorMessage("이메일을 입력해주세요.");
-                setShowAlert(true);
+                setCreateErrorMessage("이메일을 입력해주세요.");
+                setLoginShowAlert(true);
             }
         } catch (error) {
             console.log(error);
-            setErrorMessage("이메일 전송에 실패했습니다. 다시 시도해주세요.");
-            setShowAlert(true);
+            setCreateErrorMessage("가입되지 않은 이메일 입니다. 회원가입을 진행헤주세요");
+            setLoginShowAlert(true);
         }
     };
 
@@ -139,10 +142,10 @@ function useSignInForm() {
         createEmail,
         createPassword,
         confirmPassword,
-        errorMessage,
-        showAlert,
-        setErrorMessage,
-        setShowAlert,
+        loginErrorMessage,
+        loginShowAlert,
+        createErrorMessage,
+        createShowAlert,
         onChange,
         onSocialClick,
         onLoginSubmit,

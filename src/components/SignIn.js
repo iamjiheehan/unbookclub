@@ -16,10 +16,11 @@ export default function SignIn() {
     onPasswordRecoverySubmit,
     loginEmail,
     loginPassword,
+    loginErrorMessage,
+    createErrorMessage,
     createEmail,
     createPassword,
     confirmPassword,
-    errorMessage,
     onChange,
     onSocialClick,
     onLoginSubmit,
@@ -54,7 +55,7 @@ export default function SignIn() {
               placeholder="비밀번호를 입력해주세요"
               style={{ textAlign: "left" }}
             />
-            {errorMessage}
+            {loginErrorMessage}
           </Form.Group>
         </Form>
         <FlexRow> 
@@ -141,7 +142,7 @@ export default function SignIn() {
               placeholder="비밀번호를 한 번 더 입력해주세요"
               style={{ textAlign: "left" }}
             />
-            {errorMessage}
+            {createErrorMessage}
           </Form.Group>
         </Form>
         <Button type="submit" fontWeight="500" onClick={onCreateAccountSubmit}>
