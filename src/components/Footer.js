@@ -18,7 +18,7 @@ const styles = styled.div`
 export default function Footer() {
     return (
         <>
-            <div style={styles.footer} bg="light" expand="lg" className='navbar-light bg-light'>
+            <div style={styles.footer} bg="light" expand="lg" classNameName='navbar-light bg-light'>
                     <Navbar.Brand href="/" >
                         <ImgStyled src={logo} alt="Logo" width= "300px" margin="2rem"/>
                     </Navbar.Brand>

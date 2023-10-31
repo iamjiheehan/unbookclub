@@ -62,7 +62,7 @@ export default function UserInfo() {
 
   const deleteBook = (itemId) => {
     dispatch(removeBook(itemId));
-};
+  };
 
 
   return (

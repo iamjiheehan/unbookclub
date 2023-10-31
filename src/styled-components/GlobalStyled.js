@@ -10,15 +10,24 @@ const GlobalStyle = createGlobalStyle`
         }
 
     body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+    body, td, tr {
+        color: #444444;
+        margin: 0px;
+        padding: 0px;
+        font-size: 12px;
+        font-family: Malgun Gothic,Dotum,'돋움',Helvetica,"Apple SD Gothic Neo",sans-serif!important;
+        line-height: 18px;
     }
 
     code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;
     }
 
@@ -29,6 +38,26 @@ const GlobalStyle = createGlobalStyle`
 
     input {
         border-radius: 50px !important;
+    }
+
+    button:hover {
+        cursor: pointer;
+    }
+
+    div {
+        text-align: left;
+        color: #444444;
+    }
+
+    a {
+        text-decoration: none;
+        color: #444444;
+    }
+
+    ul, li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
     }
 
 `;
