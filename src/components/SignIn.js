@@ -33,7 +33,7 @@ export default function SignIn() {
       <BackStyled bgColor="white" padding="3rem" style={{ width: "33.3%" }}>
         <TextH1 margin="0 auto 2rem auto">로그인 페이지</TextH1>
         <Form onSubmit={onLoginSubmit}>
-          <Form.Group classNameName="mb-3" controlId="formBasicEmail-login">
+          <Form.Group className="mb-3" controlId="formBasicEmail-login">
             <Form.Control
               onChange={onChange}
               required
@@ -44,7 +44,7 @@ export default function SignIn() {
               style={{ textAlign: "left" }}
             />
           </Form.Group>
-          <Form.Group classNameName="mb-3" controlId="formBasicPassword-login">
+          <Form.Group className="mb-3" controlId="formBasicPassword-login">
             <Form.Control
               onChange={onChange}
               required
@@ -112,7 +112,7 @@ export default function SignIn() {
           THE UNBOOK CLUB에서 시작하세요.
         </TextP>
         <Form onSubmit={onCreateAccountSubmit}>
-          <Form.Group classNameName="mb-3" controlId="formBasicEmail-create">
+          <Form.Group className="mb-3" controlId="formBasicEmail-create">
             <Form.Control
               onChange={onChange}
               required
@@ -123,7 +123,7 @@ export default function SignIn() {
               style={{ textAlign: "left" }}
             />
           </Form.Group>
-          <Form.Group classNameName="mb-3" controlId="formBasicPassword-create">
+          <Form.Group className="mb-3" controlId="formBasicPassword-create">
             <Form.Control
               onChange={onChange}
               value={createPassword}
@@ -133,7 +133,7 @@ export default function SignIn() {
               style={{ textAlign: "left" }}
             />
           </Form.Group>
-          <Form.Group classNameName="mb-3" controlId="formBasicPassword-confirm">
+          <Form.Group className="mb-3" controlId="formBasicPassword-confirm">
             <Form.Control
               onChange={onChange}
               value={confirmPassword}

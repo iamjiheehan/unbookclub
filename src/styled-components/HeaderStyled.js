@@ -423,6 +423,16 @@ export const Bottom = styled.div`
         position: relative;
     }
 
+    & > ul.l_menu > li > a.arr::after {
+        content: '';
+        display: inline-block;
+        width: 5px;
+        height: 4px;
+        background: url(../img/arr_drop_blue.png) no-repeat;
+        vertical-align: middle;
+        margin: -2px 0 0 2px;
+    }
+
     ul > li > a {
         display: inline-block;
         line-height: 25px;
@@ -558,9 +568,7 @@ export const Bottom = styled.div`
         background-color: White;
         width: auto;
         z-index: 10000;
-        opacity: 1;
         margin: -5px 0 0 -1px;
         box-shadow: 0px 3px 16px #00000033;
-        /* display: none; */
     }
 `;

@@ -36,7 +36,7 @@ function App() {
     <AuthContext.Provider value={{ isSignedIn, userObj, refreshUser }}>
       <LoadingProvider>
         <Provider store={store}>
-          <div classNameName="App">
+          <div className="App">
             <Header>
               <nav>
                 <ul>

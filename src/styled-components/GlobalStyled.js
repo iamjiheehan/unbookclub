@@ -66,11 +66,11 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .hide {
-        display: none;
+        opacity: 0;
     }
 
     .show {
-        display: block !important;
+        opacity: 1;
     }
 
 `;

@@ -49,6 +49,22 @@ function Header({ reviewObj }) {
 
     // ---------------------------------------헤더 메뉴 호버
 
+    const target = document.querySelectorAll(
+        ".header_layer_box, .header_layer_box_s, .hdm"
+    );
+
+    target.forEach((element) => {
+        element.addEventListener("mouseenter", () => {
+            element.classList.remove("hide");
+        });
+
+        element.addEventListener("mouseleave", () => {
+            element.classList.add("hide");
+        });
+
+        console.log('mouseenter');
+    });
+
     return (
         <>
             <HeaderStyled.Container className="header_wrap">
@@ -1808,10 +1824,11 @@ function Header({ reviewObj }) {
                                     <input
                                         id="serachInput-txt"
                                         type="text"
-                                        autocomplete="off"
+                                        autoComplete="off"
                                     />
                                     <label
-                                        for="serachInput-txt"
+                                        // for="serachInput-txt"
+                                        htmlFor="serachInput-txt"
                                         className="hide"
                                     >
                                         검색
@@ -2830,7 +2847,7 @@ function Header({ reviewObj }) {
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav classNameName="me-auto">
+                        <Nav className="me-auto">
                             <Nav.Link href="/board">
                                 <TextP>독후감 게시판</TextP>
                             </Nav.Link>
