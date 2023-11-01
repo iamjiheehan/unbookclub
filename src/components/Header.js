@@ -49,20 +49,26 @@ function Header({ reviewObj }) {
 
     // ---------------------------------------헤더 메뉴 호버
 
-    const target = document.querySelectorAll(
-        ".header_layer_box, .header_layer_box_s, .hdm"
-    );
+    // #headerTop_gnb 요소 내부의 모든 목록 항목을 가져옵니다.
+    const listItems = document.querySelectorAll("#headerTop_gnb li, .l_menu li");
 
-    target.forEach((element) => {
-        element.addEventListener("mouseenter", () => {
-            element.classList.remove("hide");
+    listItems.forEach(function (listItem) {
+        listItem.addEventListener("mouseenter", function () {
+            const item = this.querySelector("div");
+            if (item) {
+                item.style.display = "block";
+            }
         });
+    });
 
-        element.addEventListener("mouseleave", () => {
-            element.classList.add("hide");
+    // mouseleave 이벤트 리스너를 추가하여 자식 div를 숨깁니다.
+    listItems.forEach(function (listItem) {
+        listItem.addEventListener("mouseleave", function () {
+            const item = this.querySelector("div");
+            if (item) {
+                item.style.display = "none";
+            }
         });
-
-        console.log('mouseenter');
     });
 
     return (
