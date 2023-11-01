@@ -4,36 +4,44 @@ import Normalize from "styled-normalize";
 const GlobalStyle = createGlobalStyle`
     ${Normalize};
     
+    @font-face {
+        font-family: 'SUITE-Regular';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+        font-weight: 400;
+        font-style: normal;
+    }
+
     * {
         margin: 0;
-        /* text-align: left; */
         box-sizing: border-box;
     }
 
     body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-                sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+        font-family: 'SUITE-Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+            'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+            sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
 
     body, td, tr {
         color: #444444;
         margin: 0px;
         padding: 0px;
         font-size: 12px;
-        font-family: Malgun Gothic,Dotum,'돋움',Helvetica,"Apple SD Gothic Neo",sans-serif!important;
         line-height: 18px;
     }
 
     code {
-        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
+        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    }
+
+    h1 {
+        font-size: 30px;
     }
 
     p {
-        font-size: 24px;
+        font-size: 18px;
         margin: 0;
     }
 
@@ -72,7 +80,6 @@ const GlobalStyle = createGlobalStyle`
     .show {
         opacity: 1;
     }
-
 `;
 
 export default GlobalStyle;

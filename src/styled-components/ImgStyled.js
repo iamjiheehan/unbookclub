@@ -29,17 +29,11 @@ export const LogoImgStyled = styled.img`
 `;
 
 export const FirstImgStyled = styled.img`
-    width: ${(props) => props.width || 'auto'};
-    height: 500px;
-    max-width: ${(props) => props.maxWidth || 'auto'};
-    padding: ${(props) => props.padding || 'auto'};
-    margin: ${(props) => props.margin || 'auto'};
-    box-shadow: ${(props) => props.bgShadow || '0'};
-
-    @media (max-width: 768px) {
-        height: 250px;
+    width: auto;
+    height: 16rem;
+    
+    @media (min-width: 768px) {
         display: block;
-        margin-bottom: 1rem;
     }
 `;
 

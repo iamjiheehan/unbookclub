@@ -9,7 +9,7 @@ import arr_drop_blue from "../static/images/arr_drop_blue.png";
 export const Container = styled.div`
     width: 100%;
     border-bottom: 1px solid #33afe9;
-    margin-bottom: 9px;
+    /* margin-bottom: 9px; */
 
     .banner img {
         border-radius: 20px;
@@ -284,12 +284,13 @@ export const Top = styled.div`
     }
 `;
 
-export const Middle = styled.div`
+export const Bottom = styled.div`
     width: 1030px;
-    height: 88px;
+    height: 122px;
     margin: 0 auto;
     display: flex;
     position: relative;
+    align-items: baseline;
 
     h1 > a {
         display: block;
@@ -310,6 +311,11 @@ export const Middle = styled.div`
 
         #logoBtn {
             font-size: 0;
+
+            img {
+                margin-top: 11px;
+                width: 145px;
+            }
         }
     }
 
@@ -396,179 +402,8 @@ export const Middle = styled.div`
         width: 192px;
         position: absolute;
         right: 0;
-        top: 10px;
+        top: 27px;
         text-align: right;
     }
 `;
 
-export const Bottom = styled.div`
-    width: 1030px;
-    height: 30px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-
-    .r_menu > li > a {
-        width: max-content;
-        font-size: 13px;
-        color: #dd2483;
-        font-weight: bold;
-        padding: 0 6px 3px 8px;
-        line-height: 25px;
-    }
-
-    /* 펼치기 메뉴 */
-
-    & > ul {
-        display: flex;
-        position: relative;
-    }
-
-    & > ul.l_menu > li > a.arr::after {
-        content: '';
-        display: inline-block;
-        width: 5px;
-        height: 4px;
-        background: url(${arr_drop_blue}) no-repeat;
-        vertical-align: middle;
-        margin: -2px 0 0 2px;
-    }
-
-    ul > li > a {
-        display: inline-block;
-        line-height: 25px;
-        font-size: 13px;
-        position: relative;
-        box-sizing: border-box;
-        width: max-content;
-        color: #0f4e8a;
-        /* font-weight: bold; */
-        padding: 0 7px 3px 7px;
-        letter-spacing: -0.5px;
-    }
-
-    ul.l_menu > li > a {
-        width: max-content;
-        color: #0f4e8a;
-        font-weight: bold;
-        letter-spacing: -0.5px;
-
-        .new {
-            display: inline-block;
-            width: 13px;
-            height: 13px;
-            background-color: #f32383;
-            color: #fff;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 12px;
-            font-size: 9px;
-            font-weight: normal;
-            margin: -2px 0 0 0px;
-            vertical-align: middle;
-        }
-    }
-
-    ul > li.categoryall > a {
-        width: max-content;
-        background: url(${i_menu}) no-repeat left 8px center;
-        padding: 0 15px 3px 28px;
-        line-height: 25px;
-        font-size: 13px;
-        color: #0f4e8a;
-        font-weight: bold;
-        margin-right: 7px;
-
-        &::after {
-            content: "";
-            display: block;
-            width: 1px;
-            height: 12px;
-            background-color: #ded9d9;
-            position: absolute;
-            right: 0;
-            top: 7px;
-        }
-    }
-
-    ul > li a.tobelogo {
-        color: #26b5bf !important;
-        padding: 0 13px 4px 7px;
-
-        &::after {
-            content: "";
-            display: inline-block;
-            width: 11px;
-            height: 11px;
-            background: url(https://image.aladin.co.kr/img/ToBeContinued/common/tb-simbol.svg)
-                no-repeat center / 100% auto;
-            font-size: 0px;
-            color: transparent;
-            margin: -2px 0 0 0px;
-            vertical-align: middle;
-            position: absolute;
-            right: 0;
-            top: 10px;
-        }
-    }
-
-    .categorysub_layer_t {
-        background: #3a3a3a;
-        font-weight: bold;
-        padding: 4px 0 4px 9px;
-        margin-bottom: 5px;
-        color: #ffffff;
-
-        a {
-            color: #ffffff;
-        }
-    }
-
-    .categorysub_layer_new2 {
-        float: left;
-        background-color: #ffffff !important;
-
-        a {
-            color: #333333;
-        }
-
-        ul {
-            float: left;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            width: 130px;
-        }
-
-        li {
-            list-style: none;
-            margin: 0 0 0 10px;
-            font-size: 13px;
-            padding: 2px 0 4px 0;
-        }
-    }
-
-    #head_layer_menu a {
-        text-decoration: none;
-        display: block;
-        font-size: 13px;
-    }
-
-    #head_layer_menu a:hover,
-    .category a:hover,
-    .category > ul > li > a:hover {
-        text-decoration: underline;
-    }
-
-
-
-    .hdm {
-        padding: 9px;
-        position: absolute;
-        background-color: White;
-        width: auto;
-        z-index: 10000;
-        margin: -5px 0 0 -1px;
-        box-shadow: 0px 3px 16px #00000033;
-    }
-`;

@@ -1,39 +1,74 @@
-import React from 'react';
-import Container from 'react-bootstrap/Container';
+import React from "react";
+import Container from "react-bootstrap/Container";
+import * as MainStyled from "../styled-components/MainStyled";
 
-import main from '../static/images/main-01.webp';
-import icon01 from '../static/images/main-icon-01.webp';
-import icon02 from '../static/images/main-icon-02.webp';
-import icon03 from '../static/images/main-icon-03.webp';
-import icon04 from '../static/images/main-icon-04.webp';
-import icon05 from '../static/images/main-icon-05.webp';
+import main from "../static/images/banner_home.webp";
+import imgCategory1 from "../static/images/img-category1.webp";
+import imgCategory2 from "../static/images/img-category2.webp";
+import imgCategory3 from "../static/images/img-category3.webp";
+import icon01 from "../static/images/main-icon-01.webp";
+import icon02 from "../static/images/main-icon-02.webp";
+import icon03 from "../static/images/main-icon-03.webp";
+import icon04 from "../static/images/main-icon-04.webp";
+import icon05 from "../static/images/main-icon-05.webp";
 
-import testimonial from '../static/images/main-testimonial.webp';
+import testimonial from "../static/images/main-testimonial.webp";
 
-import { NewBooks } from '../components/NewBooks';
-import { BestSellers } from '../components/BestSellers';
+import { NewBooks } from "../components/NewBooks";
+import { BestSellers } from "../components/BestSellers";
 
-import Button from '../styled-components/ButtonStyled'; 
-import { ImgStyled, LastImgStyled, FirstImgStyled } from '../styled-components/ImgStyled';
-import { FlexRow, FlexCol } from '../styled-components/FlexStyled'
-import BackStyled from '../styled-components/BackStyled';
-import {TextH1,TextH2,TextP} from '../styled-components/TextStyled';
-import GridStyled from '../styled-components/GridStyled';
+import Button from "../styled-components/ButtonStyled";
+import { Btn1, Btn2 } from "styled-components/BtnStyled";
+
+import {
+    ImgStyled,
+    LastImgStyled,
+    FirstImgStyled,
+} from "../styled-components/ImgStyled";
+import { FlexRow, FlexCol } from "../styled-components/FlexStyled";
+import BackStyled from "../styled-components/BackStyled";
+import { TextH1, TextH2, TextP } from "../styled-components/TextStyled";
+import GridStyled from "../styled-components/GridStyled";
 
 export default function Main() {
     return (
         <>
-            <Container>
-                <div>
+            <MainStyled.Wrap>
+                <div className="home-banner">
+                    <div className="home-banner-container">
+                        <FirstImgStyled src={main} alt="mainImage" />
+                        <div className="banner-content">
+                            <h1>Building community through books</h1>
+                            <p>
+                                Organize your club, start a new one, or find
+                                your book people
+                            </p>
+                            <div className="wrap-button">
+                                <Btn1 to="/board">리뷰게시판 둘러보기</Btn1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="center">
+                    <div className="content"> <img src={imgCategory1} alt=""/>
+                        <Btn2 to="/board" bgColor="#333">GET YOUR CLUB ORGANIZED</Btn2>
+                    </div>
+                    <div className="content"> <img src={imgCategory2} alt=""/>
+                        <Btn2 to="/board" bgColor="#333">FIND A CLUB TO JOIN</Btn2>
+                    </div>
+                    <div className="content"> <img src={imgCategory3} alt=""/>
+                        <Btn2 to="/board" bgColor="#333">DISCOVER NEW BOOKS</Btn2>
+                    </div>
+                </div>
+                {/* <div>
                     <FirstImgStyled src={main} alt="mainImage" />
                     <div>
                         <TextH1 padding='0 0 0.5rem 0'>THE UNBOOK CLUB</TextH1>
                         <TextP> 책을 함께 읽고 다양한 생각을 나누는 공간<br/></TextP>
-                        <Button to="/board">독후감 쓰러가기</Button>
                     </div>
-                </div>
-            </Container>
-            <div>
+                </div> */}
+            </MainStyled.Wrap>
+            {/* <div>
                 <TextH1 bgColor='#61777F' padding='1.5rem' color='white' lineHeight='100%'>심플한 온라인 북클럽, THE UNBOOK CLUB</TextH1>
                     <Container>
                         <FlexRow style={{flexWrap:"wrap"}}>
@@ -117,7 +152,7 @@ export default function Main() {
                             <Button to="/books" margin="0 0 3rem 0">도서 검색하러 가기</Button>
                         </Container>
                     </div>
-            </div>
+            </div> */}
         </>
     );
 }
