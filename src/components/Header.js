@@ -49,8 +49,10 @@ function Header({ reviewObj }) {
 
     // ---------------------------------------헤더 메뉴 호버
 
-    // #headerTop_gnb 요소 내부의 모든 목록 항목을 가져옵니다.
-    const listItems = document.querySelectorAll("#headerTop_gnb li, .l_menu li");
+    // #headerTop_gnb 요소 내부의 모든 목록 항목을 가져옴.
+    const listItems = document.querySelectorAll(
+        "#headerTop_gnb li, .l_menu li"
+    );
 
     listItems.forEach(function (listItem) {
         listItem.addEventListener("mouseenter", function () {
@@ -61,12 +63,34 @@ function Header({ reviewObj }) {
         });
     });
 
-    // mouseleave 이벤트 리스너를 추가하여 자식 div를 숨깁니다.
+    // mouseleave 이벤트 리스너를 추가하여 자식 div를 숨김.
     listItems.forEach(function (listItem) {
         listItem.addEventListener("mouseleave", function () {
             const item = this.querySelector("div");
             if (item) {
                 item.style.display = "none";
+            }
+        });
+    });
+
+    // 상위 팝업 배너 닫기
+    const closeButtons = document.querySelectorAll(".close");
+    closeButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            const w_t_event = document.querySelector(".w_t_event");
+            if (w_t_event) {
+                w_t_event.style.display = "none";
+            }
+        });
+    });
+
+    // 팝업 메뉴 닫기
+    const menuCloseButtons = document.querySelectorAll(".menu_close");
+    menuCloseButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            const headLayerMenu = document.querySelector("#head_layer_menu");
+            if (headLayerMenu) {
+                headLayerMenu.style.display = "none";
             }
         });
     });
