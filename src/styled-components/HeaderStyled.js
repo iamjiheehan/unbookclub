@@ -120,7 +120,6 @@ export const Container = styled.div`
 
         /* display:none; */
 
-
     }
 
     .header_layer_box ul {

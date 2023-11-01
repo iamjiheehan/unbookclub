@@ -84,7 +84,7 @@ function Header({ reviewObj }) {
                                     HOME
                                 </a>
                             </li>
-                            <li id="head_book_layer show">
+                            <li id="head_book_layer">
                                 <a href="./sub.html" title="국내도서">
                                     국내도서
                                 </a>
@@ -284,7 +284,7 @@ function Header({ reviewObj }) {
                                     </div>
                                 </div>
                             </li>
-                            {/* <li id="head_foreign_layer">
+                            <li id="head_foreign_layer">
                                 <a href="./sub.html" title="외국도서">
                                     외국도서
                                 </a>
@@ -1746,7 +1746,7 @@ function Header({ reviewObj }) {
                                         </li>
                                     </ul>
                                 </div>
-                            </li> */}
+                            </li>
                         </ul>
                         <ul className="util" id="headerTop_util">
                             <li>
