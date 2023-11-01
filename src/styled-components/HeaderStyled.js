@@ -4,6 +4,7 @@ import bg_search from "../static/images/bg_search.png";
 import gray_arr from "../static/images/gray_arr.gif";
 import i_arrdown from "../static/images/i_arrdown.gif";
 import i_menu from "../static/images/i-menu.png";
+import arr_drop_blue from "../static/images/arr_drop_blue.png";
 
 export const Container = styled.div`
     width: 100%;
@@ -118,7 +119,7 @@ export const Container = styled.div`
         width: 1030px;
         left: 0px;
 
-        /* display:none; */
+        display:none;
 
     }
 
@@ -178,7 +179,7 @@ export const Container = styled.div`
             }
     }
 
-    .header_layer_box .category h3  a{
+    .header_layer_box .category h3 a{
         font-size: 15px;
         background: url(https://image.aladin.co.kr/img/header/2023/arr_go.svg) no-repeat center right 1px / 6px auto;
         padding-right: 12px;
@@ -428,7 +429,7 @@ export const Bottom = styled.div`
         display: inline-block;
         width: 5px;
         height: 4px;
-        background: url(../img/arr_drop_blue.png) no-repeat;
+        background: url(${arr_drop_blue}) no-repeat;
         vertical-align: middle;
         margin: -2px 0 0 2px;
     }
@@ -439,7 +440,6 @@ export const Bottom = styled.div`
         font-size: 13px;
         position: relative;
         box-sizing: border-box;
-
         width: max-content;
         color: #0f4e8a;
         /* font-weight: bold; */
