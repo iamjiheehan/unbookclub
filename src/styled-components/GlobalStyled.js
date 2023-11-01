@@ -70,7 +70,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .show {
-        display: block;
+        display: block !important;
     }
 
 `;

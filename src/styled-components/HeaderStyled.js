@@ -75,6 +75,7 @@ export const Container = styled.div`
 
         ul li {
             margin-bottom: 8px;
+
         }
 
         ul li a {
@@ -86,6 +87,127 @@ export const Container = styled.div`
             word-break: keep-all;
             letter-spacing: -0.5px;
         }
+    }
+
+
+    /* coffee 레이어 */
+    #head_coffee_layer.header_layer_box {
+        width: 660px;
+        height: auto;
+        left: 350px;
+    }
+
+    /* music 레이어 */
+    #head_music_layer.header_layer_box {
+        width: 660px;
+        height: auto;
+        left: 350px;
+
+        display: none;
+    }
+
+    .header_layer_box {
+        background-color: #fff;
+        box-shadow: 0px 3px 16px #00000033;
+        padding: 30px;
+        box-sizing: border-box;
+        position: absolute;
+        top: 38px;
+        z-index: 10000;
+        display: flex;
+        width: 1030px;
+        left: 0px;
+
+        /* display:none; */
+
+
+    }
+
+    .header_layer_box ul {
+        width: 150px;
+        margin-top: 25px;
+    }
+
+    .header_layer_box ul > li {
+        /* width: 150px; */
+    }
+
+    
+    .header_layer_box .category {
+        display: flex;
+        font-weight: normal;
+        padding-top: 40px;
+        position: relative;
+    }
+
+    .header_layer_box .category > div h4 {
+        font-size: 13px;
+        font-weight: bold;
+        margin: 0 0 8px 0;
+        position: absolute;
+        left: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        word-wrap: break-word;
+        padding: 0;
+        color: #333;
+    }
+
+    .header_layer_box .category h3 {
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin: 0;
+    }
+
+    .header_layer_box .category a {
+            display: block;
+            font-size: 13px;
+            padding: 0;
+            color: #333;
+            text-align: left;
+            font-weight: normal;
+            /* height: 30px; */
+            height: 28px;
+            line-height: normal;
+
+            &:hover {
+                text-decoration: underline;
+            }
+    }
+
+    .header_layer_box .category h3  a{
+        font-size: 15px;
+        background: url(https://image.aladin.co.kr/img/header/2023/arr_go.svg) no-repeat center right 1px / 6px auto;
+        padding-right: 12px;
+        letter-spacing: -0.01em;
+        font-weight: bold;
+    }
+
+    /* bookstore 레이어 */
+    #head_bookstore_layer.header_layer_box_s {
+        width: 110px;
+        height: auto;
+        left: 688px;
+        background-color: #fff;
+        box-shadow: 0px 3px 16px #00000033;
+        padding: 14px 18px 10px 18px;
+        box-sizing: border-box;
+        position: absolute;
+        top: 38px;
+        z-index: 10000;
+    }
+
+    .header_layer_box_s a {
+        color: black;
+    }
+
+    #head_bookstore_layer.header_layer_box_s a{
+        line-height: normal;
+        font-weight: normal;
     }
 `;
 
@@ -100,6 +222,13 @@ export const Top = styled.div`
         border-bottom: none;
         color: #0f4e8a !important;
     }
+
+    
+    .gnb li {
+        white-space: nowrap;
+
+    }
+
 
     a, .gnb > li > a {
         width: max-content;
@@ -145,115 +274,9 @@ export const Top = styled.div`
         z-index: 9999;
     }
 
-    .gnb li {
-        white-space: nowrap;
-    }
-
-    /* bookstore 레이어 */
-    #head_bookstore_layer.header_layer_box_s {
-        width: 110px;
-        height: auto;
-        left: 688px;
-        background-color: #fff;
-        box-shadow: 0px 3px 16px #00000033;
-        padding: 14px 18px 10px 18px;
-        box-sizing: border-box;
-        position: absolute;
-        top: 38px;
-        z-index: 10000;
-    }
-
-    .header_layer_box_s a {
-        color: black;
-    }
-
-    #head_bookstore_layer.header_layer_box_s a{
-        line-height: normal;
-        font-weight: normal;
-    }
-    /* coffee 레이어 */
-    #head_coffee_layer.header_layer_box {
-        width: 660px;
-        height: auto;
-        left: 350px;
-    }
-
-    /* music 레이어 */
-    #head_music_layer.header_layer_box {
-        width: 660px;
-        height: auto;
-        left: 350px;
-    }
-
-    .header_layer_box {
-        background-color: #fff;
-        box-shadow: 0px 3px 16px #00000033;
-        padding: 30px;
-        box-sizing: border-box;
-        position: absolute;
-        top: 38px;
-        z-index: 10000;
-        display: flex;
-        width: 1030px;
-        left: 0px;
-
-        display:none;
-
-        .category a {
-            display: block;
-            font-size: 13px;
-            padding: 0;
-            color: #333;
-            text-align: left;
-            font-weight: normal;
-            /* height: 30px; */
-            height: 28px;
-            line-height: normal;
-        }
-    }
-
     .banner img,
     #head_coffee_layer.header_layer_box .banner img {
         border-radius: 15px;
-    }
-
-    .category {
-        display: flex;
-        font-weight: normal;
-        padding-top: 40px;
-        position: relative;
-    }
-
-    .category > div h4 {
-        font-size: 13px;
-        font-weight: bold;
-        margin: 0 0 8px 0;
-        position: absolute;
-        left: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        word-wrap: break-word;
-        padding: 0;
-        color: #333;
-    }
-
-    .category h3 {
-        position: absolute;
-        left: 0;
-        top: 0;
-        margin: 0;
-    }
-
-    .category h3  a{
-        font-size: 15px;
-        background: url(https://image.aladin.co.kr/img/header/2023/arr_go.svg)
-        no-repeat center right 1px / 6px auto;
-        padding-right: 12px;
-        letter-spacing: -0.01em;
-        font-weight: bold;
     }
 
     .usedfaq {
@@ -384,6 +407,15 @@ export const Bottom = styled.div`
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+
+    .r_menu > li > a {
+        width: max-content;
+        font-size: 13px;
+        color: #dd2483;
+        font-weight: bold;
+        padding: 0 6px 3px 8px;
+        line-height: 25px;
+    }
 
     /* 펼치기 메뉴 */
 
