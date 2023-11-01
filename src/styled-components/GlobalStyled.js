@@ -6,8 +6,9 @@ const GlobalStyle = createGlobalStyle`
     
     * {
         margin: 0;
-        text-align: center;
-        }
+        /* text-align: left; */
+        box-sizing: border-box;
+    }
 
     body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -37,7 +38,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     input {
-        border-radius: 50px !important;
+        /* border-radius: 50px !important; */
     }
 
     button:hover {
@@ -58,6 +59,14 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         list-style: none;
+    }
+
+    .relative {
+        position: relative;
+    }
+
+    .hidden {
+        display: none;
     }
 
 `;

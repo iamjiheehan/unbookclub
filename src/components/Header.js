@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from "../static/images/logo.webp";
 
-import * as Style from "../styled-components/HeaderStyled"
+import * as HeaderStyled from "../styled-components/HeaderStyled"
 
 import LoginBtn from "../styled-components/LoginBtnStyled";
 import { ImgStyled, LogoImgStyled } from "../styled-components/ImgStyled";
@@ -14,7 +14,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import useSignOut from "../hooks/useSignOut";
 import { LoadingBack, LoadingText } from "../styled-components/LoadingStyled";
+
 import Cube from "../static/images/cube.gif";
+import top_header_R from "../static/images/top_header_R.jpg";
+import top_header_L from "../static/images/top_header_L.jpg";
+import header_banner from "../static/images/header_banner.jpg";
+import i_arrdown_fill from "../static/images/i_arrdown_fill.gif";
+import aladin_logo_new from "../static/images/aladin_logo_new.gif";
+
+
 
 import AuthContext from "contexts/AuthContext";
 import { firebaseInstance } from "fBase";
@@ -43,7 +51,7 @@ function Header({ reviewObj }) {
 
     return (
         <>
-            <Style.Container className="header_wrap">
+            <HeaderStyled.Container className="header_wrap">
                 {/* 상단 이벤트 베너 */}
                 <div
                     className="w_t_event roof_bnwrap"
@@ -51,32 +59,32 @@ function Header({ reviewObj }) {
                 >
                     <div className="RE_banner_new">
                         <div className="left">
-                            <a href="#">
+                            <a href="#!">
                                 <img
-                                    src="./img/top_header_L.jpg"
+                                    src={top_header_L}
                                     alt=""
                                     border="0"
                                 />
                             </a>
                         </div>
                         <div className="right">
-                            <a href="#">
+                            <a href="#!">
                                 <img
-                                    src="./img/top_header_R.jpg"
+                                    src={top_header_R}
                                     alt=""
                                     border="0"
                                 />
                             </a>
                         </div>
                         <div className="close">
-                            <a href="#" alt="닫기">
+                            <a href="#!" alt="닫기">
                                 닫기
                             </a>
                         </div>
                     </div>
                 </div>
                 {/* 헤더 맨 위 메뉴  */}
-                <div className="header_top">
+                <HeaderStyled.Top className="header_top">
                     <div className="inner">
                         <ul className="gnb" id="headerTop_gnb">
                             <li className="home">
@@ -1939,8 +1947,8 @@ function Header({ reviewObj }) {
                             </li>
                         </ul>
                     </div>
-                </div>
-                <div className="header_middle">
+                </HeaderStyled.Top>
+                <HeaderStyled.Middle className="header_middle">
                     {/* 홈 화면 바로가기 로고 */}
                     <div className="header_middle-logo">
                         <h1>
@@ -1952,7 +1960,7 @@ function Header({ reviewObj }) {
                             >
                                 알라딘
                                 <img
-                                    src="./img/aladin_logo_new.gif"
+                                    src={aladin_logo_new}
                                     alt="알라딘"
                                 />
                             </a>
@@ -1984,7 +1992,7 @@ function Header({ reviewObj }) {
                                 </div>
                                 <div className="icon-down">
                                     <a href="./sub.html">
-                                        <img src="./img/i_arrdown-fill.gif" />
+                                        <img src={i_arrdown_fill} alt="" />
                                     </a>
                                 </div>
                             </div>
@@ -1999,13 +2007,13 @@ function Header({ reviewObj }) {
                     <div className="ad_box">
                         <a href="./sub.html" title="헤더배너">
                             <img
-                                src="./img/header_banner.jpg"
+                                src={header_banner}
                                 alt="헤더배너"
                             />
                         </a>
                     </div>
-                </div>
-                <div className="header_bottom">
+                </HeaderStyled.Middle>
+                <HeaderStyled.Bottom className="header_bottom">
                     <ul className="l_menu" title="분야보기">
                         <li
                             id="head_layer_menu_container"
@@ -2989,8 +2997,8 @@ function Header({ reviewObj }) {
                             </a>
                         </li>
                     </ul>
-                </div>
-            </Style.Container>
+                </HeaderStyled.Bottom>
+            </HeaderStyled.Container>
             {/* <Navbar bg="light" expand="lg">
                 <Container>
                     <Navbar.Brand href="/">
