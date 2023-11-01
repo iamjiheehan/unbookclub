@@ -65,8 +65,12 @@ const GlobalStyle = createGlobalStyle`
         position: relative;
     }
 
-    .hidden {
+    .hide {
         display: none;
+    }
+
+    .show {
+        display: block;
     }
 
 `;

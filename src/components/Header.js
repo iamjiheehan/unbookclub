@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from "../static/images/logo.webp";
 
-import * as HeaderStyled from "../styled-components/HeaderStyled"
+import * as HeaderStyled from "../styled-components/HeaderStyled";
 
 import LoginBtn from "../styled-components/LoginBtnStyled";
 import { ImgStyled, LogoImgStyled } from "../styled-components/ImgStyled";
@@ -21,8 +21,6 @@ import top_header_L from "../static/images/top_header_L.jpg";
 import header_banner from "../static/images/header_banner.jpg";
 import i_arrdown_fill from "../static/images/i_arrdown_fill.gif";
 import aladin_logo_new from "../static/images/aladin_logo_new.gif";
-
-
 
 import AuthContext from "contexts/AuthContext";
 import { firebaseInstance } from "fBase";
@@ -49,31 +47,25 @@ function Header({ reviewObj }) {
         );
     }
 
+    // ---------------------------------------헤더 메뉴 호버
+
     return (
         <>
             <HeaderStyled.Container className="header_wrap">
                 {/* 상단 이벤트 베너 */}
                 <div
                     className="w_t_event roof_bnwrap"
-                    style={{ background: 'rgb(124, 91, 244)' }}
+                    style={{ background: "rgb(124, 91, 244)" }}
                 >
                     <div className="RE_banner_new">
                         <div className="left">
                             <a href="#!">
-                                <img
-                                    src={top_header_L}
-                                    alt=""
-                                    border="0"
-                                />
+                                <img src={top_header_L} alt="" border="0" />
                             </a>
                         </div>
                         <div className="right">
                             <a href="#!">
-                                <img
-                                    src={top_header_R}
-                                    alt=""
-                                    border="0"
-                                />
+                                <img src={top_header_R} alt="" border="0" />
                             </a>
                         </div>
                         <div className="close">
@@ -99,13 +91,10 @@ function Header({ reviewObj }) {
                                 <div
                                     id="head_book_layer"
                                     className="header_layer_box"
-                                    style={{display: "none"}}
                                 >
                                     <div className="category">
                                         <h3>
-                                            <a href="./sub.html">
-                                                국내도서
-                                            </a>
+                                            <a href="./sub.html">국내도서</a>
                                         </h3>
                                         <ul>
                                             <li>
@@ -115,9 +104,7 @@ function Header({ reviewObj }) {
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
-                                                    <strong>
-                                                        경제경영
-                                                    </strong>
+                                                    <strong>경제경영</strong>
                                                 </a>
                                             </li>
                                             <li>
@@ -126,9 +113,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    과학
-                                                </a>
+                                                <a href="./sub.html">과학</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -141,9 +126,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    만화
-                                                </a>
+                                                <a href="./sub.html">만화</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -172,19 +155,13 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    에세이
-                                                </a>
+                                                <a href="./sub.html">에세이</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    여행
-                                                </a>
+                                                <a href="./sub.html">여행</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    역사
-                                                </a>
+                                                <a href="./sub.html">역사</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -192,9 +169,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    외국어
-                                                </a>
+                                                <a href="./sub.html">외국어</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -202,9 +177,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    유아
-                                                </a>
+                                                <a href="./sub.html">유아</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -219,9 +192,7 @@ function Header({ reviewObj }) {
                                         </ul>
                                         <ul>
                                             <li>
-                                                <a href="./sub.html">
-                                                    잡지
-                                                </a>
+                                                <a href="./sub.html">잡지</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -244,9 +215,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    청소년
-                                                </a>
+                                                <a href="./sub.html">청소년</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -290,9 +259,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    이벤트
-                                                </a>
+                                                <a href="./sub.html">이벤트</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -306,7 +273,10 @@ function Header({ reviewObj }) {
                                             <a href="./sub.html">
                                                 <img
                                                     src="https://image.aladin.co.kr/img/bn/book/2023/03/230814_august2_hlayer.png"
-                                                    style={{ width: '373px', height: '237px' }}
+                                                    style={{
+                                                        width: "373px",
+                                                        height: "237px",
+                                                    }}
                                                     alt=""
                                                 />
                                             </a>
@@ -321,20 +291,15 @@ function Header({ reviewObj }) {
                                 <div
                                     id="head_foreign_layer"
                                     className="header_layer_box"
-                                    style={{display: "none"}}
                                 >
                                     <div className="category">
                                         <h3>
-                                            <a href="./sub.html">
-                                                외국도서
-                                            </a>
+                                            <a href="./sub.html">외국도서</a>
                                         </h3>
                                         <ul>
                                             <li>
                                                 <a href="./sub.html">
-                                                    <strong>
-                                                        영미도서
-                                                    </strong>
+                                                    <strong>영미도서</strong>
                                                 </a>
                                             </li>
                                             <li>
@@ -363,24 +328,16 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    만화
-                                                </a>
+                                                <a href="./sub.html">만화</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    여행
-                                                </a>
+                                                <a href="./sub.html">여행</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    역사
-                                                </a>
+                                                <a href="./sub.html">역사</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    요리
-                                                </a>
+                                                <a href="./sub.html">요리</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -393,9 +350,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    청소년
-                                                </a>
+                                                <a href="./sub.html">청소년</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -427,19 +382,13 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    법률
-                                                </a>
+                                                <a href="./sub.html">법률</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    수험서
-                                                </a>
+                                                <a href="./sub.html">수험서</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    언어학
-                                                </a>
+                                                <a href="./sub.html">언어학</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -447,9 +396,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    의학
-                                                </a>
+                                                <a href="./sub.html">의학</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -457,17 +404,13 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    컴퓨터
-                                                </a>
+                                                <a href="./sub.html">컴퓨터</a>
                                             </li>
                                         </ul>
                                         <ul>
                                             <li>
                                                 <a href="./sub.html">
-                                                    <strong>
-                                                        기타 언어권
-                                                    </strong>
+                                                    <strong>기타 언어권</strong>
                                                 </a>
                                             </li>
                                             <li>
@@ -493,19 +436,13 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    그림책
-                                                </a>
+                                                <a href="./sub.html">그림책</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    동화책
-                                                </a>
+                                                <a href="./sub.html">동화책</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    리더스
-                                                </a>
+                                                <a href="./sub.html">리더스</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -513,28 +450,20 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    챕터북
-                                                </a>
+                                                <a href="./sub.html">챕터북</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    코스북
-                                                </a>
+                                                <a href="./sub.html">코스북</a>
                                             </li>
                                         </ul>
                                         <ul>
                                             <li>
                                                 <a href="./sub.html">
-                                                    <strong>
-                                                        일본도서
-                                                    </strong>
+                                                    <strong>일본도서</strong>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    문학
-                                                </a>
+                                                <a href="./sub.html">문학</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -542,14 +471,10 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    잡지
-                                                </a>
+                                                <a href="./sub.html">잡지</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    코믹
-                                                </a>
+                                                <a href="./sub.html">코믹</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -567,14 +492,15 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    이벤트
-                                                </a>
+                                                <a href="./sub.html">이벤트</a>
                                             </li>
                                             <li>
                                                 <a
                                                     href="./sub.html"
-                                                    style={{height: "40px", color: "#EA3692"}}
+                                                    style={{
+                                                        height: "40px",
+                                                        color: "#EA3692",
+                                                    }}
                                                 >
                                                     <strong>
                                                         LEXILE 지수별
@@ -590,7 +516,10 @@ function Header({ reviewObj }) {
                                             <a href="./sub.html">
                                                 <img
                                                     src="https://image.aladin.co.kr/img/bn/foreign/2023/03/230816_sale_hlayer.jpg"
-                                                    style={{width:"226px", height:"290px"}}
+                                                    style={{
+                                                        width: "226px",
+                                                        height: "290px",
+                                                    }}
                                                     alt=""
                                                 />
                                             </a>
@@ -605,7 +534,6 @@ function Header({ reviewObj }) {
                                 <div
                                     id="head_ebook_layer"
                                     className="header_layer_box"
-                                    style={{display: "none"}}
                                 >
                                     <div className="category">
                                         <h3>
@@ -619,21 +547,15 @@ function Header({ reviewObj }) {
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
-                                                    <strong>
-                                                        경제경영
-                                                    </strong>
+                                                    <strong>경제경영</strong>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    과학
-                                                </a>
+                                                <a href="./sub.html">과학</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
-                                                    <strong>
-                                                        라이트노벨
-                                                    </strong>
+                                                    <strong>라이트노벨</strong>
                                                 </a>
                                             </li>
                                             <li>
@@ -648,9 +570,7 @@ function Header({ reviewObj }) {
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
-                                                    <strong>
-                                                        사회과학
-                                                    </strong>
+                                                    <strong>사회과학</strong>
                                                 </a>
                                             </li>
                                             <li>
@@ -661,9 +581,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    어린이
-                                                </a>
+                                                <a href="./sub.html">어린이</a>
                                             </li>
                                         </ul>
                                         <ul>
@@ -673,19 +591,13 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    여행
-                                                </a>
+                                                <a href="./sub.html">여행</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    역사
-                                                </a>
+                                                <a href="./sub.html">역사</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    외국어
-                                                </a>
+                                                <a href="./sub.html">외국어</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -699,9 +611,7 @@ function Header({ reviewObj }) {
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
-                                                    <strong>
-                                                        자기계발
-                                                    </strong>
+                                                    <strong>자기계발</strong>
                                                 </a>
                                             </li>
                                             <li>
@@ -710,9 +620,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    청소년
-                                                </a>
+                                                <a href="./sub.html">청소년</a>
                                             </li>
                                         </ul>
                                         <ul>
@@ -728,9 +636,7 @@ function Header({ reviewObj }) {
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
-                                                    <strong>
-                                                        오디오북
-                                                    </strong>
+                                                    <strong>오디오북</strong>
                                                 </a>
                                             </li>
                                         </ul>
@@ -776,13 +682,10 @@ function Header({ reviewObj }) {
                                 <div
                                     id="head_gift_layer"
                                     className="header_layer_box"
-                                    style={{display: "none"}}
                                 >
                                     <div className="category">
                                         <h3>
-                                            <a href="./sub.html">
-                                                알라딘굿즈
-                                            </a>
+                                            <a href="./sub.html">알라딘굿즈</a>
                                         </h3>
                                         <ul>
                                             <li>
@@ -801,9 +704,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    디지털
-                                                </a>
+                                                <a href="./sub.html">디지털</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -811,9 +712,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    문구
-                                                </a>
+                                                <a href="./sub.html">문구</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -826,31 +725,21 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    디지털
-                                                </a>
+                                                <a href="./sub.html">디지털</a>
                                             </li>
                                         </ul>
                                         <ul>
                                             <li>
-                                                <a href="./sub.html">
-                                                    노트
-                                                </a>
+                                                <a href="./sub.html">노트</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    독서대
-                                                </a>
+                                                <a href="./sub.html">독서대</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    북마크
-                                                </a>
+                                                <a href="./sub.html">북마크</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    북커버
-                                                </a>
+                                                <a href="./sub.html">북커버</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -858,36 +747,24 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    조명
-                                                </a>
+                                                <a href="./sub.html">조명</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    파우치
-                                                </a>
+                                                <a href="./sub.html">파우치</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    필기구
-                                                </a>
+                                                <a href="./sub.html">필기구</a>
                                             </li>
                                         </ul>
                                         <ul>
                                             <li>
-                                                <a href="./sub.html">
-                                                    피너츠
-                                                </a>
+                                                <a href="./sub.html">피너츠</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    우주
-                                                </a>
+                                                <a href="./sub.html">우주</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    앨리스
-                                                </a>
+                                                <a href="./sub.html">앨리스</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -895,14 +772,10 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    고양이
-                                                </a>
+                                                <a href="./sub.html">고양이</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    모비딕
-                                                </a>
+                                                <a href="./sub.html">모비딕</a>
                                             </li>
                                         </ul>
                                         <ul>
@@ -949,13 +822,10 @@ function Header({ reviewObj }) {
                                 <div
                                     id="head_used_layer"
                                     className="header_layer_box"
-                                    style={{display: "none"}}
                                 >
                                     <div className="category">
                                         <h3>
-                                            <a href="./sub.html">
-                                                온라인중고
-                                            </a>
+                                            <a href="./sub.html">온라인중고</a>
                                         </h3>
                                         <ul>
                                             <li>
@@ -964,9 +834,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    만화
-                                                </a>
+                                                <a href="./sub.html">만화</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -979,9 +847,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    어린이
-                                                </a>
+                                                <a href="./sub.html">어린이</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -989,9 +855,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    역사
-                                                </a>
+                                                <a href="./sub.html">역사</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -1001,9 +865,7 @@ function Header({ reviewObj }) {
                                         </ul>
                                         <ul>
                                             <li>
-                                                <a href="./sub.html">
-                                                    외국어
-                                                </a>
+                                                <a href="./sub.html">외국어</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -1011,9 +873,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    유아
-                                                </a>
+                                                <a href="./sub.html">유아</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -1031,9 +891,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    청소년
-                                                </a>
+                                                <a href="./sub.html">청소년</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -1057,9 +915,7 @@ function Header({ reviewObj }) {
                                                     href="./sub.html"
                                                     className="arr"
                                                 >
-                                                    <strong>
-                                                        중고 음반
-                                                    </strong>
+                                                    <strong>중고 음반</strong>
                                                 </a>
                                             </li>
                                             <li>
@@ -1119,7 +975,7 @@ function Header({ reviewObj }) {
                                             <li>
                                                 <a
                                                     href="./sub.html"
-                                                    style={{color: "#EA3692"}}
+                                                    style={{ color: "#EA3692" }}
                                                 >
                                                     판매자매니저
                                                 </a>
@@ -1132,7 +988,7 @@ function Header({ reviewObj }) {
                                             <li>
                                                 <a
                                                     href="./sub.html"
-                                                    style={{height: '40px'}}
+                                                    style={{ height: "40px" }}
                                                     //괄호가 두 개 인 이유는 외부 괄호는 JSX 코드를 블록으로 묶고, 내부 괄호는 스타일 속성의 객체 리터럴을 정의하는 데 사용됨.
                                                 >
                                                     판매가능여부 &<br />
@@ -1170,13 +1026,10 @@ function Header({ reviewObj }) {
                                 <div
                                     id="head_usedstore_layer"
                                     className="header_layer_box"
-                                    style={{display: "none"}}
                                 >
                                     <div className="category">
                                         <h3>
-                                            <a href="./sub.html">
-                                                중고매장
-                                            </a>
+                                            <a href="./sub.html">중고매장</a>
                                         </h3>
                                         <div>
                                             <h4>서울</h4>
@@ -1414,8 +1267,7 @@ function Header({ reviewObj }) {
                                                 </li>
                                                 <li>
                                                     <a href="./sub.html">
-                                                        부산경성대
-                                                        부경대역점
+                                                        부산경성대 부경대역점
                                                     </a>
                                                 </li>
                                                 <li>
@@ -1490,7 +1342,10 @@ function Header({ reviewObj }) {
                                             <li>
                                                 <a
                                                     href="./sub.html"
-                                                    style={{ color: '#EA3692', lineHeight: 'normal' }}
+                                                    style={{
+                                                        color: "#EA3692",
+                                                        lineHeight: "normal",
+                                                    }}
                                                 >
                                                     <strong>
                                                         중고매장 FAQ
@@ -1500,21 +1355,25 @@ function Header({ reviewObj }) {
                                             <li>
                                                 <a
                                                     href="./sub.html"
-                                                    style={{ color: '#EA3692', lineHeight: 'normal' }}
+                                                    style={{
+                                                        color: "#EA3692",
+                                                        lineHeight: "normal",
+                                                    }}
                                                 >
-                                                    <strong>
-                                                        판매가이드
-                                                    </strong>
+                                                    <strong>판매가이드</strong>
                                                 </a>
                                             </li>
                                             <li>
                                                 <a
                                                     href="./sub.html"
-                                                    style={{ color: '#EA3692', lineHeight: 'normal' }}
+                                                    style={{
+                                                        color: "#EA3692",
+                                                        lineHeight: "normal",
+                                                    }}
                                                 >
                                                     <strong>
-                                                        판매가능여부 &
-                                                        판매가격 확인하기
+                                                        판매가능여부 & 판매가격
+                                                        확인하기
                                                     </strong>
                                                 </a>
                                             </li>
@@ -1537,7 +1396,6 @@ function Header({ reviewObj }) {
                                 <div
                                     id="head_coffee_layer"
                                     className="header_layer_box"
-                                    style={{display: "none"}}
                                 >
                                     <div className="category">
                                         <h3>
@@ -1545,14 +1403,10 @@ function Header({ reviewObj }) {
                                         </h3>
                                         <ul>
                                             <li>
-                                                <a href="./sub.html">
-                                                    원두
-                                                </a>
+                                                <a href="./sub.html">원두</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    드립백
-                                                </a>
+                                                <a href="./sub.html">드립백</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -1602,7 +1456,6 @@ function Header({ reviewObj }) {
                                 <div
                                     id="head_music_layer"
                                     className="header_layer_box"
-                                    style={{display: "none"}}
                                 >
                                     <div className="category">
                                         <h3>
@@ -1610,14 +1463,10 @@ function Header({ reviewObj }) {
                                         </h3>
                                         <ul>
                                             <li>
-                                                <a href="./sub.html">
-                                                    가요
-                                                </a>
+                                                <a href="./sub.html">가요</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    국악
-                                                </a>
+                                                <a href="./sub.html">국악</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -1625,9 +1474,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    재즈
-                                                </a>
+                                                <a href="./sub.html">재즈</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -1635,17 +1482,13 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    클래식
-                                                </a>
+                                                <a href="./sub.html">클래식</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">팝</a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    J-POP
-                                                </a>
+                                                <a href="./sub.html">J-POP</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -1673,9 +1516,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    이벤트
-                                                </a>
+                                                <a href="./sub.html">이벤트</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -1703,13 +1544,10 @@ function Header({ reviewObj }) {
                                 <div
                                     id="head_dvd_layer"
                                     className="header_layer_box"
-                                    style={{display: "none"}}
                                 >
                                     <div className="category">
                                         <h3>
-                                            <a href="./sub.html">
-                                                블루레이
-                                            </a>
+                                            <a href="./sub.html">블루레이</a>
                                         </h3>
                                         <div>
                                             <h4>
@@ -1829,14 +1667,10 @@ function Header({ reviewObj }) {
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="./sub.html">
-                                                        VCD
-                                                    </a>
+                                                    <a href="./sub.html">VCD</a>
                                                 </li>
                                                 <li>
-                                                    <a href="./sub.html">
-                                                        VHS
-                                                    </a>
+                                                    <a href="./sub.html">VHS</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1862,9 +1696,7 @@ function Header({ reviewObj }) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="./sub.html">
-                                                    이벤트
-                                                </a>
+                                                <a href="./sub.html">이벤트</a>
                                             </li>
                                             <li>
                                                 <a href="./sub.html">
@@ -1886,7 +1718,10 @@ function Header({ reviewObj }) {
                                     <div>
                                         <div className="banner">
                                             <a href="./sub.html">
-                                                <img src="https://image.aladin.co.kr/img/bn/dvd/2023/03/0803_light_hlayer.png" alt="" />
+                                                <img
+                                                    src="https://image.aladin.co.kr/img/bn/dvd/2023/03/0803_light_hlayer.png"
+                                                    alt=""
+                                                />
                                             </a>
                                         </div>
                                     </div>
@@ -1898,21 +1733,16 @@ function Header({ reviewObj }) {
                                 <div
                                     id="head_bookstore_layer"
                                     className="header_layer_box_s"
-                                    style={{display: "none"}}
                                 >
                                     <ul>
                                         <li>
                                             <a href="./sub.html">북플</a>
                                         </li>
                                         <li>
-                                            <a href="./sub.html">
-                                                알라딘서재
-                                            </a>
+                                            <a href="./sub.html">알라딘서재</a>
                                         </li>
                                         <li>
-                                            <a href="./sub.html">
-                                                나의서재
-                                            </a>
+                                            <a href="./sub.html">나의서재</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -1948,7 +1778,7 @@ function Header({ reviewObj }) {
                         </ul>
                     </div>
                 </HeaderStyled.Top>
-                <HeaderStyled.Middle className="header_middle">
+                <HeaderStyled.Middle className="header_middle hide">
                     {/* 홈 화면 바로가기 로고 */}
                     <div className="header_middle-logo">
                         <h1>
@@ -1956,13 +1786,10 @@ function Header({ reviewObj }) {
                                 href="./sub.html"
                                 id="logoBtn"
                                 title="첫화면으로 가기"
-                                style={{cursor: "pointer"}}
+                                style={{ cursor: "pointer" }}
                             >
                                 알라딘
-                                <img
-                                    src={aladin_logo_new}
-                                    alt="알라딘"
-                                />
+                                <img src={aladin_logo_new} alt="알라딘" />
                             </a>
                         </h1>
                     </div>
@@ -1985,7 +1812,7 @@ function Header({ reviewObj }) {
                                     />
                                     <label
                                         for="serachInput-txt"
-                                        className="hidden"
+                                        className="hide"
                                     >
                                         검색
                                     </label>
@@ -2006,14 +1833,11 @@ function Header({ reviewObj }) {
                     </div>
                     <div className="ad_box">
                         <a href="./sub.html" title="헤더배너">
-                            <img
-                                src={header_banner}
-                                alt="헤더배너"
-                            />
+                            <img src={header_banner} alt="헤더배너" />
                         </a>
                     </div>
                 </HeaderStyled.Middle>
-                <HeaderStyled.Bottom className="header_bottom">
+                <HeaderStyled.Bottom className="header_bottom hidden">
                     <ul className="l_menu" title="분야보기">
                         <li
                             id="head_layer_menu_container"
@@ -2025,8 +1849,8 @@ function Header({ reviewObj }) {
                             {/* 펼치기 메뉴 */}
                             <div
                                 id="head_layer_menu"
-                                className="hdm hidden"
-                                style={{width: "1030px"}}
+                                className="hdm hide"
+                                style={{ width: "1030px" }}
                             >
                                 <table>
                                     <tbody>
@@ -2053,8 +1877,7 @@ function Header({ reviewObj }) {
                                                         </li>
                                                         <li>
                                                             <a href="./sub.html">
-                                                                공무원
-                                                                수험서
+                                                                공무원 수험서
                                                             </a>
                                                         </li>
                                                         <li>
@@ -2209,7 +2032,11 @@ function Header({ reviewObj }) {
                                                     </ul>
                                                 </div>
                                                 <br clear="all" />
-                                                <div style={{padding: "12px 0 0 0"}}></div>
+                                                <div
+                                                    style={{
+                                                        padding: "12px 0 0 0",
+                                                    }}
+                                                ></div>
                                                 <div className="categorysub_layer_t">
                                                     <a href="./sub.html">
                                                         알라딘 굿즈
@@ -2369,8 +2196,7 @@ function Header({ reviewObj }) {
                                                         </li>
                                                         <li>
                                                             <a href="./sub.html">
-                                                                애니메이션
-                                                                굿즈
+                                                                애니메이션 굿즈
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -2432,8 +2258,7 @@ function Header({ reviewObj }) {
                                                         <li>
                                                             <a href="./sub.html">
                                                                 <strong>
-                                                                    기타
-                                                                    언어권
+                                                                    기타 언어권
                                                                 </strong>
                                                             </a>
                                                         </li>
@@ -2663,8 +2488,7 @@ function Header({ reviewObj }) {
                                                         <li>
                                                             <a href="./sub.html">
                                                                 <strong>
-                                                                    중고
-                                                                    음반
+                                                                    중고 음반
                                                                 </strong>
                                                             </a>
                                                         </li>
@@ -2783,7 +2607,11 @@ function Header({ reviewObj }) {
                                                     </ul>
                                                 </div>
                                                 <br clear="all" />
-                                                <div style={{padding: "12px 0 0 0"}}></div>
+                                                <div
+                                                    style={{
+                                                        padding: "12px 0 0 0",
+                                                    }}
+                                                ></div>
                                                 <div className="categorysub_layer_t">
                                                     <a href="./sub.html">
                                                         블루레이
@@ -2839,13 +2667,19 @@ function Header({ reviewObj }) {
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div style={{ width: "1020px", textAlign: "right", margin: "15px 0 0 0" }}>
+                                <div
+                                    style={{
+                                        width: "1020px",
+                                        textAlign: "right",
+                                        margin: "15px 0 0 0",
+                                    }}
+                                >
                                     <a href="./sub.html">
-                                    <img
-                                        src="https://image.aladin.co.kr/img/header/2011/btn_close.gif"
-                                        alt="닫기"
-                                        className="menu_close"
-                                    />
+                                        <img
+                                            src="https://image.aladin.co.kr/img/header/2011/btn_close.gif"
+                                            alt="닫기"
+                                            className="menu_close"
+                                        />
                                     </a>
                                 </div>
                             </div>
@@ -2861,26 +2695,20 @@ function Header({ reviewObj }) {
                             <div
                                 id="head_layer_book_jiny"
                                 className="header_layer_box_s"
-                                style={{width: "130px", display: "none"}}
+                                style={{ width: "130px" }}
                             >
                                 <ul>
                                     <li>
-                                        <a href="./sub.html">
-                                            마법사의 선택
-                                        </a>
+                                        <a href="./sub.html">마법사의 선택</a>
                                     </li>
                                     <li>
                                         <a href="./sub.html">신간알리미</a>
                                     </li>
                                     <li>
-                                        <a href="./sub.html">
-                                            서재이웃의선택
-                                        </a>
+                                        <a href="./sub.html">서재이웃의선택</a>
                                     </li>
                                     <li>
-                                        <a href="./sub.html">
-                                            오늘 본 상품
-                                        </a>
+                                        <a href="./sub.html">오늘 본 상품</a>
                                     </li>
                                 </ul>
                             </div>
@@ -2901,7 +2729,7 @@ function Header({ reviewObj }) {
                             <div
                                 id="head_layer_book_newbook"
                                 className="header_layer_box_s"
-                                style={{width: "105px", display: "none"}}
+                                style={{ width: "105px" }}
                             >
                                 <ul>
                                     <li>
@@ -2920,7 +2748,7 @@ function Header({ reviewObj }) {
                             <div
                                 id="head_layer_book_sale"
                                 className="header_layer_box_s"
-                                style={{width: "120px", display: "none"}}
+                                style={{ width: "120px" }}
                             >
                                 <ul>
                                     <li>
@@ -2930,14 +2758,10 @@ function Header({ reviewObj }) {
                                         <a href="./sub.html">굿즈 총집합</a>
                                     </li>
                                     <li>
-                                        <a href="./sub.html">
-                                            정가인하도서
-                                        </a>
+                                        <a href="./sub.html">정가인하도서</a>
                                     </li>
                                     <li>
-                                        <a href="./sub.html">
-                                            작가와의 만남
-                                        </a>
+                                        <a href="./sub.html">작가와의 만남</a>
                                     </li>
                                 </ul>
                             </div>
@@ -2953,7 +2777,7 @@ function Header({ reviewObj }) {
                             <div
                                 id="head_layer_book_recom"
                                 className="header_layer_box_s"
-                                style={{width: "110px", display: "none"}}
+                                style={{ width: "110px" }}
                             >
                                 <ul>
                                     <li>

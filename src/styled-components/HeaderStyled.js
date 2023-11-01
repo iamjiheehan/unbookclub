@@ -1,13 +1,13 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import bg_search from '../static/images/bg_search.png';
-import gray_arr from '../static/images/gray_arr.gif';
-import i_arrdown from '../static/images/i_arrdown.gif';
-import i_menu from '../static/images/i-menu.png';
+import bg_search from "../static/images/bg_search.png";
+import gray_arr from "../static/images/gray_arr.gif";
+import i_arrdown from "../static/images/i_arrdown.gif";
+import i_menu from "../static/images/i-menu.png";
 
 export const Container = styled.div`
     width: 100%;
-    border-bottom: 1px solid #33AFE9;
+    border-bottom: 1px solid #33afe9;
     margin-bottom: 9px;
 
     .banner img {
@@ -27,7 +27,8 @@ export const Container = styled.div`
         a {
             display: block;
             height: 100%;
-            background: url(https://image.aladin.co.kr/img/bn/book/2022/04/roof_close_btn.png) no-repeat center / 100% auto;
+            background: url(https://image.aladin.co.kr/img/bn/book/2022/04/roof_close_btn.png)
+                no-repeat center / 100% auto;
             font-size: 25px;
             color: transparent;
         }
@@ -47,8 +48,8 @@ export const Container = styled.div`
         text-align: left;
         position: relative;
 
-        &::after{
-            content: '';
+        &::after {
+            content: "";
             display: block;
             width: 1px;
             height: 34px;
@@ -59,25 +60,47 @@ export const Container = styled.div`
         }
     }
 
+    .header_layer_box_s {
+        min-width: 127px;
+        width: 110px;
+        height: auto;
+        background-color: #fff;
+        box-shadow: 0px 3px 16px #00000033;
+        padding: 14px 18px 10px 18px;
+        box-sizing: border-box;
+        position: absolute;
+        z-index: 10000;
 
+        display: none;
 
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        ul li a {
+            display: block;
+            font-size: 13px;
+            padding: 0;
+            color: #333;
+            text-align: left;
+            word-break: keep-all;
+            letter-spacing: -0.5px;
+        }
+    }
 `;
 
-
 export const Top = styled.div`
-
     height: 38px;
     background-color: #33afe9;
-    border-bottom: 1px solid #4496D9;
+    border-bottom: 1px solid #4496d9;
 
     .header_on {
         background-color: #fff;
-        border: 1px solid #4496D9;
+        border: 1px solid #4496d9;
         border-bottom: none;
         color: #0f4e8a !important;
     }
 
-    
     a, .gnb > li > a {
         width: max-content;
         display: inline-block;
@@ -88,7 +111,6 @@ export const Top = styled.div`
         font-weight: bold;
         overflow: hidden;
         letter-spacing: -0.5px;
-
         /* border: 1px solid transparent; */
     }
 
@@ -113,8 +135,10 @@ export const Top = styled.div`
         width: 1030px !important;
         margin: 0 auto;
     }
-    
-    .inner, .gnb, .util {
+
+    .inner,
+    .gnb,
+    .util {
         display: flex;
         justify-content: space-between;
         position: relative;
@@ -122,7 +146,7 @@ export const Top = styled.div`
     }
 
     .gnb li {
-        white-space:nowrap;
+        white-space: nowrap;
     }
 
     /* bookstore 레이어 */
@@ -139,7 +163,29 @@ export const Top = styled.div`
         z-index: 10000;
     }
 
-    #head_book_layer.header_layer_box {
+    .header_layer_box_s a {
+        color: black;
+    }
+
+    #head_bookstore_layer.header_layer_box_s a{
+        line-height: normal;
+        font-weight: normal;
+    }
+    /* coffee 레이어 */
+    #head_coffee_layer.header_layer_box {
+        width: 660px;
+        height: auto;
+        left: 350px;
+    }
+
+    /* music 레이어 */
+    #head_music_layer.header_layer_box {
+        width: 660px;
+        height: auto;
+        left: 350px;
+    }
+
+    .header_layer_box {
         background-color: #fff;
         box-shadow: 0px 3px 16px #00000033;
         padding: 30px;
@@ -151,64 +197,71 @@ export const Top = styled.div`
         width: 1030px;
         left: 0px;
 
-        .banner img, #head_coffee_layer.header_layer_box .banner img {
-            border-radius: 15px;
-        }
+        display:none;
 
-        .category > div h4 {
+        .category a {
+            display: block;
             font-size: 13px;
-            font-weight: bold;
-            margin: 0 0 8px 0;
-            position: absolute;
-            left: 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-            word-wrap: break-word;
             padding: 0;
             color: #333;
-        }
-
-        .category h3 {
-            position: absolute;
-            left: 0;
-            top: 0;
-            margin: 0;
-        }
-
-        .category h3 a {
-            font-size: 15px;
-            background: url(https://image.aladin.co.kr/img/header/2023/arr_go.svg) no-repeat center right 1px / 6px auto;
-            padding-right: 12px;
-            letter-spacing: -0.01em;
-            font-weight: bold;
-        }
-
-        .usedfaq {
-            margin-bottom: 35px;
+            text-align: left;
+            font-weight: normal;
+            /* height: 30px; */
+            height: 28px;
+            line-height: normal;
         }
     }
 
-    /* coffee 레이어 */
-    #head_coffee_layer.header_layer_box {
-        width: 660px;
-        height: auto;
-        left:350px;
+    .banner img,
+    #head_coffee_layer.header_layer_box .banner img {
+        border-radius: 15px;
     }
 
-    /* music 레이어 */
-    #head_music_layer.header_layer_box {
-        width: 660px;
-        height: auto;
-        left:350px;
+    .category {
+        display: flex;
+        font-weight: normal;
+        padding-top: 40px;
+        position: relative;
     }
 
+    .category > div h4 {
+        font-size: 13px;
+        font-weight: bold;
+        margin: 0 0 8px 0;
+        position: absolute;
+        left: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        word-wrap: break-word;
+        padding: 0;
+        color: #333;
+    }
+
+    .category h3 {
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin: 0;
+    }
+
+    .category h3  a{
+        font-size: 15px;
+        background: url(https://image.aladin.co.kr/img/header/2023/arr_go.svg)
+        no-repeat center right 1px / 6px auto;
+        padding-right: 12px;
+        letter-spacing: -0.01em;
+        font-weight: bold;
+    }
+
+    .usedfaq {
+        margin-bottom: 35px;
+    }
 `;
 
 export const Middle = styled.div`
-
     width: 1030px;
     height: 88px;
     margin: 0 auto;
@@ -237,9 +290,8 @@ export const Middle = styled.div`
         }
     }
 
-
     #global_search {
-        background: url(${bg_search}) no-repeat!important;
+        background: url(${bg_search}) no-repeat !important;
         width: 535px;
         top: 28px;
         height: 41px;
@@ -276,10 +328,9 @@ export const Middle = styled.div`
         font-weight: bold;
         float: left;
         width: 78px;
-
     }
 
-    #serachInput-box{
+    #serachInput-box {
         float: left;
         width: 282px;
         margin-top: 7px;
@@ -296,7 +347,8 @@ export const Middle = styled.div`
         line-height: 20px;
         display: inline;
         outline-style: none;
-        font-family: 'Apple SD Gothic Neo',Malgun Gothic,'돋움','굴림',Gulim,dotum,'Segoe WPC','Segoe UI',Helvetica,AppleGothic,Sans-serif;
+        font-family: "Apple SD Gothic Neo", Malgun Gothic, "돋움", "굴림", Gulim,
+            dotum, "Segoe WPC", "Segoe UI", Helvetica, AppleGothic, Sans-serif;
         background-position-y: 3px;
     }
 
@@ -333,13 +385,13 @@ export const Bottom = styled.div`
     display: flex;
     justify-content: space-between;
 
-
     /* 펼치기 메뉴 */
 
-    ul {
+    & > ul {
         display: flex;
         position: relative;
     }
+
     ul > li > a {
         display: inline-block;
         line-height: 25px;
@@ -349,24 +401,31 @@ export const Bottom = styled.div`
 
         width: max-content;
         color: #0f4e8a;
-        font-weight: bold;
+        /* font-weight: bold; */
         padding: 0 7px 3px 7px;
         letter-spacing: -0.5px;
     }
 
-    ul.l_menu > li > a .new {
-        display: inline-block;
-        width: 13px;
-        height: 13px;
-        background-color: #F32383;
-        color: #fff;
-        border-radius: 50%;
-        text-align: center;
-        line-height: 12px;
-        font-size: 9px;
-        font-weight: normal;
-        margin: -2px 0 0 0px;
-        vertical-align: middle;
+    ul.l_menu > li > a {
+        width: max-content;
+        color: #0f4e8a;
+        font-weight: bold;
+        letter-spacing: -0.5px;
+
+        .new {
+            display: inline-block;
+            width: 13px;
+            height: 13px;
+            background-color: #f32383;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 12px;
+            font-size: 9px;
+            font-weight: normal;
+            margin: -2px 0 0 0px;
+            vertical-align: middle;
+        }
     }
 
     ul > li.categoryall > a {
@@ -379,23 +438,16 @@ export const Bottom = styled.div`
         font-weight: bold;
         margin-right: 7px;
 
-        &::after{
-            content: '';
+        &::after {
+            content: "";
             display: block;
             width: 1px;
             height: 12px;
-            background-color: #DED9D9;
+            background-color: #ded9d9;
             position: absolute;
             right: 0;
             top: 7px;
         }
-    }
-
-    ul.l_menu > li > a {
-        width: max-content;
-        color: #0f4e8a;
-        font-weight: bold;
-        letter-spacing: -0.5px;
     }
 
     ul > li a.tobelogo {
@@ -403,11 +455,12 @@ export const Bottom = styled.div`
         padding: 0 13px 4px 7px;
 
         &::after {
-            content: '';
+            content: "";
             display: inline-block;
             width: 11px;
             height: 11px;
-            background: url(https://image.aladin.co.kr/img/ToBeContinued/common/tb-simbol.svg) no-repeat center / 100% auto;
+            background: url(https://image.aladin.co.kr/img/ToBeContinued/common/tb-simbol.svg)
+                no-repeat center / 100% auto;
             font-size: 0px;
             color: transparent;
             margin: -2px 0 0 0px;
@@ -423,17 +476,16 @@ export const Bottom = styled.div`
         font-weight: bold;
         padding: 4px 0 4px 9px;
         margin-bottom: 5px;
-        color: #FFFFFF;
+        color: #ffffff;
 
         a {
-            color: #FFFFFF;
+            color: #ffffff;
         }
     }
 
-
     .categorysub_layer_new2 {
         float: left;
-        background-color: #FFFFFF !important;
+        background-color: #ffffff !important;
 
         a {
             color: #333333;
@@ -461,13 +513,23 @@ export const Bottom = styled.div`
         font-size: 13px;
     }
 
-    #head_layer_menu a:hover, .category a:hover, .category > ul > li > a:hover {
+    #head_layer_menu a:hover,
+    .category a:hover,
+    .category > ul > li > a:hover {
         text-decoration: underline;
     }
 
 
 
+    .hdm {
+        padding: 9px;
+        position: absolute;
+        background-color: White;
+        width: auto;
+        z-index: 10000;
+        opacity: 1;
+        margin: -5px 0 0 -1px;
+        box-shadow: 0px 3px 16px #00000033;
+        /* display: none; */
+    }
 `;
-
-
-
