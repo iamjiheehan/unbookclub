@@ -401,11 +401,6 @@ export const Bottom = styled.div`
         top: 37px;
     }
 
-    .icon-down {
-        float: left;
-        width: 29px;
-    }
-
     .ad_box {
         width: 192px;
         position: absolute;

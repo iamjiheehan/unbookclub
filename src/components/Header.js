@@ -136,24 +136,24 @@ function Header({ reviewObj }) {
                                 </a>
                             </li>
                             <li id="head_book_layer">
-                                <a href="./sub.html" title="인기도서">
+                                <a href="./books" title="인기도서">
                                 인기도서
                                 </a>
                             </li>
                             <li id="head_book_layer">
-                                <a href="./sub.html" title="신간도서">
+                                <a href="./books" title="신간도서">
                                 신간도서
                                 </a>
                             </li>
                             <li id="head_book_layer">
-                                <a href="./sub.html" title="가이드">
+                                <a href="./guide" title="가이드">
                                 가이드
                                 </a>
                             </li>
                         </ul>
                         <ul className="util" id="headerTop_util">
                             <li>
-                                <a href="./sub.html" title="로그인">
+                                <a href="./sub" title="로그인">
                                     로그인
                                 </a>
                             </li>
@@ -221,11 +221,6 @@ function Header({ reviewObj }) {
                                         검색
                                     </label>
                                 </div>
-                                <div className="icon-down">
-                                    <a href="./sub.html">
-                                        <img src={i_arrdown_fill} alt="" />
-                                    </a>
-                                </div>
                             </div>
                             <button type="submit" className="search_btn">
                                 검색
@@ -241,7 +236,6 @@ function Header({ reviewObj }) {
                         </a>
                     </div>
                 </HeaderStyled.Bottom>
-                
             </HeaderStyled.Container>
             {/* <Navbar bg="light" expand="lg">
                 <Container>

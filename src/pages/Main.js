@@ -1,7 +1,13 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
-import * as MainStyled from "../styled-components/MainStyled";
 
+// 부트스트랩 라이브러리 임포트
+import Container from "react-bootstrap/Container";
+
+// 컴포넌트
+import { NewBooks } from "../components/NewBooks";
+import { BestSellers } from "../components/BestSellers";
+
+// 이미지 임포트
 import main from "../static/images/banner_home.webp";
 import main2 from "../static/images/main-01.webp";
 
@@ -18,12 +24,10 @@ import icon05 from "../static/images/main-icon-05.webp";
 
 import testimonial from "../static/images/main-testimonial.webp";
 
-import { NewBooks } from "../components/NewBooks";
-import { BestSellers } from "../components/BestSellers";
-
+// 스타일컴포넌트 임포트
+import * as MainStyled from "../styled-components/MainStyled";
 import Button from "../styled-components/ButtonStyled";
 import { Btn1, Btn2 } from "styled-components/BtnStyled";
-
 
 // 커스텀 훅
 import useScrollToTopButton from "hooks/useScrollTopBtn";
