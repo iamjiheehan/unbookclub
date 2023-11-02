@@ -126,12 +126,12 @@ function Header({ reviewObj }) {
                     <div className="inner">
                         <ul className="gnb" id="headerTop_gnb">
                             <li className="home">
-                                <a href="./sub.html" className="header_on">
+                                <a href="./" className="header_on">
                                     HOME
                                 </a>
                             </li>
                             <li id="head_book_layer">
-                                <a href="./sub.html" title="리뷰게시판">
+                                <a href="./board" title="리뷰게시판">
                                 리뷰게시판
                                 </a>
                             </li>

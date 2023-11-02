@@ -8,6 +8,7 @@ const FooterStyled = styled.div`
     text-align: left;
     line-height: 18px;
     margin-bottom: 50px;
+    font-family: Malgun Gothic,Dotum,'돋움',Helvetica,"Apple SD Gothic Neo",sans-serif!important;
 
     a,
     a:link {
@@ -24,6 +25,7 @@ const FooterStyled = styled.div`
     .inner {
         width: 1030px;
         margin: 0 auto;
+
     }
 
     .footer_bottom {
@@ -43,6 +45,8 @@ const FooterStyled = styled.div`
         display: flex;
         justify-content: space-between;
         padding: 22px 0;
+        font-family: Malgun Gothic,Dotum,'돋움',Helvetica,"Apple SD Gothic Neo",sans-serif!important;
+
     }
     .footer_menu ul li a {
         font-size: 13px;
