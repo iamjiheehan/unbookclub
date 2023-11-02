@@ -28,6 +28,7 @@ import {
     ImgStyled,
     LastImgStyled,
     FirstImgStyled,
+    SecondImgStyled
 } from "../styled-components/ImgStyled";
 import { FlexRow, FlexCol } from "../styled-components/FlexStyled";
 import BackStyled from "../styled-components/BackStyled";
@@ -128,7 +129,7 @@ export default function Main() {
                                 <Btn2 to="/board">리뷰게시판 둘러보기</Btn2>
                             </div>
                         </div>
-                        <FirstImgStyled height="27rem" src={main2} alt="mainImage" />
+                        <SecondImgStyled src={main2} alt="mainImage" />
                     </div>
                 </div>
             </MainStyled.Wrap>

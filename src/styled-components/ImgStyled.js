@@ -37,6 +37,15 @@ export const FirstImgStyled = styled.img`
     }
 `;
 
+export const SecondImgStyled = styled.img`
+    width: auto;
+    height: 27rem;
+    
+    @media (min-width: 768px) {
+        display: block;
+    }
+`;
+
 export const LastImgStyled = styled.img`
     width: ${(props) => props.width || 'auto'};
     height: 400px;
