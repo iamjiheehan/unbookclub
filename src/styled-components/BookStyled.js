@@ -21,8 +21,6 @@ const BookSlideContainer = styled.div`
 const BookImage = styled(ImgStyled)`
     width: 100%;
     height: 70%;
-
-
 `;
 
 const BookImg = styled.img`

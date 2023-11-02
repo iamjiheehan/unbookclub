@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addBook } from 'store';
 
-import bestSeller from '../data/bestSeller.json'
+import bestSeller from '../data/bestSeller.json';
 import { FlowAniForward} from '../styled-components/AniStyled';
 import {TextH1, TextH2,TextP} from '../styled-components/TextStyled';
 import { ImgStyled } from '../styled-components/ImgStyled';
@@ -13,6 +13,7 @@ import { FlexCol, FlexRow } from 'styled-components/FlexStyled';
 
 function BestSellers() {
     const posts = bestSeller;
+
     let addedBooks = useSelector((state) => state.book);
     const dispatch = useDispatch();
     const handleAddToCart = (itemId, title, author, coverLargeUrl) => {
@@ -25,6 +26,7 @@ function BestSellers() {
         dispatch(addBook({ ...bookToAdd, title, author, coverLargeUrl }));
         console.log("Book added to cart:", itemId);
     };
+
     return (
         <>
             <FlowAniForward>
