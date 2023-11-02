@@ -27,8 +27,8 @@ export const Wrap = styled.div`
     .middle {
         text-align: center;
     }
-    
 `;
+
 export const Content = styled.div`
     background: ${(props) => props.background || "#f8f8f8"};
     overflow: hidden;
@@ -52,7 +52,7 @@ export const Content = styled.div`
     .item_info {
         margin-top: 17px;
         text-align: left;
-        width: var(--info-width, 200px);;//--------------너비 설정
+        width: 200px;//--------------너비 설정
         height: auto;
         overflow: hidden;
     }
@@ -104,7 +104,7 @@ export const Content = styled.div`
 
         text-align: center;
         padding-top: 1rem;
-        width: var(--info-width);
+        width: 200px;
         min-height: 234px;
         transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 
@@ -117,4 +117,44 @@ export const Content = styled.div`
             width: 100%;
         }
     }
+`;
+
+export const Item = styled.div`
+    position: relative;
+`;
+
+export const CartWrap = styled.div`
+    color :white;
+
+    padding: 4rem 1rem;
+    height: 300px;
+    margin-bottom: 2rem;
+    background-color: rgba(149, 165, 166, 0.9);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+
+    ${Item}:hover & {
+        opacity: 1;
+    }
+
+    p {
+        padding-left: 0.5;
+    }
+/* 
+    .info_title {
+        letter-spacing: 2px;
+        margin-bottom: 1rem;
+    }
+
+    .cart-wrap {
+        color :white;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap:2px;
+    } */
 `;

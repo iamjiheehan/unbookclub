@@ -47,7 +47,7 @@ function NewBooks() {
                     ) : (
                       <>
                         <div className="cart-wrap">
-                          <FaShoppingCart /><p className="cart-text">서재목록에 추가</p>
+                          <FaShoppingCart /> <p className="cart-text">서재목록에 추가</p>
                         </div>
                       </>
                     )}

@@ -136,8 +136,8 @@ export default function Books() {
                     </div>
                     <BookStyled.Content>
                         <div className="content-wrap">
-                                {getSortedPosts().slice(0, numItemsToShow).map((post) => (
-                                <div className="content-item" key={post.itemId}>
+                            {getSortedPosts().slice(0, numItemsToShow).map((post) => (
+                                <BookStyled.Item className="content-item" key={post.itemId}>
                                     <div className="item_canvas">
                                         <div className="item_img">
                                             <img
@@ -168,7 +168,7 @@ export default function Books() {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </BookStyled.Item>
                             ))}
                         </div>
                     </BookStyled.Content>

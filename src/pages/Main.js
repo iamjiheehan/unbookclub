@@ -154,10 +154,6 @@ export default function Main() {
                                 <h1 className="display-title">베스트셀러</h1>
                             </a>
                             <p className="display-content">수십만 명의 독자들이 선택한 책들을 만나보세요</p>
-                            {/* <div className="display-text">
-                                <FontAwesomeIcon icon={faBook} style={{ color: "#000000" ,fontSize: "2rem" }} />
-                                <h3>수십만 명의 독자들이 선택한 책들을 만나보세요</h3>
-                            </div> */}
                             <BestSellers/>
                         </div>
                         <div style={{overflow:'hidden',marginTop:"2rem"}} >
@@ -165,10 +161,6 @@ export default function Main() {
                                 <h1 className="display-title">신간 도서</h1>
                             </a>
                             <p className="display-content">새로운 도서들을 독자들과 함께 읽어보세요</p>
-                            {/* <div className="display-text">
-                                <FontAwesomeIcon icon={faBook} style={{ color: "#000000" ,fontSize: "2rem"  }} />
-                                <h3>새로운 도서들을 독자들과 함께 읽어보세요</h3>
-                            </div> */}
                             <NewBooks />
                         </div>
                     </Container>
