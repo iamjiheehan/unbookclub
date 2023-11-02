@@ -146,11 +146,6 @@ function Header({ reviewObj }) {
                                 </a>
                             </li>
                             <li id="head_book_layer">
-                                <a href="./sub.html" title="서재">
-                                서재
-                                </a>
-                            </li>
-                            <li id="head_book_layer">
                                 <a href="./sub.html" title="가이드">
                                 가이드
                                 </a>
@@ -178,8 +173,8 @@ function Header({ reviewObj }) {
                                 </a>
                             </li>
                             <li id="headerBasketBtn">
-                                <a href="./sub.html" title="장바구니">
-                                    장바구니
+                                <a href="./sub.html" title="서재">
+                                    서재
                                     <span id="basketItemCount">(0)</span>
                                 </a>
                             </li>

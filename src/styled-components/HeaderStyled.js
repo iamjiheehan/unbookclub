@@ -11,6 +11,10 @@ export const Container = styled.div`
     border-bottom: 1px solid #33afe9;
     /* margin-bottom: 9px; */
 
+    body, td, tr {
+        font-family: Malgun Gothic,Dotum,'돋움',Helvetica,"Apple SD Gothic Neo",sans-serif !important;
+    }
+
     .banner img {
         border-radius: 20px;
         overflow: hidden;
@@ -240,10 +244,12 @@ export const Top = styled.div`
         font-weight: bold;
         overflow: hidden;
         letter-spacing: -0.5px;
+        font-family: Malgun Gothic,Dotum,'돋움',Helvetica,"Apple SD Gothic Neo",sans-serif!important;
         /* border: 1px solid transparent; */
     }
 
     .util > li > a {
+        font-family: Malgun Gothic,Dotum,'돋움',Helvetica,"Apple SD Gothic Neo",sans-serif!important;
         width: max-content;
         display: inline-block;
         height: 38px;
@@ -286,7 +292,7 @@ export const Top = styled.div`
 
 export const Bottom = styled.div`
     width: 1030px;
-    height: 122px;
+    height: 115px;
     margin: 0 auto;
     display: flex;
     position: relative;
@@ -341,6 +347,7 @@ export const Bottom = styled.div`
     }
 
     #searchTarget {
+        font-family: Malgun Gothic,Dotum,'돋움',Helvetica,"Apple SD Gothic Neo",sans-serif!important;
         height: 18px;
         overflow: hidden;
     }
@@ -382,6 +389,7 @@ export const Bottom = styled.div`
     }
 
     .detail_search {
+        font-family: Malgun Gothic,Dotum,'돋움',Helvetica,"Apple SD Gothic Neo",sans-serif!important;
         font-size: 11px;
         background: url(${gray_arr}) no-repeat center right;
         padding: 0 8px 2px 0;

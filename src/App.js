@@ -1,6 +1,7 @@
 import React  from "react";
-import Header from "./components/Header";
 
+// 컴포넌트
+import Header from "./components/Header";
 import { SearchBoard } from "./components/Search";
 import Footer from "./components/Footer";
 import Create from "./components/Create"
@@ -14,7 +15,10 @@ import Guide from "./pages/Guide";
 
 import AuthContext from "contexts/AuthContext";
 
+// 커스텀 훅
 import useAuth from "hooks/useAuth"; 
+
+// 로딩페이지
 import { LoadingProvider, Loading } from "hooks/useLoading";
 
 import { Route, Routes, Link, Navigate } from "react-router-dom";
@@ -30,7 +34,6 @@ function App() {
     setIsSignedUp,
     refreshUser,
   } = useAuth();
-
 
   return (
     <AuthContext.Provider value={{ isSignedIn, userObj, refreshUser }}>

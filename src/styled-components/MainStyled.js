@@ -32,7 +32,7 @@ export const Wrap = styled.div`
         padding: 45px 40px 50px;
         display: -moz-gird;
         display: grid;
-        margin: 0 auto;
+        margin: 2rem auto;
         max-width: 100%;
         width: 1030px;
         gap: 30px;
@@ -70,6 +70,34 @@ export const Wrap = styled.div`
         margin-left: 80px;
         max-width: 100%;
     }
+
+    .display {
+        margin: 5rem auto;
+    }
+
+    .display .display-content, .display .display-title {
+        text-align: center;
+        font-weight: bold;
+        margin: 3rem auto;
+    }
+
+    .display .display-title::after {
+        content: ' >';
+    }
+
+    .display .display-title:hover {
+        opacity: 0.5;
+    }
+
+    /* .display h3 {
+        margin-bottom: 1rem;
+    } */
+
+    /* .display .display-text {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    } */
 `;
 
 

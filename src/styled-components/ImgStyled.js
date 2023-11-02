@@ -6,7 +6,7 @@ export const ImgStyled = styled.img`
     max-width: ${(props) => props.maxWidth || 'auto'};
     padding: ${(props) => props.padding || 'auto'};
     margin: ${(props) => props.margin || 'auto'};
-    box-shadow: ${(props) => props.bgShadow || '0'};
+    box-shadow: ${(props) => props.bgShadow || 'rgba(0, 0, 0, 0.3) 9px 11px 20px 1px'};
 
     @media (max-width: 412px) {
         padding: 1rem;

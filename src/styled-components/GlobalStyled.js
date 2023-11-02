@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import Normalize from "styled-normalize";
+import goTop from '../static/images/go-top.png'
 
 const GlobalStyle = createGlobalStyle`
     ${Normalize};
@@ -79,6 +80,20 @@ const GlobalStyle = createGlobalStyle`
 
     .show {
         opacity: 1;
+    }
+
+    .go_top {
+        width: 74px;
+        height: 74px;
+        background: url(${goTop}) no-repeat;
+        position: fixed;
+        bottom: 40px;
+        right: 30px;
+        font-size: 0px;
+        color: transparent;
+        text-indent: -999em;
+        z-index: 999;
+        border: 0;
     }
 `;
 

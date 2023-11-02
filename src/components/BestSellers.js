@@ -6,7 +6,7 @@ import bestSeller from '../data/bestSeller.json'
 import { FlowAniForward} from '../styled-components/AniStyled';
 import {TextH1, TextH2,TextP} from '../styled-components/TextStyled';
 import { ImgStyled } from '../styled-components/ImgStyled';
-import { BookItemContainer, BookInfo } from '../styled-components/BookStyled';
+import { BookItemContainer, BookInfo, BookImg } from '../styled-components/BookStyled';
 import Button from '../styled-components/ButtonStyled';
 import { FaShoppingCart } from 'react-icons/fa';
 import { FlexCol, FlexRow } from 'styled-components/FlexStyled';
@@ -30,10 +30,10 @@ function BestSellers() {
             <FlowAniForward>
                 {posts.map(post => (
                         <BookItemContainer key={post.itemId} >
-                            <ImgStyled src={post.coverLargeUrl} alt={post.title} width= "250px" />
+                            <BookImg src={post.coverLargeUrl} alt={post.title} width= "250px" />
                             <BookInfo>
-                                <TextP>{post.title}</TextP>
-                                <TextH2 padding = '1rem 0 0 0'>{post.author}</TextH2>
+                                <p className="book-title"><string>{post.title}</string></p>
+                                <p padding = '1rem 0 0 0'>{post.author}</p>
                                 <Button
                                     onClick={() => handleAddToCart(post.itemId, post.title, post.author, post.coverLargeUrl)}
                                     disabled={addedBooks.some((book) => book.itemId === post.itemId)}
@@ -42,7 +42,9 @@ function BestSellers() {
                                     "추가된 도서"
                                     ) : (
                                     <>
-                                        <FaShoppingCart /> 읽을 목록에 추가하기
+                                        <div className="cart-wrap">
+                                            <FaShoppingCart /><p className="cart-text">서재목록에 추가</p>
+                                        </div>
                                     </>
                                     )}
                                 </Button>
