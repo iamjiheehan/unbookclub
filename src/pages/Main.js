@@ -3,9 +3,13 @@ import Container from "react-bootstrap/Container";
 import * as MainStyled from "../styled-components/MainStyled";
 
 import main from "../static/images/banner_home.webp";
+import main2 from "../static/images/main-01.webp";
+
 import imgCategory1 from "../static/images/img-category1.webp";
 import imgCategory2 from "../static/images/img-category2.webp";
 import imgCategory3 from "../static/images/img-category3.webp";
+import cardBackground1 from "../static/images/cardBackground1.jpg";
+import cardBook1 from "../static/images/cardBook1.jpg";
 import icon01 from "../static/images/main-icon-01.webp";
 import icon02 from "../static/images/main-icon-02.webp";
 import icon03 from "../static/images/main-icon-03.webp";
@@ -29,6 +33,9 @@ import { FlexRow, FlexCol } from "../styled-components/FlexStyled";
 import BackStyled from "../styled-components/BackStyled";
 import { TextH1, TextH2, TextP } from "../styled-components/TextStyled";
 import GridStyled from "../styled-components/GridStyled";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMessage } from '@fortawesome/free-regular-svg-icons';
 
 export default function Main() {
     return (
@@ -60,13 +67,70 @@ export default function Main() {
                         <Btn2 to="/board" bgColor="#333">DISCOVER NEW BOOKS</Btn2>
                     </div>
                 </div>
-                {/* <div>
-                    <FirstImgStyled src={main} alt="mainImage" />
-                    <div>
-                        <TextH1 padding='0 0 0.5rem 0'>THE UNBOOK CLUB</TextH1>
-                        <TextP> 책을 함께 읽고 다양한 생각을 나누는 공간<br/></TextP>
+                <div className="center">
+                    <MainStyled.Card className="card-wrap">
+                        <div className="card-center">
+                            <div className="card-img">
+                                <img src={cardBackground1} alt="프로필" />
+                            </div>
+                            <div className="card-title"><h4>Read the Classics</h4></div>
+                            <div className="card-desc"><p>If you're looking for fellow bookworms to disc...</p></div>
+                            <div className="card-discuss">
+                            <FontAwesomeIcon icon={faMessage} flip="horizontal" style={{ color: "#000000" }} />
+                            <span>&nbsp; DISCUSSES ONLINE</span>
+                        </div>
+                        </div>
+                        <div className="card-book">
+                            <div className="card-book_title"><spans><strong>Currently reading</strong></spans></div>
+                            <div className="card-book_img"><img src={cardBook1} alt="프로필" /></div>
+                        </div>
+                    </MainStyled.Card>
+                    <MainStyled.Card className="card-wrap">
+                        <div className="card-center">
+                            <div className="card-img">
+                                <img src={cardBackground1} alt="프로필" />
+                            </div>
+                            <div className="card-title"><h4>Read the Classics</h4></div>
+                            <div className="card-desc"><p>If you're looking for fellow bookworms to disc...</p></div>
+                            <div className="card-discuss">
+                            <FontAwesomeIcon icon={faMessage} flip="horizontal" style={{ color: "#000000" }} />
+                            <span>&nbsp; DISCUSSES ONLINE</span>
+                        </div>
+                        </div>
+                        <div className="card-book">
+                            <div className="card-book_title"><spans><strong>Currently reading</strong></spans></div>
+                            <div className="card-book_img"><img src={cardBook1} alt="프로필" /></div>
+                        </div>
+                    </MainStyled.Card>
+                    <MainStyled.Card className="card-wrap">
+                        <div className="card-center">
+                            <div className="card-img">
+                                <img src={cardBackground1} alt="프로필" />
+                            </div>
+                            <div className="card-title"><h4>Read the Classics</h4></div>
+                            <div className="card-desc"><p>If you're looking for fellow bookworms to disc...</p></div>
+                            <div className="card-discuss">
+                            <FontAwesomeIcon icon={faMessage} flip="horizontal" style={{ color: "#000000" }} />
+                            <span>&nbsp; DISCUSSES ONLINE</span>
+                        </div>
+                        </div>
+                        <div className="card-book">
+                            <div className="card-book_title"><spans><strong>Currently reading</strong></spans></div>
+                            <div className="card-book_img"><img src={cardBook1} alt="프로필" /></div>
+                        </div>
+                    </MainStyled.Card>
+                </div>
+                <MainStyled.WideBanner className="wide-banner"><h4>심플한 온라인 북클럽 UNBOOKCLUB</h4></MainStyled.WideBanner>
+                <div className="mid-banner">
+                    <div className="mid-banner-container">
+                        <div className="mid-banner-content">
+                            <div className="wrap-button">
+                                <Btn2 to="/board">리뷰게시판 둘러보기</Btn2>
+                            </div>
+                        </div>
+                        <FirstImgStyled height="27rem" src={main2} alt="mainImage" />
                     </div>
-                </div> */}
+                </div>
             </MainStyled.Wrap>
             {/* <div>
                 <TextH1 bgColor='#61777F' padding='1.5rem' color='white' lineHeight='100%'>심플한 온라인 북클럽, THE UNBOOK CLUB</TextH1>
