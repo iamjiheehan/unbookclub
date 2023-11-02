@@ -1,16 +1,23 @@
 // 도서 검색 게시판
+import React, { useState} from "react";
 
+// 컴포넌트 임포트
 import { BestSellersList } from "components/BestSellers";
 import { NewBooksList } from "components/NewBooks";
 import { SearchBooks } from "components/Search";
-import React, { useState} from "react";
+
+// 부트스트랩 라이브러리
 import { Container } from "react-bootstrap";
+
+// 스타일컴포넌트 임포트
+
 import Button from "styled-components/ButtonStyled";
 import { TextH1, TextP } from "styled-components/TextStyled";
-import bookImg from "../static/images/menu-icon-03.webp";
 import { FirstImgStyled, ImgStyled } from "../styled-components/ImgStyled";
 import HR from "styled-components/LineStyled";
 
+// 이미지 임포트
+import bookImg from "../static/images/menu-icon-03.webp";
 import { FaArrowRight} from "react-icons/fa";
 
 export default function Books() {
