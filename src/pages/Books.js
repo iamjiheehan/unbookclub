@@ -25,6 +25,7 @@ import { FirstImgStyled, ImgStyled } from "../styled-components/ImgStyled";
 import HR from "styled-components/LineStyled";
 
 import { Btn1, Btn2 } from "styled-components/BtnStyled";
+import { FaShoppingCart } from "react-icons/fa";
 
 // 이미지 임포트
 import bookImg from "../static/images/menu-icon-03.webp";
@@ -137,15 +138,33 @@ export default function Books() {
                     <BookStyled.Content>
                         <div className="content-wrap">
                             {getSortedPosts().slice(0, numItemsToShow).map((post) => (
-                                <BookStyled.Item className="content-item" key={post.itemId}>
-                                    <div className="item_canvas">
+                                <div className="content-item" key={post.itemId}>
+                                    <BookStyled.Item className="item_canvas">
                                         <div className="item_img">
                                             <img
                                                 src={post.coverLargeUrl}
                                                 alt={post.title}
                                             />
                                         </div>
-                                    </div>
+                                        <BookStyled.CartWrap>
+                                            <p className="book-title"><strong>{post.title}</strong></p>
+                                            <p padding="1rem 0 0 0">{post.author}</p>
+                                            <Button
+                                                    onClick={() => handleAddToCart(post.itemId, post.title, post.author, post.coverLargeUrl)}
+                                                    disabled={addedBooks.some((book) => book.itemId === post.itemId)}
+                                                >
+                                                {addedBooks.some((book) => book.itemId === post.itemId) ? (
+                                                    "추가된 도서"
+                                                    ) : (
+                                                    <>
+                                                        <div className="cart-wrap">
+                                                        <FaShoppingCart /> <p className="cart-text">서재목록에 추가</p>
+                                                        </div>
+                                                    </>
+                                                    )}
+                                                </Button>
+                                            </BookStyled.CartWrap>
+                                    </BookStyled.Item>
                                     <div className="item_info">
                                         <div className="info_row info_name">
                                             <a href="#!" className="info_title">
@@ -168,7 +187,7 @@ export default function Books() {
                                             </div>
                                         </div>
                                     </div>
-                                </BookStyled.Item>
+                                </div>
                             ))}
                         </div>
                     </BookStyled.Content>
