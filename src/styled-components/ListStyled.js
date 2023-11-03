@@ -38,7 +38,7 @@ export const Content = styled.div`
         display: grid;
         grid-template-columns: repeat(4, 1fr); /* 각 열의 너비를 균일하게 1fr로 설정 */
         gap: 2.5rem;
-        padding-top: 55px;
+        padding-top: 70px;
         margin: 0 auto;
 
     }
