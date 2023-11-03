@@ -136,12 +136,12 @@ function Header({ reviewObj }) {
                                 </a>
                             </li>
                             <li id="head_book_layer">
-                                <a href="./books" title="인기도서">
+                                <a href="./bestSellers" title="인기도서">
                                 인기도서
                                 </a>
                             </li>
                             <li id="head_book_layer">
-                                <a href="./books" title="신간도서">
+                                <a href="./newbooks" title="신간도서">
                                 신간도서
                                 </a>
                             </li>

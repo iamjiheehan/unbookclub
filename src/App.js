@@ -11,6 +11,8 @@ import Main from "./pages/Main";
 import Board from "./pages/Board";
 import UserInfo from "./pages/UserInfo";
 import Books from "./pages/Books"
+import NewBooks from  "./pages/NewBooksPage"
+import BestSellers from './pages/BestSellersPage'
 import Guide from "./pages/Guide";
 
 import AuthContext from "contexts/AuthContext";
@@ -65,6 +67,12 @@ function App() {
                     <Link to="/books">Books</Link>
                   </li>
                   <li>
+                    <Link to="/newbooks">newbooks</Link>
+                  </li>
+                  <li>
+                    <Link to="/bestSellers">bestSellers</Link>
+                  </li>
+                  <li>
                     <Link to="/guide">Guide</Link>
                   </li>
                 </ul>
@@ -76,7 +84,7 @@ function App() {
                 path="/signIn"
                 element={
                   isSignedIn || isSignedUp ? (
-                    <Navigate to="/userInfo" /> // Changed to Navigate to userInfo page
+                    <Navigate to="/userInfo" /> 
                   ) : (
                     <SignIn setIsSignedUp={setIsSignedUp} />
                   )
@@ -85,6 +93,8 @@ function App() {
               <Route path="/board" element={<Board />} />
               <Route path="/guide" element={<Guide />} />
               <Route path="/books" element={<Books />} />
+              <Route path="/newbooks" element={<NewBooks />} />
+              <Route path="/bestSellers" element={<BestSellers />} />
               <Route
                 path="/create"
                 element={
