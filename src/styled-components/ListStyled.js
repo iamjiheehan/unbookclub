@@ -52,8 +52,8 @@ export const Content = styled.div`
     .item_info {
         margin-top: 17px;
         text-align: left;
-        width: 200px;//--------------너비 설정
-        height: auto;
+        width: 200px;//-----------------너비 설정
+        height: 300px;
         overflow: hidden;
     }
 
@@ -101,12 +101,20 @@ export const Content = styled.div`
     }
 
     .item_canvas {
-
         text-align: center;
-        padding-top: 1rem;
+        /* padding-top: 1rem; */
+        height: 300px;
+
         width: 200px;
+
         min-height: 234px;
         transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+        .item_img {
+            object-fit: cover;
+            width: inherit;
+            height: inherit;
+        }
 
         .item_img:hover {
             cursor: pointer;
@@ -115,6 +123,7 @@ export const Content = styled.div`
 
         img {
             width: 100%;
+            height: 100%;
         }
     }
 `;
@@ -127,8 +136,10 @@ export const CartWrap = styled.div`
     color :white;
 
     padding: 4rem 1rem;
+    min-height: 234px;
     height: 300px;
-    margin-bottom: 2rem;
+
+    /* margin-bottom: 2rem; */
     background-color: rgba(149, 165, 166, 0.9);
     position: absolute;
     bottom: 0;
