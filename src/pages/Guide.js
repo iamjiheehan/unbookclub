@@ -1,29 +1,62 @@
 import React from 'react'
+
+// 부트스트랩 라이브러리 임포트
 import { Container } from 'react-bootstrap';
+
+// 스타일컴포넌트 임포트
 import { FlexCol } from 'styled-components/FlexStyled';
 import { FirstImgStyled, ImgStyled } from 'styled-components/ImgStyled';
 import HR from 'styled-components/LineStyled';
 import { TextH1, TextH2 } from 'styled-components/TextStyled';
+import * as GuideStyled from 'styled-components/GuideStyled';
+import {Btn3} from 'styled-components/BtnStyled';
+
+
+// 이미지 임포트
 import bookImg from "../static/images/menu-icon-02.webp";
+import main from"../static/images/bg_discussion.webp";
+
+//폰트어썸 라이브러리 임포트
+import { faBookmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 export default function Guide() {
     return (
-        <Container>
-            <FirstImgStyled src={bookImg} alt="Top Image" />
-            <FlexCol alignItems="center" margin="0 auto 2rem auto">
-                <TextH1 padding="0 0 2rem 0">어떻게 쓸 지 모르겠다면 아래의 질문에 대해 써보세요</TextH1>
-                <TextH2 padding="0 0 1rem 0">1. 이 책을 다른 사람들에게 추천하시겠어요?</TextH2>
-                <TextH2 padding="0 0 1rem 0">2. 책을 어떻게 생각하셨나요? 즐겁게 읽으셨나요?</TextH2>
-                <TextH2 padding="0 0 1rem 0">3. 글쓰기 스타일은 어땠나요? 읽기 쉬웠나요?</TextH2>
-                <TextH2 padding="0 0 1rem 0">4. 책에서 가장 좋아하는 장면은 무엇이었나요?</TextH2>
-                <TextH2 padding="0 0 1rem 0">5. 이 책이 여러분의 선입견이나 믿음에 도전했나요?</TextH2>
-                <TextH2 padding="0 0 1rem 0">6. 특별히 눈에 띄는 주제나 메시지가 있었나요?</TextH2>
-                <TextH2>7. 엔딩에 대해서는 어떻게 생각하셨나요?</TextH2>
-            </FlexCol>
-            <HR height="0" margin="4rem 0" />
-            <FlexCol alignItems="center" margin="0 auto 2rem auto">
-                <TextH1 padding="0 0 2rem 0">책을 읽고 자유롭게 의견을 공유해보세요 !</TextH1>
-            </FlexCol>
-        </Container>
+        <GuideStyled.Container>
+            <div className='Banner-wrap'>
+                <h1 className='Banner-text'>DISCUSSION GUIDES</h1>
+                <div className='Banner-img'>
+                    <img src={main} alt="banner" />
+                </div>
+            </div>
+            <GuideStyled.Wrap>
+                <div className='title'>
+                    <h1><strong>Discussion Questions</strong></h1>
+                    <h5>Use these discussion questions to guide your next book club meeting.</h5>
+                </div>
+                <div className='content-wrap'>
+                    <div className='content'>
+                        <div className='question'>
+                            <FontAwesomeIcon icon={faBookmark} style={{ color: "#bb8867" }} size="2x" />
+                            <div className='text-wrap'>
+                                <div className='text'>
+                                    <p>The Hint of Light is narrated by three characters: Margaret, Kyle, and Ally. How does each of these characters bring a unique perspective to the novel?</p>
+                                    <Btn3 className="">
+                                        <FontAwesomeIcon icon={faCaretDown} size="2x" />
+                                    </Btn3>
+                                </div>
+                                <hr />
+                            </div>
+                        </div>
+                        <div className='answer'>
+                            <p>
+                                Margaret, Kyle, and Ally. How does each of these characters bring a unique perspective to the novel?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </GuideStyled.Wrap>
+        </GuideStyled.Container>
     )
 }

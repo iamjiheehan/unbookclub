@@ -69,3 +69,42 @@ export const Btn2= ({ to, children, ...rest }) => {
         </Link>
     );
 };
+
+const Button3Styled = styled.button`
+    align-items: center;
+    border: none;
+    border-radius: 30px;
+    background-color: #fff;
+    color: #000000;
+    display: -moz-inline-flex;
+    display: inline-flex;
+    font-size: 14px;
+    -moz-justify-content: center;
+    justify-content: center;
+    letter-spacing: .1em;
+    line-height: 20px;
+    line-height: 1.25rem;
+    padding: 12px 25px!important;
+    text-transform: uppercase;
+
+    &:hover {
+        transform-origin: center;
+        color: rgb(51, 175, 233);
+    }
+
+    &.on {
+        transform: rotate(180deg);
+    }
+
+    @media (max-width: 412px) {
+        font-size: 1rem;
+    }
+`;
+
+export const Btn3= ({ to, children, ...rest }) => {
+    return (
+        <Link to={to}>
+            <Button3Styled {...rest}>{children}</Button3Styled>
+        </Link>
+    );
+};
