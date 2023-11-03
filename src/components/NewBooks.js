@@ -33,10 +33,9 @@ function NewBooks() {
             <BookImg
               src={post.coverLargeUrl}
               alt={post.title}
-              width="250px"
             />
             <BookInfo>
-              <p className="book-title"><strong>{post.title}</strong></p>
+              <p className="book-title">{post.title}</p>
               <p padding="1rem 0 0 0">{post.author}</p>
               <Button
                     onClick={() => handleAddToCart(post.itemId, post.title, post.author, post.coverLargeUrl)}
@@ -47,11 +46,11 @@ function NewBooks() {
                     ) : (
                       <>
                         <div className="cart-wrap">
-                          <FaShoppingCart /> <p className="cart-text">서재목록에 추가</p>
+                          <FaShoppingCart /> <p className="cart-text">서재에 추가</p>
                         </div>
                       </>
                     )}
-                  </Button>
+              </Button>
             </BookInfo>
           </BookItemContainer>
         ))}

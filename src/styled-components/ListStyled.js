@@ -140,7 +140,8 @@ export const CartWrap = styled.div`
     height: 300px;
 
     /* margin-bottom: 2rem; */
-    background-color: rgba(149, 165, 166, 0.9);
+    /* background-color: rgba(149, 165, 166, 0.9); */
+    background-color: rgb(51, 175, 233);
     position: absolute;
     bottom: 0;
     left: 0;
@@ -149,14 +150,17 @@ export const CartWrap = styled.div`
     transition: opacity 0.3s ease-in-out;
 
     ${Item}:hover & {
-        opacity: 1;
+        opacity: 0.9;
     }
 
     p {
         padding-left: 0.5;
     }
-/* 
-    .info_title {
+
+
+    .book-title {
+        line-height: 1.5rem;
+        font-weight: normal;
         letter-spacing: 2px;
         margin-bottom: 1rem;
     }
@@ -167,5 +171,5 @@ export const CartWrap = styled.div`
         align-items: center;
         justify-content: space-around;
         gap:2px;
-    } */
+    }
 `;

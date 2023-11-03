@@ -1,11 +1,9 @@
 import styled from 'styled-components';
-import { ImgStyled } from '../styled-components/ImgStyled';
 
 const BookItemContainer = styled.div`
     position: relative;
     width: 100vw;
     padding-bottom: 2rem;
-
 
 `;
 
@@ -14,19 +12,13 @@ const BookSlideContainer = styled.div`
     width: 100vw;
     overflow: hidden;
     overflow-y: hidden;
-
-
-`;
-
-const BookImage = styled(ImgStyled)`
-    width: 100%;
-    height: 70%;
 `;
 
 const BookImg = styled.img`
     box-shadow: ${(props) => props.bgShadow || 'rgba(0, 0, 0, 0.3) 9px 11px 20px 1px'};
     object-fit: cover center;
     height: 300px;
+    width: 200px;
     
     @media (max-width: 412px) {
         padding: 1rem;
@@ -56,6 +48,8 @@ const BookInfo = styled.div`
     }
 
     .book-title {
+        line-height: 1.5rem;
+        font-weight: normal;
         letter-spacing: 2px;
         margin-bottom: 1rem;
     }
@@ -69,4 +63,4 @@ const BookInfo = styled.div`
     }
 `;
 
-export { BookImg, BookItemContainer, BookImage, BookInfo, BookSlideContainer }
+export { BookImg, BookItemContainer, BookInfo, BookSlideContainer }
