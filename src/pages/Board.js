@@ -1,5 +1,4 @@
 // 독후감 게시판
-
 import React, { useContext, useEffect, useState } from "react";
 
 // 로그인 contextAPI
@@ -8,6 +7,7 @@ import AuthContext from "../contexts/AuthContext";
 // 컴포넌트
 import { SearchBoard } from "../components/Search";
 import Reviews from "../components/Reviews";
+import ReactStars from "react-rating-stars-component";
 
 // 커스텀 훅
 import { useReviewForm } from "../hooks/useReviewForm";
@@ -20,7 +20,6 @@ import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import main2 from "../static/images/main-01.webp";
 
 // 스타일컴포넌트 임포트
-import ReactStars from "react-rating-stars-component";
 
 import styled from "styled-components";
 

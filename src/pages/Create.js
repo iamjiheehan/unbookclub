@@ -1,11 +1,26 @@
+//리뷰작성 게시판
 import React, { useContext } from "react";
+
+// 로그인 contextAPI
 import AuthContext from "../contexts/AuthContext";
-import StarRating from "./StarRating";
+
+// 컴포넌트
+import StarRating from "../components/StarRating";
 import { TextH1 } from "../styled-components/TextStyled";
 import { Input, BoardInput } from "../styled-components/InputStyled";
 import { FlexCol, FlexRow } from "../styled-components/FlexStyled";
-import { Container } from "react-bootstrap";
+
+// 커스텀 훅
 import { useReviewForm } from "../hooks/useReviewForm";
+
+
+// 스타일컴포넌트 임포트
+import * as CreateStyled from "../styled-components/CreateStyled"
+
+// 이미지 임포트
+
+
+import { Container } from "react-bootstrap";
 import image from '../static/images/book-report.webp';
 import { ImgStyled } from '../styled-components/ImgStyled';
 
@@ -23,9 +38,8 @@ export default function Board() {
 
 
     return (
-            <Container>
-                <ImgStyled src={image} alt="mainImage" height="500px" />
-                <TextH1 margin="2.5rem 0 auto auto">독후감 작성하기</TextH1>
+            <CreateStyled.Wrap>
+                <h1>독후감 작성하기</h1>
                 <form onSubmit={onSubmit}>
                     <FlexCol margin="2rem">
                     <FlexRow alignItems="baseline">
@@ -62,7 +76,7 @@ export default function Board() {
                     <Input type="submit" value="게시하기" margin="1.5rem auto 5rem auto" />
                     </FlexCol>
                 </form>
-            </Container>
+            </CreateStyled.Wrap>
     )
 
 }

@@ -4,7 +4,7 @@ import React  from "react";
 import Header from "./components/Header";
 import { SearchBoard } from "./components/Search";
 import Footer from "./components/Footer";
-import Create from "./components/Create"
+import Create from "./pages/Create"
 import SignIn from "./components/SignIn";
 
 import Main from "./pages/Main";
