@@ -181,7 +181,7 @@ function SearchBooks() {
     const [searchResults, setSearchResults] = useState([]);
     const [query, setQuery] = useState('');
 
-    const [searchMode, setSearchMode] =useState("도서명으로 검색");
+    const [searchMode, setSearchMode] = React.useState("도서명으로 검색");
     const { startLoading, stopLoading } = useLoadingContext();
 
     const addedBooks = useSelector((state) => state.book);
@@ -199,7 +199,7 @@ function SearchBooks() {
             }
         };
         fetchBooks();
-    }, []);
+      }, []); // Add an empty dependency array
     
 
     const handleAddToCart = (itemId, title, author, coverLargeUrl, isbn) => {
