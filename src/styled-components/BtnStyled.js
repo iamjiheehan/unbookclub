@@ -81,10 +81,7 @@ const Button3Styled = styled.button`
     font-size: 14px;
     -moz-justify-content: center;
     justify-content: center;
-    letter-spacing: .1em;
-    line-height: 20px;
     line-height: 1.25rem;
-    padding: 12px 25px!important;
     text-transform: uppercase;
 
     &:hover {

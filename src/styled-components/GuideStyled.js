@@ -52,20 +52,43 @@ export const Wrap = styled.div`
         display: flex;
         flex-direction: column;
         margin-bottom: 2rem;
+
+        overflow: hidden;
     }
 
     .content-wrap .content .question {
         display: flex;
         gap: 1rem;
         font-weight: bold;
+
+    }
+
+    .content-wrap .content .question .text-wrap {
+        width: 100%;
     }
 
     .content-wrap .content .question .text-wrap .text{
         display: flex;
+        justify-content: space-between;
+    }
+
+    .content-wrap .content .question .text-wrap Btn3{
+        &.on{
+            transform: rotate(180deg);
+            transition: height 0.3s ease;
+        }
     }
 
     .content-wrap .content .answer {
+        padding-top: 1rem;
         padding-left: 2.1rem;
+        height: 0px;
+        line-height: 1.5rem;
+
+        &.on {
+            height: auto;
+            transition: height 0.3s ease;
+        }
     }
 `;
 
