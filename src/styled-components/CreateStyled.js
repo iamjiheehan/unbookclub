@@ -40,14 +40,30 @@ export const Wrap = styled.div`
         margin-top: 2rem;
     }
 
+    .input-wrap {
+        position: relative;
+    }
+
     .result {
+        width: 100%;
         display: flex;
         gap: 1rem;
         padding: 1rem;
+        background-color: #fff;
         box-shadow:0 0 10px 0 rgba(0, 0, 0, 0.5);
+        z-index: 1;
+        position: absolute;
     }
 
     .result-title {
         margin-bottom: 1rem;
+    }
+
+    #result-title{
+        display: none;
+    }
+
+    #result-author{
+        /* display: none; */
     }
 `;

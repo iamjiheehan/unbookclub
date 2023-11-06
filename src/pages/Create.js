@@ -133,7 +133,7 @@ export default function Board() {
                         placeholder="책 제목을 입력해주세요"
                         maxLength={200}
                     />
-                    <div className="result">
+                    <div className="result" id="result-title">
                         <div className="result-img">
                             <img src="https://image.aladin.co.kr/product/32710/47/cover200/k492936872_1.jpg?RS=134" alt=""/>
                         </div>
@@ -153,7 +153,7 @@ export default function Board() {
                         placeholder="작가 이름을 입력해주세요"
                         maxLength={200}
                     />
-                    <div className="result">
+                    <div className="result" id="result-author">
                         <div className="result-img">
                             <img src="https://image.aladin.co.kr/product/32710/47/cover200/k492936872_1.jpg?RS=134" alt=""/>
                         </div>
