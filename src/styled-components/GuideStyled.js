@@ -14,6 +14,7 @@ export const Container = styled.div`
     }
 
     .Banner-text {
+        padding-top: 2rem;
         font-weight: bold;
         color: #e0e2b0;
         font-size: 40px;
@@ -22,7 +23,7 @@ export const Container = styled.div`
     }
 
     .Banner-img {
-        height: 200px;
+        min-height: 200px;
         /* transform: translateX(-50%); */
         display: flex;
 

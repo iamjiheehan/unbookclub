@@ -36,8 +36,10 @@ export const Content = styled.div`
 
     margin: 4rem 0;
     .content-wrap {
-        display: flex;
-        gap: 2rem;
+        /* display: flex;
+        gap: 2rem; */
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         width: 1260px;
         padding: 55px 0;
         margin: 0 auto 0;
@@ -46,6 +48,7 @@ export const Content = styled.div`
     .content-wrap .content-item {
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 
     .item_info {
@@ -53,7 +56,6 @@ export const Content = styled.div`
         text-align: left;
         width: 380px;
         height: auto;
-
         overflow: hidden;
     }
 

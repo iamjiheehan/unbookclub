@@ -110,7 +110,6 @@ export default function Books() {
         }
     };
     
-
     return (
         <>
             <BookStyled.Container>
