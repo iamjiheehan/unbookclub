@@ -16,7 +16,7 @@ import { useReviewForm } from "../hooks/useReviewForm";
 import { useLoadingContext } from "hooks/useLoading";
 
 //API 임포트
-import { kakaoSearch, setSearchTitle } from "api/searchApi";
+import { kakaoSearch} from "api/searchApi";
 
 // 스타일컴포넌트 임포트
 import * as CreateStyled from "../styled-components/CreateStyled";
@@ -26,10 +26,14 @@ import { Container } from "react-bootstrap";
 import image from "../static/images/book-report.webp";
 import { ImgStyled } from "../styled-components/ImgStyled";
 import { Btn2 } from "styled-components/BtnStyled";
+import useBookSearch from "hooks/useBookSearch";
+import { useLocation } from "react-router-dom";
 
-export default function Board() {
+export default function Create() {
+    const { state } =useLocation();
     const { userObj } = useContext(AuthContext);
     const {
+        bookAuthor,
         setbookTitle,
         inputReview,
         onSubmit,
@@ -38,39 +42,14 @@ export default function Board() {
         onRatingSelected,
     } = useReviewForm(userObj);
 
+    const {
+        books,
+        getBooks,
+        handleInputChange
+    } = useBookSearch();
+
     const [searchResults, setSearchResults] = useState([]);
     const [query, setQuery] = useState("");
-
-    const { startLoading, stopLoading } = useLoadingContext();
-
-    useEffect(() => {
-        const fetchBooks = async () => {
-            try {
-                const { data } = await kakaoSearch({
-                    query: query,
-                });
-                setSearchResults(data.documents);
-                console.log("fetchBooks");
-            } catch (error) {
-                console.error("Error fetching books:", error);
-            }
-        };
-        fetchBooks();
-    }, [query]);
-
-    const titleSearch = async (event) => {
-        event.preventDefault();
-        const inputValue = event.target.value;
-        if (inputValue.length > 2) {
-            onChange();
-            setbookTitle(inputValue);
-            setQuery(inputValue);
-        } else {
-            setSearchResults([]);
-            setSearchError("검색어를 입력해주세요");
-        }
-        stopLoading();
-    };
 
 
     return (
@@ -97,14 +76,14 @@ export default function Board() {
                         value={bookTitle}
                         onChange={(e) => {
                             onChange(e);
-                            titleSearch(e);
+                            handleInputChange(e);
                         }}
                         type="text"
                         placeholder="책 제목을 입력해주세요"
                         maxLength={200}
                     />
                     <div className="result" id="result-title">
-                        {searchResults.map((result, index) => (
+                        {books.map((result, index) => (
                             <div key={index} className="result-item">
                                 <div className="result-img">
                                     <img
