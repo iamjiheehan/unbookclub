@@ -60,10 +60,10 @@ export const Wrap = styled.div`
     }
 
     #result-title{
-        display: none;
+        /* display: none; */
     }
 
     #result-author{
-        /* display: none; */
+        display: none;
     }
 `;
