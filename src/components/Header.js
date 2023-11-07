@@ -206,15 +206,7 @@ function Header({ reviewObj }) {
                     <div className="header_middle-logo">
                         <h1>
                             <Link to="/" title="서재">
-                                <a
-                                    href="#!"
-                                    id="logoBtn"
-                                    title="첫화면으로 가기"
-                                    style={{ cursor: "pointer" }}
-                                >
-                                    알라딘
-                                    <img src={logo} alt="알라딘" />
-                                </a>
+                                <img className="middle-logo-img" src={logo} alt="알라딘" />
                             </Link>
                         </h1>
                     </div>

@@ -60,7 +60,6 @@ import { useReview } from "hooks/useReview";
                                 type="text"
                                 placeholder="책 제목을 입력해주세요"
                                 maxLength={200}
-                                bgColor="transparent"
                             />
                             <BoardInput
                                 name="bookAuthor"
@@ -69,7 +68,6 @@ import { useReview } from "hooks/useReview";
                                 type="text"
                                 placeholder="작가 이름을 입력해주세요"
                                 maxLength={200}
-                                bgColor="transparent"
                             />
                             <BoardInput
                                 name="newReview"
@@ -78,7 +76,6 @@ import { useReview } from "hooks/useReview";
                                 value={newReview}
                                 required
                                 onChange={onChange}
-                                bgColor="transparent"
                             />
                             <BoardInput
                                 type="text"
@@ -86,7 +83,6 @@ import { useReview } from "hooks/useReview";
                                 value={newNickname}
                                 required
                                 onChange={(event) => setNewNickname(event.target.value)}
-                                bgColor="transparent"
                             />
                             {errorMessage && (
                                 <TextP style={{ color: "red" }}>{errorMessage}</TextP>

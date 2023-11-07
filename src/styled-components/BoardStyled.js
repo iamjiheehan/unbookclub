@@ -118,11 +118,13 @@ export const Content = styled.div`
         -webkit-box-orient: vertical;
     }
 
-
     .btn-wrap {
-        margin: 1rem 0.5rem 0 0.5rem;
+        margin: 1rem 0.5rem 0px;
         width: 100%;
         display: flex;
-        justify-content: space-between
+        -webkit-box-pack: justify;
+        justify-content: flex-end;
+        gap: 1rem;
     }
+    
 `;

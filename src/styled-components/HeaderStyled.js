@@ -11,8 +11,11 @@ export const Container = styled.div`
     border-bottom: 1px solid #33afe9;
     /* margin-bottom: 9px; */
 
-    body, td, tr {
-        font-family: Malgun Gothic,Dotum,'돋움',Helvetica,"Apple SD Gothic Neo",sans-serif !important;
+    body,
+    td,
+    tr {
+        font-family: Malgun Gothic, Dotum, "돋움", Helvetica,
+            "Apple SD Gothic Neo", sans-serif !important;
     }
 
     .banner img {
@@ -80,7 +83,6 @@ export const Container = styled.div`
 
         ul li {
             margin-bottom: 8px;
-
         }
 
         ul li a {
@@ -93,7 +95,6 @@ export const Container = styled.div`
             letter-spacing: -0.5px;
         }
     }
-
 
     /* coffee 레이어 */
     #head_coffee_layer.header_layer_box {
@@ -123,8 +124,7 @@ export const Container = styled.div`
         width: 1030px;
         left: 0px;
 
-        display:none;
-
+        display: none;
     }
 
     .header_layer_box ul {
@@ -136,7 +136,6 @@ export const Container = styled.div`
         /* width: 150px; */
     }
 
-    
     .header_layer_box .category {
         display: flex;
         font-weight: normal;
@@ -168,24 +167,25 @@ export const Container = styled.div`
     }
 
     .header_layer_box .category a {
-            display: block;
-            font-size: 13px;
-            padding: 0;
-            color: #333;
-            text-align: left;
-            font-weight: normal;
-            /* height: 30px; */
-            height: 28px;
-            line-height: normal;
+        display: block;
+        font-size: 13px;
+        padding: 0;
+        color: #333;
+        text-align: left;
+        font-weight: normal;
+        /* height: 30px; */
+        height: 28px;
+        line-height: normal;
 
-            &:hover {
-                text-decoration: underline;
-            }
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
-    .header_layer_box .category h3 a{
+    .header_layer_box .category h3 a {
         font-size: 15px;
-        background: url(https://image.aladin.co.kr/img/header/2023/arr_go.svg) no-repeat center right 1px / 6px auto;
+        background: url(https://image.aladin.co.kr/img/header/2023/arr_go.svg)
+            no-repeat center right 1px / 6px auto;
         padding-right: 12px;
         letter-spacing: -0.01em;
         font-weight: bold;
@@ -209,7 +209,7 @@ export const Container = styled.div`
         color: black;
     }
 
-    #head_bookstore_layer.header_layer_box_s a{
+    #head_bookstore_layer.header_layer_box_s a {
         line-height: normal;
         font-weight: normal;
     }
@@ -227,14 +227,12 @@ export const Top = styled.div`
         color: #0f4e8a !important;
     }
 
-    
     .gnb li {
         white-space: nowrap;
-
     }
 
-
-    a, .gnb > li > a {
+    a,
+    .gnb > li > a {
         width: max-content;
         display: inline-block;
         padding: 0 7px;
@@ -244,12 +242,16 @@ export const Top = styled.div`
         font-weight: bold;
         overflow: hidden;
         letter-spacing: -0.5px;
-        font-family: Malgun Gothic,Dotum,'돋움',Helvetica,"Apple SD Gothic Neo",sans-serif!important;
+        font-family: Malgun Gothic, Dotum, "돋움", Helvetica,
+            "Apple SD Gothic Neo", sans-serif !important;
         /* border: 1px solid transparent; */
     }
 
-    .util > li > a, .util > li > button, .util > li > span {
-        font-family: Malgun Gothic,Dotum,'돋움',Helvetica,"Apple SD Gothic Neo",sans-serif!important;
+    .util > li > a,
+    .util > li > button,
+    .util > li > span {
+        font-family: Malgun Gothic, Dotum, "돋움", Helvetica,
+            "Apple SD Gothic Neo", sans-serif !important;
         width: max-content;
         display: inline-block;
         height: 38px;
@@ -304,6 +306,8 @@ export const Bottom = styled.div`
     position: relative;
     align-items: baseline;
 
+    padding-top: 0.5rem;
+
     h1 > a {
         display: block;
         width: 100%;
@@ -321,13 +325,8 @@ export const Bottom = styled.div`
         color: transparent;
         padding: 0;
 
-        #logoBtn {
-            font-size: 0;
-
-            img {
-                margin-top: 11px;
-                width: 145px;
-            }
+        .middle-logo-img {
+            width: 145px;
         }
     }
 
@@ -353,7 +352,8 @@ export const Bottom = styled.div`
     }
 
     #searchTarget {
-        font-family: Malgun Gothic,Dotum,'돋움',Helvetica,"Apple SD Gothic Neo",sans-serif!important;
+        font-family: Malgun Gothic, Dotum, "돋움", Helvetica,
+            "Apple SD Gothic Neo", sans-serif !important;
         height: 18px;
         overflow: hidden;
     }
@@ -395,7 +395,8 @@ export const Bottom = styled.div`
     }
 
     .detail_search {
-        font-family: Malgun Gothic,Dotum,'돋움',Helvetica,"Apple SD Gothic Neo",sans-serif!important;
+        font-family: Malgun Gothic, Dotum, "돋움", Helvetica,
+            "Apple SD Gothic Neo", sans-serif !important;
         font-size: 11px;
         background: url(${gray_arr}) no-repeat center right;
         padding: 0 8px 2px 0;
@@ -415,4 +416,3 @@ export const Bottom = styled.div`
         text-align: right;
     }
 `;
-

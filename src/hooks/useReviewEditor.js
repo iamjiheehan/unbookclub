@@ -37,7 +37,7 @@ const useReviewEditor = (reviewObj) => {
     const onCancel = () => {
         setEditing(false);
     };
-
+    
     const onChange = (event) => {
         const {
             target : {value, name},
