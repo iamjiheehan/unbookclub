@@ -11,7 +11,6 @@ export const useReview = (userObj) => {
     
     const [editing, setEditing] = useState(false); // 수정 모드
     const [newReview, setNewReview] = useState(""); // 수정할 감상평
-    const [newNickname, setNewNickname] = useState(""); // 수정할 닉네임
     const [newTitle, setNewTitle] = useState(""); // 수정할 제목
     const [newAuthor, setNewAuthor] = useState(""); // 수정할 작가
     const [newRating, setNewRating] = useState(0); // 수정할 평점
@@ -55,6 +54,43 @@ export const useReview = (userObj) => {
         setSelectedRating(0);
     };
 
+    // 리뷰 수정 폼을 제출하는 함수
+    // const onEditSubmit = async (event) => {
+    //     event.preventDefault();
+    //     navigate("/board");
+    //     if (newReview === '') {
+    //         setErrorMessage('리뷰를 입력해주세요');
+    //     } else {
+    //         await dbService.doc(`unBookClub/${userObj.uid}`).update({
+    //             review: newReview,
+    //             title: newTitle,
+    //             author: newAuthor,
+    //             selectedRating: newRating,
+    //         });
+    //         setEditing(false);
+    //     };
+    // };
+
+    const onEditSubmit = async (event) => {
+    event.preventDefault();
+    navigate("/board");
+    if (newReview === '') {
+        setErrorMessage('리뷰를 입력해주세요');
+    } else if (userObj) { // Check if userObj and its uid property exist
+        await dbService.doc(`unBookClub/${userObj.id}`).update({
+            review: newReview,
+            title: newTitle,
+            author: newAuthor,
+            selectedRating: newRating,
+        });
+        setEditing(false);
+    } else {
+        // Handle the case when userObj or its uid property is not defined
+        console.error("userObj.id is undefined");
+    }
+};
+
+
     // 리뷰 작성 폼 값 변경 시 호출되는 함수
     const onChange = (event) => {
         const { name, value } = event.target;
@@ -96,13 +132,24 @@ export const useReview = (userObj) => {
         setEditing((prev) => !prev);
     };
 
+    // 리뷰 수정 모드를 취소하는 함수
     const onEditCancel = () => {
         setEditing(false);
         navigate('/board');
         window.scrollTo(0,0);
     };
 
+    // 리뷰를 삭제하는 함수
+    const onDeleteClick = async () => {
+        const ok = window.confirm('정말 삭제하실건가요?');
+        if (ok) {
+        await dbService.doc(`unBookClub/${userObj.id}`).delete();
+        }
+    };
+
     return {
+        onDeleteClick,
+        onEditSubmit,
         onEditCancel,
         onEditChange,
         inputReview,
@@ -112,7 +159,6 @@ export const useReview = (userObj) => {
         selectedRating,
         editing,
         newReview,
-        newNickname,
         newTitle,
         newAuthor,
         newRating,

@@ -51,12 +51,12 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
 
     // 리뷰 편집을 위한 커스텀 훅 사용
     const {
+        onDeleteClick,
         editing,
         errorMessage,
         newReview,
         newTitle,
         newAuthor,
-        onDeleteClick,
         toggleEditing,
         onSubmit,
         onCancel,
@@ -114,7 +114,7 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
                         <h1>
                             <strong>리뷰 수정</strong>
                         </h1>
-                        <form onSubmit={onSubmit}>
+                        <form onSubmit={onEditSubmit}>
                             <StarRating
                                 totalStars={5}
                                 count={5}
@@ -132,7 +132,6 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
                                 type="text"
                                 placeholder="책 제목을 입력해주세요"
                                 maxLength={200}
-                                bgColor="transparent"
                             />
                             <input
                                 name="bookAuthor"
@@ -141,7 +140,6 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
                                 type="text"
                                 placeholder="작가 이름을 입력해주세요"
                                 maxLength={200}
-                                bgColor="transparent"
                             />
                             <textarea
                                 name="newReview"
@@ -150,7 +148,6 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
                                 value={newReview}
                                 required
                                 onChange={onEditChange}
-                                bgColor="transparent"
                             />
                             {errorMessage && (
                                 <p style={{ color: "red" }}>{errorMessage}</p>
@@ -161,7 +158,7 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
                                     value="수정 완료"
                                     bgColor="rgb(230, 126, 34)"
                                     style={{ color: "white" }}
-                                    onClick={onSubmit}
+                                    onClick={onEditSubmit}
                                 />
                                 <Btn2Input
                                     type="button"
