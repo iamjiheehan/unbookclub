@@ -32,7 +32,7 @@ const ReviewTable = ({ reviews }) => {
                         <ReactStars
                             count={5}
                             edit={false}
-                            size={24}
+                            size={15}
                             value={review.selectedRating}
                         />
                     </td>

@@ -60,7 +60,7 @@ export const Table = styled.table`
     }
 
     tr {
-        border-bottom: 1px solid #333;
+        border-bottom: 1px solid #dee2e6;
     }
 
     td {
