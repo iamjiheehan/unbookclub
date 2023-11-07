@@ -43,5 +43,10 @@ export const Wrap = styled.div`
     .btn-wrap {
         display: flex;
         justify-content: center;
+        
+
+        &.board {
+            justify-content: space-between;
+        }
     }
 `;

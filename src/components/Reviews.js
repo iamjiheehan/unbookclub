@@ -8,7 +8,7 @@ import { FlexRow } from "../styled-components/FlexStyled";
 import { Input, BoardInput } from "../styled-components/InputStyled";
 
 import useFormatDate from "hooks/useFormatDate";
-import useReviewEditor from "hooks/useReviewEditor";
+import { useReview } from "hooks/useReview";
 
 
     const Reviews = ({ reviewObj, isOwner, bookTitle, bookAuthor }) => {
@@ -30,7 +30,7 @@ import useReviewEditor from "hooks/useReviewEditor";
         onChange,
         newRating, 
         setNewRating,
-    } = useReviewEditor(reviewObj); 
+    } = useReview(reviewObj); 
 
     console.log(newReview);
 

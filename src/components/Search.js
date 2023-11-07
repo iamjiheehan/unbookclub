@@ -10,8 +10,6 @@ import { kakaoSearch } from "api/searchApi";
 
 // 컴포넌트 임포트
 import Reviews from "./Reviews";
-import { useReviewForm } from "hooks/useReviewForm";
-
 
 //부트스트랩 및 폰트 임포트
 import { Container } from "react-bootstrap";
@@ -34,6 +32,7 @@ import { ImgStyled } from "styled-components/ImgStyled";
 // 커스텀 훅
 import { useLoadingContext, Loading } from "hooks/useLoading";
 import useSearchReviews from "hooks/useSearchReviews";
+import { useReview } from "hooks/useReview";
 
 
 function SearchBoard() {
@@ -59,7 +58,7 @@ function SearchBoard() {
     console.log(searchResults, "searchResults");
 
     const { userObj } = useContext(AuthContext);
-    const { reviewList } = useReviewForm(userObj);
+    const { reviewList } = useReview(userObj);
 
     const handleSubmit = async (event) => {
         console.log("handleSubmit works");

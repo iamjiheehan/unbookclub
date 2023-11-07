@@ -9,8 +9,7 @@ import AuthContext from "../contexts/AuthContext";
 import ReactStars from "react-rating-stars-component";
 
 // 커스텀 훅
-import { useReviewForm } from "../hooks/useReviewForm";
-import useReviewEditor from "../hooks/useReviewEditor";
+import { useReview } from "../hooks/useReview";
 
 // 이미지 임포트
 import main from "../static/images/main-icon-03.webp";
@@ -19,17 +18,17 @@ import main from "../static/images/main-icon-03.webp";
 import { SecondImgStyled } from "../styled-components/ImgStyled";
 
 import * as BoardStyled from "../styled-components/BoardStyled";
+import * as CreateStyled from "../styled-components/CreateStyled";
+
 import { Btn2, Btn2Input } from "styled-components/BtnStyled";
-import { BoardInput } from "styled-components/InputStyled";
-import BackStyled from "styled-components/BackStyled";
-import { FlexRow } from "styled-components/FlexStyled";
+import StarRating from "../components/StarRating";
 
 export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
     // 로그인 상태와 사용자 정보를 가져오기 위한 컨텍스트 사용
     const { userObj } = useContext(AuthContext);
 
     // 사용자의 리뷰 목록을 가져오는 커스텀 훅 사용
-    const { reviewList } = useReviewForm(userObj);
+    const { reviewList } = useReview(userObj);
 
     // 화면에 표시할 리뷰 개수 관리를 위한 state
     const [numReviewsToShow, setNumReviewsToShow] = useState(12);
@@ -55,8 +54,6 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
         editing,
         errorMessage,
         newReview,
-        newNickname,
-        setNewNickname,
         newTitle,
         newAuthor,
         onDeleteClick,
@@ -64,10 +61,12 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
         onSubmit,
         onCancel,
         onChange,
-        newRating, 
+        newRating,
         setNewRating,
-    } = useReviewEditor(reviewObj);
-
+        onEditSubmit,
+        onEditCancel,
+    } = useReview(reviewObj, reviewList);
+    
     // 스크롤을 활용한 페이지 로딩 효과
     useEffect(() => {
         if (!disableScrollToTop) {
@@ -79,6 +78,7 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
     const handleLoadMore = () => {
         setNumReviewsToShow(numReviewsToShow + 12);
     };
+
 
     // 사용자 리뷰만 표시 여부를 토글하는 함수
     const handleShowUserReviewsOnly = () => {
@@ -106,39 +106,25 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
 
     return (
         <>
-            <BoardStyled.Wrap>
-                <div className="main-banner">
-                    <div className="main-banner-container">
-                        <div className="main-banner-content">
-                            <div className="wrap-button">
-                                <Btn2 to="/create">리뷰 남기기</Btn2>
-                            </div>
-                        </div>
-                        <SecondImgStyled src={main} alt="mainImage" />
-                    </div>
-                </div>
-            </BoardStyled.Wrap>
             {editing ? (
+                // 수정 모드일 때
                 <>
-                    <form onSubmit={onSubmit}>
-                        <BackStyled
-                            padding="1rem"
-                            margin="1rem"
-                            bgRadius="30px"
-                            bgShadow="0 4px 4px rgb(0 0 0 / 25%)"
-                        >
-                            <FlexRow>
-                                <ReactStars
-                                    count={5}
-                                    size={24}
-                                    edit={true}
-                                    value={reviewObj?.selectedRating}
-                                    onChange={(newRating) =>
-                                        setNewRating(newRating)
-                                    }
-                                />
-                            </FlexRow>
-                            <BoardInput
+                    <CreateStyled.Wrap>
+                        <h1>
+                            <strong>리뷰 수정</strong>
+                        </h1>
+                        <form onSubmit={onSubmit}>
+                            <StarRating
+                                totalStars={5}
+                                count={5}
+                                size={24}
+                                edit={true}
+                                value={reviewObj?.selectedRating}
+                                onChange={(newRating) =>
+                                    setNewRating(newRating)
+                                }
+                            />
+                            <input
                                 name="bookTitle"
                                 value={newTitle}
                                 onChange={onChange}
@@ -147,7 +133,7 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
                                 maxLength={200}
                                 bgColor="transparent"
                             />
-                            <BoardInput
+                            <input
                                 name="bookAuthor"
                                 value={newAuthor}
                                 onChange={onChange}
@@ -156,7 +142,7 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
                                 maxLength={200}
                                 bgColor="transparent"
                             />
-                            <BoardInput
+                            <textarea
                                 name="newReview"
                                 type="text"
                                 placeholder="감상평을 입력해주세요"
@@ -165,40 +151,43 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
                                 onChange={onChange}
                                 bgColor="transparent"
                             />
-                            <BoardInput
-                                type="text"
-                                placeholder="닉네임 변경이 가능합니다"
-                                value={newNickname}
-                                required
-                                onChange={(event) =>
-                                    setNewNickname(event.target.value)
-                                }
-                                bgColor="transparent"
-                            />
                             {errorMessage && (
-                                <p style={{ color: "red" }}>
-                                    {errorMessage}
-                                </p>
+                                <p style={{ color: "red" }}>{errorMessage}</p>
                             )}
-                            <input
-                                type="submit"
-                                value="수정 완료"
-                                bgColor="rgb(230, 126, 34)"
-                                style={{ color: "white" }}
-                                onClick={onSubmit}
-                            />
-                            <input
-                                type="button"
-                                value="취소"
-                                onClick={onCancel}
-                                bgColor="rgb(230, 126, 34)"
-                                style={{ color: "white" }}
-                            />
-                        </BackStyled>
-                    </form>
+                            <div className="btn-wrap board">
+                                <Btn2Input
+                                    type="submit"
+                                    value="수정 완료"
+                                    bgColor="rgb(230, 126, 34)"
+                                    style={{ color: "white" }}
+                                    onClick={onSubmit}
+                                />
+                                <Btn2Input
+                                    type="button"
+                                    value="취소"
+                                    onClick={onEditCancel}
+                                    bgColor="rgb(230, 126, 34)"
+                                    style={{ color: "white" }}
+                                />
+                            </div>
+                        </form>
+                    </CreateStyled.Wrap>
                 </>
             ) : (
+                // 수정 모드 아닐 때
                 <>
+                    <BoardStyled.Wrap>
+                        <div className="main-banner">
+                            <div className="main-banner-container">
+                                <div className="main-banner-content">
+                                    <div className="wrap-button">
+                                        <Btn2 to="/create">리뷰 남기기</Btn2>
+                                    </div>
+                                </div>
+                                <SecondImgStyled src={main} alt="mainImage" />
+                            </div>
+                        </div>
+                    </BoardStyled.Wrap>
                     <div>
                         <BoardStyled.Content className="content-container">
                             <div className="content-btn">
@@ -272,7 +261,7 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
                                                                             color: "white",
                                                                         }}
                                                                         onClick={
-                                                                            onSubmit
+                                                                            onEditSubmit
                                                                         }
                                                                     />
                                                                     <Btn2Input

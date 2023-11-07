@@ -8,7 +8,7 @@ import AuthContext from "../contexts/AuthContext";
 import StarRating from "../components/StarRating";
 
 // 커스텀 훅
-import { useReviewForm } from "../hooks/useReviewForm";
+import { useReview } from "../hooks/useReview";
 
 // 스타일컴포넌트 임포트
 import * as CreateStyled from "../styled-components/CreateStyled";
@@ -26,7 +26,7 @@ export default function Create() {
     bookTitle,
     bookAuthor,
     onRatingSelected,
-    } = useReviewForm(userObj);
+    } = useReview(userObj);
 
 
     return (
