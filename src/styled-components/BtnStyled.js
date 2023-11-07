@@ -94,7 +94,7 @@ const Button3Styled = styled.button`
     }
 
     @media (max-width: 412px) {
-        font-size: 1rem;
+        /* font-size: 1rem; */
     }
 `;
 
@@ -102,6 +102,45 @@ export const Btn3= ({ to, children, ...rest }) => {
     return (
         <Link to={to}>
             <Button3Styled {...rest}>{children}</Button3Styled>
+        </Link>
+    );
+};
+
+const Button4Styled = styled.button`
+    align-items: center;
+    border: ${(props) => props.border || "1px solid #333"};
+    border-radius: 30px;
+    color: ${(props) => props.fontColor || "#fff"};
+    background-color: rgb(51, 175, 233);
+    display: -moz-inline-flex;
+    display: inline-flex;
+    font-size: 14px;
+    -moz-justify-content: center;
+    justify-content: center;
+    letter-spacing: .1em;
+    line-height: 20px;
+    line-height: 1.25rem;
+    padding: 12px 25px!important;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    &:hover {
+        transition: all 0.3s ease;
+        transform-origin: center;
+        background-color: #fff;
+        color: rgb(51, 175, 233);
+        border: 1px solid rgb(51, 175, 233);
+    }
+
+    @media (max-width: 412px) {
+        /* font-size: 1rem; */
+    }
+`;
+
+export const Btn4= ({ to, children, ...rest }) => {
+    return (
+        <Link to={to}>
+            <Button4Styled {...rest}>{children}</Button4Styled>
         </Link>
     );
 };

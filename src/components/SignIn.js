@@ -1,4 +1,5 @@
 //로그인 페이지
+import { Link } from "react-router-dom";
 import React from "react";
 
 //커스텀 훅 임포트
@@ -19,146 +20,123 @@ import * as SignInStyled from "../styled-components/SignInStyled";
 //커스텀 이미지 임포트
 import GoogleLogo from "../static/images/google-logo.webp";
 import GithubLogo from "../static/images/github-logo.webp";
+import rightImg from "../static/images/right_img_big.webp";
+import { Btn2, Btn3, Btn4 } from "styled-components/BtnStyled";
 
 export default function SignIn() {
+    const {
+        onPasswordRecoverySubmit,
+        loginEmail,
+        loginPassword,
+        loginErrorMessage,
+        createErrorMessage,
+        createEmail,
+        createPassword,
+        confirmPassword,
+        onChange,
+        onSocialClick,
+        onLoginSubmit,
+        onCreateAccountSubmit,
+        handleAnonymousLogin,
+    } = useSignInForm();
 
-  const {
-    onPasswordRecoverySubmit,
-    loginEmail,
-    loginPassword,
-    loginErrorMessage,
-    createErrorMessage,
-    createEmail,
-    createPassword,
-    confirmPassword,
-    onChange,
-    onSocialClick,
-    onLoginSubmit,
-    onCreateAccountSubmit,
-    handleAnonymousLogin,
-  } = useSignInForm();
-  
-  return (
-    <SignInStyled.Wrap alignItems="flex-start" justify="space-evenly">
-      <BackStyled bgColor="white" padding="3rem" style={{ width: "33.3%" }}>
-        <TextH1 margin="0 auto 2rem auto">로그인 페이지</TextH1>
-        <Form onSubmit={onLoginSubmit}>
-          <Form.Group className="mb-3" controlId="formBasicEmail-login">
-            <Form.Control
-              onChange={onChange}
-              required
-              value={loginEmail}
-              name="loginEmail"
-              type="email"
-              placeholder="이메일을 입력해주세요"
-              style={{ textAlign: "left" }}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword-login">
-            <Form.Control
-              onChange={onChange}
-              required
-              value={loginPassword}
-              autoComplete="current-password"
-              name="loginPassword"
-              type="password"
-              placeholder="비밀번호를 입력해주세요"
-              style={{ textAlign: "left" }}
-            />
-            {loginErrorMessage}
-          </Form.Group>
-        </Form>
-        <FlexRow> 
-        <Button
-            type="submit"
-            bgColor="#7f8c8d"
-            fontWeight="500"
-            onClick={onPasswordRecoverySubmit}
-          >
-            비밀번호 찾기
-          </Button>
-          <Button
-            type="submit"
-            bgColor="#e67e22"
-            fontWeight="500"
-            onClick={onLoginSubmit}
-          >
-            로그인
-          </Button>
-          <Button
-            type="submit"
-            fontWeight="500"
-            onClick={handleAnonymousLogin}
-          >
-            익명으로 이용
-          </Button>
-        </FlexRow>
-          
-        <TextP>소셜 계정으로 로그인 하기</TextP>
-          <FlexRow alignItems='center'>
-              <SocialBtn
-                backgroundUrl={GoogleLogo}
-                name="google"
-                onClick={onSocialClick}
-                margin='0 10px'
-              />
-            <SocialBtn
-              backgroundUrl={GithubLogo}
-              name="github"
-              onClick={onSocialClick}
-              width="60px"
-              height="100px"
-              margin='0 px'
-            />
-          </FlexRow>
-      </BackStyled>
-      <HR isVertical height="500px" />
-      <BackStyled padding="3rem" bgColor="white" style={{ width: "33.3%" }}>
-        <TextH1 margin="0 auto 2rem auto">처음 오셨나요?</TextH1>
-        <TextP margin="0 auto 1rem auto">
-          함께하는 독서,
-        </TextP>
-        <TextP margin="0 auto 1rem auto">
-          THE UNBOOK CLUB에서 시작하세요.
-        </TextP>
-        <Form onSubmit={onCreateAccountSubmit}>
-          <Form.Group className="mb-3" controlId="formBasicEmail-create">
-            <Form.Control
-              onChange={onChange}
-              required
-              value={createEmail}
-              name="createEmail"
-              type="email"
-              placeholder="이메일을 입력해주세요"
-              style={{ textAlign: "left" }}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword-create">
-            <Form.Control
-              onChange={onChange}
-              value={createPassword}
-              name="createPassword"
-              type="password"
-              placeholder="비밀번호를 입력해주세요"
-              style={{ textAlign: "left" }}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword-confirm">
-            <Form.Control
-              onChange={onChange}
-              value={confirmPassword}
-              name="confirmPassword"
-              type="password"
-              placeholder="비밀번호를 한 번 더 입력해주세요"
-              style={{ textAlign: "left" }}
-            />
-            {createErrorMessage}
-          </Form.Group>
-        </Form>
-        <Button type="submit" fontWeight="500" onClick={onCreateAccountSubmit}>
-          계정 만들기
-        </Button>
-      </BackStyled>
-    </SignInStyled.Wrap>
-  );
+    return (
+        <SignInStyled.Container alignItems="flex-start" justify="space-evenly">
+            <h1>로그인 페이지</h1>
+            <div className="wrap">
+                <div className="left-wrap">
+                    <Form onSubmit={onLoginSubmit}>
+                        <Form.Group
+                            className="mb-3"
+                            controlId="formBasicEmail-login"
+                        >
+                            <Form.Control
+                                onChange={onChange}
+                                required
+                                value={loginEmail}
+                                name="loginEmail"
+                                type="email"
+                                placeholder="이메일을 입력해주세요"
+                                style={{ textAlign: "left" }}
+                            />
+                        </Form.Group>
+                        <Form.Group
+                            className="mb-3"
+                            controlId="formBasicPassword-login"
+                        >
+                            <Form.Control
+                                onChange={onChange}
+                                required
+                                value={loginPassword}
+                                autoComplete="current-password"
+                                name="loginPassword"
+                                type="password"
+                                placeholder="비밀번호를 입력해주세요"
+                                style={{ textAlign: "left" }}
+                            />
+                            {loginErrorMessage}
+                        </Form.Group>
+                    </Form>
+                    <div className="text-wrap">
+                        <div className="btn-wrap">
+                          <Link to="/signUp">
+                            <Btn3 type="submit" fontWeight="500">
+                                회원가입
+                            </Btn3>
+                            </Link>
+                            <Btn3
+                                type="submit"
+                                fontWeight="500"
+                                onClick={onPasswordRecoverySubmit}
+                            >
+                                비밀번호 찾기
+                            </Btn3>
+                        </div>
+
+                        <div className="btn-wrap">
+                            <Btn4
+                                type="submit"
+                                bgColor="#e67e22"
+                                fontWeight="500"
+                                border="none"
+                                onClick={onLoginSubmit}
+                            >
+                                로그인
+                            </Btn4>
+                            <Btn2
+                                type="submit"
+                                fontWeight="500"
+                                onClick={handleAnonymousLogin}
+                            >
+                                익명으로 이용
+                            </Btn2>
+                        </div>
+                    </div>
+                    <hr />
+                    <div className="social-wrap">
+                        <div className="social-btn-wrap">
+                            <p>소셜 계정으로 로그인 하기</p>
+                            <SocialBtn
+                                backgroundUrl={GoogleLogo}
+                                name="google"
+                                onClick={onSocialClick}
+                                margin="0 10px"
+                            />
+                            <SocialBtn
+                                backgroundUrl={GithubLogo}
+                                name="github"
+                                onClick={onSocialClick}
+                                width="60px"
+                                height="100px"
+                                margin="0 px"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div className="right-wrap">
+                    <img src={rightImg} alt="" />
+                </div>
+            </div>
+        </SignInStyled.Container>
+    );
 }

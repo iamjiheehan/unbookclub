@@ -6,6 +6,7 @@ import { SearchBoard } from "./components/Search";
 import Footer from "./components/Footer";
 import Create from "./pages/Create"
 import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
 
 import Main from "./pages/Main";
 import Board from "./pages/Board";
@@ -52,6 +53,9 @@ function App() {
                     <Link to="/signIn">Sign In</Link>
                   </li>
                   <li>
+                    <Link to="/signUp">Sign Up</Link>
+                  </li>
+                  <li>
                     <Link to="/userInfo">User Info</Link>
                   </li>
                   <li>
@@ -93,6 +97,7 @@ function App() {
               <Route path="/board" element={<Board />} />
               <Route path="/guide" element={<Guide />} />
               <Route path="/books" element={<Books />} />
+              <Route path="/signUp" element={<SignUp />} />
               <Route path="/newbooks" element={<NewBooks />} />
               <Route path="/bestSellers" element={<BestSellers />} />
               <Route

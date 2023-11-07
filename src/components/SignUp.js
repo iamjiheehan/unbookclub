@@ -38,7 +38,7 @@ export default function SignUp() {
   } = useSignInForm();
   
   return (
-    <SignInStyled.Wrap alignItems="flex-start" justify="space-evenly">
+    <SignInStyled.Container alignItems="flex-start" justify="space-evenly">
       <BackStyled bgColor="white" padding="3rem" style={{ width: "33.3%" }}>
         <TextH1 margin="0 auto 2rem auto">로그인 페이지</TextH1>
         <Form onSubmit={onLoginSubmit}>
@@ -158,6 +158,6 @@ export default function SignUp() {
           계정 만들기
         </Button>
       </BackStyled>
-    </SignInStyled.Wrap>
+    </SignInStyled.Container>
   );
 }
