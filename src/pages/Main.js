@@ -98,7 +98,7 @@ export default function Main() {
                         </div>
                         </div>
                         <div className="card-book">
-                            <div className="card-book_title"><spans><strong>Currently reading</strong></spans></div>
+                            <div className="card-book_title"><span><strong>Currently reading</strong></span></div>
                             <div className="card-book_img"><img src={cardBook1} alt="프로필" /></div>
                         </div>
                     </MainStyled.Card>
@@ -115,7 +115,7 @@ export default function Main() {
                         </div>
                         </div>
                         <div className="card-book">
-                            <div className="card-book_title"><spans><strong>Currently reading</strong></spans></div>
+                            <div className="card-book_title"><span><strong>Currently reading</strong></span></div>
                             <div className="card-book_img"><img src={cardBook1} alt="프로필" /></div>
                         </div>
                     </MainStyled.Card>
@@ -132,7 +132,7 @@ export default function Main() {
                         </div>
                         </div>
                         <div className="card-book">
-                            <div className="card-book_title"><spans><strong>Currently reading</strong></spans></div>
+                            <div className="card-book_title"><span><strong>Currently reading</strong></span></div>
                             <div className="card-book_img"><img src={cardBook1} alt="프로필" /></div>
                         </div>
                     </MainStyled.Card>

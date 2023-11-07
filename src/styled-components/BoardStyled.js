@@ -35,10 +35,20 @@ export const Content = styled.div`
     background: ${(props) => props.background || '#f8f8f8'};
 
     margin: 4rem 0;
+    
+    .content-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding-top: 4rem;
+    }   
+
     .content-wrap {
         /* display: flex;
         gap: 2rem; */
         display: grid;
+        gap: 3rem;
         grid-template-columns: repeat(3, 1fr);
         width: 1260px;
         padding: 55px 0;
@@ -51,6 +61,7 @@ export const Content = styled.div`
         align-items: center;
     }
 
+
     .item_info {
         margin-top: 17px;
         text-align: left;
@@ -59,8 +70,11 @@ export const Content = styled.div`
         overflow: hidden;
     }
 
-    .item_info .info_name {
-        margin-top: 7px;
+    .item_info .info_row {
+        margin-top: 0.5rem;
+    }
+
+    .item_info .info_title {
         height: 20px;
         overflow: hidden;
         word-break: break-all;
@@ -71,7 +85,6 @@ export const Content = styled.div`
     }
 
     .item_info .info_readBox {
-        margin-top: 11px;
         padding: 12px 0;
         border-radius: 3px;
         background-color: #fff;
@@ -84,7 +97,6 @@ export const Content = styled.div`
     }
 
     .item_info .info_auth {
-        margin-top: 0.5rem;
         display: block;
         height: 16px;
         overflow: hidden;
@@ -106,33 +118,11 @@ export const Content = styled.div`
         -webkit-box-orient: vertical;
     }
 
-    .item_canvas {
-        position: relative;
-        width: 380px;
-        height: 240px;
-        overflow: hidden;
-        border-radius: 10px;
-        background-repeat: no-repeat;
-        background-position: center 10%;
-        background-size: 800px auto;
-        position: relative;
-        z-index: 2;
-        padding-top: 30px;
-        margin: 0 auto;
 
-        background: ${(props) => props.background || 'beige'};
-
-        text-align: center;
-        img {
-            padding-top: 1rem;
-            width: 242px;
-            min-height: 234px;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        img:hover {
-            cursor: pointer;
-            padding-top: 0rem;
-        }
+    .btn-wrap {
+        margin: 1rem 0.5rem 0 0.5rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between
     }
 `;

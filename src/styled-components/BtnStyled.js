@@ -34,10 +34,10 @@ export const Btn1 = ({ to, children, ...rest }) => {
 
 const Button2Styled = styled.button`
     align-items: center;
-    background-color: #333;
-    border: 1px solid #333;
+    border: ${(props) => props.border || "1px solid #333"};
     border-radius: 30px;
-    color: #fff;
+    color: ${(props) => props.fontColor || "#fff"};
+    background-color: ${(props) => props.bgColor || "#333"};
     display: -moz-inline-flex;
     display: inline-flex;
     font-size: 14px;
@@ -105,3 +105,65 @@ export const Btn3= ({ to, children, ...rest }) => {
         </Link>
     );
 };
+
+export const BtnInput = styled.input`
+    align-items: center;
+    background-color: #333;
+    border: 1px solid #333 !important;
+    border-radius: 30px;
+    color: #fff;
+    display: -moz-inline-flex;
+    display: inline-flex;
+    font-size: 14px;
+    -moz-justify-content: center;
+    justify-content: center;
+    letter-spacing: 0.1em;
+    line-height: 20px;
+    padding: 12px 25px!important;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: fit-content !important;
+    &:hover {
+        transition: all 0.3s ease;
+        /* transform-origin: center; */
+        background-color: white !important;
+        /* color: #333 !important; */
+        color: #333 !important;
+        border: 1px solid #333 !important;
+        border-bottom: 1px solid #333 !important;
+    }
+
+    @media (max-width: 412px) {
+        font-size: 1rem;
+    }
+`;
+
+export const Btn2Input = styled.input`
+    align-items: center;
+    border: 1px solid #333 !important;
+    color: #333 !important;
+    display: -moz-inline-flex;
+    display: inline-flex;
+    font-size: 14px;
+    -moz-justify-content: center;
+    justify-content: center;
+    letter-spacing: 0.1em;
+    line-height: 20px;
+    padding: 12px 25px!important;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: fit-content !important;
+    &:hover {
+        transition: all 0.3s ease;
+        /* transform-origin: center; */
+        background-color: white !important;
+        /* color: #333 !important; */
+        color: #333 !important;
+        border: 1px solid #333 !important;
+        border-bottom: 1px solid #333 !important;
+    }
+
+    @media (max-width: 412px) {
+        font-size: 1rem;
+    }
+`;

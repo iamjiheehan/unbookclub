@@ -3,10 +3,10 @@ import { dbService } from 'fBase';
 
 const useReviewEditor = (reviewObj) => {
     const [editing, setEditing] = useState(false);
-    const [newReview, setNewReview] = useState(reviewObj.review);
-    const [newNickname, setNewNickname] = useState(reviewObj.creatorNickname);
-    const [newTitle, setnewTitle] = useState(reviewObj.title);
-    const [newAuthor, setnewAuthor] = useState(reviewObj.author);
+    const [newReview, setNewReview] = useState(reviewObj ? reviewObj.review : '');
+    const [newNickname, setNewNickname] = useState(reviewObj ? reviewObj.creatorNickname : '');
+    const [newTitle, setnewTitle] = useState(reviewObj ? reviewObj.title : '');
+    const [newAuthor, setnewAuthor] = useState(reviewObj ? reviewObj.author : '');
     const [newRating, setNewRating] = useState(0);
     const [errorMessage, setErrorMessage] = useState('');
 

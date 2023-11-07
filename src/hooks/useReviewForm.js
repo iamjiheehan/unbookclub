@@ -14,15 +14,16 @@ export const useReviewForm = (userObj) => {
 
     useEffect(() => {
         const unBookClub = dbService
-        .collection("unBookClub")
-        .orderBy("createdAt", "desc")
-        .onSnapshot((snapshot) => {
-            const reviewArr = snapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
-            }));
-            setReviewList(reviewArr);
-        });
+            .collection("unBookClub")
+            .orderBy("createdAt", "desc")
+            .onSnapshot((snapshot) => {
+                const reviewArr = snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                    createdAt: new Date(doc.data().createdAt).toLocaleString(), // Convert to readable format
+                }));
+                setReviewList(reviewArr);
+            });
         return () => unBookClub();
     }, []);
 

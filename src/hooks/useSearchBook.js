@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { kakaoSearch } from 'api/searchApi';
 
-export default function useBookSearch() {
+export default function useSearchBook() {
     const [books, setBooks] = useState([]);
     const [search, setSearch] = useState("");
     const navigate = useNavigate();

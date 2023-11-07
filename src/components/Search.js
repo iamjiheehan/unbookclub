@@ -1,33 +1,39 @@
 //검색 컴포넌트
 
+//API 및 라이브러리 임포트
 import React, { useState ,useEffect, useContext } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import ButtonStyle from "styled-components/ButtonStyled";
-import { Container } from "react-bootstrap";
-import DropdownBtn from "styled-components/DropDownBtnStyled";
-import Dropdown from "react-bootstrap/Dropdown";
-import { FaSearch } from "react-icons/fa";
-
-import { FlexCol, FlexRow, FlexRowMQ } from "styled-components/FlexStyled";
-import FormStyled from "styled-components/FormStyled";
-import { TextH2, TextP } from "styled-components/TextStyled";
-
-import { useLoadingContext, Loading } from "hooks/useLoading";
-import useSearchReviews from "hooks/useSearchReviews";
-
-import { kakaoSearch } from "api/searchApi";
-import { ImgStyled } from "styled-components/ImgStyled";
-
-import { FaShoppingCart } from "react-icons/fa";
 
 import { useSelector, useDispatch } from 'react-redux';
 import { addBook } from 'store';
-import GridStyled from "styled-components/GridStyled";
+import AuthContext from "contexts/AuthContext";
+import { kakaoSearch } from "api/searchApi";
+
+// 컴포넌트 임포트
 import Reviews from "./Reviews";
 import { useReviewForm } from "hooks/useReviewForm";
-import AuthContext from "contexts/AuthContext";
+
+
+//부트스트랩 및 폰트 임포트
+import { Container } from "react-bootstrap";
+import Dropdown from "react-bootstrap/Dropdown";
+import { FaSearch } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+
+// 스타일컴포넌트 임포트
+import { FlexCol, FlexRow, FlexRowMQ } from "styled-components/FlexStyled";
+import FormStyled from "styled-components/FormStyled";
+import { TextH2, TextP } from "styled-components/TextStyled";
+import ButtonStyle from "styled-components/ButtonStyled";
+import DropdownBtn from "styled-components/DropDownBtnStyled";
+import GridStyled from "styled-components/GridStyled";
 import BorderStyled from "styled-components/BorderSyled";
+import { ImgStyled } from "styled-components/ImgStyled";
+
+// 커스텀 훅
+import { useLoadingContext, Loading } from "hooks/useLoading";
+import useSearchReviews from "hooks/useSearchReviews";
 
 
 function SearchBoard() {
@@ -47,7 +53,6 @@ function SearchBoard() {
         setHasSearched,
     } = useSearchReviews();
     
-    // const [searchMode, setSearchMode] = React.useState("키워드로 검색");
     const [searchMode, setSearchMode] = useState("키워드로 검색");
     const { startLoading, stopLoading } = useLoadingContext();
     
