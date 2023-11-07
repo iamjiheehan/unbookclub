@@ -11,7 +11,7 @@ export const Wrap = styled.div`
     .top-wrap {
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 4rem;
         margin: 2rem auto;
     }
 
@@ -43,5 +43,11 @@ export const Wrap = styled.div`
         text-align: left;
     }
 
+    .book-info {
+        width: 40%;
+        p {
+            margin: 1rem auto;
+        }
+    }
 
 `;

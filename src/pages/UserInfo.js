@@ -12,16 +12,13 @@ import { Loading } from "../hooks/useLoading";
 
 // 스타일컴포넌트임포트
 import * as UserStyled from "../styled-components/UserStyled";
-import { TextH1, TextP } from "../styled-components/TextStyled";
-import BackStyled from "../styled-components/BackStyled";
+import { TextP } from "../styled-components/TextStyled";
 import ReviewTable from "../components/ReviewTable";
 import Button from "../styled-components/ButtonStyled";
 import { FlexRow, FlexCol } from "styled-components/FlexStyled";
-import { Input, BoardInput } from "styled-components/InputStyled";
-import HR from "styled-components/LineStyled";
 import { ImgStyled } from "styled-components/ImgStyled";
 import Dropdown from "react-bootstrap/Dropdown";
-import { Btn2Input, BtnInput } from "styled-components/BtnStyled";
+import { Btn1, Btn2, Btn3, BtnInput } from "styled-components/BtnStyled";
 
 export default function UserInfo() {
     const { userObj, setUserObj } = useContext(AuthContext);
@@ -99,13 +96,12 @@ export default function UserInfo() {
                     {addedBooks.length === 0 && (
                         <h4>서재에 추가된 책이 없습니다.</h4>
                     )}
-                </div>
                 {addedBooks.length !== 0 && (
                     <>
-                        <h4>
+                        <h5>
                             읽을 목록에 추가된 책이 {addedBooks.length}권
                             있습니다.
-                        </h4>
+                        </h5>
                         {addedBooks.map((book) => (
                             <FlexRow key={book.isbn} alignItems="center">
                                 <ImgStyled
@@ -114,17 +110,18 @@ export default function UserInfo() {
                                     width="100px"
                                     margin="1rem"
                                 />
-                                <FlexCol width="40%">
-                                    <TextP>{book.title}</TextP>
-                                    <TextP>{book.author}</TextP>
-                                </FlexCol>
-                                <Button onClick={() => deleteBook(book.itemId)}>
-                                    삭제
-                                </Button>
+                                <div className="book-info">
+                                    <p><strong>{book.title}</strong></p>
+                                    <p>{book.author}</p>
+                                </div>
+                                <Btn3 onClick={() => deleteBook(book.itemId)}>
+                                    삭제하기
+                                </Btn3>
                             </FlexRow>
                         ))}
                     </>
                 )}
+                </div>
                 <hr />
                 <div className="bottom-wrap">
                   <h4>작성한 리뷰 목록</h4>
