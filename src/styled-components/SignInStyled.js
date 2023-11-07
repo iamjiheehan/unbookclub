@@ -17,10 +17,20 @@ export const Container = styled.div`
         gap: 3rem;
     }
 
-    .left-wrap {
+    .form-wrap {
         flex-grow: 1;
+
+        p~p {
+            margin: 1rem auto;
+        }
+
+        .btn-wrap {
+            width: 100%;
+            text-align: right;
+        }
     }
-    .right-wrap {
+    
+    .img-wrap {
         width: 40%;
         img {
             width: 100%;
@@ -30,11 +40,11 @@ export const Container = styled.div`
 
     .text-wrap {
         text-align: right;
-        margin: 2rem auto;
+        margin: 0.5rem auto 4rem;
     }
 
     .text-wrap .btn-wrap {
-        margin-top: 2rem;
+        margin-bottom: 2rem;
         display: flex;
         align-items: center;
         justify-content: space-between;

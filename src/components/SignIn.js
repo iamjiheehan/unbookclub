@@ -20,7 +20,7 @@ import * as SignInStyled from "../styled-components/SignInStyled";
 //커스텀 이미지 임포트
 import GoogleLogo from "../static/images/google-logo.webp";
 import GithubLogo from "../static/images/github-logo.webp";
-import rightImg from "../static/images/right_img_big.webp";
+import rightImg from "../static/images/signIn_img_big.webp";
 import { Btn2, Btn3, Btn4 } from "styled-components/BtnStyled";
 
 export default function SignIn() {
@@ -44,7 +44,7 @@ export default function SignIn() {
         <SignInStyled.Container alignItems="flex-start" justify="space-evenly">
             <h1>로그인 페이지</h1>
             <div className="wrap">
-                <div className="left-wrap">
+                <div className="form-wrap">
                     <Form onSubmit={onLoginSubmit}>
                         <Form.Group
                             className="mb-3"
@@ -133,7 +133,7 @@ export default function SignIn() {
                         </div>
                     </div>
                 </div>
-                <div className="right-wrap">
+                <div className="img-wrap">
                     <img src={rightImg} alt="" />
                 </div>
             </div>

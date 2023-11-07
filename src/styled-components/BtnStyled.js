@@ -33,7 +33,8 @@ export const Btn1 = ({ to, children, ...rest }) => {
 };
 
 const Button2Styled = styled.button`
-    align-items: center;
+    /* align-items: center; */
+    align-items: ${(props) => props.align || "center"};
     border: ${(props) => props.border || "1px solid #333"};
     border-radius: 30px;
     color: ${(props) => props.fontColor || "#fff"};
