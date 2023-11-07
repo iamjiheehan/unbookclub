@@ -2,23 +2,26 @@
 
 import React from "react";
 import Table from 'react-bootstrap/Table';
-import { TextP } from "../styled-components/TextStyled";
 import ReactStars from "react-rating-stars-component";
 import useFormatDate from "../hooks/useFormatDate";
 
+import * as UserStyled from "../styled-components/UserStyled";
+
+
 const ReviewTable = ({ reviews }) => {
+
     const formatDate = useFormatDate;
     
     return (
-        <Table striped bordered hover responsive>
+        <UserStyled.Table>
             <thead>
                 <tr>
-                    <th style={{width:"5rem"}}><TextP>순서</TextP></th>
-                    <th style={{width:"7.7rem"}}><TextP>별점</TextP></th>
-                    <th style={{width:"7.5rem"}}><TextP>책 제목</TextP></th>
-                    <th style={{width:"7rem"}}><TextP>작가</TextP></th>
-                    <th style={{width:"auto"}}><TextP>리뷰 내용</TextP></th>
-                    <th style={{width:"20rem"}}><TextP>작성일시</TextP></th>
+                    <th style={{width:"5rem"}}><p>순서</p></th>
+                    <th style={{width:"7.7rem"}}><p>별점</p></th>
+                    <th style={{width:"7.5rem"}}><p>책 제목</p></th>
+                    <th style={{width:"7rem"}}><p>작가</p></th>
+                    <th style={{width:"auto"}}><p>리뷰 내용</p></th>
+                    <th style={{width:"20rem"}}><p>작성일시</p></th>
                 </tr>
             </thead>
             <tbody>
@@ -28,19 +31,19 @@ const ReviewTable = ({ reviews }) => {
                     <td>
                         <ReactStars
                             count={5}
-                            size={24}
                             edit={false}
+                            size={24}
                             value={review.selectedRating}
                         />
                     </td>
-                    <td><TextP>{review.title}</TextP></td>
-                    <td><TextP>{review.author}</TextP></td>
-                    <td><TextP>{review.review}</TextP></td>
-                    <td><TextP>{formatDate(review.createdAt)}</TextP></td>
+                    <td><p>{review.title}</p></td>
+                    <td><p>{review.author}</p></td>
+                    <td><p>{review.review}</p></td>
+                    <td><p>{formatDate(review.createdAt)}</p></td>
                 </tr>
                 ))}
             </tbody>
-        </Table>
+        </UserStyled.Table>
     );
 };
 

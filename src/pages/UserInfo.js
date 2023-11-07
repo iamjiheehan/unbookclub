@@ -10,15 +10,16 @@ import useFetchReviews from "../hooks/useFetchReviews";
 import useUpdateProfile from "../hooks/useUpdateProfile";
 import { Loading } from "../hooks/useLoading";
 
+//컴포넌트 임포트
+import ReviewTable from "../components/ReviewTable";
+
 // 스타일컴포넌트임포트
 import * as UserStyled from "../styled-components/UserStyled";
-import { TextP } from "../styled-components/TextStyled";
-import ReviewTable from "../components/ReviewTable";
-import Button from "../styled-components/ButtonStyled";
-import { FlexRow, FlexCol } from "styled-components/FlexStyled";
+
+import { FlexRow} from "styled-components/FlexStyled";
 import { ImgStyled } from "styled-components/ImgStyled";
 import Dropdown from "react-bootstrap/Dropdown";
-import { Btn1, Btn2, Btn3, BtnInput } from "styled-components/BtnStyled";
+import { Btn3, BtnInput } from "styled-components/BtnStyled";
 
 export default function UserInfo() {
     const { userObj, setUserObj } = useContext(AuthContext);

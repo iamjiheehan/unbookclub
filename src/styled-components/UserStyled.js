@@ -1,3 +1,5 @@
+//UserInfo와 ReviewTable에 적용됨.
+
 import styled from "styled-components";
 
 export const Wrap = styled.div`
@@ -15,7 +17,6 @@ export const Wrap = styled.div`
         margin: 2rem auto;
     }
 
-
     .top-wrap .name-wrap {
         position: relative;
         width: auto;
@@ -26,7 +27,7 @@ export const Wrap = styled.div`
         padding: 1rem 5rem 1rem 1rem;
         border: none;
         border-bottom: 1px solid #333;
-        width:500px;
+        width: 500px;
     }
 
     .top-wrap .name-change {
@@ -36,7 +37,7 @@ export const Wrap = styled.div`
     }
 
     .bottom-wrap {
-        margin:3rem auto;
+        margin: 3rem auto;
     }
 
     .bottom-wrap .dropdown-item {
@@ -49,5 +50,20 @@ export const Wrap = styled.div`
             margin: 1rem auto;
         }
     }
+`;
 
+export const Table = styled.table`
+    width: 100%;
+
+    thead > tr > th {
+        padding-bottom: 1rem;
+    }
+
+    tr {
+        border-bottom: 1px solid #333;
+    }
+
+    td {
+        padding: 1rem;
+    }
 `;
