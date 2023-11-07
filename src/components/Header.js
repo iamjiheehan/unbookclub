@@ -1,35 +1,38 @@
+//헤더 컴포넌트
 import React, { useContext, useEffect, useState } from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import logo from "../static/images/logo.webp";
+import { Link } from "react-router-dom";
 
-import * as HeaderStyled from "../styled-components/HeaderStyled";
+//라이브러리 및 스토어
+import { firebaseInstance } from "fBase";
 
-import LoginBtn from "../styled-components/LoginBtnStyled";
-import { ImgStyled, LogoImgStyled } from "../styled-components/ImgStyled";
-import Button from "../styled-components/ButtonStyled";
-import { TextP } from "../styled-components/TextStyled";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+// 로그인 contextAPI
+import AuthContext from "contexts/AuthContext";
+
+// 커스텀 훅
 import useSignOut from "../hooks/useSignOut";
+
+//컴포넌트 임포트
+
+
+// 스타일컴포넌트 임포트
+import * as HeaderStyled from "../styled-components/HeaderStyled";
 import { LoadingBack, LoadingText } from "../styled-components/LoadingStyled";
 
+//커스텀 이미지 임포트
+import logo from "../static/images/logo.webp";
 import Cube from "../static/images/cube.gif";
 import top_header_R from "../static/images/top_header_R.jpg";
 import top_header_L from "../static/images/top_header_L.jpg";
 import header_banner from "../static/images/header_banner.jpg";
-import i_arrdown_fill from "../static/images/i_arrdown_fill.gif";
-import aladin_logo_new from "../static/images/aladin_logo_new.gif";
+import { useSelector } from "react-redux";
 
-import AuthContext from "contexts/AuthContext";
-import { firebaseInstance } from "fBase";
-import { Link } from "react-router-dom";
+
 
 function Header({ reviewObj }) {
     const { userObj } = useContext(AuthContext);
     const displayName = userObj?.displayName;
     const onSignOutClick = useSignOut();
+    let addedBooks = useSelector((state) => state.book);
 
     const [loading, setLoading] = useState(true);
 
@@ -173,10 +176,10 @@ function Header({ reviewObj }) {
                                         </Link>
                                     </li>
                                     <li id="headerBasketBtn">
-                                        <Link to="/sub.html" title="서재">
-                                            서재
+                                        <Link to="/userInfo" title="서재">
+                                            서재{' '}
                                             <span id="basketItemCount">
-                                                (0)
+                                            ( {addedBooks.length} )
                                             </span>
                                         </Link>
                                     </li>

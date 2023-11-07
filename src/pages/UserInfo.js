@@ -1,4 +1,7 @@
+//사용자 페이지
 import React, { useContext, useState, useEffect } from "react";
+
+//라이브러리 및 스토어
 import { useSelector, useDispatch } from "react-redux";
 import { removeBook } from "../store";
 
@@ -13,7 +16,7 @@ import { Loading } from "../hooks/useLoading";
 //컴포넌트 임포트
 import ReviewTable from "../components/ReviewTable";
 
-// 스타일컴포넌트임포트
+// 스타일컴포넌트 임포트
 import * as UserStyled from "../styled-components/UserStyled";
 
 import { FlexRow} from "styled-components/FlexStyled";
