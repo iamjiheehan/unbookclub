@@ -17,7 +17,6 @@ import main2 from "../static/images/main-01.webp";
 // 스타일컴포넌트 임포트
 import { SecondImgStyled } from "../styled-components/ImgStyled";
 
-// -----------
 import * as BoardStyled from "../styled-components/BoardStyled";
 import { Btn2, Btn2Input, Btn3, BtnInput } from "styled-components/BtnStyled";
 
