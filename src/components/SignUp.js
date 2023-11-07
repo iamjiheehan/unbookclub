@@ -14,14 +14,13 @@ import Button from "../styled-components/ButtonStyled";
 import BackStyled from "../styled-components/BackStyled";
 import HR from "../styled-components/LineStyled";
 import SocialBtn from "../styled-components/SocialBtnStyled";
-import * as SignInStyled from "../styled-components/SignInStyled";
 
 //커스텀 이미지 임포트
 import GoogleLogo from "../static/images/google-logo.webp";
 import GithubLogo from "../static/images/github-logo.webp";
+import * as SignInStyled from "../styled-components/SignInStyled";
 
-export default function SignIn() {
-
+export default function SignUp() {
   const {
     onPasswordRecoverySubmit,
     loginEmail,

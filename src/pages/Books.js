@@ -8,40 +8,17 @@ import { addBook } from "store";
 // 베스트셀러 데이터
 import bestSeller from "../data/bestSeller.json";
 
-// 컴포넌트 임포트
-import { BestSellersList } from "components/BestSellers";
-import { NewBooksList } from "components/NewBooks";
-import { SearchBooks } from "components/Search";
-
 // 부트스트랩 라이브러리
-import { Container, Dropdown, DropdownButton } from "react-bootstrap";
+import { Dropdown, DropdownButton } from "react-bootstrap";
 
 // 스타일컴포넌트 임포트
 import * as BookStyled from "../styled-components/ListStyled";
-
 import Button from "styled-components/ButtonStyled";
-import { TextH1, TextP } from "styled-components/TextStyled";
-import { FirstImgStyled, ImgStyled } from "../styled-components/ImgStyled";
-import HR from "styled-components/LineStyled";
-
-import { Btn1, Btn2 } from "styled-components/BtnStyled";
+import { Btn2 } from "styled-components/BtnStyled";
 import { FaShoppingCart } from "react-icons/fa";
 
-// 이미지 임포트
-import bookImg from "../static/images/menu-icon-03.webp";
-import { FaArrowRight } from "react-icons/fa";
 
 export default function Books() {
-    const [searchResults, setSearchResults] = useState([]);
-    const [hasSearched, setHasSearched] = useState(false);
-    const [mode, setMode] = useState("");
-    const [show, setShow] = useState(false);
-
-    const handleModeChange = (mode) => {
-        setMode(mode);
-        setShow(true);
-    };
-
     // 데이터 변수에 할당
     const posts = bestSeller;
     // 리덕스에 있는 데이터 가져오기
