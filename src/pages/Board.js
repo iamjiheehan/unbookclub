@@ -12,13 +12,13 @@ import { useReviewForm } from "../hooks/useReviewForm";
 import useReviewEditor from "../hooks/useReviewEditor";
 
 // 이미지 임포트
-import main2 from "../static/images/main-01.webp";
+import main from "../static/images/main-icon-03.webp";
 
 // 스타일컴포넌트 임포트
 import { SecondImgStyled } from "../styled-components/ImgStyled";
 
 import * as BoardStyled from "../styled-components/BoardStyled";
-import { Btn2, Btn2Input, Btn3, BtnInput } from "styled-components/BtnStyled";
+import { Btn2, Btn2Input, Btn4 } from "styled-components/BtnStyled";
 
 export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
     const { userObj } = useContext(AuthContext);
@@ -82,7 +82,7 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
                                         <Btn2 to="/create">리뷰 남기기</Btn2>
                                     </div>
                                 </div>
-                                <SecondImgStyled src={main2} alt="mainImage" />
+                                <SecondImgStyled src={main} alt="mainImage" />
                             </div>
                         </div>
                     </BoardStyled.Wrap>
@@ -185,14 +185,14 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
                                         <Btn2 to="/create">리뷰 남기기</Btn2>
                                     </div>
                                 </div>
-                                <SecondImgStyled src={main2} alt="mainImage" />
+                                <SecondImgStyled src={main} alt="mainImage" />
                             </div>
                         </div>
                     </BoardStyled.Wrap>
                     <div>
                         <BoardStyled.Content className="content-container">
                             <div className="content-btn">
-                                <Btn2
+                                <Btn4
                                     onClick={handleShowUserReviewsOnly}
                                     bgColor="rgb(51, 175, 233)"
                                     border="1px solid rgb(51, 175, 233)"
@@ -200,7 +200,7 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
                                     {showUserReviewsOnly
                                         ? "모든 리뷰 보기"
                                         : "내 리뷰만 보기"}
-                                </Btn2>
+                                </Btn4>
                             </div>
                             <div className="content-wrap">
                                 {reviewList

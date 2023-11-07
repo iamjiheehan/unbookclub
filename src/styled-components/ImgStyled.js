@@ -38,8 +38,9 @@ export const FirstImgStyled = styled.img`
 `;
 
 export const SecondImgStyled = styled.img`
+margin-top: 3rem;
     width: auto;
-    height: 27rem;
+    height: 20rem;
     
     @media (min-width: 768px) {
         display: block;
