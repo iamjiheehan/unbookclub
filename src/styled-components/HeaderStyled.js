@@ -248,7 +248,7 @@ export const Top = styled.div`
         /* border: 1px solid transparent; */
     }
 
-    .util > li > a {
+    .util > li > a, .util > li > button, .util > li > span {
         font-family: Malgun Gothic,Dotum,'돋움',Helvetica,"Apple SD Gothic Neo",sans-serif!important;
         width: max-content;
         display: inline-block;
@@ -259,6 +259,12 @@ export const Top = styled.div`
         font-size: 11px;
         font-weight: bold;
         box-sizing: border-box;
+    }
+
+    .util > li > button {
+        border: none;
+        background: none !important;
+        height: auto !important;
     }
 
     .inner {
@@ -342,7 +348,7 @@ export const Bottom = styled.div`
         color: #fff;
         border: 0;
         position: absolute;
-        right: 68px;
+        right: 64px;
         top: 28px;
     }
 

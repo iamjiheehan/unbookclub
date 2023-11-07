@@ -24,6 +24,7 @@ import aladin_logo_new from "../static/images/aladin_logo_new.gif";
 
 import AuthContext from "contexts/AuthContext";
 import { firebaseInstance } from "fBase";
+import { Link } from "react-router-dom";
 
 function Header({ reviewObj }) {
     const { userObj } = useContext(AuthContext);
@@ -126,58 +127,74 @@ function Header({ reviewObj }) {
                     <div className="inner">
                         <ul className="gnb" id="headerTop_gnb">
                             <li className="home">
-                                <a href="./" className="header_on">
+                                <Link to="/" className="header_on">
                                     HOME
-                                </a>
+                                </Link>
                             </li>
                             <li id="head_book_layer">
-                                <a href="./board" title="리뷰게시판">
-                                리뷰게시판
-                                </a>
+                                <Link to="/board" title="리뷰게시판">
+                                    리뷰게시판
+                                </Link>
                             </li>
                             <li id="head_book_layer">
-                                <a href="./bestSellers" title="인기도서">
-                                인기도서
-                                </a>
+                                <Link to="/bestSellers" title="인기도서">
+                                    인기도서
+                                </Link>
                             </li>
                             <li id="head_book_layer">
-                                <a href="./newbooks" title="신간도서">
-                                신간도서
-                                </a>
+                                <Link to="/newbooks" title="신간도서">
+                                    신간도서
+                                </Link>
                             </li>
                             <li id="head_book_layer">
-                                <a href="./guide" title="가이드">
-                                가이드
-                                </a>
+                                <Link to="/guide" title="가이드">
+                                    가이드
+                                </Link>
                             </li>
                         </ul>
                         <ul className="util" id="headerTop_util">
-                            <li>
-                                <a href="./sub" title="로그인">
-                                    로그인
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./sub.html" title="회원가입">
-                                    회원가입
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./sub.html" title="마이페이지">
-                                    마이페이지
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./sub.html" title="고객센터">
-                                    고객센터
-                                </a>
-                            </li>
-                            <li id="headerBasketBtn">
-                                <a href="./sub.html" title="서재">
-                                    서재
-                                    <span id="basketItemCount">(0)</span>
-                                </a>
-                            </li>
+                            {reviewObj}
+                            {displayName ? (
+                                <>
+                                    <li>
+                                        <span>
+                                            <strong>{displayName}</strong> 님
+                                            반가워요!
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <button onClick={onSignOutClick}>
+                                            로그아웃
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <Link to="/userInfo" title="마이페이지">
+                                            마이페이지
+                                        </Link>
+                                    </li>
+                                    <li id="headerBasketBtn">
+                                        <Link to="/sub.html" title="서재">
+                                            서재
+                                            <span id="basketItemCount">
+                                                (0)
+                                            </span>
+                                        </Link>
+                                    </li>
+                                </>
+                            ) : (
+                                <>
+                                    <li>
+                                        <Link to="/signIn" title="로그인">
+                                            로그인
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/signIn" title="회원가입">
+                                            회원가입
+                                        </Link>
+                                    </li>
+                                </>
+                            )}
                         </ul>
                     </div>
                 </HeaderStyled.Top>
@@ -185,15 +202,17 @@ function Header({ reviewObj }) {
                     {/* 홈 화면 바로가기 로고 */}
                     <div className="header_middle-logo">
                         <h1>
-                            <a
-                                href="./sub.html"
-                                id="logoBtn"
-                                title="첫화면으로 가기"
-                                style={{ cursor: "pointer" }}
-                            >
-                                알라딘
-                                <img src={logo} alt="알라딘" />
-                            </a>
+                            <Link to="/" title="서재">
+                                <a
+                                    href="#!"
+                                    id="logoBtn"
+                                    title="첫화면으로 가기"
+                                    style={{ cursor: "pointer" }}
+                                >
+                                    알라딘
+                                    <img src={logo} alt="알라딘" />
+                                </a>
+                            </Link>
                         </h1>
                     </div>
                     <div className="search_field">
@@ -225,9 +244,6 @@ function Header({ reviewObj }) {
                             <button type="submit" className="search_btn">
                                 검색
                             </button>
-                            <a href="./sub.html" className="detail_search">
-                                상세검색
-                            </a>
                         </form>
                     </div>
                     <div className="ad_box">
@@ -237,60 +253,6 @@ function Header({ reviewObj }) {
                     </div>
                 </HeaderStyled.Bottom>
             </HeaderStyled.Container>
-            {/* <Navbar bg="light" expand="lg">
-                <Container>
-                    <Navbar.Brand href="/">
-                        <LogoImgStyled src={logo} alt="Logo" />
-                    </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <Nav.Link href="/board">
-                                <TextP>독후감 게시판</TextP>
-                            </Nav.Link>
-                            <Nav.Link href="/books">
-                                <TextP>도서 검색</TextP>
-                            </Nav.Link>
-                            <Nav.Link href="/guide">
-                                <TextP>독후감 가이드</TextP>
-                            </Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                    {reviewObj}
-                    {displayName ? (
-                        <>
-                            <TextP>
-                                <strong>{displayName}</strong> 님 반가워요!
-                            </TextP>
-                            <LoginBtn
-                                variant="secondary"
-                                to="/signIn"
-                                bgColor="transparent"
-                                fontColor="#e67e22"
-                                fontSize="2rem"
-                            >
-                                <FontAwesomeIcon icon={faUser} />
-                            </LoginBtn>
-                            <Button onClick={onSignOutClick}>로그아웃</Button>
-                        </>
-                    ) : (
-                        <>
-                            <Button
-                                bgColor="transparent"
-                                fontColor="#e67e22"
-                                fontWeight="900"
-                                variant="link"
-                                to="/signIn"
-                            >
-                                로그인
-                            </Button>
-                            <Button variant="secondary" to="/signIn">
-                                회원가입
-                            </Button>
-                        </>
-                    )}
-                </Container>
-            </Navbar> */}
         </>
     );
 }
