@@ -8,6 +8,7 @@ export const useReview = (userObj) => {
     const [bookAuthor, setBookAuthor] = useState(""); // 작가 이름
     const [reviewList, setReviewList] = useState([]); // 리뷰 목록
     const [selectedRating, setSelectedRating] = useState(0); // 선택한 평점
+    
     const [editing, setEditing] = useState(false); // 수정 모드
     const [newReview, setNewReview] = useState(""); // 수정할 감상평
     const [newNickname, setNewNickname] = useState(""); // 수정할 닉네임
@@ -15,6 +16,7 @@ export const useReview = (userObj) => {
     const [newAuthor, setNewAuthor] = useState(""); // 수정할 작가
     const [newRating, setNewRating] = useState(0); // 수정할 평점
     const [errorMessage, setErrorMessage] = useState(""); // 오류 메시지
+
     const navigate = useNavigate(); // React Router의 navigate 함수
 
     // 리뷰 목록을 불러오는 useEffect
@@ -71,6 +73,19 @@ export const useReview = (userObj) => {
         }
     };
 
+    const onEditChange = (event) => {
+        const {
+            target : {value, name},
+        }= event;
+        if (name === 'newReview') {
+            setNewReview(value);
+        } else if (name === 'bookTitle') {
+            setNewTitle(value);
+        } else if (name === 'bookAuthor') {
+            setNewAuthor(value);
+        }
+    };
+
     // 선택한 평점을 업데이트하는 함수
     const onRatingSelected = (rating) => {
         setSelectedRating(rating);
@@ -81,7 +96,15 @@ export const useReview = (userObj) => {
         setEditing((prev) => !prev);
     };
 
+    const onEditCancel = () => {
+        setEditing(false);
+        navigate('/board');
+        window.scrollTo(0,0);
+    };
+
     return {
+        onEditCancel,
+        onEditChange,
         inputReview,
         bookTitle,
         bookAuthor,

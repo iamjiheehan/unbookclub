@@ -65,6 +65,7 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
         setNewRating,
         onEditSubmit,
         onEditCancel,
+        onEditChange,
     } = useReview(reviewObj, reviewList);
     
     // 스크롤을 활용한 페이지 로딩 효과
@@ -127,7 +128,7 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
                             <input
                                 name="bookTitle"
                                 value={newTitle}
-                                onChange={onChange}
+                                onChange={onEditChange}
                                 type="text"
                                 placeholder="책 제목을 입력해주세요"
                                 maxLength={200}
@@ -136,7 +137,7 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
                             <input
                                 name="bookAuthor"
                                 value={newAuthor}
-                                onChange={onChange}
+                                onChange={onEditChange}
                                 type="text"
                                 placeholder="작가 이름을 입력해주세요"
                                 maxLength={200}
@@ -148,7 +149,7 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
                                 placeholder="감상평을 입력해주세요"
                                 value={newReview}
                                 required
-                                onChange={onChange}
+                                onChange={onEditChange}
                                 bgColor="transparent"
                             />
                             {errorMessage && (
