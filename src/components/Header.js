@@ -37,7 +37,7 @@ function Header({ reviewObj }) {
     const [loading, setLoading] = useState(true);
     const [hover, setHover] = useState(false);
 
-    const [searchMode, setSearchMode] = useState("통합검색");
+    const [searchMode, setSearchMode] = useState("도서명");
     const [searchTitle, setSearchTitle] = useState("");
     const [searchAuthor, setSearchAuthor] = useState("");
 
@@ -50,17 +50,19 @@ function Header({ reviewObj }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        firebaseInstance.auth().onAuthStateChanged((user) => {
-            setLoading(false);
-        });
+        const fetchBooks = async () => {
+            try {
+                const { data } = await kakaoSearch({
+                    query: "some_search_term",
+                });
+                setSearchResults(data.documents);
+                console.log("fetchBooks");
+            } catch (error) {
+                console.error("Error fetching books:", error);
+            }
+        };
+        fetchBooks();
     }, []);
-    
-    useEffect(() => {
-        if (!loading) {
-            handleSearch();
-        }
-    }, [loading]);
-    
 
     // ---------------------------------------헤더 메뉴 호버
 
@@ -110,9 +112,7 @@ function Header({ reviewObj }) {
             size: 10, // 한 페이지에 보여 질 문서의 개수
         };
         let queryParam = "";
-        if (searchMode === "통합검색") {
-            queryParam = searchTitle + " " + searchAuthor;
-        } else if (searchMode === "도서명") {
+        if (searchMode === "도서명") {
             queryParam = searchTitle;
         } else {
             queryParam = searchAuthor;
@@ -139,13 +139,14 @@ function Header({ reviewObj }) {
             }
         }
         //books컴포넌트로 보내고 props로 결과 전달
-        navigate('/books', { state: { searchResults } });
+        // navigate('/books', { state: { searchResults } });
         stopLoading();
     };
 
     //드롭다운 관련 메뉴
 
-    const handleModeChange = (mode) => {
+    const handleModeChange = (mode, event) => {
+        event.preventDefault();
         setSearchMode(mode);
         if (mode === "도서명") {
             setSearchTitle("");
@@ -153,6 +154,7 @@ function Header({ reviewObj }) {
             setSearchAuthor("");
         }
     };
+    
 
     return (
         <>
@@ -293,29 +295,12 @@ function Header({ reviewObj }) {
                                             <div className="dropdown">
                                                 <div className="dropdown-content">
                                                     <button
-                                                        onClick={() =>
-                                                            handleModeChange(
-                                                                "통합검색"
-                                                            )
-                                                        }
-                                                    >
-                                                        통합검색
-                                                    </button>
-                                                    <button
-                                                        onClick={() =>
-                                                            handleModeChange(
-                                                                "도서명"
-                                                            )
-                                                        }
+                                                        onClick={(e) => handleModeChange("도서명", e)}
                                                     >
                                                         도서명
                                                     </button>
                                                     <button
-                                                        onClick={() =>
-                                                            handleModeChange(
-                                                                "작가명"
-                                                            )
-                                                        }
+                                                        onClick={(e) => handleModeChange("작가명", e)}
                                                     >
                                                         작가명
                                                     </button>
@@ -339,13 +324,15 @@ function Header({ reviewObj }) {
                                     </label>
                                 </div>
                             </div>
-                            <button
-                                type="submit"
-                                className="search_btn"
-                                onClick={() => handleSearch()}
-                            >
-                                검색
-                            </button>
+                            <Link to="/books">
+                                <button
+                                    type="button"
+                                    className="search_btn"
+                                    onClick={() => handleSearch()}
+                                >
+                                    검색
+                                </button>
+                            </Link>
                         </form>
                     </div>
                     <div className="ad_box">

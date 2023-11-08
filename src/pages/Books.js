@@ -19,14 +19,14 @@ import Button from "styled-components/ButtonStyled";
 import { Btn2 } from "styled-components/BtnStyled";
 import { FaShoppingCart } from "react-icons/fa";
 
-//커스텀 이미지 임포트
-import nodata from "../static/images/nodata.jpg";
-
 export default function SearchBooks() {
     // 라우터에서 전달된 검색 결과를 가져옵니다.
     const location = useLocation();
     const searchResults = location.state?.searchResults;
 
+    useEffect(()=>{
+        console.log(searchResults);
+    })
     // 데이터 변수에 할당
     const posts = newBooks;
 
@@ -35,10 +35,6 @@ export default function SearchBooks() {
 
     // 디스패치 함수 호출
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        console.log(posts.length);
-    }, [posts.length]);
 
     // 카트에 도서를 추가하는 함수
     const handleAddToCart = (itemId, title, author, coverLargeUrl) => {
