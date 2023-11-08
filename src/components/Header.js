@@ -43,6 +43,7 @@ function Header({ reviewObj, updateResults }) {
     const [query, setQuery] = useState("");
 
     const { startLoading, stopLoading } = useLoadingContext();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchBooks = async () => {
@@ -109,24 +110,25 @@ function Header({ reviewObj, updateResults }) {
         let queryParam = "";
         if (searchMode === "도서명") {
             queryParam = searchTitle;
-            console.log(searchTitle);
-        } else {
+        } else if (searchMode === "작가명") {
             queryParam = searchAuthor;
-            console.log(searchAuthor);
         }
         if (queryParam) {
             params.query = queryParam;
             setQuery(queryParam);
+            console.log(query,searchMode);
             try {
                 const { data } = await kakaoSearch(params); // api 호출
                 console.log(data);
-
+    
                 const searchResults = data.documents;
                 setSearchResults(searchResults);
-
+    
                 console.log(searchResults + `Header에서 보냅니다`);
-                
-                updateResults(searchResults);//App.js에 저장된 함수에 값 전달
+    
+                updateResults(searchResults); // App.js에 저장된 함수에 값 전달
+    
+                navigate("/books");
                 if (searchResults.length === 0) {
                     setSearchError("검색 결과가 없습니다.");
                 }
@@ -140,9 +142,10 @@ function Header({ reviewObj, updateResults }) {
                 setSearchError("검색어를 입력해주세요");
             }
         }
-
+    
         stopLoading();
     };
+    
 
     //드롭다운 관련 메뉴
 

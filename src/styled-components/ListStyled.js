@@ -15,6 +15,7 @@ export const Wrap = styled.div`
     h1 {
         margin: 0;
         padding-top: 3rem;
+        text-align: center !important;
     }
 
     .title-wrap {

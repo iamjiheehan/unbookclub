@@ -47,7 +47,15 @@ export default function SearchBooks({ searchResults, setSearchResults }) {
             console.log("이미 카트에 있는 도서입니다:", itemId);
             return;
         }
-        dispatch(addBook({ ...bookToAdd, title, author, coverLargeUrl, isbn: bookToAdd.isbn }));
+        dispatch(
+            addBook({
+                ...bookToAdd,
+                title,
+                author,
+                coverLargeUrl,
+                isbn: bookToAdd.isbn,
+            })
+        );
         console.log("도서가 카트에 추가되었습니다:", itemId);
     };
 
@@ -132,10 +140,7 @@ export default function SearchBooks({ searchResults, setSearchResults }) {
                     <div className="content-wrap">
                         {searchResults && searchResults.length > 0 ? (
                             searchResults.map((result) => (
-                                <div
-                                    className="content-item"
-                                    key={result.isbn}
-                                >
+                                <div className="content-item" key={result.isbn}>
                                     <BookStyled.Item className="item_canvas">
                                         <div className="item_img">
                                             <img
@@ -174,7 +179,7 @@ export default function SearchBooks({ searchResults, setSearchResults }) {
                                                         book.isbn ===
                                                         result.isbn
                                                 ) ? (
-                                                    "추가된 도서"
+                                                    <p>추가된 도서</p>
                                                 ) : (
                                                     <div className="cart-wrap">
                                                         <FaShoppingCart />{" "}
@@ -201,11 +206,11 @@ export default function SearchBooks({ searchResults, setSearchResults }) {
                                             <div className="info_desc">
                                                 {result.contents
                                                     ? result.contents.length >
-                                                        70
-                                                            ? result.contents.slice(
-                                                                0,
-                                                                70
-                                                            ) + "..."
+                                                      70
+                                                        ? result.contents.slice(
+                                                              0,
+                                                              70
+                                                          ) + "..."
                                                         : result.contents
                                                     : "No description available"}
                                             </div>
@@ -221,15 +226,14 @@ export default function SearchBooks({ searchResults, setSearchResults }) {
                             </BookStyled.Warning>
                             // 검색 결과가 없는 경우 메시지를 표시
                         )}
-                        
                     </div>
                     {searchResults && searchResults.length > 0 && (
-                    <div className="middle">
-                        {numItemsToShow < getSortedPosts().length && (
-                            <Btn2 onClick={handleLoadMore}>더 보기</Btn2>
-                        )}
-                    </div>
-                )}
+                        <div className="middle">
+                            {numItemsToShow < getSortedPosts().length && (
+                                <Btn2 onClick={handleLoadMore}>더 보기</Btn2>
+                            )}
+                        </div>
+                    )}
                 </BookStyled.Content>
             </BookStyled.Wrap>
         </BookStyled.Container>

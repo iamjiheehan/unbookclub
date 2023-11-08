@@ -6,7 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { addBook } from "store";
 
 // 베스트셀러 데이터
-import bestSeller from "../data/bestSeller.json";
+import newBooks from "../data/newBooks.json";
+
 
 // 부트스트랩 라이브러리
 import { Dropdown, DropdownButton } from "react-bootstrap";
@@ -19,16 +20,17 @@ import Button from "styled-components/ButtonStyled";
 import { Btn2 } from "styled-components/BtnStyled";
 import { FaShoppingCart } from "react-icons/fa";
 
-export default function BestSellerss() {
 
+export default function NewBooks() {
     // 데이터 변수에 할당
-    const posts = bestSeller;
+    const posts = newBooks;
     // 리덕스에 있는 데이터 가져오기
     let addedBooks = useSelector((state) => state.book);
     // 디스패치 함수호출
     const dispatch = useDispatch();
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         console.log(posts.length);
     }, [posts.length]);
 
@@ -97,7 +99,7 @@ export default function BestSellerss() {
                     <div className="title-wrap">
                         <div className="text">
                             <h1>
-                                <strong>인기도서</strong>
+                                <strong>신간도서</strong>
                             </h1>
                         </div>
                         <div className="button">

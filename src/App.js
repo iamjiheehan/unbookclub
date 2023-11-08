@@ -3,16 +3,16 @@ import React, { useState }  from "react";
 // 컴포넌트
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+
 import Create from "./pages/Create"
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-
 import Main from "./pages/Main";
 import Board from "./pages/Board";
 import UserInfo from "./pages/UserInfo";
 import SearchBooks from "./pages/Books"
-import NewBooks from  "./pages/NewBooksPage"
-import BestSellers from './pages/BestSellersPage'
+import NewBooks from  "./pages/NewBooks"
+import BestSellers from './pages/BestSellers'
 import Guide from "./pages/Guide";
 
 import AuthContext from "contexts/AuthContext";
