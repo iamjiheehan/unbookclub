@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const Wrap = styled.div`
     /* width: 1030px;
     margin: auto 0; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
 
     .outForm {
         color: #333;

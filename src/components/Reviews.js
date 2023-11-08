@@ -5,12 +5,12 @@ import ReactStars from "react-rating-stars-component";
 
 // 커스텀 훅
 import useFormatDate from "hooks/useFormatDate";
-import { useReview } from "hooks/useReview";
+import useReviewEditor from "hooks/useReviewEditor";
 
 // 스타일컴포넌트 임포트
 import { Input, BoardInput } from "../styled-components/InputStyled";
 
-import { Btn2, Btn2Input } from "styled-components/BtnStyled";
+import { Btn1, Btn2, Btn2Input, Btn3, Btn4, Btn5 } from "styled-components/BtnStyled";
 import Button from "../styled-components/ButtonStyled";
 import BackStyled from "../styled-components/BackStyled";
 import { TextP, TextH2 } from "../styled-components/TextStyled";
@@ -19,6 +19,7 @@ import * as BoardStyled from "../styled-components/BoardStyled";
 import * as CreateStyled from "../styled-components/CreateStyled";
 
 const Reviews = ({ reviewObj, isOwner, bookTitle, bookAuthor }) => {
+    
     const formattedDate = useFormatDate(reviewObj.createdAt);
 
     const {
@@ -34,9 +35,9 @@ const Reviews = ({ reviewObj, isOwner, bookTitle, bookAuthor }) => {
         onSubmit,
         onCancel,
         onChange,
-        newRating,
+        newRating, 
         setNewRating,
-    } = useReview(reviewObj);
+    } = useReviewEditor(reviewObj); 
 
     console.log(newReview);
 
@@ -138,26 +139,18 @@ const Reviews = ({ reviewObj, isOwner, bookTitle, bookAuthor }) => {
                         <p>작성일시 : {formattedDate}</p> */}
                     {isOwner && (
                         <>
-                            <Btn2Input
+                        <div className="btn-wrap">
+                        <Btn5
                                 onClick={toggleEditing}
-                                margin="0 0.5rem"
-                                radius="none"
-                                fontColor="#61777F"
-                                bgColor="transparent"
-                                border="0.3rem solid"
                             >
-                                <TextP>수정</TextP>
-                            </Btn2Input>
-                            <Btn2Input
+                                <p>수정</p>
+                            </Btn5>
+                            <Btn5
                                 onClick={onDeleteClick}
-                                margin="0 0.5rem"
-                                radius="none"
-                                fontColor="#61777F"
-                                bgColor="transparent"
-                                border="0.3rem solid"
                             >
-                                <TextP>삭제</TextP>
-                            </Btn2Input>
+                                <p>삭제</p>
+                            </Btn5>
+                        </div>
                         </>
                     )}
                 </BoardStyled.Content>

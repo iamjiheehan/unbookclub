@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Wrap = styled.div`
     width: 1030px;
     margin: 5rem auto;
+    overflow: hidden;
 
     h1 {
         text-align: center;

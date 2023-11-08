@@ -146,7 +146,45 @@ export const Btn4= ({ to, children, ...rest }) => {
     );
 };
 
-export const BtnInput = styled.input`
+const Button5Styled = styled.button`
+    align-items: center;
+    border: 1px solid #333 !important;
+    color: #333 !important;
+    display: -moz-inline-flex;
+    display: inline-flex;
+    -moz-justify-content: center;
+    justify-content: center;
+    letter-spacing: 0.1em;
+    line-height: 20px;
+    padding: 10px 20px!important;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: fit-content !important;
+
+    &:hover {
+        transition: all 0.3s ease;
+        /* transform-origin: center; */
+        background-color: white !important;
+        /* color: #333 !important; */
+        color: #333 !important;
+        border: 1px solid #333 !important;
+        border-bottom: 1px solid #333 !important;
+    }
+
+    @media (max-width: 412px) {
+        font-size: 1rem;
+    }
+`;
+
+export const Btn5= ({ to, children, ...rest }) => {
+    return (
+        <Link to={to}>
+            <Button5Styled {...rest}>{children}</Button5Styled>
+        </Link>
+    );
+};
+
+const BtnInputStyled = styled.input`
     align-items: center;
     background-color: #333;
     border: 1px solid #333 !important;
@@ -178,7 +216,15 @@ export const BtnInput = styled.input`
     }
 `;
 
-export const Btn2Input = styled.input`
+export const BtnInput = ({ to, children, ...rest }) => {
+    return (
+        <Link to={to}>
+            <BtnInputStyled {...rest}>{children}</BtnInputStyled>
+        </Link>
+    );
+};
+
+const Btn2InputStyled = styled.input`
     align-items: center;
     border: 1px solid #333 !important;
     color: #333 !important;
@@ -207,3 +253,12 @@ export const Btn2Input = styled.input`
         font-size: 1rem;
     }
 `;
+
+
+export const Btn2Input = ({ to, children, ...rest }) => {
+    return (
+        <Link to={to}>
+            <Btn2InputStyled {...rest}>{children}</Btn2InputStyled>
+        </Link>
+    );
+};

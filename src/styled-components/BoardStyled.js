@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Wrap = styled.div`
     width: 1030px;
     margin: 0 auto;
+    overflow: hidden;
 
     .main-banner {
         padding: 0 40px;
@@ -33,6 +34,7 @@ export const Wrap = styled.div`
 
 export const Content = styled.div`
     background: ${(props) => props.background || '#f8f8f8'};
+    overflow: hidden;
 
     margin: 4rem 0;
     
@@ -122,11 +124,14 @@ export const Content = styled.div`
 
     .btn-wrap {
         margin: 1rem 0.5rem 0px;
-        width: 100%;
         display: flex;
         -webkit-box-pack: justify;
         justify-content: flex-end;
         gap: 1rem;
+
+        p {
+            font-size: 14px;
+        }
     }
     
 `;
