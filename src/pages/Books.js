@@ -19,17 +19,15 @@ import Button from "styled-components/ButtonStyled";
 import { Btn2 } from "styled-components/BtnStyled";
 import { FaShoppingCart } from "react-icons/fa";
 
-export default function SearchBooks(searchResults, setSearchResults) {
-    
-    const result = [searchResults.searchResults][0];
+export default function SearchBooks({ searchResults, setSearchResults }) {
     useEffect(() => {
-        console.log("Books.js검색 결과:", searchResults.searchResults,result);
+        console.log("Books.js 검색 결과:", Array.isArray(searchResults));
     });
 
     // 데이터 변수에 할당
     const posts = newBooks;
 
-    // 리덕스에 있는 데이터 가져오기
+    // 리덕스에 있는 데이터 가져오기.searchResults
     const addedBooks = useSelector((state) => state.book);
 
     // 디스패치 함수 호출
@@ -96,13 +94,13 @@ export default function SearchBooks(searchResults, setSearchResults) {
             <BookStyled.Wrap>
                 {searchResults && searchResults.length > 0 && (
                     <div className="title-wrap">
-                        <div className="text">
+                        <div className="text middle">
                             <h1>
                                 <strong>도서 검색 결과</strong>
                             </h1>
                         </div>
                         <div className="button">
-                            <DropdownButton
+                            {/* <DropdownButton
                                 id="dropdown-basic-button"
                                 title={
                                     sortBy === "pubDate"
@@ -126,7 +124,7 @@ export default function SearchBooks(searchResults, setSearchResults) {
                                 <Dropdown.Item eventKey="rank">
                                     순위 순
                                 </Dropdown.Item>
-                            </DropdownButton>
+                            </DropdownButton> */}
                         </div>
                     </div>
                 )}
@@ -141,7 +139,7 @@ export default function SearchBooks(searchResults, setSearchResults) {
                                     <BookStyled.Item className="item_canvas">
                                         <div className="item_img">
                                             <img
-                                                src={result.coverLargeUrl}
+                                                src={result.thumbnail}
                                                 alt={result.title}
                                             />
                                         </div>
@@ -196,17 +194,20 @@ export default function SearchBooks(searchResults, setSearchResults) {
                                         </div>
                                         <div className="info_row">
                                             <span className="info_auth">
-                                                {result.author}
+                                                {result.authors}
                                             </span>
                                         </div>
                                         <div className="info_row info_readBox">
                                             <div className="info_desc">
-                                                {result.description.length > 70
-                                                    ? result.description.slice(
-                                                            0,
-                                                            70
-                                                        ) + "..."
-                                                        : result.description}
+                                                {result.contents
+                                                    ? result.contents.length >
+                                                        70
+                                                            ? result.contents.slice(
+                                                                0,
+                                                                70
+                                                            ) + "..."
+                                                        : result.contents
+                                                    : "No description available"}
                                             </div>
                                         </div>
                                     </div>
@@ -220,15 +221,16 @@ export default function SearchBooks(searchResults, setSearchResults) {
                             </BookStyled.Warning>
                             // 검색 결과가 없는 경우 메시지를 표시
                         )}
+                        
                     </div>
-                </BookStyled.Content>
-                {searchResults && searchResults.length > 0 && (
-                    <div>
+                    {searchResults && searchResults.length > 0 && (
+                    <div className="middle">
                         {numItemsToShow < getSortedPosts().length && (
                             <Btn2 onClick={handleLoadMore}>더 보기</Btn2>
                         )}
                     </div>
                 )}
+                </BookStyled.Content>
             </BookStyled.Wrap>
         </BookStyled.Container>
     );

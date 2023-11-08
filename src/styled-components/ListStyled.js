@@ -3,11 +3,11 @@ import backImg from "../static/images/nodata.jpg"
 
 export const Container = styled.div`
     /* background-color: #f8f8f8; */
+
 `;
 
 export const Wrap = styled.div`
     /* width: 1260px; */
-
     width: 1030px;
     margin: 0 auto;
     padding: 30px 30px 64px;
@@ -18,9 +18,15 @@ export const Wrap = styled.div`
     }
 
     .title-wrap {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
+        text-align: center !important;
+        margin-bottom: 4rem;
+        position: relative;
+        
+        button {
+            position:absolute;
+            top: -1rem;
+            right: 0;
+        }
     }
 
     .middle {
@@ -48,7 +54,7 @@ export const Content = styled.div`
     .content-wrap .content-item {
         display: flex;
         flex-direction: column;
-
+        align-items: center;
     }
 
     .item_info {
