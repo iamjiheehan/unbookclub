@@ -233,9 +233,9 @@ function Header({ reviewObj }) {
                                         통합검색
                                         <div class="dropdown">
                                             <div className="dropdown-content">
-                                                <button>통합검색</button>
-                                                <button>도서명</button>
-                                                <button>작가명</button>
+                                                <button onClick={handleModeChange}>통합검색</button>
+                                                <button onClick={handleModeChange}>도서명</button>
+                                                <button onClick={handleModeChange}>작가명</button>
                                             </div>
                                         </div>
                                     </dt>

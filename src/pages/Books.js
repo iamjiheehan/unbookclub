@@ -15,6 +15,7 @@ import { FaArrowRight} from "react-icons/fa";
 import { Btn2 } from "styled-components/BtnStyled";
 
 export default function Books() {
+    
     const [searchResults, setSearchResults] = useState([]);
     const [hasSearched, setHasSearched] = useState(false);
     const [mode, setMode] = useState("");
