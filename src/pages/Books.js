@@ -34,7 +34,7 @@ export default function SearchBooks({ searchResults, setSearchResults }) {
     const dispatch = useDispatch();
 
     // 카트에 도서를 추가하는 함수
-    const handleAddToCart = (itemId, title, author, coverLargeUrl) => {
+    const handleAddToCart = (itemId, title, author, coverLargeUrl, isbn) => {
         console.log(
             "도서를 카트에 추가합니다:",
             itemId,
@@ -42,12 +42,12 @@ export default function SearchBooks({ searchResults, setSearchResults }) {
             author,
             coverLargeUrl
         );
-        const bookToAdd = posts.find((book) => book.itemId === itemId);
-        if (addedBooks.find((book) => book.itemId === itemId)) {
+        const bookToAdd = posts.find((book) => book.isbn === itemId);
+        if (addedBooks.find((book) => book.isbn === itemId)) {
             console.log("이미 카트에 있는 도서입니다:", itemId);
             return;
         }
-        dispatch(addBook({ ...bookToAdd, title, author, coverLargeUrl }));
+        dispatch(addBook({ ...bookToAdd, title, author, coverLargeUrl, isbn: bookToAdd.isbn }));
         console.log("도서가 카트에 추가되었습니다:", itemId);
     };
 
@@ -134,7 +134,7 @@ export default function SearchBooks({ searchResults, setSearchResults }) {
                             searchResults.map((result) => (
                                 <div
                                     className="content-item"
-                                    key={result.itemId}
+                                    key={result.isbn}
                                 >
                                     <BookStyled.Item className="item_canvas">
                                         <div className="item_img">
@@ -152,27 +152,27 @@ export default function SearchBooks({ searchResults, setSearchResults }) {
                                                     padding: "1rem 0 0 0",
                                                 }}
                                             >
-                                                {result.author}
+                                                {result.authors}
                                             </p>
                                             <Button
                                                 onClick={() =>
                                                     handleAddToCart(
                                                         result.itemId,
                                                         result.title,
-                                                        result.author,
-                                                        result.coverLargeUrl
+                                                        result.authors,
+                                                        result.thumbnail
                                                     )
                                                 }
                                                 disabled={addedBooks.some(
                                                     (book) =>
-                                                        book.itemId ===
-                                                        result.itemId
+                                                        book.isbn ===
+                                                        result.isbn
                                                 )}
                                             >
                                                 {addedBooks.some(
                                                     (book) =>
-                                                        book.itemId ===
-                                                        result.itemId
+                                                        book.isbn ===
+                                                        result.isbn
                                                 ) ? (
                                                     "추가된 도서"
                                                 ) : (
