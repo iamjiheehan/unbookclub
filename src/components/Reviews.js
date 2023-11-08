@@ -44,71 +44,75 @@ const Reviews = ({ reviewObj, isOwner, bookTitle, bookAuthor }) => {
     return (
         <>
             {editing ? (
-                <>
-                    <CreateStyled.Wrap>
-                        <form onSubmit={onSubmit}>
-                            <ReactStars
-                                count={5}
-                                size={24}
-                                edit={true}
-                                value={reviewObj.selectedRating}
-                                onChange={(newRating) =>
-                                    setNewRating(newRating)
-                                }
-                            />
-                            <input
-                                name="bookTitle"
-                                value={newTitle}
-                                onChange={onChange}
-                                type="text"
-                                placeholder="책 제목을 입력해주세요"
-                                maxLength={200}
-                            />
-                            <input
-                                name="bookAuthor"
-                                value={newAuthor}
-                                onChange={onChange}
-                                type="text"
-                                placeholder="작가 이름을 입력해주세요"
-                                maxLength={200}
-                            />
-                            <textarea
-                                name="newReview"
-                                type="text"
-                                placeholder="감상평을 입력해주세요"
-                                value={newReview}
-                                required
-                                onChange={onChange}
-                            />
-                            {/* <BoardInput
-                                type="text"
-                                placeholder="닉네임 변경이 가능합니다"
-                                value={newNickname}
-                                required
-                                onChange={(event) =>
-                                    setNewNickname(event.target.value)
-                                }
-                            /> */}
-                            {errorMessage && (
-                                <p style={{ color: "red" }}>{errorMessage}</p>
-                            )}
-                            <Btn2Input
-                                type="submit"
-                                value="수정 완료"
-                                bgColor="rgb(230, 126, 34)"
-                                style={{ color: "white" }}
-                                onClick={onSubmit}
-                            />
-                            <Btn2Input
-                                type="button"
-                                value="취소"
-                                onClick={onCancel}
-                                bgColor="rgb(230, 126, 34)"
-                                style={{ color: "white" }}
-                            />
-                        </form>
-                    </CreateStyled.Wrap>
-                </>
+                <CreateStyled.Overlay>
+                    <CreateStyled.FormContainer>
+                        <CreateStyled.Wrap>
+                            <form onSubmit={onSubmit}>
+                                <ReactStars
+                                    count={5}
+                                    size={24}
+                                    edit={true}
+                                    value={reviewObj.selectedRating}
+                                    onChange={(newRating) =>
+                                        setNewRating(newRating)
+                                    }
+                                />
+                                <input
+                                    name="bookTitle"
+                                    value={newTitle}
+                                    onChange={onChange}
+                                    type="text"
+                                    placeholder="책 제목을 입력해주세요"
+                                    maxLength={200}
+                                />
+                                <input
+                                    name="bookAuthor"
+                                    value={newAuthor}
+                                    onChange={onChange}
+                                    type="text"
+                                    placeholder="작가 이름을 입력해주세요"
+                                    maxLength={200}
+                                />
+                                <textarea
+                                    name="newReview"
+                                    type="text"
+                                    placeholder="감상평을 입력해주세요"
+                                    value={newReview}
+                                    required
+                                    onChange={onChange}
+                                />
+                                {/* <BoardInput
+                                    type="text"
+                                    placeholder="닉네임 변경이 가능합니다"
+                                    value={newNickname}
+                                    required
+                                    onChange={(event) =>
+                                        setNewNickname(event.target.value)
+                                    }
+                                /> */}
+                                {errorMessage && (
+                                    <p style={{ color: "red" }}>{errorMessage}</p>
+                                )}
+                                <div className="btn-wrap">
+                                    <Btn2Input
+                                        type="submit"
+                                        value="수정 완료"
+                                        bgColor="rgb(230, 126, 34)"
+                                        style={{ color: "white" }}
+                                        onClick={onSubmit}
+                                    />
+                                    <Btn2Input
+                                        type="button"
+                                        value="취소"
+                                        onClick={onCancel}
+                                        bgColor="rgb(230, 126, 34)"
+                                        style={{ color: "white" }}
+                                    />
+                                </div>
+                            </form>
+                        </CreateStyled.Wrap>
+                    </CreateStyled.FormContainer>
+                </CreateStyled.Overlay>
             ) : (
                 <BoardStyled.Content className="content-container">
                     <div className="item_info">
@@ -139,18 +143,18 @@ const Reviews = ({ reviewObj, isOwner, bookTitle, bookAuthor }) => {
                         <p>작성일시 : {formattedDate}</p> */}
                     {isOwner && (
                         <>
-                        <div className="btn-wrap">
-                        <Btn5
-                                onClick={toggleEditing}
-                            >
-                                <p>수정</p>
-                            </Btn5>
-                            <Btn5
-                                onClick={onDeleteClick}
-                            >
-                                <p>삭제</p>
-                            </Btn5>
-                        </div>
+                            <div className="btn-wrap">
+                                <Btn5
+                                        onClick={toggleEditing}
+                                    >
+                                    <p>수정</p>
+                                </Btn5>
+                                <Btn5
+                                    onClick={onDeleteClick}
+                                >
+                                    <p>삭제</p>
+                                </Btn5>
+                            </div>
                         </>
                     )}
                 </BoardStyled.Content>

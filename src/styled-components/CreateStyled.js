@@ -51,3 +51,24 @@ export const Wrap = styled.div`
         }
     }
 `;
+
+export const Overlay = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* 어두운 배경색 및 투명도 조절 */
+    z-index: 1; /* 다른 요소 위에 나타나도록 설정 */
+`;
+
+export const FormContainer = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 화면 중앙으로 이동 */
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    z-index: 2; /* 다른 요소 위에 나타나도록 설정 */
+`;
