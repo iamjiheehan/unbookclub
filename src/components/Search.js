@@ -33,6 +33,7 @@ import * as SearchStyled from "styled-components/SearchStyled";
 import { useLoadingContext, Loading } from "hooks/useLoading";
 import useSearchReviews from "hooks/useSearchReviews";
 import { useReview } from "hooks/useReview";
+import { Link } from "react-router-dom";
 
 
 function SearchBoard() {
@@ -177,12 +178,11 @@ function SearchBoard() {
     );
 }
 
-function SearchBooks() {
+function SearchBooks({searchResults, setSearchResults}) {
     console.log("SearchBooks rendered");
     const [searchTitle, setSearchTitle] = useState('');
     const [searchAuthor, setSearchAuthor] = useState('');
     const [searchError, setSearchError] = useState(null);
-    const [searchResults, setSearchResults] = useState([]);
     const [query, setQuery] = useState('');
 
     const [searchMode, setSearchMode] =useState("도서명으로 검색");
@@ -193,6 +193,7 @@ function SearchBooks() {
 
 
     useEffect(() => {
+        console.log(searchResults,"서치북스에서보냅니다");
         const fetchBooks = async () => {
             try {
                 const { data } = await kakaoSearch({ query: 'some_search_term' });
@@ -324,13 +325,15 @@ function SearchBooks() {
                         />
                     </div>
                     <div>
-                    <Button
-                        variant="dark"
-                        type="submit"
-                        style={{ borderRadius: "50px" }}
-                    >
-                        <FaSearch /> 검색
-                    </Button>
+                    <Link to="/books">
+                        <Button
+                            variant="dark"
+                            type="submit"
+                            style={{ borderRadius: "50px" }}
+                        >
+                            <FaSearch /> 검색
+                        </Button>
+                    </Link>
                     </div>
                 </FlexRow>
                 </div>

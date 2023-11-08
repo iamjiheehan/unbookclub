@@ -19,15 +19,11 @@ import Button from "styled-components/ButtonStyled";
 import { Btn2 } from "styled-components/BtnStyled";
 import { FaShoppingCart } from "react-icons/fa";
 
-export default function SearchBooks() {
-    const location = useLocation();
-    const searchResults = location.state?.searchResults;
-
+export default function SearchBooks(searchResults, setSearchResults) {
+    
+    const result = [searchResults.searchResults][0];
     useEffect(() => {
-        // searchResults를 사용하여 원하는 작업을 수행합니다.
-        if (searchResults) {
-            console.log("Books.js검색 결과:", searchResults);
-        }
+        console.log("Books.js검색 결과:", searchResults.searchResults,result);
     });
 
     // 데이터 변수에 할당

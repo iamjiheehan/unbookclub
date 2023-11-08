@@ -1,17 +1,16 @@
-import React  from "react";
+import React, { useState }  from "react";
 
 // 컴포넌트
 import Header from "./components/Header";
-import { SearchBoard } from "./components/Search";
 import Footer from "./components/Footer";
 import Create from "./pages/Create"
-import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 
 import Main from "./pages/Main";
 import Board from "./pages/Board";
 import UserInfo from "./pages/UserInfo";
-import Books from "./pages/Books"
+import SearchBooks from "./pages/Books"
 import NewBooks from  "./pages/NewBooksPage"
 import BestSellers from './pages/BestSellersPage'
 import Guide from "./pages/Guide";
@@ -38,12 +37,18 @@ function App() {
     refreshUser,
   } = useAuth();
 
+  const [searchResults, setSearchResults] = useState([]);
+
+  const updateResults = (newResults) => {
+    setSearchResults(newResults);
+  };
+
   return (
     <AuthContext.Provider value={{ isSignedIn, userObj, refreshUser }}>
       <LoadingProvider>
         <Provider store={store}>
           <div className="App">
-            <Header>
+            <Header updateResults={updateResults}>
               <nav>
                 <ul>
                   <li>
@@ -93,7 +98,7 @@ function App() {
               />
               <Route path="/board" element={<Board />} />
               <Route path="/guide" element={<Guide />} />
-              <Route path="/books" element={<Books />} />
+              <Route path="/books" element={<SearchBooks searchResults={searchResults} setSearchResults={setSearchResults}/>} />
               <Route path="/signUp" element={<SignUp />} />
               <Route path="/newbooks" element={<NewBooks />} />
               <Route path="/bestSellers" element={<BestSellers />} />
@@ -113,7 +118,6 @@ function App() {
                   isSignedIn || isSignedUp ? <UserInfo /> : <Navigate to="/signIn" />
                 }
               />
-              <Route path="/search" element={<SearchBoard />} />
             </Routes>
             <Footer />
           </div>

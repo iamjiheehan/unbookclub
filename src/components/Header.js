@@ -26,7 +26,7 @@ import top_header_R from "../static/images/top_header_R.jpg";
 import top_header_L from "../static/images/top_header_L.jpg";
 import header_banner from "../static/images/header_banner.jpg";
 
-function Header({ reviewObj }) {
+function Header({ reviewObj, updateResults }) {
     const { userObj } = useContext(AuthContext);
     const displayName = userObj?.displayName;
     const onSignOutClick = useSignOut();
@@ -109,9 +109,7 @@ function Header({ reviewObj }) {
         let queryParam = "";
         if (searchMode === "도서명") {
             queryParam = searchTitle;
-            console.log("====================================");
             console.log(searchTitle);
-            console.log("====================================");
         } else {
             queryParam = searchAuthor;
             console.log(searchAuthor);
@@ -122,8 +120,13 @@ function Header({ reviewObj }) {
             try {
                 const { data } = await kakaoSearch(params); // api 호출
                 console.log(data);
+
                 const searchResults = data.documents;
                 setSearchResults(searchResults);
+
+                console.log(searchResults + `Header에서 보냅니다`);
+                
+                updateResults(searchResults);//App.js에 저장된 함수에 값 전달
                 if (searchResults.length === 0) {
                     setSearchError("검색 결과가 없습니다.");
                 }
@@ -137,7 +140,7 @@ function Header({ reviewObj }) {
                 setSearchError("검색어를 입력해주세요");
             }
         }
-        console.log(searchResults + `Header에서 보냅니다`);
+
         stopLoading();
     };
 
