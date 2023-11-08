@@ -1,5 +1,5 @@
 // 독후감 게시판
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 // 로그인 contextAPI
 import AuthContext from "../contexts/AuthContext";
@@ -27,6 +27,10 @@ export default function Board() {
     const [hasSearched, setHasSearched] = useState(false);
     const [showUserReviewsOnly, setShowUserReviewsOnly] = useState(false);
 
+    useEffect(() => {
+        console.log(reviewList, userObj);
+    });
+
     const handleLoadMore = () => {
         setNumReviewsToShow(numReviewsToShow + 9);
     };
@@ -42,6 +46,7 @@ export default function Board() {
             setHasSearched(true);
         }
         setShowUserReviewsOnly(!showUserReviewsOnly);
+        console.log("야", searchResults);
     };
 
     return (
@@ -75,18 +80,43 @@ export default function Board() {
                     </div>
                     <SearchBoard />
                     <div className="content-wrap">
-                        {reviewList.slice(0, numReviewsToShow).map((review) => (
-                            <Reviews
-                                key={review.id}
-                                reviewObj={review}
-                                isOwner={
-                                    userObj && review.creatorId === userObj.uid
-                                }
-                                rating={review.selectedRating}
-                                bookTitle={review.title}
-                                bookAuthor={review.author}
-                            />
-                        ))}
+                        {showUserReviewsOnly ? (
+                            <>
+                                {searchResults
+                                    .slice(0, numReviewsToShow)
+                                    .map((review) => (
+                                        <Reviews
+                                            key={review.id}
+                                            reviewObj={review}
+                                            isOwner={
+                                                userObj &&
+                                                review.creatorId === userObj.uid
+                                            }
+                                            rating={review.selectedRating}
+                                            bookTitle={review.title}
+                                            bookAuthor={review.author}
+                                        />
+                                    ))}
+                            </>
+                        ) : (
+                            <>
+                                {reviewList
+                                    .slice(0, numReviewsToShow)
+                                    .map((review) => (
+                                        <Reviews
+                                            key={review.id}
+                                            reviewObj={review}
+                                            isOwner={
+                                                userObj &&
+                                                review.creatorId === userObj.uid
+                                            }
+                                            rating={review.selectedRating}
+                                            bookTitle={review.title}
+                                            bookAuthor={review.author}
+                                        />
+                                    ))}
+                            </>
+                        )}
                     </div>
                     {!hasSearched && numReviewsToShow < reviewList.length && (
                         <div className="seemore-wrap">
