@@ -51,7 +51,7 @@ const useReviewEditor = (reviewObj) => {
         }
     };
 
-    console.log(newReview);
+    // console.log(newReview);
 
     return {
         editing,

@@ -73,7 +73,6 @@ export default function Board() {
                             </Btn2>
                         )}
                     </div>
-
                     <SearchBoard />
                     <div className="content-wrap">
                         {reviewList.slice(0, numReviewsToShow).map((review) => (

@@ -73,7 +73,12 @@ export const Wrap = styled.div`
         justify-content: space-between;
     }
 
-    .content-wrap .content .question .text-wrap Btn3{
+    .content-wrap .content .question .text-wrap .text button{
+
+        svg {
+            transform: rotate(180deg);
+        }
+
         &.on{
             transform: rotate(180deg);
             transition: height 0.3s ease;

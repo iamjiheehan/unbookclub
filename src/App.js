@@ -65,9 +65,6 @@ function App() {
                     <Link to="/create">Create</Link>
                   </li>
                   <li>
-                    <Link to="/search">SearchBoard</Link>
-                  </li>
-                  <li>
                     <Link to="/books">Books</Link>
                   </li>
                   <li>

@@ -128,7 +128,7 @@ function SearchBoard() {
                         <input
                             className="searchInput"
                             type="text"
-                            placeholder="내용을 입력해주세요"
+                            placeholder="리뷰를 검색해보세요"
                             style={{ border: "none" }}
                             value={
                                 searchMode === "키워드로 검색"  ? searchKeyword : searchMode === "책제목으로 검색" ? searchTitle : searchAuthor 

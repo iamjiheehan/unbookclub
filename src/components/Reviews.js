@@ -34,7 +34,7 @@ const Reviews = ({ reviewObj, isOwner, bookTitle, bookAuthor }) => {
         setNewRating,
     } = useReviewEditor(reviewObj); 
 
-    console.log(newReview);
+    // console.log(newReview);
 
     return (
         <>
