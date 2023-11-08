@@ -133,7 +133,7 @@ export const Card = styled.div`
         -moz-flex-direction: column;
         flex-direction: column;
 
-        gap: 10px;
+        gap: 1rem;
     }
 
     .card-center .card-img {
@@ -151,7 +151,9 @@ export const Card = styled.div`
     }
 
     .card-center .card-desc {
-        text-align: center;
+        /* text-align: center; */
+        line-height: 1.2rem;
+        letter-spacing: 1px;
     }
 
     .card-center .card-discuss {
@@ -168,7 +170,7 @@ export const Card = styled.div`
         height: 17px;
         letter-spacing: .05em;
         line-height: 140%;
-        margin-bottom: 10px;
+        margin-bottom: 1rem;
         text-align: center;
         text-transform: uppercase;
     }
