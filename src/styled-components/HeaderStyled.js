@@ -364,8 +364,7 @@ export const Bottom = styled.div`
         font-weight: bold;
         float: left;
         width: 78px;
-        padding: 0.3em;
-        /* background-color:red; */
+        padding: 0.3em 0.3em 0.3em 0.6em;
 
         
     }
