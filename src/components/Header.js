@@ -13,7 +13,6 @@ import useSignOut from "../hooks/useSignOut";
 
 //컴포넌트 임포트
 
-
 // 스타일컴포넌트 임포트
 import * as HeaderStyled from "../styled-components/HeaderStyled";
 import { LoadingBack, LoadingText } from "../styled-components/LoadingStyled";
@@ -26,15 +25,20 @@ import top_header_L from "../static/images/top_header_L.jpg";
 import header_banner from "../static/images/header_banner.jpg";
 import { useSelector } from "react-redux";
 
-
-
 function Header({ reviewObj }) {
+    const [mode, setMode] = useState("");
+    const [show, setShow] = useState(false);
+
     const { userObj } = useContext(AuthContext);
     const displayName = userObj?.displayName;
     const onSignOutClick = useSignOut();
     let addedBooks = useSelector((state) => state.book);
 
     const [loading, setLoading] = useState(true);
+
+    const [searchMode, setSearchMode] = useState("도서명으로 검색");
+    const [searchTitle, setSearchTitle] = useState("");
+    const [searchAuthor, setSearchAuthor] = useState("");
 
     useEffect(() => {
         firebaseInstance.auth().onAuthStateChanged((user) => {
@@ -88,16 +92,18 @@ function Header({ reviewObj }) {
         });
     });
 
-    // 팝업 메뉴 닫기
-    // const menuCloseButtons = document.querySelectorAll(".menu_close");
-    // menuCloseButtons.forEach(function (button) {
-    //     button.addEventListener("click", function () {
-    //         const headLayerMenu = document.querySelector("#head_layer_menu");
-    //         if (headLayerMenu) {
-    //             headLayerMenu.style.display = "none";
-    //         }
-    //     });
-    // });
+    //드롭다운 관련 메뉴
+    const handleModeChange = (mode) => {
+        setSearchMode(mode);
+        if (mode === "통합검색") {
+            setSearchTitle("");
+            setSearchAuthor("");
+        } else if (mode === "도서명") {
+            setSearchTitle("");
+        } else if (mode === "작가명") {
+            setSearchAuthor("");
+        }
+    };
 
     return (
         <>
@@ -177,9 +183,9 @@ function Header({ reviewObj }) {
                                     </li>
                                     <li id="headerBasketBtn">
                                         <Link to="/userInfo" title="서재">
-                                            서재{' '}
+                                            서재{" "}
                                             <span id="basketItemCount">
-                                            ( {addedBooks.length} )
+                                                ( {addedBooks.length} )
                                             </span>
                                         </Link>
                                     </li>
@@ -206,7 +212,11 @@ function Header({ reviewObj }) {
                     <div className="header_middle-logo">
                         <h1>
                             <Link to="/" title="서재">
-                                <img className="middle-logo-img" src={logo} alt="알라딘" />
+                                <img
+                                    className="middle-logo-img"
+                                    src={logo}
+                                    alt="알라딘"
+                                />
                             </Link>
                         </h1>
                     </div>
@@ -219,7 +229,16 @@ function Header({ reviewObj }) {
                         >
                             <div id="global_search">
                                 <dl>
-                                    <dt id="searchTarget">통합검색</dt>
+                                    <dt id="searchTarget">
+                                        통합검색
+                                        <div class="dropdown">
+                                            <div className="dropdown-content">
+                                                <button>통합검색</button>
+                                                <button>도서명</button>
+                                                <button>작가명</button>
+                                            </div>
+                                        </div>
+                                    </dt>
                                 </dl>
                                 <div id="serachInput-box">
                                     <input

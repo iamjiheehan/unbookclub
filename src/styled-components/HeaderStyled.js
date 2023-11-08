@@ -351,25 +351,78 @@ export const Bottom = styled.div`
         top: 28px;
     }
 
-    #searchTarget {
-        font-family: Malgun Gothic, Dotum, "돋움", Helvetica,
-            "Apple SD Gothic Neo", sans-serif !important;
-        height: 18px;
-        overflow: hidden;
-    }
-
     #global_search dl {
         float: left;
         width: 78px;
-        margin: 12px 0 0 20px;
+        margin: 7px 0px 0px 10px;
     }
 
     #global_search dt {
-        background: url(${i_arrdown}) no-repeat right 5px;
+        background: url(${i_arrdown}) no-repeat right 5px bottom 2px;
         color: #2f9ddc;
         font-weight: bold;
         float: left;
         width: 78px;
+        padding: 0.3em;
+        /* background-color:red; */
+    }
+
+    #searchTarget {
+        font-family: Malgun Gothic, Dotum, "돋움", Helvetica,
+            "Apple SD Gothic Neo", sans-serif !important;
+        height: 18px;
+        /* overflow: hidden; */
+        position: relative;
+
+        &:hover {
+            cursor: pointer;
+        }
+        
+        .dropdown {
+            position: absolute;
+            z-index: 99;
+            /* height: 200px; */
+            background-color: white;
+            outline: 0;
+            color: rgb(83, 151, 208);
+            top: 22px;
+            left: 0;
+        }
+
+        .dropbtn_icon {
+            font-family: "Material Icons";
+        }
+
+
+        .dropdown-content {
+            border: 2px solid #5397d0;
+            font-weight: bold;
+            display: none;
+            z-index: 1; /*다른 요소들보다 앞에 배치*/
+            font-weight: 400;
+        }
+
+        .dropdown-content button {
+            background: none;
+            border: none;
+            font-weight: bold;
+            display: block;
+            text-decoration: none;
+            color: rgb(83, 151, 208);
+            font-size: 12px;
+            padding: 0.5rem;
+            margin: 0;
+            width: 100%;
+            text-align: left;
+            &:hover{
+                background-color: #ececec;
+            }
+        }
+
+        
+        &:hover .dropdown-content {
+            display: block;
+        } 
     }
 
     #serachInput-box {

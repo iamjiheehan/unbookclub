@@ -34,7 +34,7 @@ function BestSellers() {
                         <BookItemContainer key={post.itemId} >
                             <BookImg src={post.coverLargeUrl} alt={post.title} width= "250px" />
                             <BookInfo>
-                                <p className="book-title"><string>{post.title}</string></p>
+                                <p className="book-title"><strong>{post.title}</strong></p>
                                 <p padding = '1rem 0 0 0'>{post.author}</p>
                                 <Button
                                     onClick={() => handleAddToCart(post.itemId, post.title, post.author, post.coverLargeUrl)}
