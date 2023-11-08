@@ -14,20 +14,13 @@ import main2 from "../static/images/main-01.webp";
 import imgCategory1 from "../static/images/img-category1.webp";
 import imgCategory2 from "../static/images/img-category2.webp";
 import imgCategory3 from "../static/images/img-category3.webp";
-import cardBackground1 from "../static/images/cardBackground1.jpg";
 import circle01 from "../static/images/circle01.png";
 import circle02 from "../static/images/circle02.png";
 import circle03 from "../static/images/circle03.png";
 import cardBook1 from "../static/images/cardBook01.jpg";
 import cardBook2 from "../static/images/cardBook02.jpg";
 import cardBook3 from "../static/images/cardBook03.jpg";
-import icon01 from "../static/images/main-icon-01.webp";
-import icon02 from "../static/images/main-icon-02.webp";
-import icon03 from "../static/images/main-icon-03.webp";
-import icon04 from "../static/images/main-icon-04.webp";
-import icon05 from "../static/images/main-icon-05.webp";
 
-import testimonial from "../static/images/main-testimonial.webp";
 
 // 스타일컴포넌트 임포트
 import * as MainStyled from "../styled-components/MainStyled";
@@ -39,19 +32,12 @@ import { Btn1, Btn2 } from "styled-components/BtnStyled";
 import useScrollToTopButton from "hooks/useScrollTopBtn";
 
 import {
-    ImgStyled,
-    LastImgStyled,
     FirstImgStyled,
     SecondImgStyled
 } from "../styled-components/ImgStyled";
-import { FlexRow, FlexCol } from "../styled-components/FlexStyled";
-import BackStyled from "../styled-components/BackStyled";
-import { TextH1, TextH2, TextP } from "../styled-components/TextStyled";
-import GridStyled from "../styled-components/GridStyled";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage } from '@fortawesome/free-regular-svg-icons';
-import { faBook } from '@fortawesome/free-solid-svg-icons';
 
 export default function Main() {
 

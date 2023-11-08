@@ -7,21 +7,10 @@ import useSignInForm from "../hooks/useSignInForm";
 // 부트스트랩 라이브러리
 import Form from "react-bootstrap/Form";
 
-// 스타일컴포넌트 임포트
-import { FlexRow } from "../styled-components/FlexStyled";
-import { TextH1, TextP } from "../styled-components/TextStyled";
-import Button from "../styled-components/ButtonStyled";
-import BackStyled from "../styled-components/BackStyled";
-import HR from "../styled-components/LineStyled";
-import SocialBtn from "../styled-components/SocialBtnStyled";
-
 //커스텀 이미지 임포트
-import GoogleLogo from "../static/images/google-logo.webp";
-import GithubLogo from "../static/images/github-logo.webp";
 import * as SignInStyled from "../styled-components/SignInStyled";
 import leftImg from "../static/images/signUp_img_big.webp";
 import { Btn2 } from "styled-components/BtnStyled";
-import { Link } from "react-router-dom";
 
 export default function SignUp() {
     const {

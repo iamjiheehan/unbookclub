@@ -1,18 +1,12 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 
 // 부트스트랩 라이브러리 임포트
-import { Container } from "react-bootstrap";
 
 // 스타일컴포넌트 임포트
-import { FlexCol } from "styled-components/FlexStyled";
-import { FirstImgStyled, ImgStyled } from "styled-components/ImgStyled";
-import HR from "styled-components/LineStyled";
-import { TextH1, TextH2 } from "styled-components/TextStyled";
 import * as GuideStyled from "styled-components/GuideStyled";
 import { Btn3 } from "styled-components/BtnStyled";
 
 // 이미지 임포트
-import bookImg from "../static/images/menu-icon-02.webp";
 import main from "../static/images/bg_discussion.webp";
 
 // 폰트어썸 라이브러리 임포트

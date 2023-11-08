@@ -8,13 +8,8 @@ import useFormatDate from "hooks/useFormatDate";
 import useReviewEditor from "hooks/useReviewEditor";
 
 // 스타일컴포넌트 임포트
-import { Input, BoardInput } from "../styled-components/InputStyled";
+import { Btn2Input,  Btn5 } from "styled-components/BtnStyled";
 
-import { Btn1, Btn2, Btn2Input, Btn3, Btn4, Btn5 } from "styled-components/BtnStyled";
-import Button from "../styled-components/ButtonStyled";
-import BackStyled from "../styled-components/BackStyled";
-import { TextP, TextH2 } from "../styled-components/TextStyled";
-import { FlexRow } from "../styled-components/FlexStyled";
 import * as BoardStyled from "../styled-components/BoardStyled";
 import * as CreateStyled from "../styled-components/CreateStyled";
 

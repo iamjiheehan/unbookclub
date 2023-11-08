@@ -1,7 +1,5 @@
 // UserInfo 페이지에서 작성 리뷰 목록을 보여주는 테이블 컴포넌트
-
 import React from "react";
-import Table from 'react-bootstrap/Table';
 import ReactStars from "react-rating-stars-component";
 import useFormatDate from "../hooks/useFormatDate";
 

@@ -1,21 +1,6 @@
 import React from 'react'
-import Navbar from 'react-bootstrap/Navbar';
-import logo from '../static/images/logo.webp';
-import { ImgStyled } from '../styled-components/ImgStyled';
-import {TextH2} from '../styled-components/TextStyled';
-import styled from 'styled-components';
 
 import FooterStyled from '../styled-components/FooterStyled';
-
-const styles = styled.div`
-    bottom: 0;
-    width: 100%;
-    height: 3rem;
-    background-color: lightgray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
 
 export default function Footer() {
     return (

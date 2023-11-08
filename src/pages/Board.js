@@ -1,16 +1,11 @@
 // 독후감 게시판
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
 
 // 로그인 contextAPI
 import AuthContext from "../contexts/AuthContext";
 
 // 컴포넌트
-import ReactStars from "react-rating-stars-component";
 import { SearchBoard } from "../components/Search";
-
-// 커스텀 훅
-import { useReview } from "../hooks/useReview";
 
 // 이미지 임포트
 import main from "../static/images/main-icon-03.webp";
@@ -19,10 +14,8 @@ import main from "../static/images/main-icon-03.webp";
 import { SecondImgStyled } from "../styled-components/ImgStyled";
 
 import * as BoardStyled from "../styled-components/BoardStyled";
-import * as CreateStyled from "../styled-components/CreateStyled";
 
-import { Btn2, Btn2Input } from "styled-components/BtnStyled";
-import StarRating from "../components/StarRating";
+import { Btn2 } from "styled-components/BtnStyled";
 import Reviews from "components/Reviews";
 import { useReviewForm } from "hooks/useReviewForm";
 
@@ -34,7 +27,6 @@ export default function Board() {
     const [searchResults, setSearchResults] = useState([]);
     const [hasSearched, setHasSearched] = useState(false);
     const [showUserReviewsOnly, setShowUserReviewsOnly] = useState(false);
-
 
     const handleLoadMore = () => {
         setNumReviewsToShow(numReviewsToShow + 12);

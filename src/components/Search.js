@@ -20,13 +20,12 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 // 스타일컴포넌트 임포트
-import { FlexCol, FlexRow, FlexRowMQ } from "styled-components/FlexStyled";
+import { FlexCol, FlexRow} from "styled-components/FlexStyled";
 import FormStyled from "styled-components/FormStyled";
 import { TextH2, TextP } from "styled-components/TextStyled";
 import ButtonStyle from "styled-components/ButtonStyled";
 import DropdownBtn from "styled-components/DropDownBtnStyled";
 import GridStyled from "styled-components/GridStyled";
-import BorderStyled from "styled-components/BorderSyled";
 import { ImgStyled } from "styled-components/ImgStyled";
 import * as SearchStyled from "styled-components/SearchStyled";
 
