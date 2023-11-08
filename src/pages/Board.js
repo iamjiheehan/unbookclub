@@ -7,6 +7,7 @@ import AuthContext from "../contexts/AuthContext";
 
 // 컴포넌트
 import ReactStars from "react-rating-stars-component";
+import { SearchBoard } from "../components/Search"
 
 // 커스텀 훅
 import { useReview } from "../hooks/useReview";
@@ -118,7 +119,7 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
                             <StarRating
                                 totalStars={5}
                                 count={5}
-                                size={24}
+                                size={15}
                                 edit={true}
                                 value={reviewObj?.selectedRating}
                                 onChange={(newRating) =>
@@ -189,6 +190,7 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
                     <div>
                         <BoardStyled.Content className="content-container">
                             <div className="content-btn">
+                                <SearchBoard />
                                 <Btn2
                                     onClick={handleShowUserReviewsOnly}
                                     bgColor="rgb(51, 175, 233)"
@@ -208,7 +210,7 @@ export default function Board({ reviewObj, isOwner, bookTitle, bookAuthor }) {
                                             key={review.id}
                                         >
                                             <div className="item_info">
-                                                <div className="into_rating">
+                                                <div className="info_rating">
                                                     <ReactStars
                                                         count={5}
                                                         edit={false}

@@ -8,6 +8,11 @@ const FormStyled = styled(Form.Control)`
     font-weight: ${(props) => props.fontWeight || '400'};
     border-radius: ${(props) => props.radius || '50px'};
     width: 20rem;
+
+    .flex {
+        display: flex;
+    }
+
     &:hover {
         border-color: #aaa;
     }

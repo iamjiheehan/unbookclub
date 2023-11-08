@@ -28,6 +28,7 @@ import DropdownBtn from "styled-components/DropDownBtnStyled";
 import GridStyled from "styled-components/GridStyled";
 import BorderStyled from "styled-components/BorderSyled";
 import { ImgStyled } from "styled-components/ImgStyled";
+import * as SearchStyled from "styled-components/SearchStyled";
 
 // 커스텀 훅
 import { useLoadingContext, Loading } from "hooks/useLoading";
@@ -89,74 +90,74 @@ function SearchBoard() {
     }, [searchResults, hasSearched]);
 
     return (
-        <Container>
-            <Form style={{ display: "inline-block" , marginTop:"1.5rem"}} onSubmit={handleSubmit}>
-                <BorderStyled
-                >
-                <FlexRowMQ alignItems="flex-start">
-                    <div>
-                    <Dropdown>
-                        <Dropdown.Toggle
-                        as={DropdownBtn}
-                        variant="outline-secondary"
-                        id="dropdown-basic"
-                        >
-                        {searchMode}
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                        <Dropdown.Item
-                            href="#"
-                            onClick={() => handleModeChange("키워드로 검색")}
-                        >
-                            키워드로 검색
-                        </Dropdown.Item>
-                        <Dropdown.Item
-                            href="#"
-                            onClick={() => handleModeChange("책제목으로 검색")}
-                        >
-                            책제목으로 검색
-                        </Dropdown.Item>
-                        <Dropdown.Item
-                            href="#"
-                            onClick={() => handleModeChange("작가로 검색")}
-                        >
-                            작가로 검색
-                        </Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                    </div>
-                    <div style={{ margin: "0 2rem" }}>
-                    <FormStyled
-                        type="text"
-                        placeholder="내용을 입력해주세요"
-                        style={{ border: "none" }}
-                        value={
-                            searchMode === "키워드로 검색"  ? searchKeyword : searchMode === "책제목으로 검색" ? searchTitle : searchAuthor 
-                        }
-                        onChange={(e) => {
-                            const { value } = e.target;
-                            if (searchMode === "키워드로 검색") {
-                                setSearchKeyword(value);
-                            } else if (searchMode === "책제목으로 검색") {
-                                setSearchTitle(value);
-                            } else {
-                                setSearchAuthor(value);
+        <SearchStyled.Wrap>
+            <form className="outForm" onSubmit={handleSubmit}>
+                <div className="input-wrap">
+                    <div className="input-content">
+                        <div>
+                            <Dropdown>
+                                <Dropdown.Toggle
+                                as={DropdownBtn}
+                                variant="outline-secondary"
+                                id="dropdown-basic"
+                                >
+                                {searchMode}
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                <Dropdown.Item
+                                    href="#"
+                                    onClick={() => handleModeChange("키워드로 검색")}
+                                >
+                                    키워드로 검색
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                    href="#"
+                                    onClick={() => handleModeChange("책제목으로 검색")}
+                                >
+                                    책제목으로 검색
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                    href="#"
+                                    onClick={() => handleModeChange("작가로 검색")}
+                                >
+                                    작가로 검색
+                                </Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </div>
+                        <div style={{ margin: "0 2rem" }}>
+                        <input
+                            className="searchInput"
+                            type="text"
+                            placeholder="내용을 입력해주세요"
+                            style={{ border: "none" }}
+                            value={
+                                searchMode === "키워드로 검색"  ? searchKeyword : searchMode === "책제목으로 검색" ? searchTitle : searchAuthor 
                             }
-                        }}
-                    />
+                            onChange={(e) => {
+                                const { value } = e.target;
+                                if (searchMode === "키워드로 검색") {
+                                    setSearchKeyword(value);
+                                } else if (searchMode === "책제목으로 검색") {
+                                    setSearchTitle(value);
+                                } else {
+                                    setSearchAuthor(value);
+                                }
+                            }}
+                        />
+                        </div>
+                        <div>
+                            <Button
+                                variant="dark"
+                                type="submit"
+                                style={{ borderRadius: "50px" }}
+                            >
+                                <FaSearch /> 검색
+                            </Button>
+                        </div>
                     </div>
-                    <div>
-                    <Button
-                        variant="dark"
-                        type="submit"
-                        style={{ borderRadius: "50px" }}
-                    >
-                        <FaSearch /> 검색
-                    </Button>
-                    </div>
-                </FlexRowMQ>
-                </BorderStyled>
-            </Form>
+                </div>
+            </form>
             <Loading />
             {searchError && <TextP>{searchError}</TextP>}
             <GridStyled rows="auto" columns="repeat(3,minmax(0,1fr))" margin="3rem">
@@ -164,16 +165,16 @@ function SearchBoard() {
                 .slice(0, searchResults.length)
                 .map((review) => (
                     <Reviews
-                    key={review.id}
-                    reviewObj={review}
-                    isOwner={userObj && review.creatorId === userObj.uid}
-                    rating={review.selectedRating}
-                    bookTitle={review.title}
-                    bookAuthor={review.author}
+                        key={review.id}
+                        reviewObj={review}
+                        isOwner={userObj && review.creatorId === userObj.uid}
+                        rating={review.selectedRating}
+                        bookTitle={review.title}
+                        bookAuthor={review.author}
                     />
                 ))}
             </GridStyled>
-        </Container>
+        </SearchStyled.Wrap>
     );
 }
 

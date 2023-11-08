@@ -38,10 +38,12 @@ export const Content = styled.div`
     
     .content-btn {
         display: flex;
-        align-items: center;
-        justify-content: center;
-
+        -webkit-box-align: center;
         padding-top: 4rem;
+        align-items: baseline;
+        -webkit-box-pack: center;
+        justify-content: center;
+        flex-wrap: wrap;
     }   
 
     .content-wrap {
