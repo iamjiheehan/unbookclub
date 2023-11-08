@@ -20,13 +20,16 @@ import { Btn2 } from "styled-components/BtnStyled";
 import { FaShoppingCart } from "react-icons/fa";
 
 export default function SearchBooks() {
-    // 라우터에서 전달된 검색 결과를 가져옵니다.
     const location = useLocation();
     const searchResults = location.state?.searchResults;
 
-    useEffect(()=>{
-        console.log(searchResults);
-    })
+    useEffect(() => {
+        // searchResults를 사용하여 원하는 작업을 수행합니다.
+        if (searchResults) {
+            console.log("Books.js검색 결과:", searchResults);
+        }
+    });
+
     // 데이터 변수에 할당
     const posts = newBooks;
 

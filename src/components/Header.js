@@ -13,17 +13,15 @@ import AuthContext from "contexts/AuthContext";
 
 // 커스텀 훅
 import useSignOut from "../hooks/useSignOut";
-import { useLoadingContext, Loading } from "hooks/useLoading";
+import { useLoadingContext } from "hooks/useLoading";
 
 //컴포넌트 임포트
 
 // 스타일컴포넌트 임포트
 import * as HeaderStyled from "../styled-components/HeaderStyled";
-import { LoadingBack, LoadingText } from "../styled-components/LoadingStyled";
 
 //커스텀 이미지 임포트
 import logo from "../static/images/logo.webp";
-import Cube from "../static/images/cube.gif";
 import top_header_R from "../static/images/top_header_R.jpg";
 import top_header_L from "../static/images/top_header_L.jpg";
 import header_banner from "../static/images/header_banner.jpg";
@@ -34,7 +32,6 @@ function Header({ reviewObj }) {
     const onSignOutClick = useSignOut();
     let addedBooks = useSelector((state) => state.book);
 
-    const [loading, setLoading] = useState(true);
     const [hover, setHover] = useState(false);
 
     const [searchMode, setSearchMode] = useState("도서명");
@@ -46,8 +43,6 @@ function Header({ reviewObj }) {
     const [query, setQuery] = useState("");
 
     const { startLoading, stopLoading } = useLoadingContext();
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchBooks = async () => {
@@ -103,7 +98,7 @@ function Header({ reviewObj }) {
 
     //검색기능
     const handleSearch = async (event) => {
-        // event.preventDefault();
+        event.preventDefault();
         setSearchError(null);
         startLoading();
         let params = {
@@ -114,8 +109,12 @@ function Header({ reviewObj }) {
         let queryParam = "";
         if (searchMode === "도서명") {
             queryParam = searchTitle;
+            console.log("====================================");
+            console.log(searchTitle);
+            console.log("====================================");
         } else {
             queryParam = searchAuthor;
+            console.log(searchAuthor);
         }
         if (queryParam) {
             params.query = queryParam;
@@ -138,8 +137,7 @@ function Header({ reviewObj }) {
                 setSearchError("검색어를 입력해주세요");
             }
         }
-        //books컴포넌트로 보내고 props로 결과 전달
-        // navigate('/books', { state: { searchResults } });
+        console.log(searchResults + `Header에서 보냅니다`);
         stopLoading();
     };
 
@@ -154,7 +152,6 @@ function Header({ reviewObj }) {
             setSearchAuthor("");
         }
     };
-    
 
     return (
         <>
@@ -295,12 +292,22 @@ function Header({ reviewObj }) {
                                             <div className="dropdown">
                                                 <div className="dropdown-content">
                                                     <button
-                                                        onClick={(e) => handleModeChange("도서명", e)}
+                                                        onClick={(e) =>
+                                                            handleModeChange(
+                                                                "도서명",
+                                                                e
+                                                            )
+                                                        }
                                                     >
                                                         도서명
                                                     </button>
                                                     <button
-                                                        onClick={(e) => handleModeChange("작가명", e)}
+                                                        onClick={(e) =>
+                                                            handleModeChange(
+                                                                "작가명",
+                                                                e
+                                                            )
+                                                        }
                                                     >
                                                         작가명
                                                     </button>
@@ -314,9 +321,22 @@ function Header({ reviewObj }) {
                                         id="serachInput-txt"
                                         type="text"
                                         autoComplete="off"
+                                        value={
+                                            searchMode === "작가명"
+                                                ? searchAuthor
+                                                : searchTitle
+                                        }
+                                        onChange={(e) => {
+                                            const { value } = e.target;
+                                            if (searchMode === "작가명") {
+                                                setSearchAuthor(value);
+                                            } else {
+                                                setSearchTitle(value);
+                                            }
+                                        }}
                                     />
+
                                     <label
-                                        // for="serachInput-txt"
                                         htmlFor="serachInput-txt"
                                         className="hide"
                                     >
@@ -328,7 +348,7 @@ function Header({ reviewObj }) {
                                 <button
                                     type="button"
                                     className="search_btn"
-                                    onClick={() => handleSearch()}
+                                    onClick={(event) => handleSearch(event)}
                                 >
                                     검색
                                 </button>
