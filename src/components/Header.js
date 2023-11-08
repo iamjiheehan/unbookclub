@@ -50,21 +50,17 @@ function Header({ reviewObj }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log("hover:", hover);
-
         firebaseInstance.auth().onAuthStateChanged((user) => {
             setLoading(false);
         });
     }, []);
-
-    if (loading) {
-        return (
-            <LoadingBack>
-                <LoadingText>잠시만 기다려 주세요.</LoadingText>
-                <img src={Cube} alt="로딩중" width="5%" />
-            </LoadingBack>
-        );
-    }
+    
+    useEffect(() => {
+        if (!loading) {
+            handleSearch();
+        }
+    }, [loading]);
+    
 
     // ---------------------------------------헤더 메뉴 호버
 
@@ -105,7 +101,7 @@ function Header({ reviewObj }) {
 
     //검색기능
     const handleSearch = async (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         setSearchError(null);
         startLoading();
         let params = {
@@ -115,8 +111,7 @@ function Header({ reviewObj }) {
         };
         let queryParam = "";
         if (searchMode === "통합검색") {
-            queryParam = searchTitle;
-            queryParam = searchAuthor;
+            queryParam = searchTitle + " " + searchAuthor;
         } else if (searchMode === "도서명") {
             queryParam = searchTitle;
         } else {
@@ -143,7 +138,8 @@ function Header({ reviewObj }) {
                 setSearchError("검색어를 입력해주세요");
             }
         }
-        navigate('/books')
+        //books컴포넌트로 보내고 props로 결과 전달
+        navigate('/books', { state: { searchResults } });
         stopLoading();
     };
 
@@ -346,7 +342,7 @@ function Header({ reviewObj }) {
                             <button
                                 type="submit"
                                 className="search_btn"
-                                onClick={handleSearch}
+                                onClick={() => handleSearch()}
                             >
                                 검색
                             </button>

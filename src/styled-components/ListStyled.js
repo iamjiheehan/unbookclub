@@ -1,9 +1,8 @@
 import styled from "styled-components";
+import backImg from "../static/images/nodata.jpg"
 
 export const Container = styled.div`
-
-
-    background-color: #f8f8f8;
+    /* background-color: #f8f8f8; */
 `;
 
 export const Wrap = styled.div`
@@ -33,12 +32,15 @@ export const Content = styled.div`
     background: ${(props) => props.background || "#f8f8f8"};
     overflow: hidden;
 
+    h1 {
+        text-align: center;
+    }
     
     .content-wrap {
         display: grid;
         grid-template-columns: repeat(4, 1fr); /* 각 열의 너비를 균일하게 1fr로 설정 */
         gap: 2.5rem;
-        padding-top: 70px;
+        /* padding-top: 70px; */
         margin: 0 auto;
 
     }
@@ -171,5 +173,32 @@ export const CartWrap = styled.div`
         align-items: center;
         justify-content: space-around;
         gap:2px;
+    }
+
+`;
+
+
+export const Warning = styled.div`
+    height: 500px;
+    width: 1030px;
+    margin: 0 auto;
+    position: relative;
+
+    .warning-box {
+        background-image: url(${backImg});
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-color: white;
+        width: 100%;
+        height: 100%;
+    }
+
+    h5 {
+        margin-top: 2rem;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 `;
