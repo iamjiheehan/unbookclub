@@ -55,7 +55,7 @@ export const Content = styled.div`
         gap: 3rem;
         grid-template-columns: repeat(3, 1fr);
         width: 1260px;
-        padding: 55px 0;
+        padding-bottom: 55px;
         margin: 0 auto 0;
     }
 
@@ -132,6 +132,10 @@ export const Content = styled.div`
         p {
             font-size: 14px;
         }
+    }
+
+    .seemore-wrap {
+        text-align: center;
     }
     
 `;

@@ -20,23 +20,24 @@ import Reviews from "components/Reviews";
 import { useReviewForm } from "hooks/useReviewForm";
 
 export default function Board() {
-    
     const { userObj } = useContext(AuthContext);
     const { reviewList } = useReviewForm(userObj);
-    const [numReviewsToShow, setNumReviewsToShow] = useState(12);
+    const [numReviewsToShow, setNumReviewsToShow] = useState(9);
     const [searchResults, setSearchResults] = useState([]);
     const [hasSearched, setHasSearched] = useState(false);
     const [showUserReviewsOnly, setShowUserReviewsOnly] = useState(false);
 
     const handleLoadMore = () => {
-        setNumReviewsToShow(numReviewsToShow + 12);
+        setNumReviewsToShow(numReviewsToShow + 9);
     };
-    
+
     const handleShowUserReviewsOnly = () => {
         if (showUserReviewsOnly) {
             setHasSearched(false);
         } else {
-            const filteredReviews = reviewList.filter((review) => review.creatorId === userObj.uid);
+            const filteredReviews = reviewList.filter(
+                (review) => review.creatorId === userObj.uid
+            );
             setSearchResults(filteredReviews);
             setHasSearched(true);
         }
@@ -60,17 +61,20 @@ export default function Board() {
             <div>
                 <BoardStyled.Content className="content-container">
                     <div className="content-btn">
-                        <Btn2
-                            onClick={handleShowUserReviewsOnly}
-                            bgColor="rgb(51, 175, 233)"
-                            border="1px solid rgb(51, 175, 233)"
-                        >
-                            {showUserReviewsOnly
-                                ? "모든 리뷰 보기"
-                                : "내 리뷰만 보기"}
-                        </Btn2>
+                        {userObj && (
+                            <Btn2
+                                onClick={handleShowUserReviewsOnly}
+                                bgColor="rgb(51, 175, 233)"
+                                border="1px solid rgb(51, 175, 233)"
+                            >
+                                {showUserReviewsOnly
+                                    ? "모든 리뷰 보기"
+                                    : "내 리뷰만 보기"}
+                            </Btn2>
+                        )}
                     </div>
-                    <SearchBoard /> 
+
+                    <SearchBoard />
                     <div className="content-wrap">
                         {reviewList.slice(0, numReviewsToShow).map((review) => (
                             <Reviews
@@ -86,13 +90,15 @@ export default function Board() {
                         ))}
                     </div>
                     {!hasSearched && numReviewsToShow < reviewList.length && (
-                        <Btn2
-                            variant="dark"
-                            onClick={handleLoadMore}
-                            style={{ marginBottom: "4rem" }}
-                        >
-                            더 보기
-                        </Btn2>
+                        <div className="seemore-wrap">
+                            <Btn2
+                                variant="dark"
+                                onClick={handleLoadMore}
+                                style={{ marginBottom: "4rem" }}
+                            >
+                                더 보기
+                            </Btn2>
+                        </div>
                     )}
                 </BoardStyled.Content>
             </div>
