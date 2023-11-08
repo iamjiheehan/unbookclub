@@ -3,6 +3,7 @@ import React, { useState }  from "react";
 // 컴포넌트
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Error404 from "components/Error404";
 
 import Create from "./pages/Create"
 import SignIn from "./pages/SignIn";
@@ -118,6 +119,7 @@ function App() {
                   isSignedIn || isSignedUp ? <UserInfo /> : <Navigate to="/signIn" />
                 }
               />
+              <Route path="/*" element={<Error404 />} />
             </Routes>
             <Footer />
           </div>
