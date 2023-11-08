@@ -1,10 +1,12 @@
 //헤더 컴포넌트
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 //라이브러리 및 스토어
 import { firebaseInstance } from "fBase";
 import { kakaoSearch } from "api/searchApi";
+import { useSelector } from "react-redux";
 
 // 로그인 contextAPI
 import AuthContext from "contexts/AuthContext";
@@ -25,7 +27,6 @@ import Cube from "../static/images/cube.gif";
 import top_header_R from "../static/images/top_header_R.jpg";
 import top_header_L from "../static/images/top_header_L.jpg";
 import header_banner from "../static/images/header_banner.jpg";
-import { useSelector } from "react-redux";
 
 function Header({ reviewObj }) {
     const { userObj } = useContext(AuthContext);
@@ -45,6 +46,8 @@ function Header({ reviewObj }) {
     const [query, setQuery] = useState("");
 
     const { startLoading, stopLoading } = useLoadingContext();
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         console.log("hover:", hover);
@@ -111,7 +114,10 @@ function Header({ reviewObj }) {
             size: 10, // 한 페이지에 보여 질 문서의 개수
         };
         let queryParam = "";
-        if (searchMode === "도서명으로 검색") {
+        if (searchMode === "통합검색") {
+            queryParam = searchTitle;
+            queryParam = searchAuthor;
+        } else if (searchMode === "도서명") {
             queryParam = searchTitle;
         } else {
             queryParam = searchAuthor;
@@ -137,14 +143,15 @@ function Header({ reviewObj }) {
                 setSearchError("검색어를 입력해주세요");
             }
         }
+        navigate('/books')
         stopLoading();
     };
 
     //드롭다운 관련 메뉴
-    
+
     const handleModeChange = (mode) => {
         setSearchMode(mode);
-        if (mode === "도서명으로 검색") {
+        if (mode === "도서명") {
             setSearchTitle("");
         } else {
             setSearchAuthor("");
@@ -273,18 +280,17 @@ function Header({ reviewObj }) {
                             name="QuickSearch"
                             action=""
                         >
-                            <div
-                                id="global_search"
-                                onMouseEnter={() => {
-                                    setHover(true);
-                                    console.log("Mouse entered");
-                                }}
-                                onMouseLeave={() => {
-                                    setHover(false);
-                                    console.log("Mouse left");
-                                }}
-                            >
-                                <dl>
+                            <div id="global_search">
+                                <dl
+                                    onMouseEnter={() => {
+                                        setHover(true);
+                                        console.log("Mouse entered");
+                                    }}
+                                    onMouseLeave={() => {
+                                        setHover(false);
+                                        console.log("Mouse left");
+                                    }}
+                                >
                                     <dt id="searchTarget">
                                         {searchMode}
                                         {hover && (
