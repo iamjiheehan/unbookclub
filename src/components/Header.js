@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 
 //라이브러리 및 스토어
 import { firebaseInstance } from "fBase";
+import { kakaoSearch } from "api/searchApi";
 
 // 로그인 contextAPI
 import AuthContext from "contexts/AuthContext";
 
 // 커스텀 훅
 import useSignOut from "../hooks/useSignOut";
+import { useLoadingContext, Loading } from "hooks/useLoading";
 
 //컴포넌트 임포트
 
@@ -26,21 +28,27 @@ import header_banner from "../static/images/header_banner.jpg";
 import { useSelector } from "react-redux";
 
 function Header({ reviewObj }) {
-    const [mode, setMode] = useState("");
-    const [show, setShow] = useState(false);
-
     const { userObj } = useContext(AuthContext);
     const displayName = userObj?.displayName;
     const onSignOutClick = useSignOut();
     let addedBooks = useSelector((state) => state.book);
 
     const [loading, setLoading] = useState(true);
+    const [hover, setHover] = useState(false);
 
-    const [searchMode, setSearchMode] = useState("도서명으로 검색");
+    const [searchMode, setSearchMode] = useState("통합검색");
     const [searchTitle, setSearchTitle] = useState("");
     const [searchAuthor, setSearchAuthor] = useState("");
 
+    const [searchError, setSearchError] = useState(null);
+    const [searchResults, setSearchResults] = useState([]);
+    const [query, setQuery] = useState("");
+
+    const { startLoading, stopLoading } = useLoadingContext();
+
     useEffect(() => {
+        console.log("hover:", hover);
+
         firebaseInstance.auth().onAuthStateChanged((user) => {
             setLoading(false);
         });
@@ -92,15 +100,53 @@ function Header({ reviewObj }) {
         });
     });
 
+    //검색기능
+    const handleSearch = async (event) => {
+        event.preventDefault();
+        setSearchError(null);
+        startLoading();
+        let params = {
+            sort: "accuracy", // accuracy | recency 정확도 or 최신
+            page: 1, // 페이지번호
+            size: 10, // 한 페이지에 보여 질 문서의 개수
+        };
+        let queryParam = "";
+        if (searchMode === "도서명으로 검색") {
+            queryParam = searchTitle;
+        } else {
+            queryParam = searchAuthor;
+        }
+        if (queryParam) {
+            params.query = queryParam;
+            setQuery(queryParam);
+            try {
+                const { data } = await kakaoSearch(params); // api 호출
+                console.log(data);
+                const searchResults = data.documents;
+                setSearchResults(searchResults);
+                if (searchResults.length === 0) {
+                    setSearchError("검색 결과가 없습니다.");
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        } else {
+            if (searchResults.length > 0) {
+                setSearchResults([]);
+            } else if (searchResults.length === 0) {
+                setSearchError("검색어를 입력해주세요");
+            }
+        }
+        stopLoading();
+    };
+
     //드롭다운 관련 메뉴
+    
     const handleModeChange = (mode) => {
         setSearchMode(mode);
-        if (mode === "통합검색") {
+        if (mode === "도서명으로 검색") {
             setSearchTitle("");
-            setSearchAuthor("");
-        } else if (mode === "도서명") {
-            setSearchTitle("");
-        } else if (mode === "작가명") {
+        } else {
             setSearchAuthor("");
         }
     };
@@ -227,17 +273,53 @@ function Header({ reviewObj }) {
                             name="QuickSearch"
                             action=""
                         >
-                            <div id="global_search">
+                            <div
+                                id="global_search"
+                                onMouseEnter={() => {
+                                    setHover(true);
+                                    console.log("Mouse entered");
+                                }}
+                                onMouseLeave={() => {
+                                    setHover(false);
+                                    console.log("Mouse left");
+                                }}
+                            >
                                 <dl>
                                     <dt id="searchTarget">
-                                        통합검색
-                                        <div class="dropdown">
-                                            <div className="dropdown-content">
-                                                <button onClick={handleModeChange}>통합검색</button>
-                                                <button onClick={handleModeChange}>도서명</button>
-                                                <button onClick={handleModeChange}>작가명</button>
+                                        {searchMode}
+                                        {hover && (
+                                            <div className="dropdown">
+                                                <div className="dropdown-content">
+                                                    <button
+                                                        onClick={() =>
+                                                            handleModeChange(
+                                                                "통합검색"
+                                                            )
+                                                        }
+                                                    >
+                                                        통합검색
+                                                    </button>
+                                                    <button
+                                                        onClick={() =>
+                                                            handleModeChange(
+                                                                "도서명"
+                                                            )
+                                                        }
+                                                    >
+                                                        도서명
+                                                    </button>
+                                                    <button
+                                                        onClick={() =>
+                                                            handleModeChange(
+                                                                "작가명"
+                                                            )
+                                                        }
+                                                    >
+                                                        작가명
+                                                    </button>
+                                                </div>
                                             </div>
-                                        </div>
+                                        )}
                                     </dt>
                                 </dl>
                                 <div id="serachInput-box">
@@ -255,7 +337,11 @@ function Header({ reviewObj }) {
                                     </label>
                                 </div>
                             </div>
-                            <button type="submit" className="search_btn">
+                            <button
+                                type="submit"
+                                className="search_btn"
+                                onClick={handleSearch}
+                            >
                                 검색
                             </button>
                         </form>

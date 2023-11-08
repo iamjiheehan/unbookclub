@@ -355,6 +355,7 @@ export const Bottom = styled.div`
         float: left;
         width: 78px;
         margin: 7px 0px 0px 10px;
+
     }
 
     #global_search dt {
@@ -365,6 +366,8 @@ export const Bottom = styled.div`
         width: 78px;
         padding: 0.3em;
         /* background-color:red; */
+
+        
     }
 
     #searchTarget {
@@ -397,7 +400,6 @@ export const Bottom = styled.div`
         .dropdown-content {
             border: 2px solid #5397d0;
             font-weight: bold;
-            display: none;
             z-index: 1; /*다른 요소들보다 앞에 배치*/
             font-weight: 400;
         }
@@ -414,15 +416,11 @@ export const Bottom = styled.div`
             margin: 0;
             width: 100%;
             text-align: left;
+
             &:hover{
                 background-color: #ececec;
             }
         }
-
-        
-        &:hover .dropdown-content {
-            display: block;
-        } 
     }
 
     #serachInput-box {
