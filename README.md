@@ -29,28 +29,6 @@
   -  ##### 닉네임 변경하기
    - #### 작성 리뷰목록 보기
     
-## 🌍 미리보기
-
-### 배포 URL : https://the-unbook-club.web.app/
- ###  목적 : 리액트,API 호출을 활용한 프로젝트
- 
-#### 메인화면
-![메인화면](https://user-images.githubusercontent.com/102779433/231512655-5d531fa7-e3bb-445a-800c-6e9a03cedcc3.gif)
-__
-#### 로그인
-![로그인](https://user-images.githubusercontent.com/102779433/231512888-525fc6ba-6261-4855-bd01-1c43920fdd9f.gif)
-__
-#### 독후감 작성
-![독서평 작성](https://user-images.githubusercontent.com/102779433/231513187-0acc500f-2562-40f0-8ca2-1412eb4ae12e.gif)
-__
-#### 도서 검색
-![도서검색](https://user-images.githubusercontent.com/102779433/231513174-6d625f78-75ce-4022-9a17-7c7da5928f2d.gif)
-__
-#### 읽을 목록에 추가
-![도서추가](https://user-images.githubusercontent.com/102779433/231513142-a2ec1c51-c89f-4673-af59-d0a4b1499cc3.gif)
-
-
-___
 
 ### ✔The Unbookclub 프로젝트로 진행한 계기
 - ##### 디자인 : https://bookclubs.com/를 참고하여 디자인을 적용했습니다.
@@ -347,7 +325,4 @@ export default useAuth;
     };
 
 ```
-___
 
-### ✅ 오류 해결
--  https://hans-j.tistory.com/204
