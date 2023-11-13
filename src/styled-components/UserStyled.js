@@ -23,16 +23,22 @@ export const Wrap = styled.div`
     }
 
     .top-wrap .name-input {
-        font-size: 1.2rem;
+        font-size: 1rem;
         padding: 1rem 5rem 1rem 1rem;
         border: none;
         border-bottom: 1px solid #333;
         width: 500px;
+        height: 50px;
+
+        input:focus-visible{
+            border: none;
+            border-bottom: 1px solid #333;
+        }
     }
 
     .top-wrap .name-change {
         position: absolute;
-        top: 0;
+        top: 2px;
         right: 17rem;
     }
 

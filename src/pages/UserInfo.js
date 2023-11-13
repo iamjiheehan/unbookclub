@@ -19,7 +19,7 @@ import ReviewTable from "../components/ReviewTable";
 // 스타일컴포넌트 임포트
 import * as UserStyled from "../styled-components/UserStyled";
 
-import { FlexRow} from "styled-components/FlexStyled";
+import { FlexRow } from "styled-components/FlexStyled";
 import { ImgStyled } from "styled-components/ImgStyled";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Btn3, BtnInput } from "styled-components/BtnStyled";
@@ -100,78 +100,89 @@ export default function UserInfo() {
                     {addedBooks.length === 0 && (
                         <h4>서재에 추가된 책이 없습니다.</h4>
                     )}
-                {addedBooks.length !== 0 && (
-                    <>
-                        <h5>
-                            읽을 목록에 추가된 책이 {addedBooks.length}권
-                            있습니다.
-                        </h5>
-                        {addedBooks.map((book) => (
-                            <FlexRow key={book.isbn} alignItems="center">
-                                <ImgStyled
-                                    src={book.coverLargeUrl}
-                                    alt={book.title}
-                                    width="100px"
-                                    margin="1rem"
-                                />
-                                <div className="book-info">
-                                    <p><strong>{book.title}</strong></p>
-                                    <p>{book.author}</p>
-                                </div>
-                                <Btn3 onClick={() => deleteBook(book.itemId)}>
-                                    삭제하기
-                                </Btn3>
-                            </FlexRow>
-                        ))}
-                    </>
-                )}
+                    {addedBooks.length !== 0 && (
+                        <>
+                            <h5>
+                                읽을 목록에 추가된 책이 {addedBooks.length}권
+                                있습니다.
+                            </h5>
+                            {addedBooks.map((book) => (
+                                <FlexRow key={book.isbn} alignItems="center">
+                                    <ImgStyled
+                                        src={book.coverLargeUrl}
+                                        alt={book.title}
+                                        width="100px"
+                                        margin="1rem"
+                                    />
+                                    <div className="book-info">
+                                        <p>
+                                            <strong>{book.title}</strong>
+                                        </p>
+                                        <p>{book.author}</p>
+                                    </div>
+                                    <Btn3
+                                        onClick={() => deleteBook(book.itemId)}
+                                    >
+                                        삭제하기
+                                    </Btn3>
+                                </FlexRow>
+                            ))}
+                        </>
+                    )}
                 </div>
                 <hr />
                 <div className="bottom-wrap">
-                  <h4>작성한 리뷰 목록</h4>
-                  <Dropdown style={{ textAlign: "right", marginBottom: "2rem" }}>
-                      <Dropdown.Toggle
-                          variant="secondary"
-                          id="dropdown-basic"
-                          style={{ backgroundColor: "white", color: "black" }}
-                      >
-                          {sortingCriteria === "" ? "정렬 기준" : sortingCriteria}
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu>
-                          <Dropdown.Item
-                              onClick={sortByDateDescending}
-                              href="#/action-1"
-                          >
-                              최신 순
-                          </Dropdown.Item>
-                          <Dropdown.Item
-                              onClick={sortByDateAscending}
-                              href="#/action-3"
-                          >
-                              오래된 순
-                          </Dropdown.Item>
-                          <Dropdown.Item onClick={sortByRating} href="#/action-2">
-                              별점 순
-                          </Dropdown.Item>
-                      </Dropdown.Menu>
-                  </Dropdown>
-                  {loading ? (
-                      <Loading />
-                  ) : (
-                      <>
-                          {filteredReviews.length === 0 && (
-                              <h3>작성한 리뷰가 없습니다.</h3>
-                          )}
-                          {filteredReviews.length !== 0 && (
-                              <ReviewTable
-                                  reviews={filteredReviews}
-                                  setFilteredReviews={setFilteredReviews}
-                              />
-                          )}
-                      </>
-                  )}
+                    <p>작성한 리뷰 목록</p>
+                    <Dropdown
+                        style={{ textAlign: "right", marginBottom: "2rem" }}
+                    >
+                        <Dropdown.Toggle
+                            variant="secondary"
+                            id="dropdown-basic"
+                            style={{ backgroundColor: "white", color: "black" }}
+                        >
+                            {sortingCriteria === ""
+                                ? "정렬 기준"
+                                : sortingCriteria}
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            <Dropdown.Item
+                                onClick={sortByDateDescending}
+                                href="#/action-1"
+                            >
+                                최신 순
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                                onClick={sortByDateAscending}
+                                href="#/action-3"
+                            >
+                                오래된 순
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                                onClick={sortByRating}
+                                href="#/action-2"
+                            >
+                                별점 순
+                            </Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    {loading ? (
+                        <Loading />
+                    ) : (
+                        <>
+                            {filteredReviews.length === 0 && (
+                                <p>작성한 리뷰가 없습니다.</p>
+                            )}
+                            {filteredReviews.length !== 0 && (
+                                <ReviewTable
+                                    reviews={filteredReviews}
+                                    setFilteredReviews={setFilteredReviews}
+                                />
+                            )}
+                        </>
+                    )}
                 </div>
-              </div>
+            </div>
         </UserStyled.Wrap>
     );
 }

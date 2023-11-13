@@ -57,8 +57,31 @@ function Header({ reviewObj, updateResults }) {
                 console.error("Error fetching books:", error);
             }
         };
+    
+        // fetchBooks 함수는 컴포넌트가 마운트될 때와 displayName이 변경될 때 실행
         fetchBooks();
-    }, []);
+    
+        return () => {
+            // 컴포넌트가 언마운트되면서 cleanup 함수로서 동작
+            // 필요에 따라 추가 로직을 수행할 수 있음
+        };
+    }, [displayName]); // displayName이 변경될 때마다 useEffect 재실행
+    
+
+    // useEffect(() => {
+    //     const fetchBooks = async () => {
+    //         try {
+    //             const { data } = await kakaoSearch({
+    //                 query: "some_search_term",
+    //             });
+    //             setSearchResults(data.documents);
+    //             console.log("fetchBooks");
+    //         } catch (error) {
+    //             console.error("Error fetching books:", error);
+    //         }
+    //     };
+    //     fetchBooks();
+    // }, []);
 
     // ---------------------------------------헤더 메뉴 호버
 
@@ -252,7 +275,7 @@ function Header({ reviewObj, updateResults }) {
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link to="/signIn" title="회원가입">
+                                        <Link to="/signUp" title="회원가입">
                                             회원가입
                                         </Link>
                                     </li>
@@ -341,7 +364,6 @@ function Header({ reviewObj, updateResults }) {
                                             }
                                         }}
                                     />
-
                                     <label
                                         htmlFor="serachInput-txt"
                                         className="hide"

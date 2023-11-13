@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { authService, firebaseInstance } from "fBase";
 
 function useSignInForm() {
@@ -13,6 +14,12 @@ function useSignInForm() {
     const [createShowAlert, setCreateShowAlert] = useState(false);
     
 
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        // 이 효과는 createErrorMessage가 변경될 때마다 실행됩니다.
+        console.log(createErrorMessage);
+    }, [createErrorMessage]); // createErrorMessage를 의존성 배열에 추가
 
     const handleAnonymousLogin = () => {
         firebaseInstance.auth().signInAnonymously()
@@ -44,10 +51,10 @@ function useSignInForm() {
         }
     };
 
-
     const onChange = (event) => {
         if (event) {
         event.preventDefault();
+        setCreateErrorMessage("");
         }
         console.log(event.target.name);
         const {
@@ -68,53 +75,62 @@ function useSignInForm() {
 
     const onLoginSubmit = async (event) => {
         try {
-        if (loginEmail && loginPassword) {
-            const data = await authService.signInWithEmailAndPassword(
-            loginEmail,
-            loginPassword
-            );
-            console.log(data);
-        } else {
-            loginErrorMessage("이메일 혹은 비밀번호를 다시 확인해주세요");
-            setLoginShowAlert(true);
-        }
+            if (loginEmail && loginPassword) {
+                const data = await authService.signInWithEmailAndPassword(
+                    loginEmail,
+                    loginPassword
+                );
+                console.log(data);
+            } else {
+                setLoginErrorMessage("이메일 혹은 비밀번호를 다시 확인해주세요");
+                setLoginShowAlert(true);
+            }
         } catch (error) {
-        console.log(error);
-        setLoginErrorMessage("로그인에 실패하였습니다. 잠시후 다시 시도해주세요.");
+            console.log(error);
+            setLoginErrorMessage("로그인에 실패하였습니다. 잠시후 다시 시도해주세요.");
         }
     };
-
+    
     const onCreateAccountSubmit = async (event) => {
         if (event) {
-        event.preventDefault();
+            event.preventDefault();
         }
+    
         try {
-        let data;
-        if (createPassword === confirmPassword) {
-            if (createEmail && createPassword) {
-            data = await authService.createUserWithEmailAndPassword(
-                createEmail,
-                createPassword
-            );
-            console.log(data);
-            } else if (createPassword !== confirmPassword) {
-                setCreateErrorMessage("비밀번호가 같지 않습니다.");
+            let data;
+    
+            if (createEmail && createPassword && createPassword === confirmPassword) {
+                // 이메일, 비밀번호가 존재하고 비밀번호가 일치하는 경우
+                data = await authService.createUserWithEmailAndPassword(
+                    createEmail,
+                    createPassword
+                );
+    
+                // 사용자 계정이 성공적으로 생성된 경우에만 페이지 이동
+                navigate('/');
+            } else {
+                // 비밀번호가 일치하지 않거나 이메일 또는 비밀번호 값이 없는 경우
+                setCreateErrorMessage("비밀번호가 일치하지 않습니다.");
                 setCreateShowAlert(true);
+                console.log(createErrorMessage);
             }
-        }
-        console.log(data);
         } catch (error) {
-        console.log(error);
-        if (error.code === "auth/invalid-email") {
-            setCreateErrorMessage("올바른 이메일 형식이 아닙니다.");
-        } else if (error.code === "auth/email-already-in-use") {
-            setCreateErrorMessage("이미 가입된 이메일입니다.");
-        } else {
-            setCreateErrorMessage("비밀번호는 8글자 이상을 입력해주세요.");
-        }
-        setCreateShowAlert(true);
+            console.log(error);
+    
+            // Firebase Auth 에러 코드를 확인하여 적절한 메시지 설정
+            if (error.code === "auth/invalid-email") {
+                setCreateErrorMessage("올바른 이메일 형식이 아닙니다.");
+            } else if (error.code === "auth/email-already-in-use") {
+                setCreateErrorMessage("이미 가입된 이메일입니다.");
+            } else {
+                setCreateErrorMessage("비밀번호는 8글자 이상을 입력해주세요.");
+            }
+    
+            setCreateShowAlert(true);
         }
     };
+    
+
     const onPasswordRecoverySubmit = async (event) => {
         if (event) {
             event.preventDefault();
