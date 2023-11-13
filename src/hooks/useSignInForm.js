@@ -125,9 +125,9 @@ function useSignInForm() {
             } else {
                 setCreateErrorMessage("비밀번호는 8글자 이상을 입력해주세요.");
             }
-    
             setCreateShowAlert(true);
         }
+        window.scrollTo(0, 0);
     };
     
 

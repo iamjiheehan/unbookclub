@@ -218,9 +218,7 @@ const BtnInputStyled = styled.input`
 
 export const BtnInput = ({ to, children, ...rest }) => {
     return (
-        <Link to={to}>
-            <BtnInputStyled {...rest}>{children}</BtnInputStyled>
-        </Link>
+            <BtnInputStyled {...rest} />
     );
 };
 
@@ -257,8 +255,6 @@ const Btn2InputStyled = styled.input`
 
 export const Btn2Input = ({ to, children, ...rest }) => {
     return (
-        <Link to={to}>
-            <Btn2InputStyled {...rest}>{children}</Btn2InputStyled>
-        </Link>
+        <Btn2InputStyled {...rest} />
     );
 };

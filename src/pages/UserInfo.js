@@ -25,17 +25,25 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { Btn3, BtnInput } from "styled-components/BtnStyled";
 
 export default function UserInfo() {
+    const { newDisplayName, onChange, onSubmit } = useUpdateProfile();
     const { userObj, setUserObj } = useContext(AuthContext);
     const { reviews, loading } = useFetchReviews(userObj);
-    const { newDisplayName, onChange, onSubmit } = useUpdateProfile();
     const [filteredReviews, setFilteredReviews] = useState([]);
     const [sortingCriteria, setSortingCriteria] = useState("");
     const dispatch = useDispatch();
     let addedBooks = useSelector((state) => state.book);
 
     useEffect(() => {
+        console.log();
         setFilteredReviews(reviews);
     }, [reviews]);
+
+    useEffect(() => {
+        if (newDisplayName) {
+            console.log("UsesrInfo에서 보내는"+newDisplayName, userObj.id);
+        }
+    }, [newDisplayName]); 
+    
 
     if (!userObj) {
         return null;
@@ -76,9 +84,15 @@ export default function UserInfo() {
         <UserStyled.Wrap>
             <div>
                 <div className="top-wrap">
-                    <h1>
-                        <strong>{userObj.displayName}</strong> 님 안녕하세요
-                    </h1>
+                    { userObj.uid ? (
+                        <h1>
+                            <strong>{userObj.displayName}</strong> 님 안녕하세요
+                        </h1>
+                    ) : (
+                        <h1>
+                            <strong>회원</strong> 님 안녕하세요
+                        </h1>
+                    )}
                     <form onSubmit={onSubmit}>
                         <div className="name-wrap">
                             <input

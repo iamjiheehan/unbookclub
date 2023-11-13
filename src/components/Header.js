@@ -46,6 +46,12 @@ function Header({ reviewObj, updateResults }) {
     const navigate = useNavigate();
 
     useEffect(() => {
+        if (userObj) {
+            console.log("Header에서 보내는" + userObj);
+        }
+    }, [userObj]);
+
+    useEffect(() => {
         const fetchBooks = async () => {
             try {
                 const { data } = await kakaoSearch({
@@ -57,16 +63,15 @@ function Header({ reviewObj, updateResults }) {
                 console.error("Error fetching books:", error);
             }
         };
-    
+
         // fetchBooks 함수는 컴포넌트가 마운트될 때와 displayName이 변경될 때 실행
         fetchBooks();
-    
+
         return () => {
             // 컴포넌트가 언마운트되면서 cleanup 함수로서 동작
             // 필요에 따라 추가 로직을 수행할 수 있음
         };
     }, [displayName]); // displayName이 변경될 때마다 useEffect 재실행
-    
 
     // useEffect(() => {
     //     const fetchBooks = async () => {
@@ -139,18 +144,18 @@ function Header({ reviewObj, updateResults }) {
         if (queryParam) {
             params.query = queryParam;
             setQuery(queryParam);
-            console.log(query,searchMode);
+            console.log(query, searchMode);
             try {
                 const { data } = await kakaoSearch(params); // api 호출
                 console.log(data);
-    
+
                 const searchResults = data.documents;
                 setSearchResults(searchResults);
-    
+
                 console.log(searchResults + `Header에서 보냅니다`);
-    
+
                 updateResults(searchResults); // App.js에 저장된 함수에 값 전달
-    
+
                 navigate("/books");
                 if (searchResults.length === 0) {
                     setSearchError("검색 결과가 없습니다.");
@@ -165,10 +170,9 @@ function Header({ reviewObj, updateResults }) {
                 setSearchError("검색어를 입력해주세요");
             }
         }
-    
+
         stopLoading();
     };
-    
 
     //드롭다운 관련 메뉴
 
@@ -240,13 +244,22 @@ function Header({ reviewObj, updateResults }) {
                         </ul>
                         <ul className="util" id="headerTop_util">
                             {reviewObj}
-                            {displayName ? (
+                            {userObj ? (
                                 <>
                                     <li>
-                                        <span>
-                                            <strong>{displayName}</strong> 님
-                                            반가워요!
-                                        </span>
+                                        {userObj.uid ? (
+                                            <span>
+                                                <strong>
+                                                    {userObj.displayName}
+                                                </strong>{" "}
+                                                회원님 안녕하세요
+                                            </span>
+                                        ) : (
+                                            <span>
+                                                <strong>회원</strong> 님
+                                                안녕하세요
+                                            </span>
+                                        )}
                                     </li>
                                     <li>
                                         <button onClick={onSignOutClick}>
