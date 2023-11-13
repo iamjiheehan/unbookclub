@@ -1,10 +1,9 @@
 //헤더 컴포넌트
 import React, { useContext, useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 //라이브러리 및 스토어
-import { firebaseInstance } from "fBase";
 import { kakaoSearch } from "api/searchApi";
 import { useSelector } from "react-redux";
 
@@ -30,6 +29,7 @@ function Header({ reviewObj, updateResults }) {
     const { userObj } = useContext(AuthContext);
     const displayName = userObj?.displayName;
     const onSignOutClick = useSignOut();
+
     let addedBooks = useSelector((state) => state.book);
 
     const [hover, setHover] = useState(false);
@@ -45,48 +45,19 @@ function Header({ reviewObj, updateResults }) {
     const { startLoading, stopLoading } = useLoadingContext();
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (userObj) {
-            console.log("Header에서 보내는" + userObj);
-        }
-    }, [userObj]);
 
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const { data } = await kakaoSearch({
-                    query: "some_search_term",
-                });
+                const { data } = await kakaoSearch({ query: 'some_search_term' });
                 setSearchResults(data.documents);
-                console.log("fetchBooks");
-            } catch (error) {
-                console.error("Error fetching books:", error);
+                console.log('fetchBooks');
+                } catch (error) {
+                console.error('Error fetching books:', error);
             }
         };
-
-        // fetchBooks 함수는 컴포넌트가 마운트될 때와 displayName이 변경될 때 실행
         fetchBooks();
-
-        return () => {
-            // 컴포넌트가 언마운트되면서 cleanup 함수로서 동작
-            // 필요에 따라 추가 로직을 수행할 수 있음
-        };
-    }, [displayName]); // displayName이 변경될 때마다 useEffect 재실행
-
-    // useEffect(() => {
-    //     const fetchBooks = async () => {
-    //         try {
-    //             const { data } = await kakaoSearch({
-    //                 query: "some_search_term",
-    //             });
-    //             setSearchResults(data.documents);
-    //             console.log("fetchBooks");
-    //         } catch (error) {
-    //             console.error("Error fetching books:", error);
-    //         }
-    //     };
-    //     fetchBooks();
-    // }, []);
+    }, []); 
 
     // ---------------------------------------헤더 메뉴 호버
 
@@ -103,7 +74,7 @@ function Header({ reviewObj, updateResults }) {
             }
         });
     });
-
+    
     // mouseleave 이벤트 리스너를 추가하여 자식 div를 숨김.
     listItems.forEach(function (listItem) {
         listItem.addEventListener("mouseleave", function () {
@@ -130,33 +101,37 @@ function Header({ reviewObj, updateResults }) {
         event.preventDefault();
         setSearchError(null);
         startLoading();
+    
+        // 검색 파라미터 초기화
         let params = {
-            sort: "accuracy", // accuracy | recency 정확도 or 최신
-            page: 1, // 페이지번호
-            size: 10, // 한 페이지에 보여 질 문서의 개수
+            sort: "accuracy",
+            page: 1,
+            size: 16,
         };
+    
         let queryParam = "";
         if (searchMode === "도서명") {
+            params.title = searchTitle;  // 도서명일 경우 params.title로 설정
             queryParam = searchTitle;
         } else if (searchMode === "작가명") {
+            params.authors = searchAuthor;  // 작가명일 경우 params.authors로 설정
             queryParam = searchAuthor;
         }
+    
         if (queryParam) {
             params.query = queryParam;
             setQuery(queryParam);
-            console.log(query, searchMode);
             try {
-                const { data } = await kakaoSearch(params); // api 호출
-                console.log(data);
-
+                const { data } = await kakaoSearch(params);
                 const searchResults = data.documents;
+    
+                // 검색 결과 갱신 및 화면 이동
                 setSearchResults(searchResults);
-
-                console.log(searchResults + `Header에서 보냅니다`);
-
-                updateResults(searchResults); // App.js에 저장된 함수에 값 전달
-
+                updateResults(searchResults);
                 navigate("/books");
+
+                console.log(queryParam,searchMode,searchResults);
+    
                 if (searchResults.length === 0) {
                     setSearchError("검색 결과가 없습니다.");
                 }
@@ -164,18 +139,18 @@ function Header({ reviewObj, updateResults }) {
                 console.error(error);
             }
         } else {
+            // 검색어가 없는 경우 처리
             if (searchResults.length > 0) {
                 setSearchResults([]);
             } else if (searchResults.length === 0) {
                 setSearchError("검색어를 입력해주세요");
             }
         }
-
+    
         stopLoading();
     };
-
-    //드롭다운 관련 메뉴
-
+    
+    //드롭다운 메뉴
     const handleModeChange = (mode, event) => {
         event.preventDefault();
         setSearchMode(mode);
@@ -185,6 +160,7 @@ function Header({ reviewObj, updateResults }) {
             setSearchAuthor("");
         }
     };
+
 
     return (
         <>

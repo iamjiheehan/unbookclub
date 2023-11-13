@@ -86,7 +86,7 @@ export default function UserInfo() {
                 <div className="top-wrap">
                     { userObj.uid ? (
                         <h1>
-                            <strong>{userObj.displayName}</strong> 님 안녕하세요
+                            <strong>{userObj.displayName}</strong> 회원님 안녕하세요
                         </h1>
                     ) : (
                         <h1>
