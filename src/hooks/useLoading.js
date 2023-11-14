@@ -3,6 +3,10 @@ import React, { createContext, useContext, useState } from 'react';
 import { LoadingBack, LoadingText } from '../styled-components/LoadingStyled';
 import Cube from "../static/images/cube.gif";
 
+
+//contextAPI와 useHooks를 함께 작성
+
+
 const LoadingContext = createContext();
 
 export const useLoadingContext = () => {
@@ -31,7 +35,7 @@ export const Loading = () => {
     const context = useLoadingContext();
 
     if (!context) {
-    return null; // or render a default loading state
+    return null;
     }
 
     const { loading } = context;

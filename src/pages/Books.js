@@ -7,6 +7,9 @@ import { addBook } from "store";
 // 베스트셀러 데이터
 import newBooks from "../data/newBooks.json";
 
+//커스텀훅
+import { useSearchBooks } from "hooks/useSearchBooks";
+
 // 로그인 contextAPI
 import AuthContext from "contexts/AuthContext";
 
@@ -18,15 +21,13 @@ import Button from "styled-components/ButtonStyled";
 import { Btn2 } from "styled-components/BtnStyled";
 import { FaShoppingCart } from "react-icons/fa";
 
-export default function SearchBooks({ searchResults, setSearchResults }) {
+export default function SearchBooks() {
     const { userObj } = useContext(AuthContext);
+    const { searchResults } = useSearchBooks();
 
-    useEffect(() => {
-        console.log("Books.js 검색 결과:",searchResults);
-    });
-
-    // 데이터 변수에 할당
-    const posts = newBooks;
+    useEffect(()=>{
+        console.log(searchResults,searchResults.length,"북스에서보냄");
+    })
 
     // 리덕스에 있는 데이터 가져오기.searchResults
     const addedBooks = useSelector((state) => state.book);
@@ -69,7 +70,7 @@ const handleAddToCart = (book) => {
 
     // 게시물을 정렬하는 함수
     const sortPosts = (sortBy) => {
-        return [...posts].sort((a, b) => {
+        return [...searchResults].sort((a, b) => {
             if (a[sortBy] < b[sortBy]) return -1;
             if (a[sortBy] > b[sortBy]) return 1;
             return 0;
@@ -202,11 +203,11 @@ const handleAddToCart = (book) => {
                                             <div className="info_desc">
                                                 {result.contents
                                                     ? result.contents.length >
-                                                      70
-                                                        ? result.contents.slice(
-                                                              0,
-                                                              70
-                                                          ) + "..."
+                                                        70
+                                                            ? result.contents.slice(
+                                                                0,
+                                                                70
+                                                            ) + "..."
                                                         : result.contents
                                                     : "No description available"}
                                             </div>

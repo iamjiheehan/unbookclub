@@ -1,5 +1,3 @@
-//검색 컴포넌트
-
 //API 및 라이브러리 임포트
 import React, { useState, useEffect, useContext } from "react";
 

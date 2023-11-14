@@ -13,6 +13,7 @@ import AuthContext from "contexts/AuthContext";
 // 커스텀 훅
 import useSignOut from "../hooks/useSignOut";
 import { useLoadingContext } from "hooks/useLoading";
+import { useSearchBooks } from "hooks/useSearchBooks";
 
 //컴포넌트 임포트
 
@@ -25,9 +26,8 @@ import top_header_R from "../static/images/top_header_R.jpg";
 import top_header_L from "../static/images/top_header_L.jpg";
 import header_banner from "../static/images/header_banner.jpg";
 
-function Header({ reviewObj, updateResults }) {
+function Header({reviewObj}) {
     const { userObj } = useContext(AuthContext);
-    const displayName = userObj?.displayName;
     const onSignOutClick = useSignOut();
 
     let addedBooks = useSelector((state) => state.book);
@@ -39,8 +39,9 @@ function Header({ reviewObj, updateResults }) {
     const [searchAuthor, setSearchAuthor] = useState("");
 
     const [searchError, setSearchError] = useState(null);
-    const [searchResults, setSearchResults] = useState([]);
-    const [query, setQuery] = useState("");
+    
+    //검색결과를 훅을통해서 contxetAPI에 전달하기
+    const { searchResults, setSearchResults } = useSearchBooks();
 
     const { startLoading, stopLoading } = useLoadingContext();
     const navigate = useNavigate();
@@ -49,18 +50,19 @@ function Header({ reviewObj, updateResults }) {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const { data } = await kakaoSearch({ query: 'some_search_term' });
+                const { data } = await kakaoSearch({
+                    query: "some_search_term",
+                });
                 setSearchResults(data.documents);
-                console.log('fetchBooks');
-                } catch (error) {
-                console.error('Error fetching books:', error);
+                console.log("fetchBooks");
+            } catch (error) {
+                console.error("Error fetching books:", error);
             }
         };
         fetchBooks();
-    }, []); 
+    }, []);
 
     // ---------------------------------------헤더 메뉴 호버
-
     // #headerTop_gnb 요소 내부의 모든 목록 항목을 가져옴.
     const listItems = document.querySelectorAll(
         "#headerTop_gnb li, .l_menu li"
@@ -74,7 +76,7 @@ function Header({ reviewObj, updateResults }) {
             }
         });
     });
-    
+
     // mouseleave 이벤트 리스너를 추가하여 자식 div를 숨김.
     listItems.forEach(function (listItem) {
         listItem.addEventListener("mouseleave", function () {
@@ -95,72 +97,64 @@ function Header({ reviewObj, updateResults }) {
             }
         });
     });
+    // 검색어 초기화 함수
+    const resetSearchFields = () => {
+        setSearchTitle("");
+        setSearchAuthor("");
+    };
 
-    //검색기능
+    // 검색 모드 및 검색어 설정 함수
+    const setSearchParams = (mode, title, author) => {
+        setSearchMode(mode);
+        resetSearchFields();
+        return {
+            sort: "accuracy",
+            page: 1,
+            size: 16,
+            query: mode === "도서명" ? title : author,
+            [mode === "도서명" ? "title" : "authors"]:
+                mode === "도서명" ? title : author,
+        };
+    };
+
+    // 검색 기능
     const handleSearch = async (event) => {
         event.preventDefault();
         setSearchError(null);
         startLoading();
     
-        // 검색 파라미터 초기화
-        let params = {
-            sort: "accuracy",
-            page: 1,
-            size: 16,
-        };
+        const params = setSearchParams(searchMode, searchTitle, searchAuthor);
+        console.log("Search Params:", params);
     
-        let queryParam = "";
-        if (searchMode === "도서명") {
-            params.title = searchTitle;  // 도서명일 경우 params.title로 설정
-            queryParam = searchTitle;
-        } else if (searchMode === "작가명") {
-            params.authors = searchAuthor;  // 작가명일 경우 params.authors로 설정
-            queryParam = searchAuthor;
-        }
-    
-        if (queryParam) {
-            params.query = queryParam;
-            setQuery(queryParam);
+        if (params.query) {
             try {
                 const { data } = await kakaoSearch(params);
                 const searchResults = data.documents;
+                console.log("Search Results:", searchResults);
     
-                // 검색 결과 갱신 및 화면 이동
                 setSearchResults(searchResults);
-                updateResults(searchResults);
                 navigate("/books");
-
-                console.log(queryParam,searchMode,searchResults);
-    
                 if (searchResults.length === 0) {
                     setSearchError("검색 결과가 없습니다.");
                 }
             } catch (error) {
                 console.error(error);
+                setSearchError("검색 중 오류가 발생했습니다.");
             }
         } else {
-            // 검색어가 없는 경우 처리
-            if (searchResults.length > 0) {
-                setSearchResults([]);
-            } else if (searchResults.length === 0) {
-                setSearchError("검색어를 입력해주세요");
-            }
+            setSearchResults([]); // 검색어가 없을 때 빈 배열로 업데이트
+            setSearchError("검색어를 입력해주세요");
         }
-    
         stopLoading();
     };
     
-    //드롭다운 메뉴
+    
+
+    // 검색 모드 변경
     const handleModeChange = (mode, event) => {
         event.preventDefault();
-        setSearchMode(mode);
-        if (mode === "도서명") {
-            setSearchTitle("");
-        } else {
-            setSearchAuthor("");
-        }
+        setSearchParams(mode, "", "");
     };
-
 
     return (
         <>
