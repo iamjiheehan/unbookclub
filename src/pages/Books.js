@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
 
 // 리덕스 임포트
 import { useSelector, useDispatch } from "react-redux";
@@ -8,8 +7,8 @@ import { addBook } from "store";
 // 베스트셀러 데이터
 import newBooks from "../data/newBooks.json";
 
-// 부트스트랩 라이브러리
-import { Dropdown, DropdownButton } from "react-bootstrap";
+// 로그인 contextAPI
+import AuthContext from "contexts/AuthContext";
 
 // 스타일 컴포넌트 임포트
 import * as BookStyled from "../styled-components/ListStyled";
@@ -20,8 +19,10 @@ import { Btn2 } from "styled-components/BtnStyled";
 import { FaShoppingCart } from "react-icons/fa";
 
 export default function SearchBooks({ searchResults, setSearchResults }) {
+    const { userObj } = useContext(AuthContext);
+
     useEffect(() => {
-        console.log("Books.js 검색 결과:", Array.isArray(searchResults));
+        console.log("Books.js 검색 결과:",searchResults);
     });
 
     // 데이터 변수에 할당
@@ -33,31 +34,25 @@ export default function SearchBooks({ searchResults, setSearchResults }) {
     // 디스패치 함수 호출
     const dispatch = useDispatch();
 
-    // 카트에 도서를 추가하는 함수
-    const handleAddToCart = (itemId, title, author, coverLargeUrl, isbn) => {
-        console.log(
-            "도서를 카트에 추가합니다:",
-            itemId,
-            title,
-            author,
-            coverLargeUrl
-        );
-        const bookToAdd = posts.find((book) => book.isbn === itemId);
-        if (addedBooks.find((book) => book.isbn === itemId)) {
-            console.log("이미 카트에 있는 도서입니다:", itemId);
-            return;
-        }
-        dispatch(
-            addBook({
-                ...bookToAdd,
-                title,
-                author,
-                coverLargeUrl,
-                isbn: bookToAdd.isbn,
-            })
-        );
-        console.log("도서가 카트에 추가되었습니다:", itemId);
-    };
+// 카트에 도서를 추가하는 함수
+const handleAddToCart = (book) => {
+    console.log("도서를 카트에 추가합니다:", book);
+
+    // userObj가 null이면 alert를 띄우고 함수 종료
+    if (!userObj) {
+        alert("로그인이 필요한 기능입니다.");
+        return;
+    }
+
+    if (addedBooks.find((addedBook) => addedBook.isbn === book.isbn)) {
+        console.log('Book already in cart:', book.isbn);
+        console.log("Now we have this", addedBooks);
+        return;
+    }
+
+    dispatch(addBook(book));
+    console.log("도서가 카트에 추가되었습니다:", book.isbn);
+};
 
     // 한 번에 보여줄 아이템 개수 설정
     const itemsPerRow = 4;
@@ -165,7 +160,8 @@ export default function SearchBooks({ searchResults, setSearchResults }) {
                                                         result.itemId,
                                                         result.title,
                                                         result.authors,
-                                                        result.thumbnail
+                                                        result.thumbnail,
+                                                        result.isbn
                                                     )
                                                 }
                                                 disabled={addedBooks.some(

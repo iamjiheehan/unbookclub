@@ -79,10 +79,10 @@ export default function SignIn() {
                     </Form>
                     <div className="text-wrap">
                         <div className="btn-wrap">
-                          <Link to="/signUp">
-                            <Btn3 type="submit" fontWeight="500">
-                                회원가입
-                            </Btn3>
+                            <Link to="/signUp">
+                                <Btn3 type="submit" fontWeight="500">
+                                    회원가입
+                                </Btn3>
                             </Link>
                             <Btn3
                                 type="submit"
@@ -92,7 +92,6 @@ export default function SignIn() {
                                 비밀번호 찾기
                             </Btn3>
                         </div>
-
                         <div className="btn-wrap">
                             <Btn4
                                 type="submit"

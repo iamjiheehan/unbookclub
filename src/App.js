@@ -97,10 +97,19 @@ function App() {
                   )
                 }
               />
+              <Route
+                path="/signUp"
+                element={
+                  isSignedIn || isSignedUp ? (
+                    <Navigate to="/userInfo" /> 
+                  ) : (
+                    <SignUp setIsSignedUp={setIsSignedUp} />
+                  )
+                }
+              />
               <Route path="/board" element={<Board />} />
               <Route path="/guide" element={<Guide />} />
               <Route path="/books" element={<SearchBooks searchResults={searchResults} setSearchResults={setSearchResults}/>} />
-              <Route path="/signUp" element={<SignUp />} />
               <Route path="/newbooks" element={<NewBooks />} />
               <Route path="/bestSellers" element={<BestSellers />} />
               <Route
