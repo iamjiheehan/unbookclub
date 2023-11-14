@@ -362,7 +362,7 @@ function Header({ reviewObj, updateResults }) {
                         </form>
                     </div>
                     <div className="ad_box">
-                        <a href="./sub.html" title="헤더배너">
+                        <a href="#!" title="헤더배너">
                             <img src={header_banner} alt="헤더배너" />
                         </a>
                     </div>

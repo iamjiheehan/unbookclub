@@ -8,17 +8,17 @@ export default function Footer() {
             <FooterStyled>
                     <div className="footer_menu">
                         <ul>
-                            <li><a href="./sub.html">회사소개</a></li>
-                            <li><a href="./sub.html">채용안내</a></li>
-                            <li><a href="./sub.html">이용약관</a></li>
-                            <li><a href="./sub.html" className="bold">개인정보처리방침</a></li>
-                            <li><a href="./sub.html">청소년 보호정책</a></li>
-                            <li><a href="./sub.html">중고매장</a></li>
-                            <li><a href="./sub.html">제휴·마케팅 안내</a></li>
-                            <li><a href="./sub.html">판매자 매니저</a></li>
-                            <li><a href="./sub.html">출판사·공급사 안내</a></li>
-                            <li><a href="./sub.html">광고 안내</a></li>
-                            <li><a href="./sub.html">학교·기업·기관 대량구매</a></li>
+                            <li><a href="#!">회사소개</a></li>
+                            <li><a href="#!">채용안내</a></li>
+                            <li><a href="#!">이용약관</a></li>
+                            <li><a href="#!" className="bold">개인정보처리방침</a></li>
+                            <li><a href="#!">청소년 보호정책</a></li>
+                            <li><a href="#!">중고매장</a></li>
+                            <li><a href="#!">제휴·마케팅 안내</a></li>
+                            <li><a href="#!">판매자 매니저</a></li>
+                            <li><a href="#!">출판사·공급사 안내</a></li>
+                            <li><a href="#!">광고 안내</a></li>
+                            <li><a href="#!">학교·기업·기관 대량구매</a></li>
                         </ul>
                     </div>
                     <div className="footer_bottom inner">
@@ -28,7 +28,7 @@ export default function Footer() {
                                 <span>대표이사 최우경</span>
                                 <span>고객정보보호 책임자 최우경</span>
                                 <span>
-                                    <a href="./sub.html">사업자등록 201-81-23094</a>
+                                    <a href="#!">사업자등록 201-81-23094</a>
                                 </span>
                                 <span>통신판매업신고 중구01520호</span>
                                 <span>이메일 privacy@aladin.co.kr</span>
@@ -39,10 +39,10 @@ export default function Footer() {
                                 </div>
                             </address>
                             <div className="certify">
-                                <a href="./sub.html" className="escrow">
+                                <a href="#!" className="escrow">
                                     구매안전 에스크로<br />서비스 가입 확인
                                 </a>
-                                <a href="./sub.html" alt="ISMS 인증획득" className="isms">
+                                <a href="#!" alt="ISMS 인증획득" className="isms">
                                     정보보호 관리체계<br />ISMS 인증획득
                                 </a>
                             </div>
@@ -54,11 +54,11 @@ export default function Footer() {
                                 <span>Fax 02-6926-2600</span>
                             </address>
                             <div className="cs_link">
-                                <a href="./sub.html">1:1 문의</a>
-                                <a href="./sub.html">FAQ</a>
+                                <a href="#!">1:1 문의</a>
+                                <a href="#!">FAQ</a>
                             </div>
                             <div className="shop_info">
-                                <a href="./sub.html">중고매장 위치, 영업시간 안내</a>
+                                <a href="#!">중고매장 위치, 영업시간 안내</a>
                             </div>
                         </div>
                     </div>
