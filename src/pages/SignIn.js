@@ -79,11 +79,13 @@ export default function SignIn() {
                     </Form>
                     <div className="text-wrap">
                         <div className="btn-wrap">
-                            <Link to="/signUp">
                                 <Btn3 type="submit" fontWeight="500">
+                            <Link to="/signUp">
+
                                     회원가입
-                                </Btn3>
                             </Link>
+
+                                </Btn3>
                             <Btn3
                                 type="submit"
                                 fontWeight="500"

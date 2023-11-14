@@ -139,15 +139,17 @@ function useSignInForm() {
             if (loginEmail) {
                 await authService.sendPasswordResetEmail(loginEmail);
                 setCreateErrorMessage("이메일을 확인하세요. 비밀번호 재설정 링크를 보냈습니다.");
-                setLoginShowAlert(true);
+                // setLoginShowAlert(true);
             } else {
                 setCreateErrorMessage("이메일을 입력해주세요.");
-                setLoginShowAlert(true);
+                // setLoginShowAlert(true);
             }
+            alert(createErrorMessage);
         } catch (error) {
             console.log(error);
             setCreateErrorMessage("가입되지 않은 이메일 입니다. 회원가입을 진행헤주세요");
-            setLoginShowAlert(true);
+            // setLoginShowAlert(true);
+            alert(createErrorMessage);
         }
     };
 
