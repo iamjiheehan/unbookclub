@@ -25,35 +25,35 @@ export default function SearchBooks() {
     const { userObj } = useContext(AuthContext);
     const { searchResults } = useSearchBooks();
 
-    useEffect(()=>{
-        console.log(searchResults,searchResults.length,"북스에서보냄");
-    })
-
-    // 리덕스에 있는 데이터 가져오기.searchResults
+    // 리덕스에 있는 데이터 가져오기.
     const addedBooks = useSelector((state) => state.book);
 
     // 디스패치 함수 호출
     const dispatch = useDispatch();
 
-// 카트에 도서를 추가하는 함수
-const handleAddToCart = (book) => {
-    console.log("도서를 카트에 추가합니다:", book);
+    useEffect(() => {
+        console.log(addedBooks, "북스에서보냄");
+    }, [addedBooks]);
 
-    // userObj가 null이면 alert를 띄우고 함수 종료
-    if (!userObj) {
-        alert("로그인이 필요한 기능입니다.");
-        return;
-    }
+    // 카트에 도서를 추가하는 함수
+    const handleAddToCart = (book) => {
+        console.log("도서를 카트에 추가합니다:", book);
 
-    if (addedBooks.find((addedBook) => addedBook.isbn === book.isbn)) {
-        console.log('Book already in cart:', book.isbn);
-        console.log("Now we have this", addedBooks);
-        return;
-    }
+        // userObj가 null이면 alert를 띄우고 함수 종료
+        if (!userObj) {
+            alert("로그인이 필요한 기능입니다.");
+            return;
+        }
 
-    dispatch(addBook(book));
-    console.log("도서가 카트에 추가되었습니다:", book.isbn);
-};
+        if (addedBooks.find((addedBook) => addedBook.ItemId === book.isbn)) {
+            console.log("Book already in cart:", book.isbn);
+            console.log("Now we have this", addedBooks);
+            return;
+        }
+
+        dispatch(addBook(book));
+        console.log("도서가 카트에 추가되었습니다:", book.isbn);
+    };
 
     // 한 번에 보여줄 아이템 개수 설정
     const itemsPerRow = 4;
@@ -156,25 +156,18 @@ const handleAddToCart = (book) => {
                                                 {result.authors}
                                             </p>
                                             <Button
-                                                onClick={() =>
-                                                    handleAddToCart(
-                                                        result.itemId,
-                                                        result.title,
-                                                        result.authors,
-                                                        result.thumbnail,
-                                                        result.isbn
-                                                    )
+                                                disabled={
+                                                    addedBooks.some(
+                                                        (book) =>
+                                                            book?.ItemId ===
+                                                            result?.isbn
+                                                    ) || result?.isbn === null
                                                 }
-                                                disabled={addedBooks.some(
-                                                    (book) =>
-                                                        book.isbn ===
-                                                        result.isbn
-                                                )}
                                             >
                                                 {addedBooks.some(
                                                     (book) =>
-                                                        book.isbn ===
-                                                        result.isbn
+                                                        book?.ItemId ===
+                                                        result?.isbn
                                                 ) ? (
                                                     <p>추가된 도서</p>
                                                 ) : (
