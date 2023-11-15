@@ -25,7 +25,7 @@ export default function useSearchReviews() {
                 query = query.where('review', '>=', searchKeyword).where('review', '<=', searchKeyword + "\uf8ff").orderBy('review');
             }
             const querySnapshot = await query.orderBy('createdAt', 'desc').limit(10).get();
-            console.log(`Found ${querySnapshot.docs.length} documents`);
+            // console.log(`Found ${querySnapshot.docs.length} documents`);
             const results = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
             setSearchResults(results);
             setSearchError('');

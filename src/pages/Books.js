@@ -31,13 +31,13 @@ export default function SearchBooks() {
     // 디스패치 함수 호출
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        console.log(addedBooks, "북스에서보냄");
-    }, [addedBooks]);
+    // useEffect(() => {
+    //     console.log(addedBooks, "북스에서보냄");
+    // }, [addedBooks]);
 
     // 카트에 도서를 추가하는 함수
     const handleAddToCart = (book) => {
-        console.log("도서를 카트에 추가합니다:", book);
+        //console.log("도서를 카트에 추가합니다:", book);
 
         // userObj가 null이면 alert를 띄우고 함수 종료
         if (!userObj) {

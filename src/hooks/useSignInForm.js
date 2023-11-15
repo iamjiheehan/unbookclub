@@ -16,10 +16,10 @@ function useSignInForm() {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        // 이 효과는 createErrorMessage가 변경될 때마다 실행됩니다.
-        console.log(createErrorMessage);
-    }, [createErrorMessage]); // createErrorMessage를 의존성 배열에 추가
+    // useEffect(() => {
+    //     // 이 효과는 createErrorMessage가 변경될 때마다 실행
+    //     console.log(createErrorMessage);
+    // }, [createErrorMessage]); // createErrorMessage를 의존성 배열에 추가
 
     const handleAnonymousLogin = () => {
         firebaseInstance.auth().signInAnonymously()
@@ -56,7 +56,7 @@ function useSignInForm() {
         event.preventDefault();
         setCreateErrorMessage("");
         }
-        console.log(event.target.name);
+        //console.log(event.target.name);
         const {
         target: { name, value },
         } = event;
@@ -80,13 +80,13 @@ function useSignInForm() {
                     loginEmail,
                     loginPassword
                 );
-                console.log(data);
+                //console.log(data);
             } else {
                 setLoginErrorMessage("이메일 혹은 비밀번호를 다시 확인해주세요");
                 setLoginShowAlert(true);
             }
         } catch (error) {
-            console.log(error);
+            //(error);
             setLoginErrorMessage("로그인에 실패하였습니다. 잠시후 다시 시도해주세요.");
         }
     };

@@ -27,9 +27,9 @@ export default function Board() {
     const [hasSearched, setHasSearched] = useState(false);
     const [showUserReviewsOnly, setShowUserReviewsOnly] = useState(false);
 
-    useEffect(() => {
-        console.log(reviewList, userObj);
-    });
+    // useEffect(() => {
+    //     console.log(reviewList, userObj);
+    // });
 
     const handleLoadMore = () => {
         setNumReviewsToShow(numReviewsToShow + 9);
@@ -46,7 +46,7 @@ export default function Board() {
             setHasSearched(true);
         }
         setShowUserReviewsOnly(!showUserReviewsOnly);
-        console.log("야", searchResults);
+        //console.log(searchResults);
     };
 
     return (

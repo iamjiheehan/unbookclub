@@ -54,9 +54,9 @@ function Header({reviewObj}) {
                     query: "some_search_term",
                 });
                 setSearchResults(data.documents);
-                console.log("fetchBooks");
+                // console.log("fetchBooks");
             } catch (error) {
-                console.error("Error fetching books:", error);
+                // console.error("Error fetching books:", error);
             }
         };
         fetchBooks();
@@ -128,13 +128,13 @@ function Header({reviewObj}) {
         startLoading();
     
         const params = setSearchParams(searchMode, searchTitle, searchAuthor);
-        console.log("Search Params:", params);
+        // console.log("Search Params:", params);
     
         if (params.query) {
             try {
                 const { data } = await kakaoSearch(params);
                 const searchResults = data.documents;
-                console.log("Search Results:", searchResults);
+                // console.log("Search Results:", searchResults);
     
                 setSearchResults(searchResults);
                 navigate("/books");

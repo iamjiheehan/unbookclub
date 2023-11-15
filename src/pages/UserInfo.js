@@ -33,23 +33,15 @@ export default function UserInfo() {
     const dispatch = useDispatch();
     let addedBooks = useSelector((state) => state.book);
 
-    useEffect(() => {
-        console.log("====================================");
-        console.log(addedBooks ? addedBooks.length : "addedBooks is null or undefined", !addedBooks);
-        console.log("====================================");
-    });
-    
+    // useEffect(() => {
+    //     setFilteredReviews(reviews);
+    // }, [reviews]);
 
-    useEffect(() => {
-        console.log();
-        setFilteredReviews(reviews);
-    }, [reviews]);
-
-    useEffect(() => {
-        if (newDisplayName) {
-            console.log("UsesrInfo에서 보내는" + newDisplayName, userObj.id);
-        }
-    }, [newDisplayName]);
+    // useEffect(() => {
+    //     if (newDisplayName) {
+    //         console.log("UsesrInfo에서 보내는" + newDisplayName, userObj.id);
+    //     }
+    // }, [newDisplayName]);
 
     if (!userObj) {
         return null;
@@ -61,7 +53,7 @@ export default function UserInfo() {
         );
         setFilteredReviews(sortedReviews);
         setSortingCriteria("최신 순");
-        console.log("sort by date descending works");
+        //console.log("sort by date descending works");
     };
 
     const sortByDateAscending = () => {
@@ -70,7 +62,7 @@ export default function UserInfo() {
         );
         setFilteredReviews(sortedReviews);
         setSortingCriteria("오래된 순");
-        console.log("sort by date ascending works");
+        //console.log("sort by date ascending works");
     };
 
     const sortByRating = () => {
@@ -79,7 +71,7 @@ export default function UserInfo() {
         );
         setFilteredReviews(sortedReviews);
         setSortingCriteria("별점 순");
-        console.log("sort by rating works");
+        //console.log("sort by rating works");
     };
 
     const deleteBook = (itemId) => {

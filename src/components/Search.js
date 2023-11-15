@@ -52,13 +52,13 @@ function SearchBoard() {
     const [searchMode, setSearchMode] = useState("키워드로 검색");
     const { startLoading, stopLoading } = useLoadingContext();
 
-    console.log(searchResults, "searchResults");
+    // console.log(searchResults, "searchResults");
 
     const { userObj } = useContext(AuthContext);
     const { reviewList } = useReview(userObj);
 
     const handleSubmit = async (event) => {
-        console.log("handleSubmit works");
+        // console.log("handleSubmit works");
         event.preventDefault();
         startLoading();
         await handleSearch(
@@ -72,8 +72,8 @@ function SearchBoard() {
         setHasSearched(true);
     };
 
-    console.log("searchResults changed from SearchBoard", searchResults);
-    console.log("hasSearched changed from SearchBoard", hasSearched);
+    // console.log("searchResults changed from SearchBoard", searchResults);
+    // console.log("hasSearched changed from SearchBoard", hasSearched);
 
     const handleModeChange = (mode) => {
         setSearchMode(mode);
@@ -86,10 +86,10 @@ function SearchBoard() {
         }
     };
 
-    useEffect(() => {
-        console.log("searchResults changed from board", searchResults);
-        console.log("hasSearched changed from board", hasSearched);
-    }, [searchResults, hasSearched]);
+    // useEffect(() => {
+    //     console.log("searchResults changed from board", searchResults);
+    //     console.log("hasSearched changed from board", hasSearched);
+    // }, [searchResults, hasSearched]);
 
     return (
         <SearchStyled.Wrap>
@@ -195,7 +195,7 @@ function SearchBoard() {
 }
 
 function SearchBooks({ searchResults, setSearchResults }) {
-    console.log("SearchBooks rendered");
+    // console.log("SearchBooks rendered");
     const [searchTitle, setSearchTitle] = useState("");
     const [searchAuthor, setSearchAuthor] = useState("");
     const [searchError, setSearchError] = useState(null);
@@ -208,14 +208,14 @@ function SearchBooks({ searchResults, setSearchResults }) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log(searchResults, "서치북스에서보냅니다");
+        // console.log(searchResults, "서치북스에서보냅니다");
         const fetchBooks = async () => {
             try {
                 const { data } = await kakaoSearch({
                     query: "some_search_term",
                 });
                 setSearchResults(data.documents);
-                console.log("fetchBooks");
+                // console.log("fetchBooks");
             } catch (error) {
                 console.error("Error fetching books:", error);
             }
@@ -224,17 +224,17 @@ function SearchBooks({ searchResults, setSearchResults }) {
     }, []);
 
     const handleAddToCart = (itemId, title, author, coverLargeUrl, isbn) => {
-        console.log(
-            "Adding book to cart:",
-            itemId,
-            title,
-            author,
-            coverLargeUrl
-        );
+        // console.log(
+        //     "Adding book to cart:",
+        //     itemId,
+        //     title,
+        //     author,
+        //     coverLargeUrl
+        // );
         const bookToAdd = searchResults.find((book) => book.isbn === itemId);
         if (addedBooks.some((book) => book.isbn === bookToAdd.isbn)) {
-            console.log("Book already in cart:", bookToAdd.isbn);
-            console.log("Now we have this", addedBooks);
+            // console.log("Book already in cart:", bookToAdd.isbn);
+            // console.log("Now we have this", addedBooks);
             return;
         }
         dispatch(

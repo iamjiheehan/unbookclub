@@ -47,7 +47,7 @@ export default function Guide() {
         newIsCollapse[index] = !newIsCollapse[index];
         setIsCollapse(newIsCollapse);
 
-        console.log(isCollapse);
+        //console.log(isCollapse);
     };
 
     return (
