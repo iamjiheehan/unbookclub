@@ -101,9 +101,7 @@ const Button3Styled = styled.button`
 
 export const Btn3= ({ to, children, ...rest }) => {
     return (
-        <Link to={to}>
-            <Button3Styled {...rest}>{children}</Button3Styled>
-        </Link>
+        <Button3Styled {...rest}>{children}</Button3Styled>
     );
 };
 

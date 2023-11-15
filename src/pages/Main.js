@@ -4,8 +4,8 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 
 // 컴포넌트
-import { NewBooks } from "../components/NewBooks";
-import { BestSellers } from "../components/BestSellers";
+import { NewBooks } from "../components/NewBooksComp";
+import { BestSellers } from "../components/BestSellersComp";
 
 // 이미지 임포트
 import main from "../static/images/banner_home.webp";

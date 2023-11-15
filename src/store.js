@@ -36,7 +36,3 @@ export default configureStore({
         book: addedBooks.reducer,
     },
 });
-
-
-
-

@@ -62,6 +62,10 @@ function Header({reviewObj}) {
         fetchBooks();
     }, []);
 
+    if (!userObj) {
+        return null;
+    }
+
     // ---------------------------------------헤더 메뉴 호버
     // #headerTop_gnb 요소 내부의 모든 목록 항목을 가져옴.
     const listItems = document.querySelectorAll(
@@ -147,7 +151,6 @@ function Header({reviewObj}) {
         }
         stopLoading();
     };
-    
     
 
     // 검색 모드 변경
@@ -242,13 +245,13 @@ function Header({reviewObj}) {
                                         </Link>
                                     </li>
                                     <li id="headerBasketBtn">
-                                        <Link to="/userInfo" title="서재">
-                                            서재{" "}
-                                            <span id="basketItemCount">
-                                                ( {addedBooks.length} )
-                                            </span>
-                                        </Link>
-                                    </li>
+                                    <Link to="/userInfo" title="서재">
+                                        서재{" "}
+                                        <span id="basketItemCount">
+                                            ( {!addedBooks || addedBooks.length ? addedBooks.length : 0} )
+                                        </span>
+                                    </Link>
+                                </li>
                                 </>
                             ) : (
                                 <>

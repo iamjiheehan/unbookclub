@@ -156,6 +156,7 @@ export default function SearchBooks() {
                                                 {result.authors}
                                             </p>
                                             <Button
+                                                onClick={() => handleAddToCart(result)}
                                                 disabled={
                                                     addedBooks.some(
                                                         (book) =>

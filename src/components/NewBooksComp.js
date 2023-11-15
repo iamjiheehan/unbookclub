@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addBook } from "store";
 
-import newBooks from "data/newBooks.json";
+import newBooks from "../data/newBooks.json";
 import { FlowAniReverse } from "styled-components/AniStyled";
 
 import {
@@ -20,24 +20,34 @@ export function NewBooks() {
     let addedBooks = useSelector((state) => state.book);
     const dispatch = useDispatch();
 
-    const handleAddToCart = (itemId, title, author, coverLargeUrl) => {
-        const bookToAdd = posts.find((book) => book.itemId === itemId);
-        if (addedBooks.find((book) => book.itemId === itemId)) {
+    const handleAddToCart = (book) => {
+        console.log(
+            "Adding book to cart:",
+            book.itemId,
+            book.title,
+            book.author,
+            book.coverLargeUrl
+        );
+    
+        const bookToAdd = posts.find((item) => item.itemId === book.itemId);
+        if (addedBooks.find((item) => item.itemId === book.itemId)) {
+            console.log("이미 있는 아이템 입니다.", book.itemId);
             return;
         }
-        dispatch(addBook({ ...bookToAdd, title, author, coverLargeUrl }));
+        dispatch(addBook({ ...bookToAdd, title: book.title, author: book.author, coverLargeUrl: book.coverLargeUrl }));
+        console.log("이미 있는 아이템 입니다.", book.itemId);
     };
 
     return (
         <>
             <FlowAniReverse>
-                {posts.map((post) => (
+                {posts.map((post, index) => (
                     <BookItemContainer key={post.itemId}>
                         <BookImg src={post.coverLargeUrl} alt={post.title} />
                         <BookInfo>
                             <p className="book-title">{post.title}</p>
                             <p padding="1rem 0 0 0">{post.author}</p>
-                            <Button
+                            {/* <Button
                                 onClick={() =>
                                     handleAddToCart(
                                         post.itemId,
@@ -64,7 +74,7 @@ export function NewBooks() {
                                         </div>
                                     </>
                                 )}
-                            </Button>
+                            </Button> */}
                         </BookInfo>
                     </BookItemContainer>
                 ))}

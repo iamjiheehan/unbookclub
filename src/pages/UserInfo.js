@@ -34,16 +34,22 @@ export default function UserInfo() {
     let addedBooks = useSelector((state) => state.book);
 
     useEffect(() => {
+        console.log("====================================");
+        console.log(addedBooks ? addedBooks.length : "addedBooks is null or undefined", !addedBooks);
+        console.log("====================================");
+    });
+    
+
+    useEffect(() => {
         console.log();
         setFilteredReviews(reviews);
     }, [reviews]);
 
     useEffect(() => {
         if (newDisplayName) {
-            console.log("UsesrInfo에서 보내는"+newDisplayName, userObj.id);
+            console.log("UsesrInfo에서 보내는" + newDisplayName, userObj.id);
         }
-    }, [newDisplayName]); 
-    
+    }, [newDisplayName]);
 
     if (!userObj) {
         return null;
@@ -84,9 +90,10 @@ export default function UserInfo() {
         <UserStyled.Wrap>
             <div>
                 <div className="top-wrap">
-                    { userObj.uid ? (
+                    {userObj.uid ? (
                         <h1>
-                            <strong>{userObj.displayName}</strong> 회원님 안녕하세요
+                            <strong>{userObj.displayName}</strong> 회원님
+                            안녕하세요
                         </h1>
                     ) : (
                         <h1>
@@ -111,35 +118,50 @@ export default function UserInfo() {
                             </div>
                         </div>
                     </form>
-                    {addedBooks.length === 0 && (
-                        <h4>서재에 추가된 책이 없습니다.</h4>
-                    )}
-                    {addedBooks.length !== 0 && (
+                    {!addedBooks || addedBooks.length === 0 ? (
+                        <>
+                            <h4>서재에 추가된 책이 없습니다.</h4>
+                        </>
+                    ) : (
                         <>
                             <h5>
                                 읽을 목록에 추가된 책이 {addedBooks.length}권
                                 있습니다.
                             </h5>
-                            {addedBooks.map((book) => (
-                                <FlexRow key={book.isbn} alignItems="center">
-                                    <ImgStyled
-                                        src={book.coverLargeUrl}
-                                        alt={book.title}
-                                        width="100px"
-                                        margin="1rem"
-                                    />
-                                    <div className="book-info">
-                                        <p>
-                                            <strong>{book.title}</strong>
-                                        </p>
-                                        <p>{book.author}</p>
-                                    </div>
-                                    <Btn3
-                                        onClick={() => deleteBook(book.itemId)}
+                            {addedBooks &&
+                                addedBooks.map((book) => (
+                                    <FlexRow
+                                        key={book && book.isbn}
+                                        alignItems="center"
                                     >
-                                        삭제하기
-                                    </Btn3>
-                                </FlexRow>
+                                        {book && (
+                                            <>
+                                                <ImgStyled
+                                                    src={book.coverLargeUrl}
+                                                    alt={book.title}
+                                                    width="100px"
+                                                    margin="1rem"
+                                                />
+                                                <div className="book-info">
+                                                    {book.title && (
+                                                        <p>
+                                                            <strong>
+                                                                {book.title}
+                                                            </strong>
+                                                        </p>
+                                                    )}
+                                                    <p>{book.author}</p>
+                                                </div>
+                                                <Btn3
+                                                    onClick={() =>
+                                                        deleteBook(book.itemId)
+                                                    }
+                                                >
+                                                    삭제하기
+                                                </Btn3>
+                                            </>
+                                        )}
+                                    </FlexRow>
                             ))}
                         </>
                     )}
