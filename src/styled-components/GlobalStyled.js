@@ -17,6 +17,10 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    html {
+        min-width: 576px;
+    }
+
     body {
         font-family: 'SUITE-Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
             'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

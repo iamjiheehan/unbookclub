@@ -68,7 +68,7 @@ export function NewBooks() {
                                         <div className="cart-wrap">
                                             <FaShoppingCart />
                                             <p className="cart-text">
-                                                서재목록에 추가
+                                                서재에 추가
                                             </p>
                                         </div>
                                     </>

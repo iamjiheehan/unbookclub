@@ -180,6 +180,10 @@ export const CartWrap = styled.div`
         align-items: center;
         justify-content: space-around;
         gap:2px;
+
+        p {
+            font-size: 11px;
+        }
     }
 
 `;

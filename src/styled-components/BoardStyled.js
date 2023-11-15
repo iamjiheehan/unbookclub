@@ -36,7 +36,7 @@ export const Content = styled.div`
     background: ${(props) => props.background || '#f8f8f8'};
     overflow: hidden;
 
-    margin: 4rem 0;
+    padding: 4rem 0;
     
     .content-btn {
         display: flex;
@@ -79,25 +79,13 @@ export const Content = styled.div`
     }
 
     .item_info .info_title {
-        height: 20px;
-        overflow: hidden;
+        height: 40px;
+        /* overflow: hidden; */
         word-break: break-all;
         line-height: 20px;
         font-weight: bold;
         font-size: 15px;
         color: #333;
-    }
-
-    .item_info .info_readBox {
-        padding: 12px 0;
-        border-radius: 3px;
-        background-color: #fff;
-        height: 8rem;
-        overflow: scroll;
-
-        .info_desc {
-            font-size: 13px;
-        }
     }
 
     .item_info .info_auth {
@@ -114,12 +102,18 @@ export const Content = styled.div`
         display: -webkit-box;
         padding: 10px 15px;
         word-break: break-all;
-        overflow: hidden;
         line-height: 20px;
         color: #666;
         text-align: left;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
+        border-radius: 3px;
+        height: 18rem;
+        overflow: scroll;
+
+        .info_desc {
+            font-size: 13px;
+        }
     }
 
     .btn-wrap {
@@ -128,10 +122,6 @@ export const Content = styled.div`
         -webkit-box-pack: justify;
         justify-content: flex-end;
         gap: 1rem;
-
-        p {
-            font-size: 14px;
-        }
     }
 
     .seemore-wrap {
