@@ -23,22 +23,22 @@ export function BestSellers() {
         console.log(posts , addedBooks);
     });
 
-    // const handleAddToCart = (itemId, title, author, coverLargeUrl) => {
-    //     console.log(
-    //         "Adding book to cart:",
-    //         itemId,
-    //         title,
-    //         author,
-    //         coverLargeUrl
-    //     );
-    //     const bookToAdd = posts.find((book) => book.itemId === itemId);
-    //     if (addedBooks.find((book) => book.itemId === itemId)) {
-    //         console.log("Book already in cart:", itemId);
-    //         return;
-    //     }
-    //     dispatch(addBook({ ...bookToAdd, title, author, coverLargeUrl }));
-    //     console.log("Book added to cart:", itemId);
-    // };
+    const handleAddToCart = (itemId, title, author, coverLargeUrl) => {
+        console.log(
+            "Adding book to cart:",
+            itemId,
+            title,
+            author,
+            coverLargeUrl
+        );
+        const bookToAdd = posts.find((book) => book.itemId === itemId);
+        if (addedBooks.find((book) => book.itemId === itemId)) {
+            console.log("Book already in cart:", itemId);
+            return;
+        }
+        dispatch(addBook({ ...bookToAdd, title, author, coverLargeUrl }));
+        console.log("Book added to cart:", itemId);
+    };
 
     return (
         <>
@@ -55,7 +55,7 @@ export function BestSellers() {
                                 <strong>{post.title}</strong>
                             </p>
                             <p padding="1rem 0 0 0">{post.author}</p>
-                            {/* <Button
+                            <Button
                                 onClick={() =>
                                     handleAddToCart(
                                         post.itemId,
@@ -82,7 +82,7 @@ export function BestSellers() {
                                         </div>
                                     </>
                                 )}
-                            </Button> */}
+                            </Button>
                         </BookInfo>
                     </BookItemContainer>
                 ))}

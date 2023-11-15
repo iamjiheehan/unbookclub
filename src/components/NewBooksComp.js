@@ -20,22 +20,21 @@ export function NewBooks() {
     let addedBooks = useSelector((state) => state.book);
     const dispatch = useDispatch();
 
-    const handleAddToCart = (book) => {
+    const handleAddToCart = (itemId, title, author, coverLargeUrl) => {
         console.log(
             "Adding book to cart:",
-            book.itemId,
-            book.title,
-            book.author,
-            book.coverLargeUrl
+            itemId,
+            title,
+            author,
+            coverLargeUrl
         );
-    
-        const bookToAdd = posts.find((item) => item.itemId === book.itemId);
-        if (addedBooks.find((item) => item.itemId === book.itemId)) {
-            console.log("이미 있는 아이템 입니다.", book.itemId);
+        const bookToAdd = posts.find((book) => book.itemId === itemId);
+        if (addedBooks.find((book) => book.itemId === itemId)) {
+            console.log("Book already in cart:", itemId);
             return;
         }
-        dispatch(addBook({ ...bookToAdd, title: book.title, author: book.author, coverLargeUrl: book.coverLargeUrl }));
-        console.log("이미 있는 아이템 입니다.", book.itemId);
+        dispatch(addBook({ ...bookToAdd, title, author, coverLargeUrl }));
+        console.log("Book added to cart:", itemId);
     };
 
     return (
@@ -47,7 +46,7 @@ export function NewBooks() {
                         <BookInfo>
                             <p className="book-title">{post.title}</p>
                             <p padding="1rem 0 0 0">{post.author}</p>
-                            {/* <Button
+                            <Button
                                 onClick={() =>
                                     handleAddToCart(
                                         post.itemId,
@@ -67,14 +66,14 @@ export function NewBooks() {
                                 ) : (
                                     <>
                                         <div className="cart-wrap">
-                                            <FaShoppingCart />{" "}
+                                            <FaShoppingCart />
                                             <p className="cart-text">
-                                                서재에 추가
+                                                서재목록에 추가
                                             </p>
                                         </div>
                                     </>
                                 )}
-                            </Button> */}
+                            </Button>
                         </BookInfo>
                     </BookItemContainer>
                 ))}
