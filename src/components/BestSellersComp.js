@@ -19,9 +19,9 @@ export function BestSellers() {
     let addedBooks = useSelector((state) => state.book);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        console.log(posts , addedBooks);
-    });
+    // useEffect(() => {
+    //     console.log(posts , addedBooks);
+    // });
 
     const handleAddToCart = (itemId, title, author, coverLargeUrl) => {
         // console.log(

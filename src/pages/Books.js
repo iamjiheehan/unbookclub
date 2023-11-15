@@ -46,13 +46,13 @@ export default function SearchBooks() {
         }
 
         if (addedBooks.find((addedBook) => addedBook.ItemId === book.isbn)) {
-            console.log("Book already in cart:", book.isbn);
-            console.log("Now we have this", addedBooks);
+            // console.log("Book already in cart:", book.isbn);
+            // console.log("Now we have this", addedBooks);
             return;
         }
 
         dispatch(addBook(book));
-        console.log("도서가 카트에 추가되었습니다:", book.isbn);
+        //console.log("도서가 카트에 추가되었습니다:", book.isbn);
     };
 
     // 한 번에 보여줄 아이템 개수 설정

@@ -294,11 +294,11 @@ function Header({reviewObj}) {
                                 <dl
                                     onMouseEnter={() => {
                                         setHover(true);
-                                        console.log("Mouse entered");
+                                        //console.log("Mouse entered");
                                     }}
                                     onMouseLeave={() => {
                                         setHover(false);
-                                        console.log("Mouse left");
+                                        //console.log("Mouse left");
                                     }}
                                 >
                                     <dt id="searchTarget">
