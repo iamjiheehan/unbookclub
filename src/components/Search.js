@@ -55,7 +55,6 @@ function SearchBoard() {
     // console.log(searchResults, "searchResults");
 
     const { userObj } = useContext(AuthContext);
-    const { reviewList } = useReview(userObj);
 
     const handleSubmit = async (event) => {
         // console.log("handleSubmit works");

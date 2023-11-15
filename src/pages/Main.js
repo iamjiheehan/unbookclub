@@ -23,7 +23,6 @@ import cardBook3 from "../static/images/cardBook03.jpg";
 
 // 스타일컴포넌트 임포트
 import * as MainStyled from "../styled-components/MainStyled";
-import Button from "../styled-components/ButtonStyled";
 import { Btn1, Btn2 } from "styled-components/BtnStyled";
 
 // 커스텀 훅
