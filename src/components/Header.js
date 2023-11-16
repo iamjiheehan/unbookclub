@@ -114,7 +114,7 @@ function Header({reviewObj}) {
         return {
             sort: "accuracy",
             page: 1,
-            size: 16,
+            size: 32,
             query: mode === "도서명" ? title : author,
             [mode === "도서명" ? "title" : "authors"]:
                 mode === "도서명" ? title : author,

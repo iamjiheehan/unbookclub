@@ -59,12 +59,14 @@ export default function SearchBooks() {
     const itemsPerRow = 4;
 
     // 초기값이 3행이 보이도록 설정
-    const [numItemsToShow, setNumItemsToShow] = useState(itemsPerRow * 3);
+    const [numItemsToShow, setNumItemsToShow] = useState(8);
+
 
     const handleLoadMore = () => {
-        setNumItemsToShow(numItemsToShow + itemsPerRow * 3);
+        // 현재 보이는 아이템 개수에 3행을 추가
+        setNumItemsToShow((prevNumItems) => prevNumItems + itemsPerRow * 2);
     };
-
+    
     // 기본 정렬 기준을 pubDate로 설정
     const [sortBy, setSortBy] = useState("pubDate");
 
@@ -77,9 +79,13 @@ export default function SearchBooks() {
         });
     };
 
+    
+    // 정렬된 결과를 저장할 state
+const [sortedPosts, setSortedPosts] = useState(sortPosts(sortBy));
+
     // 정렬된 게시물을 가져오는 함수
     const getSortedPosts = () => {
-        return sortPosts(sortBy);
+        return sortedPosts;
     };
 
     const handleSortBy = (eventKey) => {
@@ -135,7 +141,7 @@ export default function SearchBooks() {
                 <BookStyled.Content>
                     <div className="content-wrap">
                         {searchResults && searchResults.length > 0 ? (
-                            searchResults.map((result) => (
+                            searchResults.slice(0, numItemsToShow).map((result) => (
                                 <div className="content-item" key={result.isbn}>
                                     <BookStyled.Item className="item_canvas">
                                         <div className="item_img">
@@ -220,7 +226,7 @@ export default function SearchBooks() {
                     </div>
                     {searchResults && searchResults.length > 0 && (
                         <div className="middle">
-                            {numItemsToShow < getSortedPosts().length && (
+                            {numItemsToShow < searchResults.length && (
                                 <Btn2 onClick={handleLoadMore}>더 보기</Btn2>
                             )}
                         </div>
