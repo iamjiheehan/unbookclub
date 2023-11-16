@@ -62,9 +62,9 @@ function Header({reviewObj}) {
         fetchBooks();
     }, []);
 
-    if (!userObj) {
-        return null;
-    }
+    // if (!userObj) {
+    //     return null;
+    // }
 
     // ---------------------------------------헤더 메뉴 호버
     // #headerTop_gnb 요소 내부의 모든 목록 항목을 가져옴.
