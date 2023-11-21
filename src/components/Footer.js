@@ -23,17 +23,17 @@ export default function Footer() {
                     </div>
                     <div className="footer_bottom inner">
                         <div className="aladin_box">
-                            <h3>(주)알라딘커뮤니케이션</h3>
+                            <h3>UNBOOKCLUB</h3>
                             <address>
-                                <span>대표이사 최우경</span>
-                                <span>고객정보보호 책임자 최우경</span>
+                                <span>대표이사 한지희</span>
+                                <span>고객정보보호 책임자 한지희</span>
                                 <span>
-                                    <a href="#!">사업자등록 201-81-23094</a>
+                                    <a href="#!">사업자등록 000-00-0000</a>
                                 </span>
                                 <span>통신판매업신고 중구01520호</span>
-                                <span>이메일 privacy@aladin.co.kr</span>
-                                <span>호스팅 제공자 알라딘커뮤니케이션</span>
-                                <span>(본사) 서울시 중구 서소문로 89-31</span>
+                                <span>이메일 hatrix1014@gmail.com</span>
+                                <span>호스팅 제공자 UNBOOKCLUB</span>
+                                <span>(본사) 서울특별시</span>
                                 <div className="copyright">
                                     ⓒ Aladin Communication. All Rights Reserved.
                                 </div>
@@ -48,10 +48,10 @@ export default function Footer() {
                             </div>
                         </div>
                         <div className="cscenter_box">
-                            <h3>고객센터 1544-2514 (발신자 부담)</h3>
+                            <h3>고객센터 010-0000-0000 (발신자 부담)</h3>
                             <address>
-                                <span>서울시 마포구 백범로 71 숨도빌딩 7층</span>
-                                <span>Fax 02-6926-2600</span>
+                                <span>서울특별시</span>
+                                <span>Fax 02-0000-0000</span>
                             </address>
                             <div className="cs_link">
                                 <a href="#!">1:1 문의</a>
