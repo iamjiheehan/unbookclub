@@ -223,7 +223,10 @@ export const Top = styled.div`
         background-color: #fff;
         border: 1px solid #4496d9;
         border-bottom: none;
-        color: #0f4e8a !important;
+
+        a {
+            color: #0f4e8a !important;
+        }
 
     }
 

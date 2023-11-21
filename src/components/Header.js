@@ -46,6 +46,17 @@ function Header({reviewObj}) {
     const { startLoading, stopLoading } = useLoadingContext();
     const navigate = useNavigate();
 
+    const [selectedMenu, setSelectedMenu] = useState(null);
+
+    useEffect(() => {
+        // 현재 URL 경로 확인
+        const currentPath = window.location.pathname;
+    
+        // "/home"일 때만 "home" 메뉴를 초기 선택으로 설정
+        if (currentPath === "/") {
+            setSelectedMenu("home");
+        }
+    }, []);
 
     useEffect(() => {
         const fetchBooks = async () => {
@@ -189,30 +200,30 @@ function Header({reviewObj}) {
                 <HeaderStyled.Top className="header_top">
                     <div className="inner">
                         <ul className="gnb" id="headerTop_gnb">
-                            <li className="home">
-                                <Link to="/" className="header_on">
+                            <li className={selectedMenu === "home" ? "home header_on" : "home"} onClick={() => setSelectedMenu("home")}>
+                                <Link to="/">
                                     HOME
                                 </Link>
                             </li>
-                            <li id="head_book_layer">
+                            <li id="head_board_layer" className={selectedMenu === "board" ? "board header_on" : "board"} onClick={() => setSelectedMenu("board")}>
                                 <Link to="/board" title="리뷰게시판">
                                     리뷰게시판
                                 </Link>
                             </li>
-                            <li id="head_book_layer">
+                            <li id="head_book_layer" className={selectedMenu === "bestSellers" ? "bestSellers header_on" : "bestSellers"} onClick={() => setSelectedMenu("bestSellers")}>
                                 <Link to="/bestSellers" title="인기도서">
                                     인기도서
                                 </Link>
                             </li>
-                            <li id="head_book_layer">
+                            <li id="head_book_layer" className={selectedMenu === "newbooks" ? "newbooks header_on" : "newbooks"} onClick={() => setSelectedMenu("newbooks")}>
                                 <Link to="/newbooks" title="신간도서">
                                     신간도서
                                 </Link>
                             </li>
-                            <li id="head_book_layer">
-                                <Link to="/guide" title="가이드">
-                                    가이드
-                                </Link>
+                            <li id="head_book_layer" className={selectedMenu === "guide" ? "guide header_on" : "guide"} onClick={() => setSelectedMenu("guide")}>
+                            <Link to="/guide" title="가이드">
+                                가이드
+                            </Link>
                             </li>
                         </ul>
                         <ul className="util" id="headerTop_util">
