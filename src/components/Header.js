@@ -56,7 +56,7 @@ function Header({reviewObj}) {
         if (currentPath === "/") {
             setSelectedMenu("home");
         }
-    }, []);
+    }, [searchResults]);
 
     useEffect(() => {
         const fetchBooks = async () => {
@@ -163,7 +163,6 @@ function Header({reviewObj}) {
         stopLoading();
     };
     
-
     // 검색 모드 변경
     const handleModeChange = (mode, event) => {
         event.preventDefault();
