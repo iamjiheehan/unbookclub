@@ -29,7 +29,7 @@ export default function BestSellers() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        console.log(posts.length);
+        // console.log(posts.length);
     }, [posts.length]);
 
     // 카트에 담을 속성들 파라미터로 설정

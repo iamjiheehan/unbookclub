@@ -3,8 +3,7 @@ import styled from "styled-components";
 import bg_search from "../static/images/bg_search.png";
 import gray_arr from "../static/images/gray_arr.gif";
 import i_arrdown from "../static/images/i_arrdown.gif";
-import i_menu from "../static/images/i-menu.png";
-import arr_drop_blue from "../static/images/arr_drop_blue.png";
+
 
 export const Container = styled.div`
     width: 100%;
@@ -225,6 +224,7 @@ export const Top = styled.div`
         border: 1px solid #4496d9;
         border-bottom: none;
         color: #0f4e8a !important;
+
     }
 
     .gnb li {
