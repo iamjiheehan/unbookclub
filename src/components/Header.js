@@ -220,9 +220,14 @@ function Header({reviewObj}) {
                                 </Link>
                             </li>
                             <li id="head_book_layer" className={selectedMenu === "guide" ? "guide header_on" : "guide"} onClick={() => setSelectedMenu("guide")}>
-                            <Link to="/guide" title="가이드">
-                                가이드
-                            </Link>
+                                <Link to="/guide" title="가이드">
+                                    가이드
+                                </Link>
+                            </li>
+                            <li id="head_book_layer" className={selectedMenu === "userInfo" ? "userInfo header_on" : "userInfo"} onClick={() => setSelectedMenu("userInfo")}>
+                                <Link to="/userInfo" title="마이페이지">
+                                    마이페이지
+                                </Link>
                             </li>
                         </ul>
                         <ul className="util" id="headerTop_util">
@@ -249,11 +254,7 @@ function Header({reviewObj}) {
                                             로그아웃
                                         </button>
                                     </li>
-                                    <li>
-                                        <Link to="/userInfo" title="마이페이지">
-                                            마이페이지
-                                        </Link>
-                                    </li>
+                                    
                                     <li id="headerBasketBtn">
                                     <Link to="/userInfo" title="서재">
                                         서재{" "}
@@ -282,7 +283,7 @@ function Header({reviewObj}) {
                 </HeaderStyled.Top>
                 <HeaderStyled.Bottom className="header_bottom">
                     {/* 홈 화면 바로가기 로고 */}
-                    <div className="header_middle-logo">
+                    <div className="header_middle-logo" onClick={() => setSelectedMenu("home")}>
                         <h1>
                             <Link to="/" title="서재">
                                 <img
