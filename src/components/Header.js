@@ -7,15 +7,14 @@ import { useNavigate } from "react-router-dom";
 import { kakaoSearch } from "api/searchApi";
 import { useSelector } from "react-redux";
 
-// 로그인 contextAPI
+// contextAPI
 import AuthContext from "contexts/AuthContext";
+import { MenuContext } from 'contexts/MenuContainer';
 
 // 커스텀 훅
 import useSignOut from "../hooks/useSignOut";
 import { useLoadingContext } from "hooks/useLoading";
 import { useSearchBooks } from "hooks/useSearchBooks";
-
-//컴포넌트 임포트
 
 // 스타일컴포넌트 임포트
 import * as HeaderStyled from "../styled-components/HeaderStyled";
@@ -27,9 +26,10 @@ import top_header_L from "../static/images/top_header_L.jpg";
 import header_banner from "../static/images/header_banner.jpg";
 
 function Header({reviewObj}) {
+    const { selectedMenu, handleMenuClick } = useContext(MenuContext);
+
     const { userObj } = useContext(AuthContext);
     const onSignOutClick = useSignOut();
-
     let addedBooks = useSelector((state) => state.book);
 
     const [hover, setHover] = useState(false);
@@ -45,18 +45,6 @@ function Header({reviewObj}) {
 
     const { startLoading, stopLoading } = useLoadingContext();
     const navigate = useNavigate();
-
-    const [selectedMenu, setSelectedMenu] = useState(null);
-
-    useEffect(() => {
-        // 현재 URL 경로 확인
-        const currentPath = window.location.pathname;
-    
-        // "/home"일 때만 "home" 메뉴를 초기 선택으로 설정
-        if (currentPath === "/") {
-            setSelectedMenu("home");
-        }
-    }, [searchResults]);
 
     useEffect(() => {
         const fetchBooks = async () => {
@@ -199,32 +187,32 @@ function Header({reviewObj}) {
                 <HeaderStyled.Top className="header_top">
                     <div className="inner">
                         <ul className="gnb" id="headerTop_gnb">
-                            <li className={selectedMenu === "home" ? "home header_on" : "home"} onClick={() => setSelectedMenu("home")}>
+                            <li className={selectedMenu === "home" ? "home header_on" : "home"} onClick={() => handleMenuClick('home')}>
                                 <Link to="/">
                                     HOME
                                 </Link>
                             </li>
-                            <li id="head_board_layer" className={selectedMenu === "board" ? "board header_on" : "board"} onClick={() => setSelectedMenu("board")}>
+                            <li id="head_board_layer" className={selectedMenu === "board" ? "board header_on" : "board"} onClick={() => handleMenuClick("board")}>
                                 <Link to="/board" title="리뷰게시판">
                                     리뷰게시판
                                 </Link>
                             </li>
-                            <li id="head_book_layer" className={selectedMenu === "bestSellers" ? "bestSellers header_on" : "bestSellers"} onClick={() => setSelectedMenu("bestSellers")}>
+                            <li id="head_book_layer" className={selectedMenu === "bestSellers" ? "bestSellers header_on" : "bestSellers"} onClick={() => handleMenuClick("bestSellers")}>
                                 <Link to="/bestSellers" title="인기도서">
                                     인기도서
                                 </Link>
                             </li>
-                            <li id="head_book_layer" className={selectedMenu === "newbooks" ? "newbooks header_on" : "newbooks"} onClick={() => setSelectedMenu("newbooks")}>
+                            <li id="head_book_layer" className={selectedMenu === "newbooks" ? "newbooks header_on" : "newbooks"} onClick={() => handleMenuClick("newbooks")}>
                                 <Link to="/newbooks" title="신간도서">
                                     신간도서
                                 </Link>
                             </li>
-                            <li id="head_book_layer" className={selectedMenu === "guide" ? "guide header_on" : "guide"} onClick={() => setSelectedMenu("guide")}>
+                            <li id="head_book_layer" className={selectedMenu === "guide" ? "guide header_on" : "guide"} onClick={() => handleMenuClick("guide")}>
                                 <Link to="/guide" title="가이드">
                                     가이드
                                 </Link>
                             </li>
-                            <li id="head_book_layer" className={selectedMenu === "userInfo" ? "userInfo header_on" : "userInfo"} onClick={() => setSelectedMenu("userInfo")}>
+                            <li id="head_book_layer" className={selectedMenu === "userInfo" ? "userInfo header_on" : "userInfo"} onClick={() => handleMenuClick("userInfo")}>
                                 <Link to="/userInfo" title="마이페이지">
                                     마이페이지
                                 </Link>
@@ -283,7 +271,7 @@ function Header({reviewObj}) {
                 </HeaderStyled.Top>
                 <HeaderStyled.Bottom className="header_bottom">
                     {/* 홈 화면 바로가기 로고 */}
-                    <div className="header_middle-logo" onClick={() => setSelectedMenu("home")}>
+                    <div className="header_middle-logo" onClick={() => handleMenuClick("home")}>
                         <h1>
                             <Link to="/" title="서재">
                                 <img
