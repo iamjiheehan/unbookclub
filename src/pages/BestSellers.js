@@ -189,7 +189,7 @@ export default function BestSellers() {
                                         <div className="item_info">
                                             <div className="info_row info_name">
                                                 <a
-                                                    href="#!"
+                                                    href="javascript:void(0);"
                                                     className="info_title"
                                                 >
                                                     {post.title}

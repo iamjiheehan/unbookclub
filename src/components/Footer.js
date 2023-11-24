@@ -8,17 +8,17 @@ export default function Footer() {
             <FooterStyled>
                     <div className="footer_menu">
                         <ul>
-                            <li><a href="#!">회사소개</a></li>
-                            <li><a href="#!">채용안내</a></li>
-                            <li><a href="#!">이용약관</a></li>
-                            <li><a href="#!" className="bold">개인정보처리방침</a></li>
-                            <li><a href="#!">청소년 보호정책</a></li>
-                            <li><a href="#!">중고매장</a></li>
-                            <li><a href="#!">제휴·마케팅 안내</a></li>
-                            <li><a href="#!">판매자 매니저</a></li>
-                            <li><a href="#!">출판사·공급사 안내</a></li>
-                            <li><a href="#!">광고 안내</a></li>
-                            <li><a href="#!">학교·기업·기관 대량구매</a></li>
+                            <li><a href="javascript:void(0);">회사소개</a></li>
+                            <li><a href="javascript:void(0);">채용안내</a></li>
+                            <li><a href="javascript:void(0);">이용약관</a></li>
+                            <li><a href="javascript:void(0);" className="bold">개인정보처리방침</a></li>
+                            <li><a href="javascript:void(0);">청소년 보호정책</a></li>
+                            <li><a href="javascript:void(0);">중고매장</a></li>
+                            <li><a href="javascript:void(0);">제휴·마케팅 안내</a></li>
+                            <li><a href="javascript:void(0);">판매자 매니저</a></li>
+                            <li><a href="javascript:void(0);">출판사·공급사 안내</a></li>
+                            <li><a href="javascript:void(0);">광고 안내</a></li>
+                            <li><a href="javascript:void(0);">학교·기업·기관 대량구매</a></li>
                         </ul>
                     </div>
                     <div className="footer_bottom inner">
@@ -28,7 +28,7 @@ export default function Footer() {
                                 <span>대표이사 한지희</span>
                                 <span>고객정보보호 책임자 한지희</span>
                                 <span>
-                                    <a href="#!">사업자등록 000-00-0000</a>
+                                    <a href="javascript:void(0);">사업자등록 000-00-0000</a>
                                 </span>
                                 <span>통신판매업신고 중구01520호</span>
                                 <span>이메일 hatrix1014@gmail.com</span>
@@ -39,10 +39,10 @@ export default function Footer() {
                                 </div>
                             </address>
                             <div className="certify">
-                                <a href="#!" className="escrow">
+                                <a href="javascript:void(0);" className="escrow">
                                     구매안전 에스크로<br />서비스 가입 확인
                                 </a>
-                                <a href="#!" alt="ISMS 인증획득" className="isms">
+                                <a href="javascript:void(0);" alt="ISMS 인증획득" className="isms">
                                     정보보호 관리체계<br />ISMS 인증획득
                                 </a>
                             </div>
@@ -54,11 +54,11 @@ export default function Footer() {
                                 <span>Fax 02-0000-0000</span>
                             </address>
                             <div className="cs_link">
-                                <a href="#!">1:1 문의</a>
-                                <a href="#!">FAQ</a>
+                                <a href="javascript:void(0);">1:1 문의</a>
+                                <a href="javascript:void(0);">FAQ</a>
                             </div>
                             <div className="shop_info">
-                                <a href="#!">중고매장 위치, 영업시간 안내</a>
+                                <a href="javascript:void(0);">중고매장 위치, 영업시간 안내</a>
                             </div>
                         </div>
                     </div>

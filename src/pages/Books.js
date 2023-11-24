@@ -190,7 +190,7 @@ const [sortedPosts, setSortedPosts] = useState(sortPosts(sortBy));
                                     </BookStyled.Item>
                                     <div className="item_info">
                                         <div className="info_row info_name">
-                                            <a href="#!" className="info_title">
+                                            <a href="javascript:void(0);" className="info_title">
                                                 {result.title}
                                             </a>
                                         </div>

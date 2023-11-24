@@ -179,17 +179,17 @@ function Header({reviewObj}) {
                 >
                     <div className="RE_banner_new">
                         <div className="left">
-                            <a href="#!">
+                            <a href="javascript:void(0);">
                                 <img src={top_header_L} alt="" border="0" />
                             </a>
                         </div>
                         <div className="right">
-                            <a href="#!">
+                            <a href="javascript:void(0);">
                                 <img src={top_header_R} alt="" border="0" />
                             </a>
                         </div>
                         <div className="close">
-                            <a href="#!" alt="닫기">
+                            <a href="javascript:void(0);" alt="닫기">
                                 닫기
                             </a>
                         </div>
@@ -380,7 +380,7 @@ function Header({reviewObj}) {
                         </form>
                     </div>
                     <div className="ad_box">
-                        <a href="#!" title="헤더배너">
+                        <a href="javascript:void(0);" title="헤더배너">
                             <img src={header_banner} alt="헤더배너" />
                         </a>
                     </div>
