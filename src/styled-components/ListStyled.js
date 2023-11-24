@@ -36,7 +36,7 @@ export const Wrap = styled.div`
 `;
 
 export const Content = styled.div`
-    background: ${(props) => props.background || "#f8f8f8"};
+    /* background: ${(props) => props.background || "#f8f8f8"}; */
     overflow: hidden;
 
     h1 {
@@ -151,6 +151,7 @@ export const CartWrap = styled.div`
     /* margin-bottom: 2rem; */
     /* background-color: rgba(149, 165, 166, 0.9); */
     background-color: rgb(51, 175, 233);
+
     position: absolute;
     bottom: 0;
     left: 0;
