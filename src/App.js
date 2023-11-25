@@ -30,9 +30,6 @@ import useAuth from "hooks/useAuth";
 import { LoadingProvider} from "hooks/useLoading";
 import { SearchResultsProvider } from "hooks/useSearchBooks";
 
-
-
-
 function App() {
   
   const {

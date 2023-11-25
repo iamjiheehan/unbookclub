@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 // 부트스트랩 라이브러리 임포트
 import Container from "react-bootstrap/Container";
@@ -6,6 +6,9 @@ import Container from "react-bootstrap/Container";
 // 컴포넌트
 import { NewBooks } from "../components/NewBooksComp";
 import { BestSellers } from "../components/BestSellersComp";
+
+// contextAPI
+import { MenuContext } from '../contexts/MenuContainer';
 
 // 이미지 임포트
 import main from "../static/images/banner_home.webp";
@@ -38,6 +41,7 @@ import { faMessage } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 
 export default function Main() {
+    const { selectedMenu, handleMenuClick } = useContext(MenuContext);
     useScrollToTopButton();
 
     return (
@@ -55,7 +59,7 @@ export default function Main() {
                                 책을 읽고 난 후의 느낀점 혹은 생각을 솔직하게
                                 남겨보세요
                             </p>
-                            <div className="wrap-button">
+                            <div className="wrap-button" onClick={() => handleMenuClick("board")}>
                                 <Btn1 to="/board">리뷰게시판 둘러보기</Btn1>
                             </div>
                         </div>
@@ -195,7 +199,7 @@ export default function Main() {
                 <div className="mid-banner">
                     <div className="mid-banner-container">
                         <div className="mid-banner-content">
-                            <div className="wrap-button">
+                            <div className="wrap-button" onClick={() => handleMenuClick("board")}>
                                 <Btn2 to="/board">리뷰게시판 둘러보기</Btn2>
                             </div>
                         </div>
