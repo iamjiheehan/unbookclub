@@ -1,9 +1,13 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React , { useContext } from "react";
+import { useSelector, useDispatch} from "react-redux";
 import { addBook } from "store";
 
+// 신간도서 데이터
 import newBooks from "../data/newBooks.json";
 import { FlowAniReverse } from "styled-components/AniStyled";
+
+// 로그인 contextAPI
+import AuthContext from "contexts/AuthContext";
 
 import {
     BookItemContainer,
@@ -19,6 +23,8 @@ export function NewBooks() {
     const posts = newBooks;
     let addedBooks = useSelector((state) => state.book);
     const dispatch = useDispatch();
+    const { userObj } = useContext(AuthContext);
+
 
     const handleAddToCart = (itemId, title, author, coverLargeUrl) => {
         // console.log(
@@ -28,6 +34,12 @@ export function NewBooks() {
         //     author,
         //     coverLargeUrl
         // );
+
+        if (!userObj) {
+            alert("로그인이 필요한 기능입니다.");
+            return;
+        }
+
         const bookToAdd = posts.find((book) => book.itemId === itemId);
         if (addedBooks.find((book) => book.itemId === itemId)) {
             // console.log("이미 추가된 도서:", itemId);

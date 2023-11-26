@@ -1,10 +1,15 @@
-import React , { useEffect } from "react";
+import React , { useContext } from "react";
 import { useSelector, useDispatch} from "react-redux";
 import { addBook } from "store";
 
+// 베스트셀러 데이터
 import bestSeller from "../data/bestSeller.json";
 import { FlowAniForward } from "../styled-components/AniStyled";
 
+// 로그인 contextAPI
+import AuthContext from "contexts/AuthContext";
+
+// 스타일컴포넌트 임포트
 import {
     BookItemContainer,
     BookInfo,
@@ -15,6 +20,7 @@ import { FaShoppingCart } from "react-icons/fa";
 
 export function BestSellers() {
     const posts = bestSeller;
+    const { userObj } = useContext(AuthContext);
 
     let addedBooks = useSelector((state) => state.book);
     const dispatch = useDispatch();
@@ -31,6 +37,11 @@ export function BestSellers() {
         //     author,
         //     coverLargeUrl
         // );
+
+        if (!userObj) {
+            alert("로그인이 필요한 기능입니다.");
+            return;
+        }
         const bookToAdd = posts.find((book) => book.itemId === itemId);
         if (addedBooks.find((book) => book.itemId === itemId)) {
             // console.log("이미 추가된 도서:", itemId);
