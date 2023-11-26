@@ -362,14 +362,15 @@ export const Bottom = styled.div`
     }
 
     #global_search dt {
-        background: url(${i_arrdown}) no-repeat right 5px bottom 2px;
+        
+        /* background: url(${i_arrdown}) no-repeat right 5px bottom 2px; */
+
+
         color: #2f9ddc;
         font-weight: bold;
         float: left;
         width: 78px;
         padding: 0.3em 0.3em 0.3em 0.6em;
-
-        
     }
 
     #searchTarget {

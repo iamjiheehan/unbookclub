@@ -1,3 +1,5 @@
+import { useContext } from "react";
+
 //로그인 페이지
 import { Link } from "react-router-dom";
 import React from "react";
@@ -7,6 +9,9 @@ import useSignInForm from "../hooks/useSignInForm";
 
 // 부트스트랩 라이브러리
 import Form from "react-bootstrap/Form";
+
+// contextAPI
+import { MenuContext } from '../contexts/MenuContainer';
 
 // 스타일컴포넌트 임포트
 import SocialBtn from "../styled-components/SocialBtnStyled";
@@ -19,6 +24,8 @@ import rightImg from "../static/images/signIn_img_big.webp";
 import { Btn2, Btn3, Btn4 } from "styled-components/BtnStyled";
 
 export default function SignIn() {
+    const { selectedMenu, handleMenuClick } = useContext(MenuContext);
+
     const {
         onPasswordRecoverySubmit,
         loginEmail,
@@ -67,7 +74,7 @@ export default function SignIn() {
                             {loginErrorMessage}
                         </Form.Group>
                     </Form>
-                    <div className="text-wrap">
+                    <div className="text-wrap" onClick={() => handleMenuClick("userInfo")}>
                         <div className="btn-wrap">
                                 <Btn3 type="submit" fontWeight="500">
                                     <Link to="/signUp">

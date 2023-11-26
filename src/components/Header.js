@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 // contextAPI
 import AuthContext from "contexts/AuthContext";
-import { MenuContext } from 'contexts/MenuContainer';
+import { MenuContext } from "contexts/MenuContainer";
 
 // 커스텀 훅
 import useSignOut from "../hooks/useSignOut";
@@ -25,7 +25,7 @@ import top_header_R from "../static/images/top_header_R.jpg";
 import top_header_L from "../static/images/top_header_L.jpg";
 import header_banner from "../static/images/header_banner.jpg";
 
-function Header({reviewObj}) {
+function Header({ reviewObj }) {
     const { selectedMenu, handleMenuClick } = useContext(MenuContext);
 
     const { userObj } = useContext(AuthContext);
@@ -34,12 +34,12 @@ function Header({reviewObj}) {
 
     const [hover, setHover] = useState(false);
 
-    const [searchMode, setSearchMode] = useState("도서명");
+    const [searchMode, setSearchMode] = useState("통합검색");
     const [searchTitle, setSearchTitle] = useState("");
     const [searchAuthor, setSearchAuthor] = useState("");
 
     const [searchError, setSearchError] = useState(null);
-    
+
     //검색결과를 훅을통해서 contxetAPI에 전달하기
     const { searchResults, setSearchResults } = useSearchBooks();
 
@@ -100,23 +100,17 @@ function Header({reviewObj}) {
             }
         });
     });
-    // 검색어 초기화 함수
-    const resetSearchFields = () => {
-        setSearchTitle("");
-        setSearchAuthor("");
-    };
 
     // 검색 모드 및 검색어 설정 함수
-    const setSearchParams = (mode, title, author) => {
+    const setSearchParams = (mode, title, person) => {
         setSearchMode(mode);
-        resetSearchFields();
         return {
             sort: "accuracy",
             page: 1,
             size: 32,
-            query: mode === "도서명" ? title : author,
-            [mode === "도서명" ? "title" : "authors"]:
-                mode === "도서명" ? title : author,
+            // query: mode === "도서명" ? title : person,
+            query: mode === "통합검색",
+            target: mode, // 수정: 현재 mode 값을 사용
         };
     };
 
@@ -125,16 +119,15 @@ function Header({reviewObj}) {
         event.preventDefault();
         setSearchError(null);
         startLoading();
-    
+        setSearchResults([]); // 초기화 추가
         const params = setSearchParams(searchMode, searchTitle, searchAuthor);
         // console.log("Search Params:", params);
-    
+
         if (params.query) {
             try {
                 const { data } = await kakaoSearch(params);
                 const searchResults = data.documents;
                 // console.log("Search Results:", searchResults);
-    
                 setSearchResults(searchResults);
                 navigate("/books");
                 if (searchResults.length === 0) {
@@ -145,16 +138,16 @@ function Header({reviewObj}) {
                 setSearchError("검색 중 오류가 발생했습니다.");
             }
         } else {
-            setSearchResults([]); // 검색어가 없을 때 빈 배열로 업데이트
             setSearchError("검색어를 입력해주세요");
         }
         stopLoading();
     };
-    
+
     // 검색 모드 변경
     const handleModeChange = (mode, event) => {
         event.preventDefault();
-        setSearchParams(mode, "", "");
+        setSearchMode(mode); // 먼저 searchMode 업데이트
+        setSearchParams(mode, searchTitle, searchAuthor); // 그 후에 setSearchParams 호출
     };
 
     return (
@@ -187,32 +180,77 @@ function Header({reviewObj}) {
                 <HeaderStyled.Top className="header_top">
                     <div className="inner">
                         <ul className="gnb" id="headerTop_gnb">
-                            <li className={selectedMenu === "home" ? "home header_on" : "home"} onClick={() => handleMenuClick('home')}>
-                                <Link to="/">
-                                    HOME
-                                </Link>
+                            <li
+                                className={
+                                    selectedMenu === "home"
+                                        ? "home header_on"
+                                        : "home"
+                                }
+                                onClick={() => handleMenuClick("home")}
+                            >
+                                <Link to="/">HOME</Link>
                             </li>
-                            <li id="head_board_layer" className={selectedMenu === "board" ? "board header_on" : "board"} onClick={() => handleMenuClick("board")}>
+                            <li
+                                id="head_board_layer"
+                                className={
+                                    selectedMenu === "board"
+                                        ? "board header_on"
+                                        : "board"
+                                }
+                                onClick={() => handleMenuClick("board")}
+                            >
                                 <Link to="/board" title="리뷰게시판">
                                     리뷰게시판
                                 </Link>
                             </li>
-                            <li id="head_book_layer" className={selectedMenu === "bestSellers" ? "bestSellers header_on" : "bestSellers"} onClick={() => handleMenuClick("bestSellers")}>
+                            <li
+                                id="head_book_layer"
+                                className={
+                                    selectedMenu === "bestSellers"
+                                        ? "bestSellers header_on"
+                                        : "bestSellers"
+                                }
+                                onClick={() => handleMenuClick("bestSellers")}
+                            >
                                 <Link to="/bestSellers" title="인기도서">
                                     인기도서
                                 </Link>
                             </li>
-                            <li id="head_book_layer" className={selectedMenu === "newbooks" ? "newbooks header_on" : "newbooks"} onClick={() => handleMenuClick("newbooks")}>
+                            <li
+                                id="head_book_layer"
+                                className={
+                                    selectedMenu === "newbooks"
+                                        ? "newbooks header_on"
+                                        : "newbooks"
+                                }
+                                onClick={() => handleMenuClick("newbooks")}
+                            >
                                 <Link to="/newbooks" title="신간도서">
                                     신간도서
                                 </Link>
                             </li>
-                            <li id="head_book_layer" className={selectedMenu === "guide" ? "guide header_on" : "guide"} onClick={() => handleMenuClick("guide")}>
+                            <li
+                                id="head_book_layer"
+                                className={
+                                    selectedMenu === "guide"
+                                        ? "guide header_on"
+                                        : "guide"
+                                }
+                                onClick={() => handleMenuClick("guide")}
+                            >
                                 <Link to="/guide" title="가이드">
                                     가이드
                                 </Link>
                             </li>
-                            <li id="head_book_layer" className={selectedMenu === "userInfo" ? "userInfo header_on" : "userInfo"} onClick={() => handleMenuClick("userInfo")}>
+                            <li
+                                id="head_book_layer"
+                                className={
+                                    selectedMenu === "userInfo"
+                                        ? "userInfo header_on"
+                                        : "userInfo"
+                                }
+                                onClick={() => handleMenuClick("userInfo")}
+                            >
                                 <Link to="/userInfo" title="마이페이지">
                                     마이페이지
                                 </Link>
@@ -238,19 +276,29 @@ function Header({reviewObj}) {
                                         )}
                                     </li>
                                     <li>
-                                        <button onClick={onSignOutClick}>
+                                        <button
+                                            onClick={() => {
+                                                onSignOutClick();
+                                                handleMenuClick("home");
+                                            }}
+                                        >
                                             로그아웃
                                         </button>
                                     </li>
-                                    
+
                                     <li id="headerBasketBtn">
-                                    <Link to="/userInfo" title="서재">
-                                        서재{" "}
-                                        <span id="basketItemCount">
-                                            ( {!addedBooks || addedBooks.length ? addedBooks.length : 0} )
-                                        </span>
-                                    </Link>
-                                </li>
+                                        <Link to="/userInfo" title="서재">
+                                            서재{" "}
+                                            <span id="basketItemCount">
+                                                ({" "}
+                                                {!addedBooks ||
+                                                addedBooks.length
+                                                    ? addedBooks.length
+                                                    : 0}{" "}
+                                                )
+                                            </span>
+                                        </Link>
+                                    </li>
                                 </>
                             ) : (
                                 <>
@@ -271,7 +319,10 @@ function Header({reviewObj}) {
                 </HeaderStyled.Top>
                 <HeaderStyled.Bottom className="header_bottom">
                     {/* 홈 화면 바로가기 로고 */}
-                    <div className="header_middle-logo" onClick={() => handleMenuClick("home")}>
+                    <div
+                        className="header_middle-logo"
+                        onClick={() => handleMenuClick("home")}
+                    >
                         <h1>
                             <Link to="/" title="서재">
                                 <img
@@ -302,7 +353,7 @@ function Header({reviewObj}) {
                                 >
                                     <dt id="searchTarget">
                                         {searchMode}
-                                        {hover && (
+                                        {/* {hover && (
                                             <div className="dropdown">
                                                 <div className="dropdown-content">
                                                     <button
@@ -327,7 +378,7 @@ function Header({reviewObj}) {
                                                     </button>
                                                 </div>
                                             </div>
-                                        )}
+                                        )} */}
                                     </dt>
                                 </dl>
                                 <div id="serachInput-box">
@@ -361,7 +412,7 @@ function Header({reviewObj}) {
                                 <button
                                     type="button"
                                     className="search_btn"
-                                    onClick={(event) => handleSearch(event)}
+                                    onClick={(e) => handleSearch(e)}
                                 >
                                     검색
                                 </button>
