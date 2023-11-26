@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "the-unbook-club",
     "public": "build",
     "ignore": [
       "firebase.json",
