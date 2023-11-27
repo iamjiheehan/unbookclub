@@ -178,7 +178,6 @@ export const Card = styled.div`
     .card-book_img {
         background: #c4c4c4;
         box-shadow: 0 4px 4px rgba(0,0,0,.25);
-        cursor: pointer;
         margin: 0 auto 20px;
         width: 92px;
         height: 138px;

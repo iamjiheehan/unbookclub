@@ -69,21 +69,21 @@ export default function Main() {
                     <div className="content">
                         {" "}
                         <img src={imgCategory1} alt="" />
-                        <Btn2 to="/board" bgColor="#333">
+                        <Btn2 to="/board" bgColor="#333" onClick={() => handleMenuClick("board")}>
                             자유롭게 전하는 독서 감상문
                         </Btn2>
                     </div>
                     <div className="content">
                         {" "}
                         <img src={imgCategory2} alt="" />
-                        <Btn2 to="/board" bgColor="#333">
+                        <Btn2 to="/board" bgColor="#333" onClick={() => handleMenuClick("board")}>
                             기록으로 남겨보세요
                         </Btn2>
                     </div>
                     <div className="content">
                         {" "}
                         <img src={imgCategory3} alt="" />
-                        <Btn2 to="/board" bgColor="#333">
+                        <Btn2 to="/board" bgColor="#333" onClick={() => handleMenuClick("board")}>
                             유저들과 의견을 공유해보세요
                         </Btn2>
                     </div>

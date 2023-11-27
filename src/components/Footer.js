@@ -13,7 +13,6 @@ export default function Footer() {
                             <li><a href="javascript:void(0);">이용약관</a></li>
                             <li><a href="javascript:void(0);" className="bold">개인정보처리방침</a></li>
                             <li><a href="javascript:void(0);">청소년 보호정책</a></li>
-                            <li><a href="javascript:void(0);">중고매장</a></li>
                             <li><a href="javascript:void(0);">제휴·마케팅 안내</a></li>
                             <li><a href="javascript:void(0);">판매자 매니저</a></li>
                             <li><a href="javascript:void(0);">출판사·공급사 안내</a></li>
@@ -58,7 +57,7 @@ export default function Footer() {
                                 <a href="javascript:void(0);">FAQ</a>
                             </div>
                             <div className="shop_info">
-                                <a href="javascript:void(0);">중고매장 위치, 영업시간 안내</a>
+                                <a href="javascript:void(0);">매장 위치, 영업시간 안내</a>
                             </div>
                         </div>
                     </div>
