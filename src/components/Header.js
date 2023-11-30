@@ -34,7 +34,8 @@ function Header({ reviewObj }) {
 
     const [hover, setHover] = useState(false);
 
-    const [searchMode, setSearchMode] = useState("통합검색");
+    const [searchMode, setSearchMode] = useState("도서명");
+    const [target, setTarget] = useState("");
     const [searchTitle, setSearchTitle] = useState("");
     const [searchAuthor, setSearchAuthor] = useState("");
 
@@ -45,25 +46,6 @@ function Header({ reviewObj }) {
 
     const { startLoading, stopLoading } = useLoadingContext();
     const navigate = useNavigate();
-
-    useEffect(() => {
-        const fetchBooks = async () => {
-            try {
-                const { data } = await kakaoSearch({
-                    query: "some_search_term",
-                });
-                setSearchResults(data.documents);
-                // console.log("fetchBooks");
-            } catch (error) {
-                // console.error("Error fetching books:", error);
-            }
-        };
-        fetchBooks();
-    }, []);
-
-    // if (!userObj) {
-    //     return null;
-    // }
 
     // ---------------------------------------헤더 메뉴 호버
     // #headerTop_gnb 요소 내부의 모든 목록 항목을 가져옴.
@@ -102,32 +84,40 @@ function Header({ reviewObj }) {
     });
 
     // 검색 모드 및 검색어 설정 함수
-    const setSearchParams = (mode, title, person) => {
+    const setSearchParams = (mode, searchTitle, searchAuthor, target) => {
         setSearchMode(mode);
         return {
             sort: "accuracy",
             page: 1,
             size: 32,
-            // query: mode === "도서명" ? title : person,
-            query: mode === "통합검색",
+            query: mode === "도서명" ? searchTitle : searchAuthor,
+            // query: mode === "통합검색",
             target: mode, // 수정: 현재 mode 값을 사용
         };
     };
-
     // 검색 기능
     const handleSearch = async (event) => {
         event.preventDefault();
         setSearchError(null);
         startLoading();
         setSearchResults([]); // 초기화 추가
-        const params = setSearchParams(searchMode, searchTitle, searchAuthor);
-        // console.log("Search Params:", params);
+
+        // setSearchParams 함수의 내용을 직접 여기에 포함
+        const mode = searchMode;
+        setSearchMode(mode);
+
+        const params = {
+            sort: "accuracy",
+            page: 1,
+            size: 32,
+            query: mode === "도서명" ? searchTitle : searchAuthor,
+            target: target,
+        };
 
         if (params.query) {
             try {
                 const { data } = await kakaoSearch(params);
                 const searchResults = data.documents;
-                // console.log("Search Results:", searchResults);
                 setSearchResults(searchResults);
                 navigate("/books");
                 if (searchResults.length === 0) {
@@ -146,7 +136,13 @@ function Header({ reviewObj }) {
     // 검색 모드 변경
     const handleModeChange = (mode, event) => {
         event.preventDefault();
-        setSearchMode(mode); // 먼저 searchMode 업데이트
+        if (mode === "도서명") {
+            setSearchMode("도서명");
+            setTarget("title");
+        } else {
+            setSearchMode("작가명");
+            setTarget("person");
+        }
         setSearchParams(mode, searchTitle, searchAuthor); // 그 후에 setSearchParams 호출
     };
 
@@ -353,7 +349,7 @@ function Header({ reviewObj }) {
                                 >
                                     <dt id="searchTarget">
                                         {searchMode}
-                                        {/* {hover && (
+                                        {hover && (
                                             <div className="dropdown">
                                                 <div className="dropdown-content">
                                                     <button
@@ -378,7 +374,7 @@ function Header({ reviewObj }) {
                                                     </button>
                                                 </div>
                                             </div>
-                                        )} */}
+                                        )}
                                     </dt>
                                 </dl>
                                 <div id="serachInput-box">
