@@ -363,7 +363,7 @@ export const Bottom = styled.div`
 
     #global_search dt {
         
-        /* background: url(${i_arrdown}) no-repeat right 5px bottom 2px; */
+        background: url(${i_arrdown}) no-repeat right 5px bottom 2px;
 
 
         color: #2f9ddc;
